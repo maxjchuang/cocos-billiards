@@ -1,5 +1,5 @@
 {
-  "version": "1.9",
+  "version": "1.12",
   "date": "2026-10-21",
   "direction": "专业球房",
   "referenceFrame": [
@@ -49,5 +49,64 @@
     "loss": "#D99588",
     "line": "#A4C3AD",
     "pocket": "#080E0C"
+  },
+  "pocketGeometry": {
+    "status": "whole-table proportions calibrated; exact pocket profile not finalized; runtime unchanged",
+    "ballDiameterMm": 57.15,
+    "tableReference": {
+      "model": "JOY Q8 Pro",
+      "outerMm": [
+        2820.0,
+        1540.0
+      ],
+      "innerMm": [
+        2540.0,
+        1260.0
+      ],
+      "overallBorderInferredMm": 140,
+      "borderInference": "symmetric centred layout; not cushion-only width",
+      "source": "https://www.joybilliard.com/billiards-table/golden-leg-billiards-tables.html"
+    },
+    "crossBrandCandidate": {
+      "brand": "BOJUE",
+      "cornerMouthMm": 85,
+      "sideMouthMm": 82,
+      "status": "not verified for JOY; do not merge as one model",
+      "source": "https://www.bojuebilliard.com/heyball-pocket-size-why-85-mm-corners-matter/"
+    },
+    "visualPrototype": {
+      "mouthSource": "BOJUE cross-brand candidate",
+      "cornerMouthToBallRatio": 1.4873140857392826,
+      "sideMouthToBallRatio": 1.4348206474190726,
+      "rearProfile": "round-ended illustrative path; not measured geometry",
+      "physicsUse": false
+    },
+    "exactGeometry": {
+      "sideBackArcDepthMm": null,
+      "sideTotalDepthMm": null,
+      "jawRadiusMm": null,
+      "shelfDepthMm": null,
+      "slateCutProfile": null,
+      "dropBoundary": null
+    },
+    "withdrawnV110": [
+      "18 mm shallow elliptical back",
+      "55 mm total depth",
+      "67.4 mm frame as real constraint",
+      "12.4 mm margin",
+      "12 mm jaw radius as implementation parameter",
+      "25 mm shelf as implementation parameter"
+    ],
+    "structureSource": "https://patents.google.com/patent/CN115350466A/zh",
+    "spec": "pocket-geometry-spec.md",
+    "uiuxPages": [
+      25,
+      26,
+      27
+    ],
+    "productPages": [
+      8,
+      9
+    ]
   }
 }
