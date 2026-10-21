@@ -24,3 +24,22 @@ for(const [width,height] of [[320,568],[360,640],[393,852],[430,932],[736,842],[
         for(let i=0;i<controls.length;i++) for(let j=i+1;j<controls.length;j++) assert.equal(overlap(controls[i],controls[j]),false);
     });
 }
+
+for (const [width,height,top,bottom] of [[320,568,0,0],[393,852,59,34],[430,932,59,34]]) {
+    for (const [phase, actionCount, showPower] of [['placing',1,false],['ready',0,true],['open',2,true],['choice',3,false]]) {
+        test(`${phase} respects safe area and minimum touch sizes at ${width}x${height}`,()=>{
+            const ui=computeHudLayout(width,height,{insets:{top,bottom},actionCount,showPower});
+            for(const rect of [ui.status,ui.reset,...ui.players,ui.turn,ui.playArea,ui.dock]) {
+                assert.ok(rect.y>=top);
+                assert.ok(rect.y+rect.height<=height-bottom);
+                assert.ok(rect.height>0);
+            }
+            assert.ok(ui.reset.height>=44);
+            assert.ok(ui.playArea.y>=ui.turn.y+ui.turn.height);
+            assert.ok(ui.playArea.y+ui.playArea.height<=ui.dock.y);
+            if(actionCount) assert.ok(ui.actions.height>=48);
+            if(showPower) assert.ok(ui.power.height>=44);
+            else assert.equal(ui.power.height,0);
+        });
+    }
+}

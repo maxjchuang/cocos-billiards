@@ -1,13 +1,16 @@
 import {
     _decorator, Camera, Canvas, Color, Component,
     EventTouch, geometry, Graphics, input, Input, Label, Layers, Material, profiler, Rect,
-    Mesh, MeshRenderer, Node, primitives, Quat, screen, Texture2D, UITransform, utils, Vec3,
+    Mesh, MeshRenderer, Node, primitives, Quat, screen, sys, view, Texture2D, UITransform, utils, Vec3,
 } from 'cc';
 import { BallState, createRack, FIXED_STEP, isMoving, step, strike, TABLE, POCKETS, POCKET_RADIUS, HEAD_LINE } from './BilliardsPhysics';
 
 import { Referee, groupName, remaining } from './BilliardsRules';
 
 import { computeHudLayout, HudLayout, HudRect } from './BilliardsLayout';
+import { CLUB, BALL_COLORS } from './BilliardsTheme';
+import { createLocalPlayers, playerName, playerMessage } from './BilliardsPlayers';
+import { PlayerCardView } from './BilliardsPlayerCard';
 
 const { ccclass } = _decorator;
 
@@ -18,7 +21,9 @@ export class BilliardsGame extends Component {
     private referee = new Referee();
     private numberNodes: Node[] = [];
     private actions: Label[] = [];
-    private playerCards: Label[] = [];
+    private playerCards: PlayerCardView[] = [];
+    private players = createLocalPlayers();
+    private turnLabel!: Label;
     private dock!: Node;
     private hudLayout!: HudLayout;
     private layoutStamp = '';
@@ -82,8 +87,8 @@ export class BilliardsGame extends Component {
         const box = utilsMesh(primitives.box());
         const sphere = utilsMesh(primitives.sphere(TABLE.radius, { segments: 24 }));
         this.meshes.push(box, sphere);
-        const wood = this.material('#49342B'), felt = this.material('#187D68');
-        const rail = this.material('#103F38');
+        const wood = this.material(CLUB.wood), felt = this.material(CLUB.felt);
+        const rail = this.material(CLUB.cushion);
         const base = this.meshNode('Table base', box, wood);
         base.setScale(1.47, 0.16, 2.74); base.setPosition(0, -0.1, 0);
         const bed = this.meshNode('Cloth', box, felt);
@@ -104,7 +109,7 @@ export class BilliardsGame extends Component {
         const pocketMesh = utilsMesh(primitives.cylinder(POCKET_RADIUS, POCKET_RADIUS, 0.008,
             { radialSegments: 64 }));
         this.meshes.push(pocketMesh);
-        const pocketMaterial = this.material('#080D12');
+        const pocketMaterial = this.material(CLUB.pocket);
         POCKETS.forEach((pocket, index) => {
             const node = this.meshNode(`Pocket ${index + 1}`, pocketMesh, pocketMaterial);
             node.setPosition(pocket.x, 0.004, pocket.z);
@@ -112,7 +117,7 @@ export class BilliardsGame extends Component {
         this.headLine = this.meshNode('Head line', box, this.material('#C4D3A9'));
         this.headLine.setScale(TABLE.halfWidth * 2, 0.001, 0.004);
         this.headLine.setPosition(0, 0.002, HEAD_LINE);
-        const colors = ['#FFF8E8', '#E9B923', '#2754B4', '#CF353D', '#783EA0', '#E78126', '#218152', '#78362E', '#15171E'];
+        const colors = BALL_COLORS;
         for (let id = 0; id <= 15; id++) {
             const color = new Color().fromHEX(colors[id > 8 ? id - 8 : id]);
             const pixels = new Uint8Array(128 * 64 * 4);
@@ -148,7 +153,7 @@ export class BilliardsGame extends Component {
         const clear = background.addComponent(Camera);
         clear.priority = -10;
         clear.visibility = 0;
-        clear.clearColor = new Color(18, 24, 33, 255);
+        clear.clearColor = new Color().fromHEX(CLUB.background);
         const node = new Node('Main Camera');
         this.node.addChild(node);
         node.setPosition(0, 6, 0);
@@ -158,7 +163,7 @@ export class BilliardsGame extends Component {
         this.camera.projection = Camera.ProjectionType.ORTHO;
         this.camera.near = 0.1;
         this.camera.far = 30;
-        this.camera.clearColor = new Color(18, 24, 33, 255);
+        this.camera.clearColor = new Color().fromHEX(CLUB.background);
         this.camera.visibility = Layers.Enum.DEFAULT;
     }
 
@@ -194,7 +199,7 @@ export class BilliardsGame extends Component {
         this.status = textNode.addComponent(Label);
         this.status.fontSize = 19;
         this.status.lineHeight = 27;
-        this.status.color = new Color(235, 240, 245, 255);
+        this.status.color = new Color().fromHEX(CLUB.ink);
         const resetNode = new Node('Reset');
         resetNode.layer = Layers.Enum.UI_2D;
         root.addChild(resetNode);
@@ -203,7 +208,7 @@ export class BilliardsGame extends Component {
         const label = resetNode.addComponent(Label);
         this.resetLabel = label;
         label.string = '重新开局'; label.fontSize = 22;
-        label.color = new Color(235, 220, 162, 255);
+        label.color = new Color().fromHEX(CLUB.gold);
         this.powerControl = new Node('Power control');
         this.powerControl.layer = Layers.Enum.UI_2D;
         root.addChild(this.powerControl);
@@ -215,28 +220,24 @@ export class BilliardsGame extends Component {
         powerText.addComponent(UITransform).setContentSize(880, 48);
         powerText.setPosition(0, 50, 0);
         this.powerLabel = powerText.addComponent(Label);
-        this.powerLabel.color = new Color(235, 220, 162, 255);
+        this.powerLabel.color = new Color().fromHEX(CLUB.gold);
         const uiLabel = (name: string, width: number, height: number): Label => {
             const node = new Node(name); node.layer = Layers.Enum.UI_2D; root.addChild(node);
             node.addComponent(UITransform).setContentSize(width, height);
             const label = node.addComponent(Label);
-            label.color = new Color(235, 240, 245, 255);
+            label.color = new Color().fromHEX(CLUB.ink);
             return label;
         };
         this.status.horizontalAlign = Label.HorizontalAlign.LEFT;
         this.status.overflow = Label.Overflow.SHRINK;
-        for (let player = 0; player < 2; player++) {
-            const card = new Node(`Player ${player + 1} card`); card.layer = Layers.Enum.UI_2D;
-            root.addChild(card); card.addComponent(UITransform); card.addComponent(Graphics);
-            const label = uiLabel(`Player ${player + 1} summary`, 400, 76);
-            label.node.setParent(card); label.horizontalAlign = Label.HorizontalAlign.LEFT;
-            label.overflow = Label.Overflow.SHRINK;
-            this.playerCards.push(label);
-        }
+        this.turnLabel = uiLabel('Turn', 353, 24);
+        this.turnLabel.color = new Color().fromHEX(CLUB.gold);
+        this.turnLabel.overflow = Label.Overflow.SHRINK;
+        for (let player = 0; player < 2; player++) this.playerCards.push(new PlayerCardView(root, player));
         this.decision = uiLabel('Referee decision', 920, 120);
         this.decision.horizontalAlign = Label.HorizontalAlign.LEFT;
         this.decision.overflow = Label.Overflow.SHRINK;
-        this.decision.color = new Color(239, 208, 136, 255);
+        this.decision.color = new Color().fromHEX(CLUB.foul);
         for (let i = 0; i < 3; i++) {
             const button = new Node(`Rule action ${i}`); button.layer = Layers.Enum.UI_2D; root.addChild(button);
             button.addComponent(UITransform).setContentSize(275, 100);
@@ -331,7 +332,7 @@ export class BilliardsGame extends Component {
         }
         if (this.pendingAction !== null) { this.dragging = false; return; }
         if (this.referee.phase === 'over' || this.referee.phase === 'choice') return;
-        if (this.hitUi(this.powerControl, x, y)) {
+        if (this.referee.phase === 'ready' && !isMoving(this.balls) && this.hitUi(this.powerControl, x, y)) {
             this.dragging = false;
             this.adjustingPower = true;
             this.setPowerAt(x, y);
@@ -416,23 +417,23 @@ export class BilliardsGame extends Component {
         this.syncVisuals();
         const size = screen.windowSize;
         const ref = this.referee;
-        const phase = ref.phase === 'over' ? `P${(ref.winner ?? 0) + 1} 获胜` : `P${ref.current + 1} ${ref.isBreak ? '开球' : '击球'} · ${ref.groups[ref.current] ? groupName(ref.groups[ref.current]) : '开放球局'}`;
-        this.status.string = `中式八球 · 双人同屏\n${phase}`;
-        this.playerCards.forEach((label, player) => {
-            const group = ref.groups[player as 0 | 1];
-            const ids = group ? remaining(this.balls, group) : [];
-            label.string = `P${player + 1} · ${groupName(group)}${group ? ` · 剩${ids.length}` : ''}\n${group ? ids.join(' ') || '本组已清，打8号' : '等待确定球组'} · 犯规${ref.foulCount[player as 0 | 1]}`;
-        });
+        const currentName = playerName(this.players[ref.current], ref.current);
+        const winnerName = ref.winner === null ? '' : playerName(this.players[ref.winner], ref.winner);
+        this.status.string = '中式八球\n同屏对战';
+        this.turnLabel.string = ref.phase === 'over' ? `${winnerName} 获胜`
+            : ref.phase === 'shooting' ? '球运动中'
+            : `${currentName} · ${ref.phase === 'placing' ? ref.hand === 'head' ? '线后摆球' : '全台自由球' : ref.isBreak ? '开球' : groupName(ref.groups[ref.current])}`;
         this.decision.string = ref.phase === 'placing'
             ? ref.isBreak ? '在线后轻触摆放白球，然后确认。' : `${ref.message}\n触摸台面摆白球，然后确认。`
             : ref.phase === 'shooting' ? '球正在运动，停稳后自动判罚。'
             : ref.phase === 'ready' && !ref.isBreak && !ref.groups[ref.current]
                 ? '开放球局：选择球组，再瞄准击球。'
-                : ref.message;
+                : ref.phase === 'ready' && !ref.message ? '拖动台面瞄准，松手击球' : ref.message;
+        this.decision.string = playerMessage(this.decision.string, this.players);
         let labels = ['', '', ''];
         if (ref.phase === 'placing') labels[1] = '确认摆球';
         if (ref.phase === 'ready' && !ref.isBreak && !ref.groups[ref.current])
-            labels = [`${ref.selected === 'solid' ? '✓ ' : ''}进攻全色`, `${ref.selected === 'stripe' ? '✓ ' : ''}进攻半色`, ''];
+            labels = [`${ref.selected === 'solid' ? '✓ ' : ''}全色球`, `${ref.selected === 'stripe' ? '✓ ' : ''}半色球`, ''];
         if (ref.phase === 'choice') labels = ref.breakChoice === 'illegal'
             ? ['我来重开', '原开球方重开', '接受自由球']
             : [this.balls[0].pocketed ? '' : '接受台面', '', '线后自由球'];
@@ -454,11 +455,25 @@ export class BilliardsGame extends Component {
 
     private layoutHud(labels: string[]): void {
         const size = screen.windowSize;
-        const height = this.hudCamera.orthoHeight * 2;
-        const stamp = [size.width, size.height, height, this.referee.current, this.power, ...labels].join('|');
+        // Window size is physical pixels; HUD geometry uses CSS/logical pixels.
+        const dpr = Math.max(1, screen.devicePixelRatio);
+        const width = size.width / dpr, height = size.height / dpr;
+        this.hudCamera.orthoHeight = height / 2;
+        const safe = sys.getSafeAreaRect(false), visible = view.getVisibleSize(), origin = view.getVisibleOrigin();
+        const ratioX = width / visible.width, ratioY = height / visible.height;
+        const insets = {
+            left: Math.max(0, safe.x-origin.x)*ratioX,
+            right: Math.max(0, origin.x+visible.width-safe.x-safe.width)*ratioX,
+            bottom: Math.max(0, safe.y-origin.y)*ratioY,
+            top: Math.max(0, origin.y+visible.height-safe.y-safe.height)*ratioY,
+        };
+        const active = labels.map((text, index) => text ? index : -1).filter(index => index !== -1);
+        const showPower = this.referee.phase === 'ready' || this.referee.phase === 'shooting';
+        const stamp = [width, height, ...Object.values(insets), this.referee.current, this.referee.phase, ...this.referee.groups, this.power, showPower,
+            ...this.players.flatMap(player => [player.id, player.nickname, player.avatar]), ...this.balls.map(ball => ball.pocketed), ...labels].join('|');
         if (stamp === this.layoutStamp) return;
         this.layoutStamp = stamp;
-        const layout = computeHudLayout(height * size.width / size.height, height);
+        const layout = computeHudLayout(width, height, { insets, showPower, actionCount: active.length });
         this.hudLayout = layout;
         const s = layout.scale;
         const place = (node: Node, rect: HudRect): void => {
@@ -473,49 +488,54 @@ export class BilliardsGame extends Component {
             graphic.roundRect(-rect.width / 2, -rect.height / 2, rect.width, rect.height, 12 * s); graphic.fill();
         };
         place(this.status.node, layout.status);
-        this.status.fontSize = 30 * s; this.status.lineHeight = 37 * s;
+        this.status.fontSize = 16*s; this.status.lineHeight = 20*s;
+        place(this.turnLabel.node, layout.turn);
+        this.turnLabel.fontSize = 12*s; this.turnLabel.lineHeight = 18*s;
         place(this.resetLabel.node, layout.reset);
-        this.resetLabel.fontSize = 24 * s;
-        this.resetLabel.lineHeight = 30 * s;
+        this.resetLabel.fontSize = 12*s; this.resetLabel.lineHeight = 18*s;
+        this.resetLabel.string = '重开';
         this.resetLabel.overflow = Label.Overflow.SHRINK;
-        this.playerCards.forEach((label, player) => {
+        this.playerCards.forEach((card, player) => {
             const rect = layout.players[player];
-            panel(label.node.parent!, rect, player === this.referee.current
-                ? new Color(24, 61, 62, 255) : new Color(28, 40, 51, 255));
-            label.node.setPosition(0, 0, 0);
-            label.node.getComponent(UITransform)!.setContentSize(rect.width - 24 * s, rect.height - 8 * s);
-            label.fontSize = 24 * s; label.lineHeight = 32 * s;
+            place(card.node, rect);
+            const group = this.referee.groups[player as 0 | 1];
+            card.render(this.players[player], player, group, group ? remaining(this.balls, group) : [],
+                player === this.referee.current, rect.width, rect.height, s);
         });
-        panel(this.dock, layout.dock, new Color(23, 34, 45, 255));
+        panel(this.dock, layout.dock, new Color().fromHEX(CLUB.background));
         place(this.decision.node, layout.decision);
-        this.decision.fontSize = 26 * s; this.decision.lineHeight = 33 * s;
-        const active = labels.map((text, index) => text ? index : -1).filter(index => index !== -1);
-        const gap = 12 * s;
-        const buttonWidth = (layout.actions.width - gap * (active.length - 1)) / Math.max(1, active.length);
+        this.decision.fontSize = 12*s; this.decision.lineHeight = 18*s;
+        const gap = 8*s;
+        const vertical = active.length === 3;
+        const buttonWidth = vertical ? layout.actions.width
+            : (layout.actions.width-gap*(active.length-1))/Math.max(1, active.length);
         this.actions.forEach((label, index) => {
             const node = label.node.parent!;
             node.active = !!labels[index]; label.string = labels[index];
             if (!node.active) return;
-            const rect = { x: layout.actions.x + active.indexOf(index) * (buttonWidth + gap), y: layout.actions.y,
-                width: buttonWidth, height: layout.actions.height };
-            panel(node, rect, new Color(38, 74, 86, 255));
+            const rect = { x: layout.actions.x + (vertical ? 0 : active.indexOf(index)*(buttonWidth+gap)),
+                y: layout.actions.y + (vertical ? active.indexOf(index)*56*s : 0),
+                width: buttonWidth, height: 48*s };
+            panel(node, rect, new Color().fromHEX(active.length === 1 ? CLUB.gold : CLUB.surface));
+            label.color = new Color().fromHEX(active.length === 1 ? CLUB.background : CLUB.ink);
             label.node.setPosition(0, 0, 0);
-            label.node.getComponent(UITransform)!.setContentSize(rect.width - 20 * s, rect.height - 12 * s);
-            label.fontSize = 28 * s; label.lineHeight = 34 * s;
+            label.node.getComponent(UITransform)!.setContentSize(rect.width - 16*s, rect.height - 8*s);
+            label.fontSize = 14*s; label.lineHeight = 20*s;
         });
+        this.powerControl.active = showPower;
         place(this.powerControl, layout.power);
-        this.powerHalfWidth = (layout.power.width - 24 * s) / 2;
-        this.powerLabel.node.getComponent(UITransform)!.setContentSize(layout.power.width, 34 * s);
-        this.powerLabel.node.setPosition(0, 26 * s, 0);
-        this.powerLabel.fontSize = 28 * s; this.powerLabel.lineHeight = 34 * s;
-        this.powerLabel.string = `力度 ${Math.round(this.power / 4 * 100)}% · 拖动调节`;
-        const fill = this.powerGraphics, half = this.powerHalfWidth, y = -15 * s;
-        fill.clear(); fill.fillColor = new Color(55, 70, 82, 255);
-        fill.roundRect(-half, y - 6 * s, half * 2, 12 * s, 6 * s); fill.fill();
-        fill.fillColor = new Color(235, 191, 84, 255);
-        fill.roundRect(-half, y - 6 * s, half * 2 * this.power / 4, 12 * s, 6 * s); fill.fill();
-        fill.fillColor = new Color(255, 248, 232, 255);
-        fill.circle(-half + half * 2 * this.power / 4, y, 15 * s); fill.fill();
+        this.powerHalfWidth = (layout.power.width - 8*s)/2;
+        this.powerLabel.node.getComponent(UITransform)!.setContentSize(layout.power.width, 20*s);
+        this.powerLabel.node.setPosition(0, 19*s, 0);
+        this.powerLabel.fontSize = 12*s; this.powerLabel.lineHeight = 18*s;
+        this.powerLabel.string = `击球力度  ${Math.round(this.power / 4 * 100)}%`;
+        const fill = this.powerGraphics, half = this.powerHalfWidth, y = -6*s;
+        fill.clear(); fill.fillColor = new Color().fromHEX(CLUB.track);
+        fill.roundRect(-half, y - 2*s, half*2, 4*s, 2*s); fill.fill();
+        fill.fillColor = new Color().fromHEX(this.referee.phase === 'ready' ? CLUB.gold : CLUB.disabled);
+        fill.roundRect(-half, y - 2*s, half*2*this.power/4, 4*s, 2*s); fill.fill();
+        fill.fillColor = new Color().fromHEX(CLUB.gold);
+        fill.circle(-half + half * 2 * this.power / 4, y, 9*s); fill.fill();
         const area = layout.playArea;
         this.camera.rect = new Rect(area.x / layout.width, 1 - (area.y + area.height) / layout.height,
             area.width / layout.width, area.height / layout.height);

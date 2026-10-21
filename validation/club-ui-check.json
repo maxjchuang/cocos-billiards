@@ -1,0 +1,40 @@
+{
+  "stage": "V1.9 phase 1, first increment",
+  "nodeTests": {
+    "passed": 50,
+    "failed": 0
+  },
+  "creatorPreview": {
+    "device": "Apple iPhone 14 Pro",
+    "logicalViewport": [
+      393,
+      852
+    ],
+    "scope": "Opening placement screenshot only",
+    "observed": [
+      "Theme colours",
+      "Local avatars and nicknames",
+      "Separate turn, table and action regions",
+      "Power control hidden while placing"
+    ],
+    "touchFlowVerified": false
+  },
+  "builds": {
+    "webMobile": {
+      "successExitCode": 36
+    },
+    "wechatgame": {
+      "successExitCode": 36,
+      "developerToolsVerified": false,
+      "appIdVerified": false,
+      "realDeviceVerified": false
+    }
+  },
+  "remaining": [
+    "Independent shot control and contact synchronization",
+    "Fine tuning and cue-ball spin",
+    "Full pause, restart confirmation and result overlays",
+    "Magnifier, audio and haptics",
+    "Remote avatar loading and full identity view"
+  ]
+}

@@ -1,28 +1,41 @@
 /** UI-space rectangles, measured from the top-left of the full HUD camera. */
 export interface HudRect { x: number; y: number; width: number; height: number; }
+export interface SafeInsets { top: number; right: number; bottom: number; left: number; }
 export interface HudLayout {
     width: number; height: number; scale: number;
-    status: HudRect; reset: HudRect; players: [HudRect, HudRect];
+    status: HudRect; reset: HudRect; players: [HudRect, HudRect]; turn: HudRect;
     playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect;
 }
+export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; }
 
-/** Reserve header and control space first; the 3D camera fits only inside what remains. */
-export function computeHudLayout(width: number, height: number): HudLayout {
-    const scale = Math.max(0.6, Math.min(1, height / width / 1.7));
-    const margin = 32 * scale, gap = 12 * scale, pad = 16 * scale;
-    const innerWidth = width - margin * 2;
-    const status = { x: margin, y: margin, width: innerWidth - 152 * scale, height: 76 * scale };
-    const reset = { x: width - margin - 140 * scale, y: margin, width: 140 * scale, height: 76 * scale };
+/** Reserve touch-sized controls first; shrink decorative spacing on short portrait screens. */
+export function computeHudLayout(width: number, height: number, options: HudOptions = {}): HudLayout {
+    const scale = Math.min(1, width / 320, height / 568);
+    const s = scale, gap = 8*s, margin = 20*s;
+    const inset = options.insets ?? {};
+    const left = Math.max(0, inset.left ?? 0), right = Math.max(0, inset.right ?? 0);
+    const top = Math.max(0, inset.top ?? 0), bottom = Math.max(0, inset.bottom ?? 0);
+    const innerWidth = width - left - right - margin*2;
+    const reset = { x: left + margin, y: top + gap, width: 44*s, height: 44*s };
+    // Keep the upper right free for the host menu. No fake host capsule is drawn.
+    const status = { x: reset.x + 56*s, y: reset.y, width: Math.max(44*s, innerWidth - 152*s), height: 44*s };
     const playerWidth = (innerWidth - gap) / 2;
     const players: [HudRect, HudRect] = [0, 1].map(index => ({
-        x: margin + index * (playerWidth + gap), y: margin + 88 * scale,
-        width: playerWidth, height: 76 * scale,
+        x: left + margin + index * (playerWidth + gap), y: reset.y + 52*s,
+        width: playerWidth, height: 74*s,
     })) as [HudRect, HudRect];
-    const dock = { x: margin, y: height - margin - 320 * scale, width: innerWidth, height: 320 * scale };
-    const decision = { x: dock.x + pad, y: dock.y + pad, width: dock.width - pad * 2, height: 72 * scale };
-    const actions = { x: decision.x, y: decision.y + decision.height + gap, width: decision.width, height: 104 * scale };
-    const power = { x: decision.x, y: actions.y + actions.height + gap, width: decision.width, height: 88 * scale };
-    const top = players[0].y + players[0].height + pad;
-    const playArea = { x: margin, y: top, width: innerWidth, height: dock.y - pad - top };
-    return { width, height, scale, status, reset, players, playArea, dock, decision, actions, power };
+    const turn = { x: left+margin, y: players[0].y + players[0].height + 4*s, width: innerWidth, height: 24*s };
+    const count = options.actionCount ?? 1;
+    const showPower = options.showPower ?? true;
+    const actionHeight = count === 3 ? 172*s : count > 0 ? 48*s : 0;
+    const powerHeight = showPower ? 64*s : 0;
+    const decisionHeight = (count === 3 ? 48 : 40)*s;
+    const dockHeight = decisionHeight + actionHeight + powerHeight + (count > 0 ? gap : 0) + (showPower ? gap : 0) + gap*2;
+    const dock = { x: left+margin, y: height-bottom-gap-dockHeight, width: innerWidth, height: dockHeight };
+    const decision = { x: dock.x, y: dock.y+gap, width: innerWidth, height: decisionHeight };
+    const actions = { x: dock.x, y: decision.y+decisionHeight+(count>0?gap:0), width: innerWidth, height: actionHeight };
+    const power = { x: dock.x, y: actions.y+actionHeight+(showPower?gap:0), width: innerWidth, height: powerHeight };
+    const tableTop = turn.y+turn.height+gap;
+    const playArea = { x: left+margin, y: tableTop, width: innerWidth, height: dock.y-gap-tableTop };
+    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power };
 }
