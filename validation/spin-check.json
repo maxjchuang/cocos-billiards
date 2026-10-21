@@ -52,5 +52,13 @@
     "No ball-ball spin transfer or collision throw",
     "No guarantee of fixed draw/follow travel",
     "Pure residual side spin is truncated when the table otherwise rests"
-  ]
+  ],
+  "browserManualFeedback": {
+    "source": "user",
+    "codeCommit": "19d06fd",
+    "assessment": "基本可用",
+    "decision": "先推送保留当前版本，其余问题后续迭代",
+    "browserAndDevice": "not specified",
+    "scope": "General manual browser experience; not exhaustive or automated DOM/device validation"
+  }
 }

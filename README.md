@@ -136,3 +136,7 @@ previewSmoke().then(console.log).catch(console.error)
 本轮类型检查与81项Node测试通过，最终Web Mobile及微信小游戏构建成功。Creator 3.8.7内新增28项打点/旋转运行检查、原有35项对局检查、9项逐帧检查全部通过；65个绘制帧中触球前12帧母球静止，首次移动仍在220 ms触球帧。驱动为固定版本的内部引擎触摸事件注入，非浏览器DOM或真实设备输入。实际画面见[打点面板](validation/spin-panel-creator.png)，报告见 `validation/spin-check.json`。
 
 在Creator预览调试控制台加载 `scripts/preview-spin.js` 后，可执行 `previewSpinSmoke().then(console.log).catch(console.error)`；它会重置和布置测试台面，不能在正在进行的对局中运行。临时自动运行入口已移除，正常进入游戏不会自动跑测试。微信开发者工具、浏览器DOM输入和真机仍待验证。
+
+## 当前可用基线
+
+用户已在浏览器中手动体验阶段3版本（代码提交 `19d06fd`），反馈“基本可用”，确认先推送保留这一版，其余问题后续迭代。本记录属于用户手动体验反馈，未限定具体浏览器、设备或逐项验收范围；浏览器DOM自动回归、微信开发者工具和手机真机的验证状态保持分别记录。
