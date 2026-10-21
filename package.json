@@ -1,0 +1,21 @@
+{
+  "name": "cocos-billiards",
+  "version": "3.8.7",
+  "description": "Minimal Cocos Creator 3.8.7 billiards starter",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.check.json",
+    "test": "node scripts/test.cjs",
+    "check": "npm run typecheck && npm test",
+    "preview": "node scripts/preview.cjs"
+  },
+  "type": "3d",
+  "devDependencies": {
+    "@cocos/creator-types": "^3.8.7",
+    "typescript": "^5.6.3"
+  },
+  "private": true,
+  "uuid": "b2563054-7377-4572-bcaf-a5d58c86dc4d",
+  "creator": {
+    "version": "3.8.7"
+  }
+}

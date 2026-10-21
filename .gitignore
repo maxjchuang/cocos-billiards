@@ -1,0 +1,22 @@
+node_modules/
+library/
+temp/
+local/
+profiles/
+build/
+native/
+.DS_Store
+*.log
+
+# Local authoring output and editor state
+/tmp/
+/output/
+/.creator/
+/settings/v2/packages/cocos-service.json
+/settings/v2/packages/information.json
+
+# Local credentials
+.env
+.env.*
+*.pem
+*.key

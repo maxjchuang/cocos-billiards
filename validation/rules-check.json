@@ -1,0 +1,12 @@
+{
+  "date": "2026-10-21",
+  "creator": "3.8.7",
+  "rulesBaseline": "CBSA Chinese Pool, January 2017, chapter III",
+  "typecheck": "passed",
+  "nodeTests": 28,
+  "runtimeTouchChecks": 20,
+  "runtimeUnhandledErrorsDuringFinalRun": [],
+  "webMobileBuildExitCode": 36,
+  "realDeviceValidated": false,
+  "wechatExportValidated": false
+}

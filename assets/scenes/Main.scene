@@ -1,0 +1,122 @@
+[
+  {
+    "__type__": "cc.SceneAsset",
+    "_name": "Main",
+    "_objFlags": 0,
+    "_native": "",
+    "scene": {
+      "__id__": 1
+    }
+  },
+  {
+    "__type__": "cc.Scene",
+    "_name": "Main",
+    "_objFlags": 0,
+    "_parent": null,
+    "_children": [
+      {
+        "__id__": 2
+      }
+    ],
+    "_active": true,
+    "_components": [],
+    "_prefab": null,
+    "autoReleaseAssets": false,
+    "_globals": {
+      "__id__": 4
+    },
+    "_id": "6193b456-902a-4a13-a5f8-3dedbf3cab39"
+  },
+  {
+    "__type__": "cc.Node",
+    "_name": "Billiards",
+    "_objFlags": 0,
+    "_parent": {
+      "__id__": 1
+    },
+    "_children": [],
+    "_active": true,
+    "_components": [
+      {
+        "__id__": 3
+      }
+    ],
+    "_prefab": null,
+    "_lpos": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_lrot": {
+      "__type__": "cc.Quat",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "w": 1
+    },
+    "_lscale": {
+      "__type__": "cc.Vec3",
+      "x": 1,
+      "y": 1,
+      "z": 1
+    },
+    "_layer": 1073741824,
+    "_euler": {
+      "__type__": "cc.Vec3",
+      "x": 0,
+      "y": 0,
+      "z": 0
+    },
+    "_id": "0a06cd30-3756-4322-ade3-1fff6e41fb94"
+  },
+  {
+    "__type__": "e4a86sxZC1OnpuoNvHXxTrS",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "__prefab": null,
+    "_id": "8d1d60e5-6583-4303-a747-85f837014650"
+  },
+  {
+    "__type__": "cc.SceneGlobals",
+    "ambient": {
+      "__id__": 5
+    },
+    "shadows": {
+      "__id__": 6
+    },
+    "_skybox": {
+      "__id__": 7
+    },
+    "fog": {
+      "__id__": 8
+    },
+    "octree": {
+      "__id__": 9
+    }
+  },
+  {
+    "__type__": "cc.AmbientInfo"
+  },
+  {
+    "__type__": "cc.ShadowsInfo",
+    "_enabled": false
+  },
+  {
+    "__type__": "cc.SkyboxInfo",
+    "_enabled": false,
+    "_useHDR": false
+  },
+  {
+    "__type__": "cc.FogInfo",
+    "_enabled": false
+  },
+  {
+    "__type__": "cc.OctreeInfo",
+    "_enabled": false
+  }
+]

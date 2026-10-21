@@ -1,0 +1,53 @@
+{
+  "date": "2026-10-21",
+  "typecheck": "passed",
+  "nodeTests": 35,
+  "layoutViewports": [
+    [
+      320,
+      568
+    ],
+    [
+      360,
+      640
+    ],
+    [
+      393,
+      852
+    ],
+    [
+      430,
+      932
+    ],
+    [
+      736,
+      842
+    ],
+    [
+      768,
+      1024
+    ],
+    [
+      852,
+      393
+    ]
+  ],
+  "creatorWebMobileBuildExitCode": 36,
+  "visualRuntimeValidation": {
+    "surface": "Cocos Creator 3.8.7 in-editor preview (gameView)",
+    "device": "Apple iPhone 14 Pro (393x852)",
+    "observed": [
+      "header/table/control dock separated",
+      "profiler hidden",
+      "P2 free ball after P1 cue scratch",
+      "solid/stripe group assignment and remaining numbers",
+      "legal pot continues turn",
+      "power display changed to 70%"
+    ],
+    "automatedControlAcceptance": "incomplete: desktop tool repeatedly interrupted by manual interaction"
+  },
+  "newRuntimeLayoutChecks": "23 updated runtime assertions not executed",
+  "realDeviceValidated": false,
+  "latestTouchSourceBuilt": true,
+  "buildLog": "/tmp/cocos-billiards-touch-build.log"
+}
