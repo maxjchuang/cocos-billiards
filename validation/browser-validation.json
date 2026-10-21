@@ -1467,4 +1467,3 @@
   },
   "lowFrameRateNote": "At a 10 FPS cap, 11 rendered frames were recorded. The first moving frame held the 220ms logical contact pose at about 300ms wall-clock; it did not fire early."
 }
-
