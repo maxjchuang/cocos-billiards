@@ -1,3 +1,4 @@
+const {POCKETS}=require(process.env.BILLIARDS_TEST_MODULE);
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { Referee, validCuePosition, respotEight } = require(process.env.BILLIARDS_RULES_MODULE);
@@ -188,7 +189,7 @@ test('real physics events settle a dry miss once and do not auto-respawn a scrat
     }
     ref.finishShot(balls); assert.equal(ref.current,1); assert.equal(ref.phase,'placing');
     const count=ref.foulCount[0]; ref.finishShot(balls); assert.equal(ref.foulCount[0],count);
-    balls[0].x=TABLE.halfWidth;balls[0].z=0;balls[0].pocketed=false;
+    balls[0].x=POCKETS[4].x;balls[0].z=POCKETS[4].z;balls[0].pocketed=false;
     step(balls,FIXED_STEP,{respawnCue:false}); assert.equal(balls[0].pocketed,true);
 });
 

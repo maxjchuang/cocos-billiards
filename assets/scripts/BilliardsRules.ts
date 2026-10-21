@@ -1,5 +1,6 @@
+import { validTablePlacement } from './BilliardsTableGeometry';
 import { clearSpin } from './BilliardsSpin';
-import { BallState, createRack, CushionSide, FOOT_SPOT, HEAD_LINE, isMoving, PhysicsEvent, POCKETS, POCKET_RADIUS, TABLE } from './BilliardsPhysics';
+import { BallState, createRack, CushionSide, FOOT_SPOT, HEAD_LINE, isMoving, PhysicsEvent, TABLE } from './BilliardsPhysics';
 
 // Digital, same-device implementation of CBSA Chinese Pool (January 2017), chapter III.
 export type Group = 'solid' | 'stripe';
@@ -212,9 +213,7 @@ export class Referee {
 }
 
 export function validCuePosition(balls: readonly BallState[], x: number, z: number, headOnly = false): boolean {
-    return Number.isFinite(x) && Number.isFinite(z) && Math.abs(x) <= TABLE.halfWidth - TABLE.radius &&
-        Math.abs(z) <= TABLE.halfLength - TABLE.radius && (!headOnly || z > HEAD_LINE) &&
-        POCKETS.every(p => Math.hypot(x - p.x, z - p.z) > POCKET_RADIUS + TABLE.radius) &&
+    return validTablePlacement({x,z}) && (!headOnly || z > HEAD_LINE) &&
         balls.every(b => b.id === 0 || b.pocketed || Math.hypot(x - b.x, z - b.z) >= TABLE.radius * 2 + 0.00001);
 }
 

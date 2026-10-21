@@ -1,0 +1,1765 @@
+{
+  "date": "2026-10-22",
+  "engine": "Cocos Creator 3.8.7",
+  "designCommit": "24ebe9a",
+  "implementation": "Shared rounded-jaw gameplay proxy; candidate mouth sizes, not a measured table reproduction; includes zero-distance inward-normal correction",
+  "nodeTests": 89,
+  "webMobileBuild": {
+    "exitCode": 36,
+    "editorCacheError": "Editor window.json restore error after build; separate from successfully tested browser runtime"
+  },
+  "main": {
+    "input": {
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "dpr": 2
+      },
+      "inputMode": "Synthetic DOM touch",
+      "results": [
+        {
+          "name": "Placement confirmation works through DOM touch",
+          "passed": true
+        },
+        {
+          "name": "Cancelling second finger preserves the owner",
+          "passed": true
+        },
+        {
+          "name": "Multi-touch aim release never shoots",
+          "passed": true
+        },
+        {
+          "name": "Power gesture never turns into table aim",
+          "passed": true
+        },
+        {
+          "name": "Cancelled power gesture releases ownership",
+          "passed": true
+        },
+        {
+          "name": "Releasing outside the shoot button cancels the click",
+          "passed": true
+        },
+        {
+          "name": "Cancelled shoot touch never starts a shot",
+          "passed": true
+        },
+        {
+          "name": "Tip drag stays within the radial selection boundary",
+          "passed": true
+        },
+        {
+          "name": "Tip drag does not apply or shoot",
+          "passed": true
+        },
+        {
+          "name": "Backdrop closes the draft without passing touch through",
+          "passed": true
+        },
+        {
+          "name": "Repeated fine nudges stop at +5 degrees",
+          "passed": true
+        },
+        {
+          "name": "Repeated fine nudges stop at -5 degrees",
+          "passed": true
+        },
+        {
+          "name": "Pause blocks table input and movement",
+          "passed": true
+        },
+        {
+          "name": "Restart requires a separate confirmation",
+          "passed": true
+        },
+        {
+          "name": "Cancelling restart preserves the current rack",
+          "passed": true
+        },
+        {
+          "name": "Projected controls stay inside the browser canvas",
+          "passed": true
+        },
+        {
+          "name": "Main buttons retain 44 logical pixel touch targets",
+          "passed": true
+        }
+      ]
+    },
+    "game": {
+      "engine": "3.8.7",
+      "inputMode": "Browser DOM touch events",
+      "results": [
+        {
+          "name": "Profiler is hidden by default",
+          "passed": true
+        },
+        {
+          "name": "Projected HUD stays outside the table viewport",
+          "passed": true
+        },
+        {
+          "name": "Table fits its reserved camera viewport",
+          "passed": true
+        },
+        {
+          "name": "16 balls, 15 number labels and generated textures",
+          "passed": true
+        },
+        {
+          "name": "Opening placement has no cue stick",
+          "passed": true
+        },
+        {
+          "name": "Touch placement does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Head-line placement restriction",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation unlocks cue",
+          "passed": true
+        },
+        {
+          "name": "Touch power does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Table release retains aim and never shoots",
+          "passed": true
+        },
+        {
+          "name": "Fine button nudges 0.1 degrees without shooting",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Dry miss offers break choices to P2",
+          "passed": true
+        },
+        {
+          "name": "Accepting foul grants free ball",
+          "passed": true
+        },
+        {
+          "name": "Touch free-ball confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch group selection",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical stripe pot assigns groups and keeps turn",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical early 8 loses",
+          "passed": true
+        },
+        {
+          "name": "Finished game rejects shots",
+          "passed": true
+        },
+        {
+          "name": "Touch next-game button",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical legal 8 wins",
+          "passed": true
+        },
+        {
+          "name": "Pause blocks table input",
+          "passed": true
+        },
+        {
+          "name": "Restart first requires confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch restart clears referee",
+          "passed": true
+        }
+      ]
+    },
+    "spin": {
+      "engine": "3.8.7",
+      "inputMode": "Browser synthetic DOM touch",
+      "results": [
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Three touch-sized buttons fit without overlap",
+          "passed": true
+        },
+        {
+          "name": "Tip panel opens without shooting",
+          "passed": true
+        },
+        {
+          "name": "Draft does not apply until done",
+          "passed": true
+        },
+        {
+          "name": "Overlay blocks table placement and aiming",
+          "passed": true
+        },
+        {
+          "name": "Done applies tip without shooting",
+          "passed": true
+        },
+        {
+          "name": "Confirmed tip is visible beside power",
+          "passed": true
+        },
+        {
+          "name": "Cancel restores previous confirmed tip",
+          "passed": true
+        },
+        {
+          "name": "Recenter changes only draft",
+          "passed": true
+        },
+        {
+          "name": "Diagonal selection is bounded by a circle",
+          "passed": true
+        },
+        {
+          "name": "Confirmed recenter restores centre tip",
+          "passed": true
+        },
+        {
+          "name": "Shot reserves confirmed tip",
+          "passed": true
+        },
+        {
+          "name": "Preparing shot blocks tip editing",
+          "passed": true
+        },
+        {
+          "name": "Spin shot commits at contact",
+          "passed": true
+        },
+        {
+          "name": "Tip drives actual angular velocity",
+          "passed": true
+        },
+        {
+          "name": "Spin shot settles within timeout",
+          "passed": true
+        },
+        {
+          "name": "Tip recenters after referee settlement",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches object ball",
+          "passed": true
+        },
+        {
+          "name": "High tip follows after head-on contact",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches object ball",
+          "passed": true
+        },
+        {
+          "name": "Low tip draws after head-on contact",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches cushion",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches cushion",
+          "passed": true
+        },
+        {
+          "name": "Opposite english gives opposite cushion departure",
+          "passed": true
+        }
+      ],
+      "measurements": {
+        "followVz": -0.7084807484591532,
+        "drawVz": 0.6463850781489422,
+        "leftVz": -0.4965175267278531,
+        "rightVz": 0.4965175267278531
+      }
+    },
+    "pockets": {
+      "mode": "Controlled velocities, actual Cocos frames; not hardware touch",
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "dpr": 2
+      },
+      "results": [
+        {
+          "name": "Visible outer frame uses the revised 1.54 by 2.82 metre proportions",
+          "passed": true
+        },
+        {
+          "name": "Eight continuous rail pieces and six individual pocket meshes are present",
+          "passed": true
+        },
+        {
+          "name": "All procedural meshes have finite bounds inside the outer frame",
+          "passed": true
+        },
+        {
+          "name": "The whole revised frame fits the reserved table viewport",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 captures speed 4 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 removes the sphere and number label together",
+          "passed": true
+        }
+      ],
+      "measurements": [
+        {
+          "pocket": 1,
+          "speed": 0.3,
+          "elapsedMs": 298
+        },
+        {
+          "pocket": 1,
+          "speed": 4,
+          "elapsedMs": 46
+        },
+        {
+          "pocket": 2,
+          "speed": 0.3,
+          "elapsedMs": 297
+        },
+        {
+          "pocket": 2,
+          "speed": 4,
+          "elapsedMs": 48
+        },
+        {
+          "pocket": 3,
+          "speed": 0.3,
+          "elapsedMs": 297
+        },
+        {
+          "pocket": 3,
+          "speed": 4,
+          "elapsedMs": 48
+        },
+        {
+          "pocket": 4,
+          "speed": 0.3,
+          "elapsedMs": 297
+        },
+        {
+          "pocket": 4,
+          "speed": 4,
+          "elapsedMs": 47
+        },
+        {
+          "pocket": 5,
+          "speed": 0.3,
+          "elapsedMs": 297
+        },
+        {
+          "pocket": 5,
+          "speed": 4,
+          "elapsedMs": 48
+        },
+        {
+          "pocket": 6,
+          "speed": 0.3,
+          "elapsedMs": 298
+        },
+        {
+          "pocket": 6,
+          "speed": 4,
+          "elapsedMs": 47
+        }
+      ]
+    },
+    "resolution": {
+      "browserDpr": 2,
+      "renderDpr": 2,
+      "design": {
+        "width": 393,
+        "height": 852
+      },
+      "results": [
+        {
+          "name": "Design resolution matches HUD logical pixels",
+          "passed": true
+        },
+        {
+          "name": "UI sampling matches render DPR on both axes",
+          "passed": true
+        },
+        {
+          "name": "Visible system-font textures use render DPR",
+          "passed": true
+        }
+      ],
+      "samples": [
+        {
+          "name": "Instructions",
+          "fontSize": 16,
+          "rasterScale": 2,
+          "textureWidth": 402
+        },
+        {
+          "name": "Reset",
+          "fontSize": 12,
+          "rasterScale": 2,
+          "textureWidth": 88
+        },
+        {
+          "name": "Turn",
+          "fontSize": 12,
+          "rasterScale": 2,
+          "textureWidth": 706
+        },
+        {
+          "name": "Nickname",
+          "fontSize": 14,
+          "rasterScale": 2,
+          "textureWidth": 229
+        },
+        {
+          "name": "Group",
+          "fontSize": 11,
+          "rasterScale": 2,
+          "textureWidth": 229
+        },
+        {
+          "name": "Targets status",
+          "fontSize": 11,
+          "rasterScale": 2,
+          "textureWidth": 305
+        },
+        {
+          "name": "Nickname",
+          "fontSize": 14,
+          "rasterScale": 2,
+          "textureWidth": 229
+        },
+        {
+          "name": "Group",
+          "fontSize": 11,
+          "rasterScale": 2,
+          "textureWidth": 229
+        },
+        {
+          "name": "Targets status",
+          "fontSize": 11,
+          "rasterScale": 2,
+          "textureWidth": 305
+        },
+        {
+          "name": "Referee decision",
+          "fontSize": 12,
+          "rasterScale": 2,
+          "textureWidth": 706
+        },
+        {
+          "name": "Rule action text 1",
+          "fontSize": 14,
+          "rasterScale": 2,
+          "textureWidth": 674
+        },
+        {
+          "name": "Number glyph 1",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 2",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 3",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 4",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 5",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 6",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 7",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 8",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 9",
+          "fontSize": 24,
+          "rasterScale": 2,
+          "textureWidth": 26
+        },
+        {
+          "name": "Number glyph 10",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 44
+        },
+        {
+          "name": "Number glyph 11",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 41
+        },
+        {
+          "name": "Number glyph 12",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 44
+        },
+        {
+          "name": "Number glyph 13",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 44
+        },
+        {
+          "name": "Number glyph 14",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 44
+        },
+        {
+          "name": "Number glyph 15",
+          "fontSize": 20,
+          "rasterScale": 2,
+          "textureWidth": 44
+        }
+      ]
+    },
+    "contact": {
+      "engine": "3.8.7",
+      "inputMode": "Browser synthetic DOM touch",
+      "timing": {
+        "frames": 66,
+        "preContactFrames": 13,
+        "noEarlyMotion": true,
+        "requestedFrameRate": 60,
+        "firstMotionMs": 220,
+        "firstMotionWallMs": 234,
+        "contactFrames": 1,
+        "repeatIgnored": true
+      },
+      "checks": {
+        "noEarlyMotion": true,
+        "observedPreparation": true,
+        "contactFrameObserved": true,
+        "firstMotionAtContact": true,
+        "repeatIgnored": true,
+        "cancelledBeforeContact": true,
+        "noGhostAfterResume": true,
+        "frozenAfterContact": true,
+        "resumedWithoutReplay": true
+      },
+      "passed": true
+    },
+    "round": {
+      "mode": "Controlled target positions; synthetic DOM controls and real physics",
+      "results": [
+        {
+          "name": "Weak break moves decision to the other player",
+          "passed": true
+        },
+        {
+          "name": "Break receiver obtains full-table placement",
+          "passed": true
+        },
+        {
+          "name": "Receiver selects stripes without prematurely assigning groups",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 9 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 10 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 11 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 12 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 13 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 14 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 15 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "All seven stripes are cleared before the black shot",
+          "passed": true
+        },
+        {
+          "name": "Separate legal black shot wins the complete round",
+          "passed": true
+        },
+        {
+          "name": "Next round clears groups, winner and tip",
+          "passed": true
+        }
+      ]
+    },
+    "errors": []
+  },
+  "otherProfiles": [
+    {
+      "viewport": "320x568x1,mobile,touch",
+      "input": {
+        "viewport": {
+          "width": 320,
+          "height": 568,
+          "dpr": 1
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "pockets": {
+        "mode": "Controlled velocities, actual Cocos frames; not hardware touch",
+        "viewport": {
+          "width": 320,
+          "height": 568,
+          "dpr": 1
+        },
+        "results": [
+          {
+            "name": "Visible outer frame uses the revised 1.54 by 2.82 metre proportions",
+            "passed": true
+          },
+          {
+            "name": "Eight continuous rail pieces and six individual pocket meshes are present",
+            "passed": true
+          },
+          {
+            "name": "All procedural meshes have finite bounds inside the outer frame",
+            "passed": true
+          },
+          {
+            "name": "The whole revised frame fits the reserved table viewport",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 removes the sphere and number label together",
+            "passed": true
+          }
+        ],
+        "measurements": [
+          {
+            "pocket": 1,
+            "speed": 0.3,
+            "elapsedMs": 300
+          },
+          {
+            "pocket": 1,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 2,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 2,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 3,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 3,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 4,
+            "speed": 0.3,
+            "elapsedMs": 297
+          },
+          {
+            "pocket": 4,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 5,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 5,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 6,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 6,
+            "speed": 4,
+            "elapsedMs": 48
+          }
+        ]
+      },
+      "resolution": {
+        "browserDpr": 1,
+        "renderDpr": 1,
+        "design": {
+          "width": 320,
+          "height": 568
+        },
+        "results": [
+          {
+            "name": "Design resolution matches HUD logical pixels",
+            "passed": true
+          },
+          {
+            "name": "UI sampling matches render DPR on both axes",
+            "passed": true
+          },
+          {
+            "name": "Visible system-font textures use render DPR",
+            "passed": true
+          }
+        ],
+        "samples": [
+          {
+            "name": "Instructions",
+            "fontSize": 16,
+            "rasterScale": 1,
+            "textureWidth": 128
+          },
+          {
+            "name": "Reset",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 44
+          },
+          {
+            "name": "Turn",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 280
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 116
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 116
+          },
+          {
+            "name": "Referee decision",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 280
+          },
+          {
+            "name": "Rule action text 1",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 264
+          },
+          {
+            "name": "Number glyph 1",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 2",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 3",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 4",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 5",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 6",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 7",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 8",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 9",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 10",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 11",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 20
+          },
+          {
+            "name": "Number glyph 12",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 13",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 14",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 15",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "requestedFrameRate": 60,
+          "firstMotionMs": 220,
+          "firstMotionWallMs": 235,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      },
+      "errors": []
+    },
+    {
+      "viewport": "430x932x3,mobile,touch",
+      "input": {
+        "viewport": {
+          "width": 430,
+          "height": 932,
+          "dpr": 3
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "pockets": {
+        "mode": "Controlled velocities, actual Cocos frames; not hardware touch",
+        "viewport": {
+          "width": 430,
+          "height": 932,
+          "dpr": 3
+        },
+        "results": [
+          {
+            "name": "Visible outer frame uses the revised 1.54 by 2.82 metre proportions",
+            "passed": true
+          },
+          {
+            "name": "Eight continuous rail pieces and six individual pocket meshes are present",
+            "passed": true
+          },
+          {
+            "name": "All procedural meshes have finite bounds inside the outer frame",
+            "passed": true
+          },
+          {
+            "name": "The whole revised frame fits the reserved table viewport",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 1 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 2 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 3 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 4 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 5 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 captures speed 0.3 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 removes the sphere and number label together",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 captures speed 4 in the actual frame loop",
+            "passed": true
+          },
+          {
+            "name": "Pocket 6 removes the sphere and number label together",
+            "passed": true
+          }
+        ],
+        "measurements": [
+          {
+            "pocket": 1,
+            "speed": 0.3,
+            "elapsedMs": 299
+          },
+          {
+            "pocket": 1,
+            "speed": 4,
+            "elapsedMs": 47
+          },
+          {
+            "pocket": 2,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 2,
+            "speed": 4,
+            "elapsedMs": 46
+          },
+          {
+            "pocket": 3,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 3,
+            "speed": 4,
+            "elapsedMs": 48
+          },
+          {
+            "pocket": 4,
+            "speed": 0.3,
+            "elapsedMs": 297
+          },
+          {
+            "pocket": 4,
+            "speed": 4,
+            "elapsedMs": 47
+          },
+          {
+            "pocket": 5,
+            "speed": 0.3,
+            "elapsedMs": 299
+          },
+          {
+            "pocket": 5,
+            "speed": 4,
+            "elapsedMs": 49
+          },
+          {
+            "pocket": 6,
+            "speed": 0.3,
+            "elapsedMs": 298
+          },
+          {
+            "pocket": 6,
+            "speed": 4,
+            "elapsedMs": 64
+          }
+        ]
+      },
+      "resolution": {
+        "browserDpr": 3,
+        "renderDpr": 2,
+        "design": {
+          "width": 430,
+          "height": 932
+        },
+        "results": [
+          {
+            "name": "Design resolution matches HUD logical pixels",
+            "passed": true
+          },
+          {
+            "name": "UI sampling matches render DPR on both axes",
+            "passed": true
+          },
+          {
+            "name": "Visible system-font textures use render DPR",
+            "passed": true
+          }
+        ],
+        "samples": [
+          {
+            "name": "Instructions",
+            "fontSize": 16,
+            "rasterScale": 2,
+            "textureWidth": 476
+          },
+          {
+            "name": "Reset",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 88
+          },
+          {
+            "name": "Turn",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 780
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 342
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 342
+          },
+          {
+            "name": "Referee decision",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 780
+          },
+          {
+            "name": "Rule action text 1",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 748
+          },
+          {
+            "name": "Number glyph 1",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 2",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 3",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 4",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 5",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 6",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 7",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 8",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 9",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 10",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 11",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 41
+          },
+          {
+            "name": "Number glyph 12",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 13",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 14",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 15",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "requestedFrameRate": 60,
+          "firstMotionMs": 220,
+          "firstMotionWallMs": 234,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      },
+      "errors": []
+    }
+  ],
+  "browserConsoleErrors": 0,
+  "browserConsoleWarnings": 0,
+  "limits": [
+    "Chromium mobile emulation and synthetic DOM touch, not phone hardware",
+    "Pocket frame-loop probe uses controlled initial velocities",
+    "Full round uses controlled ball positions",
+    "No new native Creator editor preview, phone, or WeChat developer-tool certification",
+    "Jaw radius and drop-plane depth are explicit gameplay proxies, not manufacturer measurements"
+  ],
+  "screenshot": "pocket-geometry-browser.png"
+}

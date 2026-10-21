@@ -13,7 +13,7 @@ test('aim detects a grazing sphere that a zero-radius ray would miss',()=>{
     assert.equal(predictContact(cue,0,-1,[cue,target]).target,1);
 });
 test('aim stops at the ball-centre cushion and rejects invalid directions',()=>{
-    const cue=ball(0,0,0);const hit=predictContact(cue,1,0,[cue]);
+    const cue=ball(0,0,.35);const hit=predictContact(cue,1,0,[cue]);
     assert.equal(hit.target,null);assert.equal(hit.x,TABLE.halfWidth-TABLE.radius);
     assert.equal(predictContact(cue,0,0,[cue]),null);assert.equal(predictContact(cue,NaN,1,[cue]),null);
 });

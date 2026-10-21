@@ -1,3 +1,4 @@
+const {POCKETS}=require(process.env.BILLIARDS_TEST_MODULE);
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {TipSelection,tipOffset,tipLabel}=require(process.env.BILLIARDS_SPIN_MODULE);
@@ -72,6 +73,6 @@ test('placement, respotting and pocketing clear all rotation',()=>{
     const balls=createRack(),ref=new Referee();Object.assign(balls[0],{wx:10,wy:20,wz:30});
     assert.ok(ref.placeCue(balls,.2,.9));assert.equal(balls[0].wx,0);assert.equal(balls[0].wy,0);assert.equal(balls[0].wz,0);
     Object.assign(balls[8],{pocketed:true,wx:10,wy:20,wz:30});respotBall(balls,8);assert.equal(balls[8].wy,0);
-    const p=ball(1,TABLE.halfWidth,0);Object.assign(p,{wx:10,wy:20,wz:30});step([p],FIXED_STEP,{respawnCue:false});
+    const p=ball(1,POCKETS[4].x,POCKETS[4].z);Object.assign(p,{wx:10,wy:20,wz:30});step([p],FIXED_STEP,{respawnCue:false});
     assert.equal(p.pocketed,true);assert.equal(p.wx+p.wy+p.wz,0);
 });

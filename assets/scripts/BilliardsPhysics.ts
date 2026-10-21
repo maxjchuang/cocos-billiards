@@ -1,3 +1,7 @@
+import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement } from './BilliardsTableGeometry';
+export { POCKETS, POCKET_MODEL, CUSHION_SEGMENTS } from './BilliardsTableGeometry';
+export type { CushionSide } from './BilliardsTableGeometry';
+import { CushionSide } from './BilliardsTableGeometry';
 import { clearSpin, clothStep, spinCushion, strikeWithSpin, TipOffset } from './BilliardsSpin';
 /** Pure table-plane simulation. No Cocos dependency; one unit represents one metre. */
 export interface BallState {
@@ -12,20 +16,12 @@ export interface BallState {
 }
 
 export const TABLE = {
-    halfWidth: 0.635,
-    halfLength: 1.27,
-    radius: 0.028575,
+    ...TABLE_GEOMETRY,
     deceleration: 0.32,
     ballRestitution: 0.96,
     cushionRestitution: 0.82,
     stopSpeed: 0.005,
 };
-// Circular capture zones are deliberately simple; no jaw or falling-ball simulation.
-export const POCKET_RADIUS = 0.085;
-export const POCKETS = [-1, 1].flatMap(side => [-1, 0, 1].map(end => ({
-    x: side * TABLE.halfWidth, z: end * TABLE.halfLength,
-})));
-export type CushionSide = 'left' | 'right' | 'top' | 'bottom';
 export type PhysicsEvent =
     | { type: 'contact'; a: number; b: number }
     | { type: 'cushion'; id: number; side?: CushionSide }
@@ -69,15 +65,12 @@ export function strike(balls: BallState[], dx: number, dz: number, speed: number
 
 /** Fixed small steps prevent tunnelling at this prototype's capped strike speed. */
 export function step(balls: BallState[], dt: number, options: StepOptions = {}): void {
-    const maxX = TABLE.halfWidth - TABLE.radius;
-    const maxZ = TABLE.halfLength - TABLE.radius;
     for (const ball of balls) {
         if (ball.pocketed) continue;
         ball.x += ball.vx * dt;
         ball.z += ball.vz * dt;
         clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
     }
-    capturePockets(balls, options.onEvent);
     const diameter = TABLE.radius * 2;
     // A few iterations relax the closely packed rack; this is a prototype, not a sport simulator.
     for (let iteration = 0; iteration < 3; iteration++) {
@@ -99,24 +92,21 @@ export function step(balls: BallState[], dt: number, options: StepOptions = {}):
             a.vx -= impulse * nx; a.vz -= impulse * nz;
             b.vx += impulse * nx; b.vz += impulse * nz;
         }
-        capturePockets(balls, options.onEvent);
         for (const ball of balls) {
             if (ball.pocketed) continue;
-            if (ball.x < -maxX || ball.x > maxX) {
-                ball.x = Math.max(-maxX, Math.min(maxX, ball.x));
-                if (ball.x * ball.vx > 0) {
-                    options.onEvent?.({ type: 'cushion', id: ball.id, side: ball.x < 0 ? 'left' : 'right' });
-                    spinCushion(ball,Math.sign(ball.x),0,TABLE.radius,TABLE.cushionRestitution);
-                }
-            }
-            if (ball.z < -maxZ || ball.z > maxZ) {
-                ball.z = Math.max(-maxZ, Math.min(maxZ, ball.z));
-                if (ball.z * ball.vz > 0) {
-                    options.onEvent?.({ type: 'cushion', id: ball.id, side: ball.z < 0 ? 'top' : 'bottom' });
-                    spinCushion(ball,0,Math.sign(ball.z),TABLE.radius,TABLE.cushionRestitution);
+            for (const segment of CUSHION_SEGMENTS) {
+                const q=nearestOnSegment(ball,segment.a,segment.b);
+                const dx=ball.x-q.x,dz=ball.z-q.z,distance=Math.hypot(dx,dz);
+                if (distance>=TABLE.radius) continue;
+                const nx=distance>1e-9?dx/distance:segment.inward.x,nz=distance>1e-9?dz/distance:segment.inward.z;
+                ball.x+=nx*(TABLE.radius-distance);ball.z+=nz*(TABLE.radius-distance);
+                if (ball.vx*nx+ball.vz*nz<0) {
+                    options.onEvent?.({type:'cushion',id:ball.id,side:segment.side});
+                    spinCushion(ball,-nx,-nz,TABLE.radius,TABLE.cushionRestitution);
                 }
             }
         }
+        capturePockets(balls, options.onEvent);
     }
     // Pure vertical spin cannot restart plane motion; truncate it once the whole table rests.
     if (!isMoving(balls)) balls.forEach(clearSpin);
@@ -126,7 +116,7 @@ export function step(balls: BallState[], dt: number, options: StepOptions = {}):
 function capturePockets(balls: BallState[], onEvent?: (event: PhysicsEvent) => void): void {
     for (const ball of balls) {
         if (ball.pocketed) continue;
-        const pocket = POCKETS.findIndex(pocket => Math.hypot(ball.x - pocket.x, ball.z - pocket.z) <= POCKET_RADIUS);
+        const pocket = pocketAt(ball);
         if (pocket !== -1) {
             onEvent?.({ type: 'pocket', id: ball.id, pocket });
             ball.pocketed = true;
@@ -149,7 +139,7 @@ export function respawnCue(balls: BallState[]): boolean {
         }
     }
     const spot = candidates.find(point =>
-        POCKETS.every(pocket => Math.hypot(point.x - pocket.x, point.z - pocket.z) > POCKET_RADIUS + TABLE.radius) &&
+        validTablePlacement(point) &&
         balls.every(ball => ball === cue || ball.pocketed ||
             Math.hypot(point.x - ball.x, point.z - ball.z) >= spacing));
     if (!spot) return false;

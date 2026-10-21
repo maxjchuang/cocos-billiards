@@ -1,3 +1,4 @@
+import { traceTable } from './BilliardsTableGeometry';
 import { BallState, TABLE } from './BilliardsPhysics';
 export interface AimContact { x: number; z: number; distance: number; target: number | null; }
 /** Swept circle against balls and centre-accessible cushions; no post-contact prediction. */
@@ -5,9 +6,7 @@ export function predictContact(cue: BallState, dx: number, dz: number, balls: re
     const length = Math.hypot(dx, dz);
     if (cue.pocketed || !Number.isFinite(length) || length < 1e-6) return null;
     dx /= length; dz /= length;
-    const wallX = TABLE.halfWidth-TABLE.radius, wallZ = TABLE.halfLength-TABLE.radius;
-    let nearest = Math.min(Math.abs(dx)>1e-8 ? ((dx>0?wallX:-wallX)-cue.x)/dx : Infinity,
-        Math.abs(dz)>1e-8 ? ((dz>0?wallZ:-wallZ)-cue.z)/dz : Infinity);
+    let nearest = traceTable(cue,dx,dz)?.distance ?? Infinity;
     let target: number | null = null;
     for (const ball of balls) {
         if (ball.id === cue.id || ball.pocketed) continue;

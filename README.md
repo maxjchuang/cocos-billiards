@@ -54,6 +54,7 @@ Cocos Creator **3.8.7** + TypeScript。目标仅为移动端小程序/小游戏�
 | --- | --- |
 | `assets/scenes/Main.scene` | 最小场景，UUID 绑定启动脚本 |
 | `assets/scripts/BilliardsGame.ts` | Cocos 场景、纹理与号码、触屏、HUD、裁判流程 |
+| `assets/scripts/BilliardsTableGeometry.ts` | 共享台面、袋喉、圆弧袋角、摆球边界与首次接触查询 |
 | `assets/scripts/BilliardsPhysics.ts` | 纯 TypeScript 位置/速度、碰撞、库边和进袋事件 |
 | `assets/scripts/BilliardsLayout.ts` | 独立布局计算：顶部状态、中央球桌视口、底部操作面板 |
 | `assets/scripts/BilliardsRules.ts` | 独立裁判：球组、轮次、犯规、自由球、开球选择、胜负 |
@@ -146,3 +147,13 @@ previewSmoke().then(console.log).catch(console.error)
 已完成5种竖屏/平板尺寸的对应DOM触摸、布局和逐帧检查，以及13项受控完整球局、7项模拟前后台事件、6倍CPU降速和实际10 FPS触球检查。新导航控制台与失败资源为0，本地favicon缺失已补齐。81项逻辑检查仍通过。
 
 横屏852×393发现按钮约33像素及打点文字重叠，记录为后续问题，本轮保留游戏可用基线。真实标签后台切换未能在自动化环境复现；模拟事件与真实切换分别记录。详细范围、截图和复验命令见[自动验证记录](docs/technical/validation-notes.md)及 `validation/browser-validation.json`。仅认证Chromium合成DOM触摸，不等同于设备认证；本轮未使用微信开发者工具。
+
+## V1.12 袋口实现更新（2026-10-22）
+
+设计文档已先提交为`24ebe9a`。游戏现采用外沿2.82×1.54 m、台面2.54×1.26 m，显式将旧台面宽1.27 m迁移为1.26 m。角袋85 mm、中袋82 mm为设计采用的候选净宽，分别约1.49/1.43倍球径；圆弧袋角与落袋面采用明确标注的仿真代理，不宣称精确复刻实物。
+
+已移除半径85 mm的大圆洞及捕获区；现在先处理胶边碰撞，再通过袋喉净空与袋内代理面判定进袋。球桌渲染、摆球、辅助线与物理共用几何模块，完整技术说明见[袋口实现](docs/technical/pocket-geometry.md)。
+
+类型检查及89项Node测试通过，Creator 3.8.7 Web Mobile构建成功（退出码36）。Chromium 393×852完成输入/对局/打点/六袋/分辨率/触球时序及受控完整球局；320×568与430×932完成对应输入、六袋、分辨率及时序检查。页面错误与控制台警告为0；新截图见[浏览器画面](validation/pocket-geometry-browser.png)，报告见`validation/pocket-geometry-check.json`。本轮未新做原生编辑器界面操作、手机或微信开发工具验证；此前手机反馈属于旧版本。构建后仍出现编辑器window.json恢复缓存错误，未据此声称原生编辑器验证通过。
+
+在手机触摸模拟下加载`scripts/preview-pockets.js`，执行`previewPockets()`可复验受控初速度的六袋引擎帧循环。该工具会重置球局，使用当前构建的模块地址，不参与正式游戏加载。

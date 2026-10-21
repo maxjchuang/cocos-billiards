@@ -1,9 +1,10 @@
+import { POCKETS, CUSHION_PATHS, TablePoint } from './BilliardsTableGeometry';
 import {
     _decorator, Camera, Canvas, Color, Component, game, Game,
     EventTouch, geometry, Graphics, input, Input, Label, Layers, Material, profiler, Rect,
     Mesh, MeshRenderer, Node, primitives, Quat, ResolutionPolicy, screen, sys, view, Texture2D, UITransform, utils, Vec3,
 } from 'cc';
-import { BallState, createRack, FIXED_STEP, isMoving, step, TABLE, POCKETS, POCKET_RADIUS, HEAD_LINE } from './BilliardsPhysics';
+import { BallState, createRack, FIXED_STEP, isMoving, step, TABLE, HEAD_LINE } from './BilliardsPhysics';
 
 import { Referee, groupName, remaining } from './BilliardsRules';
 
@@ -121,29 +122,18 @@ export class BilliardsGame extends Component {
         const wood = this.material(CLUB.wood), felt = this.material(CLUB.felt);
         const rail = this.material(CLUB.cushion);
         const base = this.meshNode('Table base', box, wood);
-        base.setScale(1.47, 0.16, 2.74); base.setPosition(0, -0.1, 0);
+        base.setScale(TABLE.outerHalfWidth*2, 0.16, TABLE.outerHalfLength*2); base.setPosition(0, -0.1, 0);
         const bed = this.meshNode('Cloth', box, felt);
         bed.setScale(TABLE.halfWidth * 2, 0.02, TABLE.halfLength * 2);
         bed.setPosition(0, -0.01, 0);
-        // Split the rails so the six capture zones have visible openings.
-        const gap = POCKET_RADIUS + 0.015;
-        for (const side of [-1, 1]) {
-            for (const end of [-1, 1]) {
-                const long = this.meshNode('Long cushion', box, rail);
-                long.setScale(0.07, 0.07, TABLE.halfLength - gap * 2);
-                long.setPosition(side * 0.67, 0.015, end * TABLE.halfLength / 2);
-            }
-            const end = this.meshNode('End cushion', box, rail);
-            end.setScale(TABLE.halfWidth * 2 - gap * 2, 0.07, 0.07);
-            end.setPosition(0, 0.015, side * 1.305);
-        }
-        const pocketMesh = utilsMesh(primitives.cylinder(POCKET_RADIUS, POCKET_RADIUS, 0.008,
-            { radialSegments: 64 }));
-        this.meshes.push(pocketMesh);
+        CUSHION_PATHS.forEach((path,index)=>{
+            const mesh=tablePolygonMesh(path.polygon,0.038);
+            this.meshes.push(mesh);this.meshNode(`Cushion ${path.side} ${index}`,mesh,rail);
+        });
         const pocketMaterial = this.material(CLUB.pocket);
-        POCKETS.forEach((pocket, index) => {
-            const node = this.meshNode(`Pocket ${index + 1}`, pocketMesh, pocketMaterial);
-            node.setPosition(pocket.x, 0.004, pocket.z);
+        POCKETS.forEach((pocket,index)=>{
+            const mesh=tablePolygonMesh(pocket.outline,0.001);
+            this.meshes.push(mesh);this.meshNode(`Pocket ${index+1}`,mesh,pocketMaterial);
         });
         this.headLine = this.meshNode('Head line', box, this.material('#C4D3A9'));
         this.headLine.setScale(TABLE.halfWidth * 2, 0.001, 0.004);
@@ -710,7 +700,7 @@ export class BilliardsGame extends Component {
         const area = layout.playArea;
         this.camera.rect = new Rect(area.x / layout.width, 1 - (area.y + area.height) / layout.height,
             area.width / layout.width, area.height / layout.height);
-        this.camera.orthoHeight = Math.max(1.37, 0.735 / (area.width / area.height)) * 1.055;
+        this.camera.orthoHeight = Math.max(TABLE.outerHalfLength, TABLE.outerHalfWidth / (area.width / area.height)) * 1.055;
         // Number medallions use these matrices immediately, before the renderer's next update.
         this.camera.camera?.update();
         this.hudCamera.camera?.update();
@@ -777,3 +767,25 @@ export class BilliardsGame extends Component {
 
 // Keep procedural mesh construction in one place for later replacement with imported models.
 function utilsMesh(data: ReturnType<typeof primitives.box>): Mesh { return utils.createMesh(data); }
+
+/** Ear clipping keeps concave rounded entrances intact; top faces look towards +Y. */
+function tablePolygonMesh(points:readonly TablePoint[],height:number):Mesh {
+    const area=points.reduce((sum,a,i)=>{const b=points[(i+1)%points.length];return sum+a.x*b.z-a.z*b.x;},0);
+    const sign=Math.sign(area),remaining=points.map((_,i)=>i),indices:number[]=[];
+    const cross=(a:TablePoint,b:TablePoint,c:TablePoint):number=>(b.x-a.x)*(c.z-a.z)-(b.z-a.z)*(c.x-a.x);
+    while(remaining.length>3) {
+        let found=false;
+        for(let i=0;i<remaining.length;i++) {
+            const a=remaining[(i+remaining.length-1)%remaining.length],b=remaining[i],c=remaining[(i+1)%remaining.length];
+            if(cross(points[a],points[b],points[c])*sign<=1e-12)continue;
+            if(remaining.some(j=>j!==a&&j!==b&&j!==c&&cross(points[a],points[b],points[j])*sign>=-1e-12&&
+                cross(points[b],points[c],points[j])*sign>=-1e-12&&cross(points[c],points[a],points[j])*sign>=-1e-12))continue;
+            indices.push(...(sign>0?[a,c,b]:[a,b,c]));remaining.splice(i,1);found=true;break;
+        }
+        if(!found)throw new Error('Invalid table polygon');
+    }
+    indices.push(...(sign>0?[remaining[0],remaining[2],remaining[1]]:remaining));
+    return utils.createMesh({positions:points.flatMap(p=>[p.x,height,p.z]),normals:points.flatMap(()=>[0,1,0]),indices,
+        minPos:{x:Math.min(...points.map(p=>p.x)),y:height,z:Math.min(...points.map(p=>p.z))},
+        maxPos:{x:Math.max(...points.map(p=>p.x)),y:height,z:Math.max(...points.map(p=>p.z))}});
+}

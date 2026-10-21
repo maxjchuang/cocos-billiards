@@ -1,7 +1,8 @@
 const { test } = require('node:test');
 const assert = require('node:assert/strict');
+const { validTablePlacement } = require(require('node:path').join(require('node:path').dirname(process.env.BILLIARDS_TEST_MODULE),'BilliardsTableGeometry.js'));
 const fs = require('node:fs');
-const { createRack, FIXED_STEP, isMoving, step, strike, TABLE, POCKETS, POCKET_RADIUS, respawnCue } = require(process.env.BILLIARDS_TEST_MODULE);
+const { createRack, FIXED_STEP, isMoving, step, strike, TABLE, POCKETS, respawnCue } = require(process.env.BILLIARDS_TEST_MODULE);
 
 test('rack has 16 distinct balls inside the playing surface without overlaps', () => {
     const balls = createRack();
@@ -50,8 +51,8 @@ test('maximum-power break stays finite, stays on the table, and eventually stops
         for (const ball of balls) {
             assert.ok([ball.x, ball.z, ball.vx, ball.vz].every(Number.isFinite));
             if (ball.pocketed) continue;
-            assert.ok(Math.abs(ball.x) <= TABLE.halfWidth - TABLE.radius + 1e-8);
-            assert.ok(Math.abs(ball.z) <= TABLE.halfLength - TABLE.radius + 1e-8);
+            assert.ok(Math.abs(ball.x) <= TABLE.outerHalfWidth);
+            assert.ok(Math.abs(ball.z) <= TABLE.outerHalfLength);
         }
     }
     assert.ok(targetMoved);
@@ -79,8 +80,7 @@ test('Main scene references the bootstrap script UUID and all serialized IDs exi
 
 test('all six pockets capture targets approaching at maximum speed before cushion bounce', () => {
     for (const pocket of POCKETS) {
-        const length = Math.hypot(pocket.x, pocket.z);
-        const dx = pocket.x / length, dz = pocket.z / length;
+        const dx = pocket.normal.x, dz = pocket.normal.z;
         const ball = { id: 1, x: pocket.x - dx * 0.15, z: pocket.z - dz * 0.15,
             vx: dx * 4, vz: dz * 4 };
         for (let i = 0; i < 20; i++) step([ball], FIXED_STEP);
@@ -117,6 +117,6 @@ test('cue scratch waits for rest, rejects shots and respawns clear of an occupie
     for (const ball of balls.slice(1)) {
         assert.ok(Math.hypot(cue.x - ball.x, cue.z - ball.z) > TABLE.radius * 2);
     }
-    assert.ok(POCKETS.every(p => Math.hypot(cue.x - p.x, cue.z - p.z) > POCKET_RADIUS + TABLE.radius));
+    assert.ok(validTablePlacement(cue));
     assert.equal(strike(balls, 0, -1, 1), true);
 });

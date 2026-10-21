@@ -79,7 +79,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
         check('Projected HUD stays outside the table viewport',[
             game.status.node, game.resetLabel.node, ...game.playerCards.map(card=>card.node), game.dock,
         ].every(node=>separated(uiBounds(node))));
-        check('Table fits its reserved camera viewport',[-0.735,0.735].every(x=>[-1.37,1.37].every(z=>{
+        check('Table fits its reserved camera viewport',[-0.77,0.77].every(x=>[-1.41,1.41].every(z=>{
             const p=game.camera.worldToScreen(new cc.Vec3(x,0,z));
             return p.x>=viewport.left && p.x<=viewport.right && p.y>=viewport.bottom && p.y<=viewport.top;
         })));
