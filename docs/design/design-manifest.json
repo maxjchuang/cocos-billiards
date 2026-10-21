@@ -1,5 +1,5 @@
 {
-  "version": "1.8",
+  "version": "1.9",
   "date": "2026-10-21",
   "direction": "专业球房",
   "referenceFrame": [
@@ -14,14 +14,26 @@
     "出杆待机为45°斜向细杆与空心球轮廓，点击后播放击球动效",
     "实际击球与220ms触球关键帧同步，点击不立即击球",
     "半色球采用连续彩色环带",
-    "预留头像昵称和联网身份展示"
+    "预留头像昵称和联网身份展示",
+    "每杆停稳且裁判结算后打点自动回中",
+    "微调±5°，点按步长0.1°",
+    "局部放大默认开启，瞄准拖动与微调时显示",
+    "音效和辅助瞄准默认开，振动与减少动态默认关，设置本机保存且立即生效",
+    "高低杆与加塞采用简化仿真，可组合并受力度距离碰撞角度影响"
   ],
-  "proposals": [
-    "每杆打点回中策略",
-    "微调范围与步长",
-    "目标识别放大",
-    "音效振动默认值"
-  ],
+  "proposals": [],
+  "interaction": {
+    "fineTuneRangeDegrees": 5,
+    "fineTuneStepDegrees": 0.1,
+    "spinReset": "after-settlement",
+    "magnifierDefault": true,
+    "soundDefault": true,
+    "hapticsDefault": false,
+    "reducedMotionDefault": false,
+    "aimGuideDefault": true,
+    "contactMs": 220,
+    "animationMs": 820
+  },
   "productPdf": "中式八球产品设计方案.pdf",
   "uiuxPdf": "中式八球UIUX设计方案.pdf",
   "colors": {

@@ -4,7 +4,9 @@ Cocos Creator **3.8.7** + TypeScript。目标仅为移动端小程序/小游戏�
 
 ## 设计文档
 
-[产品与 UI / UX 设计方案 V1.8](docs/design/README.md)包含最新 PDF、S01–S17 SVG 图稿与线框图标。设计与当前实现的差异已在该目录列明，后续按设计逐步开发。
+[产品与 UI / UX 设计方案 V1.9](docs/design/README.md)包含最新 PDF、S01–S17 SVG 图稿与线框图标。设计与当前实现的差异已在该目录列明，后续按设计逐步开发。
+
+整体架构、功能差距、确认参数和实施阶段见[技术实现方案](docs/technical/implementation-plan.md)。
 
 ## 打开与启动
 
