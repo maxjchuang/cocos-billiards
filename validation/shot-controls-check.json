@@ -1,5 +1,5 @@
 {
-  "stage": "V1.9 phase 2 implementation, runtime review pending",
+  "stage": "V1.9 phase 2; Creator engine-event and render-frame checks passed",
   "checks": {
     "typecheck": "passed",
     "nodeTests": {
@@ -32,12 +32,23 @@
     }
   },
   "creatorRuntime": {
-    "verified": false,
-    "reason": "Desktop locked; manual unlock requested"
+    "verified": true,
+    "engine": "3.8.7",
+    "devicePreset": "Apple iPhone 14 Pro (393x852)",
+    "inputMode": "Creator 3.8.7 internal touch dispatcher",
+    "checks": {
+      "passed": 35,
+      "failed": 0
+    },
+    "scope": "Real engine frame loop, projected control coordinates, physics and referee; injected Cocos touch events, not browser DOM or physical touchscreen",
+    "screenshot": "shot-controls-creator.png"
   },
   "previewSmoke": {
     "updated": true,
-    "executed": false
+    "executed": true,
+    "engineChecksPassed": 35,
+    "browserDomChecksPassed": false,
+    "browserDomAttempt": "Synthetic DOM touch failed the initial placement assertion in the Creator embedded preview. The internal engine-event driver passed separately; this is not a browser/device input certification."
   },
   "wechatDeveloperTools": {
     "verified": false
@@ -46,8 +57,27 @@
     "verified": false
   },
   "remaining": [
-    "Creator actual shot icon, touch coordinates, fine aim and pause validation",
+    "Browser DOM and actual touchscreen input validation",
+    "WeChat developer tools and real-device validation",
     "Cue-ball tip selection and rotation physics",
     "Magnifier, settings, audio and haptics"
-  ]
+  ],
+  "contactProbe": {
+    "renderFrames": 64,
+    "preContactFrames": 12,
+    "firstMotionMs": 220,
+    "contactFrames": 1,
+    "checks": {
+      "noEarlyMotion": true,
+      "observedPreparation": true,
+      "contactFrameObserved": true,
+      "firstMotionAtContact": true,
+      "repeatIgnored": true,
+      "cancelledBeforeContact": true,
+      "noGhostAfterResume": true,
+      "frozenAfterContact": true,
+      "resumedWithoutReplay": true
+    },
+    "passed": true
+  }
 }

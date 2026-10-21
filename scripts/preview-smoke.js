@@ -1,8 +1,12 @@
-// Developer-only: enable mobile touch emulation. Later cases arrange small tables,
-// then use real DOM touch events, the Cocos frame loop and actual physics.
-async function previewSmoke() {
+// Developer-only. Browser: DOM touch with mobile emulation. Creator embedded preview:
+// engine touch events (does not certify DOM/device input). Cases use the real frame loop and physics.
+async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'engine' : 'dom'} = {}) {
     const game = cc.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
-    if (!game || !navigator.maxTouchPoints) throw new Error('Load Main and enable mobile touch emulation first.');
+    const editorPreview = location.protocol === 'packages:';
+    if (!game || (!navigator.maxTouchPoints && inputMode === 'dom' && !editorPreview)) throw new Error('Load Main and enable mobile touch emulation first.');
+    const inputEngine = inputMode === 'engine' ? await System.import('cc') : null;
+    if (inputMode === 'engine' && (cc.ENGINE_VERSION !== '3.8.7' || typeof inputEngine.input._dispatchEventTouch !== 'function'))
+        throw new Error('Creator engine touch driver is pinned to 3.8.7.');
     const results = [], originalPower = game.power;
     const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
     const frame = async () => { await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve))); await wait(50); };
@@ -12,12 +16,20 @@ async function previewSmoke() {
     };
     const canvas = document.getElementById('GameCanvas');
     const tap = async (point, inspect) => {
-        const rect = canvas.getBoundingClientRect();
-        const finger = new Touch({ identifier: 76, target: canvas,
-            clientX: rect.left + point.x / canvas.width * rect.width,
-            clientY: rect.bottom - point.y / canvas.height * rect.height });
-        canvas.dispatchEvent(new TouchEvent('touchstart', { bubbles: true, touches: [finger], changedTouches: [finger] }));
-        canvas.dispatchEvent(new TouchEvent('touchend', { bubbles: true, touches: [], changedTouches: [finger] }));
+        if (inputMode === 'engine') {
+            const finger = new inputEngine.Touch(point.x, point.y, 76);
+            for (const type of [inputEngine.Input.EventType.TOUCH_START,inputEngine.Input.EventType.TOUCH_END]) {
+                const event = new inputEngine.EventTouch([finger],false,type,[finger]);
+                event.touch=finger;event.simulate=true;inputEngine.input._dispatchEventTouch(event);
+            }
+        } else {
+            const rect = canvas.getBoundingClientRect();
+            const finger = new Touch({ identifier: 76, target: canvas,
+                clientX: rect.left + point.x / canvas.width * rect.width,
+                clientY: rect.bottom - point.y / canvas.height * rect.height });
+            canvas.dispatchEvent(new TouchEvent('touchstart', { bubbles: true, touches: [finger], changedTouches: [finger] }));
+            canvas.dispatchEvent(new TouchEvent('touchend', { bubbles: true, touches: [], changedTouches: [finger] }));
+        }
         if (inspect) inspect();
         await frame();
     };
@@ -116,8 +128,72 @@ async function previewSmoke() {
         check('Restart first requires confirmation',game.confirmingRestart);
         await tap(game.hudCamera.worldToScreen(game.restartButton.node.parent.worldPosition));
         check('Touch restart clears referee',game.referee.foulCount.every(n=>n===0) && game.referee.groups.every(g=>g===null));
-        return {engine:cc.ENGINE_VERSION,results};
+        return {engine:cc.ENGINE_VERSION,inputMode:inputMode==='engine'?'Creator engine touch events':'Browser DOM touch events',results};
+    } catch (error) {
+        error.results=results; throw error;
     } finally {
         game.power=originalPower; game.reset();
+    }
+}
+
+// Creator-only render-frame probe. Uses the pinned engine touch dispatcher, not device/DOM input.
+async function previewContactProbe() {
+    const engine = await System.import('cc');
+    if (cc.ENGINE_VERSION !== '3.8.7' || typeof engine.input._dispatchEventTouch !== 'function')
+        throw new Error('Creator timing probe requires the 3.8.7 touch dispatcher.');
+    const game=cc.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
+    if (!game) throw new Error('Load Main first.');
+    const originalPower=game.power,frames=[];
+    const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+    const frame=async()=>{await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));await wait(50);};
+    const tap=node=>{
+        const p=game.hudCamera.worldToScreen(node.worldPosition),finger=new engine.Touch(p.x,p.y,87);
+        for(const type of [engine.Input.EventType.TOUCH_START,engine.Input.EventType.TOUCH_END]) {
+            const event=new engine.EventTouch([finger],false,type,[finger]);event.touch=finger;event.simulate=true;
+            engine.input._dispatchEventTouch(event);
+        }
+    };
+    const ready=async()=>{
+        game.reset();game.power=2.4;await frame();tap(game.actions[1].node.parent);await frame();
+        if(game.referee.phase!=='ready')throw new Error('Touch confirmation failed: '+JSON.stringify({phase:game.referee.phase,paused:game.paused,backgrounded:game.backgrounded,activeTouch:game.activeTouch}));
+        game.direction={x:1,z:0};
+    };
+    let record=null;
+    try {
+        await ready();
+        const before={x:game.balls[0].x,z:game.balls[0].z};
+        record=()=>frames.push({ms:game.shotSequence.elapsedMs,active:game.shotSequence.active,
+            committed:game.shotSequence.committed,x:game.balls[0].x,z:game.balls[0].z});
+        engine.director.on(engine.Director.EVENT_AFTER_DRAW,record);
+        tap(game.shotButton.node);const id=game.shotSequence.snapshot?.shotId;
+        tap(game.shotButton.node);const repeatIgnored=game.shotSequence.snapshot?.shotId===id;
+        await wait(1100);
+        engine.director.off(engine.Director.EVENT_AFTER_DRAW,record);record=null;
+        const moved=f=>Math.hypot(f.x-before.x,f.z-before.z)>1e-8;
+        const firstMoving=frames.find(moved),contact=frames.filter(f=>f.active&&f.ms===220&&f.committed);
+        const timing={frames:frames.length,preContactFrames:frames.filter(f=>f.active&&f.ms<220).length,
+            noEarlyMotion:frames.filter(f=>f.active&&f.ms<220).every(f=>!moved(f)),
+            firstMotionMs:firstMoving?.ms,contactFrames:contact.length,repeatIgnored};
+        await ready();tap(game.shotButton.node);await wait(100);tap(game.resetLabel.node);await wait(350);
+        const cancelled=game.paused&&!game.shotSequence.active&&game.balls[0].vx===0&&game.balls[0].vz===0;
+        tap(game.resumeButton.node.parent);await wait(300);
+        const noGhost=!game.paused&&game.referee.phase==='ready'&&game.balls[0].vx===0&&game.balls[0].vz===0;
+        tap(game.shotButton.node);
+        for(let i=0;i<100&&!game.shotSequence.committed;i++)await wait(10);
+        const shot=game.referee.shot;
+        tap(game.resetLabel.node);const position={x:game.balls[0].x,z:game.balls[0].z};await wait(250);
+        const frozen=game.paused&&game.referee.shot===shot&&game.balls[0].x===position.x&&game.balls[0].z===position.z;
+        tap(game.resumeButton.node.parent);await wait(60);
+        const resumed=!!shot&&game.referee.shot===shot&&!game.paused&&
+            Math.hypot(game.balls[0].x-position.x,game.balls[0].z-position.z)>0;
+        const checks={noEarlyMotion:timing.noEarlyMotion,observedPreparation:timing.preContactFrames>0,
+            contactFrameObserved:timing.contactFrames>0,firstMotionAtContact:timing.firstMotionMs===220,
+            repeatIgnored,cancelledBeforeContact:cancelled,noGhostAfterResume:noGhost,
+            frozenAfterContact:frozen,resumedWithoutReplay:resumed};
+        return {engine:cc.ENGINE_VERSION,inputMode:'Creator 3.8.7 internal touch dispatcher',
+            timing,checks,passed:Object.values(checks).every(Boolean)};
+    } finally {
+        if(record)engine.director.off(engine.Director.EVENT_AFTER_DRAW,record);
+        game.power=originalPower;game.reset();
     }
 }
