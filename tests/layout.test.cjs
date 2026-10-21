@@ -43,3 +43,18 @@ for (const [width,height,top,bottom] of [[320,568,0,0],[393,852,59,34],[430,932,
         });
     }
 }
+
+for(const [width,height,top,bottom] of [[320,568,0,0],[393,852,59,34],[430,932,59,34]]) {
+    test(`shot and fine aim retain minimum touch bounds at ${width}x${height}`,()=>{
+        for(const showFine of [false,true]) {
+            const ui=computeHudLayout(width,height,{insets:{top,bottom},showShot:true,showFine,actionCount:2,showPower:true});
+            assert.ok(ui.playArea.height>0);
+            assert.ok(ui.fineButton.width>=44&&ui.fineButton.height>=44);
+            assert.ok(ui.shoot.width>=44&&ui.shoot.height>=44);
+            const controls=[ui.decision,ui.actions,ui.power,ui.shoot,ui.fineButton];
+            if(showFine)controls.push(ui.fine);
+            for(let i=0;i<controls.length;i++)for(let j=i+1;j<controls.length;j++)assert.equal(overlap(controls[i],controls[j]),false);
+            for(const r of controls)assert.ok(r.y>=ui.dock.y&&r.y+r.height<=height-bottom);
+        }
+    });
+}

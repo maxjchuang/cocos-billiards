@@ -11,13 +11,14 @@ async function previewSmoke() {
         if (!passed) throw new Error(name);
     };
     const canvas = document.getElementById('GameCanvas');
-    const tap = async point => {
+    const tap = async (point, inspect) => {
         const rect = canvas.getBoundingClientRect();
         const finger = new Touch({ identifier: 76, target: canvas,
             clientX: rect.left + point.x / canvas.width * rect.width,
             clientY: rect.bottom - point.y / canvas.height * rect.height });
         canvas.dispatchEvent(new TouchEvent('touchstart', { bubbles: true, touches: [finger], changedTouches: [finger] }));
         canvas.dispatchEvent(new TouchEvent('touchend', { bubbles: true, touches: [], changedTouches: [finger] }));
+        if (inspect) inspect();
         await frame();
     };
     const table = (x,z) => tap(game.camera.worldToScreen(new cc.Vec3(x,0.028575,z)));
@@ -26,9 +27,18 @@ async function previewSmoke() {
         const origin=game.powerControl.worldPosition;
         await tap(game.hudCamera.worldToScreen(new cc.Vec3(origin.x-game.powerHalfWidth+fraction*game.powerHalfWidth*2,origin.y,origin.z)));
     };
+    const shoot = async () => {
+        const before={x:game.balls[0].x,z:game.balls[0].z};
+        await tap(game.hudCamera.worldToScreen(game.shotButton.node.worldPosition),()=>{
+            check('Click starts icon motion without moving table balls',game.shotSequence.active && !game.shotSequence.committed &&
+                game.referee.phase==='ready' && game.balls[0].x===before.x && game.balls[0].z===before.z);
+        });
+        for(let i=0;i<100&&!game.shotSequence.committed;i++) await wait(10);
+        check('Contact commits once in the real frame loop',game.shotSequence.committed);
+    };
     const settle = async () => {
-        for(let i=0;i<240 && game.referee.phase==='shooting';i++) await wait(50);
-        check('Physics shot settles before timeout',game.referee.phase!=='shooting');
+        for(let i=0;i<300 && (game.referee.phase==='shooting'||game.shotSequence.active);i++) await wait(50);
+        check('Physics shot settles before timeout',game.referee.phase!=='shooting'&&!game.shotSequence.active);
         await frame();
     };
     const sideShot = id => {
@@ -71,7 +81,15 @@ async function previewSmoke() {
         check('Touch confirmation unlocks cue',game.referee.phase==='ready' && game.aim.active);
         await power(0.1);
         check('Touch power does not shoot',game.power===0.4 && game.referee.phase==='ready');
-        await table(0.5,0.9); await settle();
+        const still={x:game.balls[0].x,z:game.balls[0].z};
+        await table(0.5,0.9);
+        check('Table release retains aim and never shoots',game.referee.phase==='ready'&&game.balls[0].x===still.x&&game.balls[0].z===still.z);
+        await tap(game.hudCamera.worldToScreen(game.fineButton.node.parent.worldPosition));
+        const angle=game.fineAim.degrees;
+        await tap(game.hudCamera.worldToScreen(game.finePlus.node.parent.worldPosition));
+        check('Fine button nudges 0.1 degrees without shooting',game.fineAim.active&&game.fineAim.degrees===angle+0.1&&game.referee.phase==='ready');
+        await tap(game.hudCamera.worldToScreen(game.fineButton.node.parent.worldPosition));
+        await table(0.5,0.9); await shoot(); await settle();
         check('Dry miss offers break choices to P2',game.referee.phase==='choice' && game.referee.current===1 && game.referee.foulCount[0]===1);
         await action(2);
         check('Accepting foul grants free ball',game.referee.phase==='placing' && game.referee.hand==='any' && !game.ballNodes[0].active);
@@ -79,10 +97,10 @@ async function previewSmoke() {
         check('Touch free-ball confirmation',game.referee.phase==='ready' && !game.balls[0].pocketed);
         await action(1);
         check('Touch group selection',game.referee.selected==='stripe');
-        sideShot(9); await frame(); await power(0.3); await table(0.6,0); await settle();
+        sideShot(9); await frame(); await power(0.3); await table(0.6,0); await shoot(); await settle();
         check('Physical stripe pot assigns groups and keeps turn',game.balls[9].pocketed && game.referee.groups[1]==='stripe' && game.referee.groups[0]==='solid' && game.referee.current===1);
         sideShot(8); Object.assign(game.balls[10],{x:-0.3,z:0.5,pocketed:false});
-        await frame(); await table(0.6,0); await settle();
+        await frame(); await table(0.6,0); await shoot(); await settle();
         check('Physical early 8 loses',game.referee.phase==='over' && game.referee.winner===0);
         const before={...game.balls[0]}; await table(-0.3,0);
         check('Finished game rejects shots',game.balls[0].vx===before.vx && game.balls[0].vz===before.vz);
@@ -90,9 +108,13 @@ async function previewSmoke() {
         check('Touch next-game button',game.referee.phase==='placing' && game.referee.winner===null && game.balls.every(b=>!b.pocketed));
         game.referee.phase='ready'; game.referee.hand=null; game.referee.isBreak=false;
         game.referee.groups=['solid','stripe']; sideShot(8); await frame(); await power(0.3);
-        await table(0.6,0); await settle();
+        await table(0.6,0); await shoot(); await settle();
         check('Physical legal 8 wins',game.referee.winner===0 && game.referee.phase==='over' && game.referee.message.includes('合法'));
         await tap(game.hudCamera.worldToScreen(game.resetLabel.node.worldPosition));
+        check('Pause blocks table input',game.paused);
+        await tap(game.hudCamera.worldToScreen(game.restartButton.node.parent.worldPosition));
+        check('Restart first requires confirmation',game.confirmingRestart);
+        await tap(game.hudCamera.worldToScreen(game.restartButton.node.parent.worldPosition));
         check('Touch restart clears referee',game.referee.foulCount.every(n=>n===0) && game.referee.groups.every(g=>g===null));
         return {engine:cc.ENGINE_VERSION,results};
     } finally {

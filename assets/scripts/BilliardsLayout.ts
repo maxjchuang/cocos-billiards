@@ -4,9 +4,9 @@ export interface SafeInsets { top: number; right: number; bottom: number; left: 
 export interface HudLayout {
     width: number; height: number; scale: number;
     status: HudRect; reset: HudRect; players: [HudRect, HudRect]; turn: HudRect;
-    playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect;
+    playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect; shoot: HudRect; fineButton: HudRect; fine: HudRect;
 }
-export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; }
+export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; }
 
 /** Reserve touch-sized controls first; shrink decorative spacing on short portrait screens. */
 export function computeHudLayout(width: number, height: number, options: HudOptions = {}): HudLayout {
@@ -30,12 +30,16 @@ export function computeHudLayout(width: number, height: number, options: HudOpti
     const actionHeight = count === 3 ? 172*s : count > 0 ? 48*s : 0;
     const powerHeight = showPower ? 64*s : 0;
     const decisionHeight = (count === 3 ? 48 : 40)*s;
-    const dockHeight = decisionHeight + actionHeight + powerHeight + (count > 0 ? gap : 0) + (showPower ? gap : 0) + gap*2;
+    const extraHeight = (options.showShot ? 56*s : 0)+(options.showFine ? 52*s : 0);
+    const dockHeight = extraHeight + decisionHeight + actionHeight + powerHeight + (count > 0 ? gap : 0) + (showPower ? gap : 0) + gap*2;
     const dock = { x: left+margin, y: height-bottom-gap-dockHeight, width: innerWidth, height: dockHeight };
     const decision = { x: dock.x, y: dock.y+gap, width: innerWidth, height: decisionHeight };
     const actions = { x: dock.x, y: decision.y+decisionHeight+(count>0?gap:0), width: innerWidth, height: actionHeight };
-    const power = { x: dock.x, y: actions.y+actionHeight+(showPower?gap:0), width: innerWidth, height: powerHeight };
+    const fine = { x: dock.x, y: actions.y+actionHeight+gap, width: innerWidth, height: options.showFine?44*s:0 };
+    const power = { x: dock.x, y: actions.y+actionHeight+(showPower?gap:0)+(options.showFine?52*s:0), width: innerWidth, height: powerHeight };
+    const fineButton = { x:dock.x, y:power.y+power.height+gap, width:76*s, height:48*s };
+    const shoot = { x:dock.x+88*s, y:fineButton.y, width:innerWidth-88*s, height:48*s };
     const tableTop = turn.y+turn.height+gap;
     const playArea = { x: left+margin, y: tableTop, width: innerWidth, height: dock.y-gap-tableTop };
-    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power };
+    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power, shoot, fineButton, fine };
 }

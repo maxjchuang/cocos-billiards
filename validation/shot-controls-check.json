@@ -1,0 +1,53 @@
+{
+  "stage": "V1.9 phase 2 implementation, runtime review pending",
+  "checks": {
+    "typecheck": "passed",
+    "nodeTests": {
+      "passed": 70,
+      "failed": 0
+    },
+    "smokeScriptSyntax": "passed"
+  },
+  "covered": [
+    "Deep frozen shot snapshot",
+    "No motion before contact",
+    "One commit at 220ms and visible contact pose held over dropped frames",
+    "Repeat clicks rejected",
+    "Cancel before contact",
+    "Freeze and resume after contact without replay",
+    "Reset invalidates pending shot",
+    "Touch release does not shoot",
+    "Secondary cancelled touch preserves owner",
+    "Fine tuning ±5 degrees and 0.1 degree steps",
+    "Nearest expanded-circle and cushion prediction",
+    "Short/long portrait layout and touch bounds"
+  ],
+  "componentTestBoundary": "Minimal Cocos substitute; does not verify rendering or engine touch input",
+  "builds": {
+    "webMobile": {
+      "exitCode": 36
+    },
+    "wechatgame": {
+      "exitCode": 36
+    }
+  },
+  "creatorRuntime": {
+    "verified": false,
+    "reason": "Desktop locked; manual unlock requested"
+  },
+  "previewSmoke": {
+    "updated": true,
+    "executed": false
+  },
+  "wechatDeveloperTools": {
+    "verified": false
+  },
+  "realDevice": {
+    "verified": false
+  },
+  "remaining": [
+    "Creator actual shot icon, touch coordinates, fine aim and pause validation",
+    "Cue-ball tip selection and rotation physics",
+    "Magnifier, settings, audio and haptics"
+  ]
+}
