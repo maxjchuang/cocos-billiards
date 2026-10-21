@@ -1,5 +1,26 @@
 // Development-only Web Mobile validation. Synthetic DOM touch exercises browser input routing,
 // not physical touchscreen hardware. Resets the game; do not use during an ongoing match.
+async function previewUiResolutionProbe() {
+    const engine = await System.import('cc');
+    await new Promise(resolve => engine.director.once(engine.Director.EVENT_AFTER_DRAW, resolve));
+    const game = engine.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
+    if (!game) throw new Error('Load Main first.');
+    const dpr = engine.screen.devicePixelRatio, size = engine.screen.windowSize;
+    const design = engine.view.getDesignResolutionSize();
+    const labels = game.status.node.parent.getComponentsInChildren(engine.Label)
+        .filter(label => label.enabledInHierarchy && label.string && label.spriteFrame);
+    // 3.8.7's system-font assembler exposes its actual raster sampling scale here.
+    const samples = labels.map(label => ({name:label.node.name, fontSize:label.fontSize,
+        rasterScale:label.textStyle.fontScale, textureWidth:label.spriteFrame.texture.width}));
+    const results = [
+        {name:'Design resolution matches HUD logical pixels', passed:Math.abs(design.width-size.width/dpr)<.01 && Math.abs(design.height-size.height/dpr)<.01},
+        {name:'UI sampling matches render DPR on both axes', passed:Math.abs(engine.view.getScaleX()-dpr)<.001 && Math.abs(engine.view.getScaleY()-dpr)<.001},
+        {name:'Visible system-font textures use render DPR', passed:samples.length>0 && samples.every(label=>Math.abs(label.rasterScale-dpr)<.001)},
+    ];
+    if (results.some(result=>!result.passed)) throw new Error(JSON.stringify({results,samples}));
+    return {browserDpr:devicePixelRatio, renderDpr:dpr, design, results, samples};
+}
+
 async function previewBrowserValidation() {
     const engine=await System.import('cc'),game=engine.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
     if(!game||!navigator.maxTouchPoints)throw new Error('Load Main with browser touch emulation.');

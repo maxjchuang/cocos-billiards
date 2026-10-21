@@ -1,0 +1,744 @@
+{
+  "date": "2026-10-21",
+  "scope": "Chromium mobile emulation plus user-reported physical-phone UI sharpness verification",
+  "cause": "HUD camera used logical pixels while TTF sampling retained the 960x640 design scale. At 393x852 DPR2, text raster scale was 0.81875 instead of 2.",
+  "before": {
+    "viewport": "393x852",
+    "browserDpr": 2,
+    "design": {
+      "width": 960,
+      "height": 640
+    },
+    "rasterScale": 0.81875,
+    "statusTextureWidth": 201
+  },
+  "afterDpr2": {
+    "design": {
+      "width": 393,
+      "height": 852
+    },
+    "rasterScale": 2,
+    "statusTextureWidth": 402,
+    "domChecksPassed": 17,
+    "gameChecksPassed": 35,
+    "spinChecksPassed": 28
+  },
+  "otherProfiles": [
+    {
+      "viewport": "320x568x1,mobile,touch",
+      "input": {
+        "viewport": {
+          "width": 320,
+          "height": 568,
+          "dpr": 1
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "resolution": {
+        "browserDpr": 1,
+        "renderDpr": 1,
+        "design": {
+          "width": 320,
+          "height": 568
+        },
+        "results": [
+          {
+            "name": "Design resolution matches HUD logical pixels",
+            "passed": true
+          },
+          {
+            "name": "UI sampling matches render DPR on both axes",
+            "passed": true
+          },
+          {
+            "name": "Visible system-font textures use render DPR",
+            "passed": true
+          }
+        ],
+        "samples": [
+          {
+            "name": "Instructions",
+            "fontSize": 16,
+            "rasterScale": 1,
+            "textureWidth": 128
+          },
+          {
+            "name": "Reset",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 44
+          },
+          {
+            "name": "Turn",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 280
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 116
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 78
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 1,
+            "textureWidth": 116
+          },
+          {
+            "name": "Referee decision",
+            "fontSize": 12,
+            "rasterScale": 1,
+            "textureWidth": 280
+          },
+          {
+            "name": "Rule action text 1",
+            "fontSize": 14,
+            "rasterScale": 1,
+            "textureWidth": 264
+          },
+          {
+            "name": "Number glyph 1",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 2",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 3",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 4",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 5",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 6",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 7",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 8",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 9",
+            "fontSize": 24,
+            "rasterScale": 1,
+            "textureWidth": 13
+          },
+          {
+            "name": "Number glyph 10",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 11",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 20
+          },
+          {
+            "name": "Number glyph 12",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 13",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 14",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          },
+          {
+            "name": "Number glyph 15",
+            "fontSize": 20,
+            "rasterScale": 1,
+            "textureWidth": 22
+          }
+        ]
+      }
+    },
+    {
+      "viewport": "430x932x3,mobile,touch",
+      "input": {
+        "viewport": {
+          "width": 430,
+          "height": 932,
+          "dpr": 3
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "resolution": {
+        "browserDpr": 3,
+        "renderDpr": 2,
+        "design": {
+          "width": 430,
+          "height": 932
+        },
+        "results": [
+          {
+            "name": "Design resolution matches HUD logical pixels",
+            "passed": true
+          },
+          {
+            "name": "UI sampling matches render DPR on both axes",
+            "passed": true
+          },
+          {
+            "name": "Visible system-font textures use render DPR",
+            "passed": true
+          }
+        ],
+        "samples": [
+          {
+            "name": "Instructions",
+            "fontSize": 16,
+            "rasterScale": 2,
+            "textureWidth": 476
+          },
+          {
+            "name": "Reset",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 88
+          },
+          {
+            "name": "Turn",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 780
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 342
+          },
+          {
+            "name": "Nickname",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Group",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 266
+          },
+          {
+            "name": "Targets status",
+            "fontSize": 11,
+            "rasterScale": 2,
+            "textureWidth": 342
+          },
+          {
+            "name": "Referee decision",
+            "fontSize": 12,
+            "rasterScale": 2,
+            "textureWidth": 780
+          },
+          {
+            "name": "Rule action text 1",
+            "fontSize": 14,
+            "rasterScale": 2,
+            "textureWidth": 748
+          },
+          {
+            "name": "Number glyph 1",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 2",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 3",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 4",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 5",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 6",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 7",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 8",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 9",
+            "fontSize": 24,
+            "rasterScale": 2,
+            "textureWidth": 26
+          },
+          {
+            "name": "Number glyph 10",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 11",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 41
+          },
+          {
+            "name": "Number glyph 12",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 13",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 14",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          },
+          {
+            "name": "Number glyph 15",
+            "fontSize": 20,
+            "rasterScale": 2,
+            "textureWidth": 44
+          }
+        ]
+      }
+    }
+  ],
+  "resizeWithoutReload": {
+    "browserDpr": 2,
+    "renderDpr": 2,
+    "design": {
+      "width": 393,
+      "height": 852
+    },
+    "results": [
+      {
+        "name": "Design resolution matches HUD logical pixels",
+        "passed": true
+      },
+      {
+        "name": "UI sampling matches render DPR on both axes",
+        "passed": true
+      },
+      {
+        "name": "Visible system-font textures use render DPR",
+        "passed": true
+      }
+    ],
+    "samples": [
+      {
+        "name": "Instructions",
+        "fontSize": 16,
+        "rasterScale": 2,
+        "textureWidth": 402
+      },
+      {
+        "name": "Reset",
+        "fontSize": 12,
+        "rasterScale": 2,
+        "textureWidth": 88
+      },
+      {
+        "name": "Turn",
+        "fontSize": 12,
+        "rasterScale": 2,
+        "textureWidth": 706
+      },
+      {
+        "name": "Nickname",
+        "fontSize": 14,
+        "rasterScale": 2,
+        "textureWidth": 229
+      },
+      {
+        "name": "Group",
+        "fontSize": 11,
+        "rasterScale": 2,
+        "textureWidth": 229
+      },
+      {
+        "name": "Targets status",
+        "fontSize": 11,
+        "rasterScale": 2,
+        "textureWidth": 305
+      },
+      {
+        "name": "Nickname",
+        "fontSize": 14,
+        "rasterScale": 2,
+        "textureWidth": 229
+      },
+      {
+        "name": "Group",
+        "fontSize": 11,
+        "rasterScale": 2,
+        "textureWidth": 229
+      },
+      {
+        "name": "Targets status",
+        "fontSize": 11,
+        "rasterScale": 2,
+        "textureWidth": 305
+      },
+      {
+        "name": "Referee decision",
+        "fontSize": 12,
+        "rasterScale": 2,
+        "textureWidth": 706
+      },
+      {
+        "name": "Rule action text 1",
+        "fontSize": 14,
+        "rasterScale": 2,
+        "textureWidth": 674
+      },
+      {
+        "name": "Number glyph 1",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 2",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 3",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 4",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 5",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 6",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 7",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 8",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 9",
+        "fontSize": 24,
+        "rasterScale": 2,
+        "textureWidth": 26
+      },
+      {
+        "name": "Number glyph 10",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 44
+      },
+      {
+        "name": "Number glyph 11",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 41
+      },
+      {
+        "name": "Number glyph 12",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 44
+      },
+      {
+        "name": "Number glyph 13",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 44
+      },
+      {
+        "name": "Number glyph 14",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 44
+      },
+      {
+        "name": "Number glyph 15",
+        "fontSize": 20,
+        "rasterScale": 2,
+        "textureWidth": 44
+      }
+    ]
+  },
+  "nodeTestsPassed": 81,
+  "webMobileBuildExitCode": 36,
+  "limits": [
+    "Cocos render DPR remains capped at 2, including browser DPR3.",
+    "No new WeChat export or developer-tool verification.",
+    "User phone feedback covers UI sharpness only; phone model/browser and comprehensive device certification are not recorded."
+  ],
+  "manualPhoneVerification": {
+    "result": "passed",
+    "feedback": "检查通过",
+    "scope": "UI text sharpness after refresh",
+    "deviceModel": null,
+    "browser": null
+  }
+}

@@ -56,3 +56,13 @@ previewBrowserValidation().then(console.log).catch(console.error)
 previewBrowserLifecycleEvents().then(console.log).catch(console.error)
 previewControlledRound().then(console.log).catch(console.error)
 ```
+
+## 手机 UI 文字采样修复（2026-10-21）
+
+用户真机反馈按钮等 UI 文字模糊。引擎检查确认：HUD 相机按逻辑像素显示，但设计分辨率仍是 960×640，系统字体纹理使用 `view.getScaleX()` 采样。在 393×852、DPR 2 下，文字采样比例仅 0.81875，随后被相机放大。
+
+现将设计分辨率与 HUD 逻辑尺寸同步，使用 EXACT_FIT，使文字采样比例等于引擎渲染 DPR；尺寸或 DPR 变化时刷新已有文字纹理。保留现有 UI 几何尺寸、命中区域与引擎 DPR 上限 2，未提高整幅 3D 画面的像素预算。
+
+验证：81 项 Node 测试通过，Creator 3.8.7 Web Mobile 构建成功（退出码 36）。393×852 DPR2 下，文字纹理采样比例为 2，标题纹理宽度从 201 提高到 402；17 项 DOM 输入/布局、35 项对局、28 项打点检查全部通过，已人工查看浏览器截图。320×568 DPR1、430×932 DPR3（引擎仍为 2）分别通过 17 项输入/布局检查与 3 项分辨率检查；不刷新切回 393×852 后的分辨率检查也通过。
+
+在 Console 加载 `scripts/preview-browser-validation.js` 后可执行 `previewUiResolutionProbe()`。结果见 `validation/ui-resolution-check.json`。以上自动检查使用 Chromium 模拟。用户已在手机刷新后反馈“检查通过”，记录为本次 UI 清晰度的真机手动复核，未记录设备型号及浏览器；未执行新的微信导出或开发者工具验证，横屏已有布局问题也不属于本次修复。

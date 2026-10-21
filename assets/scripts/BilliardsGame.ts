@@ -1,7 +1,7 @@
 import {
     _decorator, Camera, Canvas, Color, Component, game, Game,
     EventTouch, geometry, Graphics, input, Input, Label, Layers, Material, profiler, Rect,
-    Mesh, MeshRenderer, Node, primitives, Quat, screen, sys, view, Texture2D, UITransform, utils, Vec3,
+    Mesh, MeshRenderer, Node, primitives, Quat, ResolutionPolicy, screen, sys, view, Texture2D, UITransform, utils, Vec3,
 } from 'cc';
 import { BallState, createRack, FIXED_STEP, isMoving, step, TABLE, POCKETS, POCKET_RADIUS, HEAD_LINE } from './BilliardsPhysics';
 
@@ -574,6 +574,15 @@ export class BilliardsGame extends Component {
         // Window size is physical pixels; HUD geometry uses CSS/logical pixels.
         const dpr = Math.max(1, screen.devicePixelRatio);
         const width = size.width / dpr, height = size.height / dpr;
+        // TTF labels rasterize using view.getScaleX(), independently of the HUD camera.
+        // Match the design resolution to logical pixels so text is sampled at render DPR,
+        // rather than enlarging low-resolution glyph textures from the old 960px design.
+        const design = view.getDesignResolutionSize();
+        if (design.width !== width || design.height !== height || Math.abs(view.getScaleX() - dpr) > 0.001) {
+            view.setDesignResolutionSize(width, height, ResolutionPolicy.EXACT_FIT);
+            // Unchanged strings also need new textures after orientation/DPR changes.
+            this.status.node.parent!.getComponentsInChildren(Label).forEach(label => label.updateRenderData(true));
+        }
         this.hudCamera.orthoHeight = height / 2;
         const safe = sys.getSafeAreaRect(false), visible = view.getVisibleSize(), origin = view.getVisibleOrigin();
         const ratioX = width / visible.width, ratioY = height / visible.height;
