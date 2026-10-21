@@ -4,7 +4,7 @@ export interface SafeInsets { top: number; right: number; bottom: number; left: 
 export interface HudLayout {
     width: number; height: number; scale: number;
     status: HudRect; reset: HudRect; players: [HudRect, HudRect]; turn: HudRect;
-    playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect; shoot: HudRect; fineButton: HudRect; fine: HudRect;
+    playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect; shoot: HudRect; fineButton: HudRect; fine: HudRect; spinButton: HudRect;
 }
 export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; }
 
@@ -38,8 +38,11 @@ export function computeHudLayout(width: number, height: number, options: HudOpti
     const fine = { x: dock.x, y: actions.y+actionHeight+gap, width: innerWidth, height: options.showFine?44*s:0 };
     const power = { x: dock.x, y: actions.y+actionHeight+(showPower?gap:0)+(options.showFine?52*s:0), width: innerWidth, height: powerHeight };
     const fineButton = { x:dock.x, y:power.y+power.height+gap, width:76*s, height:48*s };
-    const shoot = { x:dock.x+88*s, y:fineButton.y, width:innerWidth-88*s, height:48*s };
+    const sideWidth=(width<360?68:76)*s,buttonGap=(width<360?8:12)*s;
+    fineButton.width=sideWidth;
+    const spinButton={x:dock.x+innerWidth-sideWidth,y:fineButton.y,width:sideWidth,height:48*s};
+    const shoot = { x:dock.x+sideWidth+buttonGap, y:fineButton.y, width:innerWidth-2*sideWidth-2*buttonGap, height:48*s };
     const tableTop = turn.y+turn.height+gap;
     const playArea = { x: left+margin, y: tableTop, width: innerWidth, height: dock.y-gap-tableTop };
-    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power, shoot, fineButton, fine };
+    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power, shoot, fineButton, fine, spinButton };
 }

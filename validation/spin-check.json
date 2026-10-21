@@ -1,0 +1,56 @@
+{
+  "stage": "V1.9 phase 3 cue tip and simplified spin",
+  "nodeTests": {
+    "passed": 81,
+    "failed": 0
+  },
+  "creator": {
+    "engine": "3.8.7",
+    "preset": "iPhone 14 Pro (393x852)",
+    "inputMode": "Version-pinned internal engine touch dispatcher",
+    "spinChecks": {
+      "passed": 28,
+      "failed": 0
+    },
+    "baseGameChecks": {
+      "passed": 35,
+      "failed": 0
+    },
+    "contactChecks": {
+      "passed": 9,
+      "failed": 0
+    },
+    "renderFrames": 65,
+    "preContactFrames": 12,
+    "firstMotionMs": 220,
+    "contactFrames": 1,
+    "measurements": {
+      "followVz": -0.7044807484591527,
+      "drawVz": 0.6463850781489415,
+      "leftEnglishDepartureVz": -0.4994180398406346,
+      "rightEnglishDepartureVz": 0.4994180398406346
+    },
+    "measurementScope": "Fixed developer-arranged near head-on and cushion cases, not arbitrary trajectories or real table calibration",
+    "screenshot": "spin-panel-creator.png"
+  },
+  "builds": {
+    "webMobile": {
+      "exitCode": 36,
+      "temporaryAutorunnerAbsent": true
+    },
+    "wechatgame": {
+      "exitCode": 36,
+      "temporaryAutorunnerAbsent": true
+    }
+  },
+  "temporaryAutorunnerRemoved": true,
+  "browserDomVerified": false,
+  "wechatDeveloperToolsVerified": false,
+  "realDeviceVerified": false,
+  "limitations": [
+    "No jump or curve shots",
+    "No ball-ball spin transfer or collision throw",
+    "No guarantee of fixed draw/follow travel",
+    "Pure residual side spin is truncated when the table otherwise rests"
+  ]
+}

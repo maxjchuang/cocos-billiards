@@ -56,6 +56,7 @@ test('not ready, moving, missing cue, open without a selection and ended games c
 test('failed callback, invalid delta and explicit reset do not leave another contact pending',()=>{
     const seq=new ShotSequence();assert.equal(seq.begin({...request(),power:Infinity}),false);
     assert.equal(seq.begin({...request(),tipOffset:{x:1,y:1}}),false);
+    assert.ok(new ShotSequence().begin({...request(),tipOffset:{x:.6000000000000001,y:.8}}));
     seq.begin(request());seq.advance(NaN,()=>assert.fail());assert.equal(seq.elapsedMs,0);
     seq.advance(-1,()=>assert.fail());assert.equal(seq.elapsedMs,0);
     seq.advance(.3,()=>false);assert.equal(seq.active,false);seq.advance(.3,()=>assert.fail());

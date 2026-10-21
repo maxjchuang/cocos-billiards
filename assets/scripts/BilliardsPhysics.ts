@@ -1,3 +1,4 @@
+import { clearSpin, clothStep, spinCushion, strikeWithSpin, TipOffset } from './BilliardsSpin';
 /** Pure table-plane simulation. No Cocos dependency; one unit represents one metre. */
 export interface BallState {
     id: number;
@@ -6,6 +7,8 @@ export interface BallState {
     z: number;
     vx: number;
     vz: number;
+    /** Angular velocity in radians/second; omitted legacy fields mean zero. */
+    wx?: number; wy?: number; wz?: number;
 }
 
 export const TABLE = {
@@ -50,18 +53,17 @@ export function createRack(): BallState[] {
 }
 
 export function isMoving(balls: readonly BallState[]): boolean {
-    return balls.some(ball => !ball.pocketed && Math.hypot(ball.vx, ball.vz) > TABLE.stopSpeed);
+    return balls.some(ball => !ball.pocketed && (Math.hypot(ball.vx, ball.vz) > TABLE.stopSpeed || Math.hypot(ball.wx??0,ball.wz??0)*TABLE.radius > TABLE.stopSpeed));
 }
 
-export function strike(balls: BallState[], dx: number, dz: number, speed: number): boolean {
+export function strike(balls: BallState[], dx: number, dz: number, speed: number, tip: TipOffset = {x:0,y:0}): boolean {
     const length = Math.hypot(dx, dz);
-    if (isMoving(balls) || length < 1e-6 || !Number.isFinite(length) || !Number.isFinite(speed)) return false;
+    if (isMoving(balls) || length < 1e-6 || !Number.isFinite(length) || !Number.isFinite(speed) || ![tip.x,tip.y].every(Number.isFinite) || Math.hypot(tip.x,tip.y)>1+1e-9) return false;
     const cue = balls.find(ball => ball.id === 0);
     if (!cue || cue.pocketed) return false;
     const value = Math.max(0, Math.min(speed, 4));
     if (value === 0) return false;
-    cue.vx = dx / length * value;
-    cue.vz = dz / length * value;
+    strikeWithSpin(cue,dx/length,dz/length,value,tip,TABLE.radius);
     return true;
 }
 
@@ -73,11 +75,7 @@ export function step(balls: BallState[], dt: number, options: StepOptions = {}):
         if (ball.pocketed) continue;
         ball.x += ball.vx * dt;
         ball.z += ball.vz * dt;
-        const speed = Math.hypot(ball.vx, ball.vz);
-        const next = Math.max(0, speed - TABLE.deceleration * dt);
-        const scale = next <= TABLE.stopSpeed || speed === 0 ? 0 : next / speed;
-        ball.vx *= scale;
-        ball.vz *= scale;
+        clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
     }
     capturePockets(balls, options.onEvent);
     const diameter = TABLE.radius * 2;
@@ -108,18 +106,20 @@ export function step(balls: BallState[], dt: number, options: StepOptions = {}):
                 ball.x = Math.max(-maxX, Math.min(maxX, ball.x));
                 if (ball.x * ball.vx > 0) {
                     options.onEvent?.({ type: 'cushion', id: ball.id, side: ball.x < 0 ? 'left' : 'right' });
-                    ball.vx *= -TABLE.cushionRestitution;
+                    spinCushion(ball,Math.sign(ball.x),0,TABLE.radius,TABLE.cushionRestitution);
                 }
             }
             if (ball.z < -maxZ || ball.z > maxZ) {
                 ball.z = Math.max(-maxZ, Math.min(maxZ, ball.z));
                 if (ball.z * ball.vz > 0) {
                     options.onEvent?.({ type: 'cushion', id: ball.id, side: ball.z < 0 ? 'top' : 'bottom' });
-                    ball.vz *= -TABLE.cushionRestitution;
+                    spinCushion(ball,0,Math.sign(ball.z),TABLE.radius,TABLE.cushionRestitution);
                 }
             }
         }
     }
+    // Pure vertical spin cannot restart plane motion; truncate it once the whole table rests.
+    if (!isMoving(balls)) balls.forEach(clearSpin);
     if (options.respawnCue !== false) respawnCue(balls);
 }
 
@@ -132,6 +132,7 @@ function capturePockets(balls: BallState[], onEvent?: (event: PhysicsEvent) => v
             ball.pocketed = true;
             ball.vx = 0;
             ball.vz = 0;
+            clearSpin(ball);
         }
     }
 }
@@ -153,7 +154,7 @@ export function respawnCue(balls: BallState[]): boolean {
             Math.hypot(point.x - ball.x, point.z - ball.z) >= spacing));
     if (!spot) return false;
     cue.x = spot.x; cue.z = spot.z;
-    cue.vx = 0; cue.vz = 0;
+    cue.vx = 0; cue.vz = 0; clearSpin(cue);
     cue.pocketed = false;
     return true;
 }

@@ -51,7 +51,8 @@ for(const [width,height,top,bottom] of [[320,568,0,0],[393,852,59,34],[430,932,5
             assert.ok(ui.playArea.height>0);
             assert.ok(ui.fineButton.width>=44&&ui.fineButton.height>=44);
             assert.ok(ui.shoot.width>=44&&ui.shoot.height>=44);
-            const controls=[ui.decision,ui.actions,ui.power,ui.shoot,ui.fineButton];
+            assert.ok(ui.spinButton.width>=44&&ui.spinButton.height>=44);
+            const controls=[ui.decision,ui.actions,ui.power,ui.shoot,ui.fineButton,ui.spinButton];
             if(showFine)controls.push(ui.fine);
             for(let i=0;i<controls.length;i++)for(let j=i+1;j<controls.length;j++)assert.equal(overlap(controls[i],controls[j]),false);
             for(const r of controls)assert.ok(r.y>=ui.dock.y&&r.y+r.height<=height-bottom);

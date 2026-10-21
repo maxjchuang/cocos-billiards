@@ -54,7 +54,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
         await frame();
     };
     const sideShot = id => {
-        game.balls.forEach(b=>{b.vx=0;b.vz=0;b.pocketed= ![0,8,id].includes(b.id);});
+        game.balls.forEach(b=>{b.vx=0;b.vz=0;b.wx=0;b.wy=0;b.wz=0;b.pocketed= ![0,8,id].includes(b.id);});
         Object.assign(game.balls[0],{x:0.35,z:0,pocketed:false});
         Object.assign(game.balls[8],{x:0,z:-0.635});
         Object.assign(game.balls[id],{x:0.52,z:0,pocketed:false});

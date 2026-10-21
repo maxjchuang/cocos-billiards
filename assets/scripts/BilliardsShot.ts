@@ -28,7 +28,7 @@ export class ShotSequence {
         const d = request.direction, tip = request.tipOffset;
         if (this.active || ![d.x, d.z, tip.x, tip.y, request.power, request.gameId].every(Number.isFinite) ||
             Math.hypot(d.x, d.z) < 1e-6 || request.power <= 0 || request.power > 4 ||
-            Math.hypot(tip.x, tip.y) > 1) return false;
+            Math.hypot(tip.x, tip.y) > 1+1e-9) return false;
         this.snapshot = Object.freeze({ ...request, shotId: ++this.serial,
             direction: Object.freeze({ ...d }), tipOffset: Object.freeze({ ...tip }) });
         this.elapsedMs = 0; this.committed = false;
@@ -60,10 +60,11 @@ export function commitShot(snapshot: Readonly<ShotSnapshot>, gameId: number, bal
     const d = snapshot.direction;
     if (snapshot.gameId !== gameId || snapshot.player !== ref.current || !mayShoot(balls, ref) ||
         snapshot.selectedGroup !== ref.selected || ![d.x, d.z, snapshot.power].every(Number.isFinite) ||
-        Math.hypot(d.x, d.z) < 1e-6 || snapshot.power <= 0 || snapshot.power > 4) return false;
+        Math.hypot(d.x, d.z) < 1e-6 || snapshot.power <= 0 || snapshot.power > 4 ||
+        ![snapshot.tipOffset.x,snapshot.tipOffset.y].every(Number.isFinite) || Math.hypot(snapshot.tipOffset.x,snapshot.tipOffset.y)>1+1e-9) return false;
     const before = { phase: ref.phase, hand: ref.hand, message: ref.message, shot: ref.shot };
     if (!ref.beginShot(balls)) return false;
-    if (strike(balls, d.x, d.z, snapshot.power)) return true;
+    if (strike(balls, d.x, d.z, snapshot.power,snapshot.tipOffset)) return true;
     Object.assign(ref, before);
     return false;
 }

@@ -14,9 +14,11 @@ import { PlayerCardView } from './BilliardsPlayerCard';
 import { commitShot, mayShoot, ShotSequence, shotPose } from './BilliardsShot';
 import { FineAim, predictContact } from './BilliardsAim';
 import { ShotButtonView } from './BilliardsShotButton';
+import { SPIN, TipSelection, tipLabel } from './BilliardsSpin';
+import { SpinPanelView } from './BilliardsSpinPanel';
 
 const { ccclass } = _decorator;
-type Action = number | 'pause' | 'resume' | 'restart' | 'shoot' | 'fine' | 'fine-minus' | 'fine-plus';
+type Action = number | 'pause' | 'resume' | 'restart' | 'shoot' | 'fine' | 'fine-minus' | 'fine-plus' | 'spin' | 'spin-cancel' | 'spin-done' | 'spin-center';
 
 /** One bootstrap component builds the tiny scene. No imported models or physics engine. */
 @ccclass('BilliardsGame')
@@ -42,6 +44,11 @@ export class BilliardsGame extends Component {
     private adjustingFine = false;
     private shotButton!: ShotButtonView;
     private fineButton!: Label;
+    private spinButton!: Label;
+    private spinPanel!: SpinPanelView;
+    private tip = new TipSelection();
+    private adjustingSpin = false;
+    private visualSpinDeltas = Array.from({length:16},()=>({x:0,y:0,z:0}));
     private fineControl!: Node;
     private fineLabel!: Label;
     private fineMinus!: Label;
@@ -281,6 +288,7 @@ export class BilliardsGame extends Component {
             label.overflow=Label.Overflow.SHRINK;return label;
         };
         this.fineButton=control('Fine aim button','微调');
+        this.spinButton=control('Cue tip button','打点');
         this.fineControl=new Node('Fine aim slider');this.fineControl.layer=Layers.Enum.UI_2D;
         root.addChild(this.fineControl);this.fineControl.addComponent(UITransform);this.fineControl.addComponent(Graphics);
         this.fineLabel=uiLabel('Fine aim value',120,20);this.fineLabel.node.setParent(this.fineControl);
@@ -300,6 +308,7 @@ export class BilliardsGame extends Component {
             label.color = new Color(19, 23, 28, 255);
             this.numberNodes.push(badge);
         }
+        this.spinPanel=new SpinPanelView(root);
         this.buildPause(root);
     }
 
@@ -317,7 +326,8 @@ export class BilliardsGame extends Component {
     }
 
     private reset(): void {
-        this.gameId++;this.shotSequence.cancel();this.fineAim.close();
+        this.gameId++;this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
+        this.visualSpinDeltas.forEach(v=>{v.x=v.y=v.z=0;});
         this.paused=false;this.confirmingRestart=false;this.layoutStamp='';
         this.balls = createRack();
         this.referee = new Referee();
@@ -382,13 +392,20 @@ export class BilliardsGame extends Component {
         if (typeof action === 'number') return this.actions[action].node.parent!;
         return ({ pause:this.resetLabel.node, resume:this.resumeButton.node.parent!, restart:this.restartButton.node.parent!,
             shoot:this.shotButton.node, fine:this.fineButton.node.parent!,
-            'fine-minus':this.fineMinus.node.parent!, 'fine-plus':this.finePlus.node.parent! })[action];
+            'fine-minus':this.fineMinus.node.parent!, 'fine-plus':this.finePlus.node.parent!,
+            spin:this.spinButton.node.parent!, 'spin-cancel':this.spinPanel.cancel.node.parent!,
+            'spin-done':this.spinPanel.done.node.parent!, 'spin-center':this.spinPanel.center.node.parent! })[action];
     }
     private begin(x: number, y: number): void {
         this.pendingAction=null;
-        const candidates: Action[] = this.paused ? ['resume','restart'] : ['pause'];
-        if (!this.paused && !this.shotSequence.active) candidates.push('shoot','fine','fine-minus','fine-plus',0,1,2);
+        const candidates: Action[] = this.paused ? ['resume','restart'] : this.tip.active ? ['spin-cancel','spin-done','spin-center'] : ['pause'];
+        if (!this.paused && !this.tip.active && !this.shotSequence.active) candidates.push('spin','shoot','fine','fine-minus','fine-plus',0,1,2);
         this.pendingAction=candidates.find(action=>this.hitUi(this.actionNode(action),x,y))??null;
+        if(this.tip.active&&this.pendingAction===null) {
+            if(this.hitUi(this.spinPanel.surface,x,y)){this.adjustingSpin=true;this.setSpinAt(x,y);}
+            else if(!this.hitUi(this.spinPanel.panel,x,y))this.pendingAction='spin-cancel';
+            return;
+        }
         if (this.pendingAction !== null || this.paused || this.backgrounded || this.shotSequence.active) return;
         if (this.referee.phase==='over'||this.referee.phase==='choice') return;
         if (this.referee.phase==='ready'&&!isMoving(this.balls)) {
@@ -402,6 +419,8 @@ export class BilliardsGame extends Component {
     }
     private move(x: number, y: number): void {
         if (this.pendingAction!==null||this.paused||this.shotSequence.active) return;
+        if(this.adjustingSpin){this.setSpinAt(x,y);return;}
+        if(this.tip.active)return;
         if (this.placing) this.placeAt(x,y);
         else if (this.adjustingPower) this.setPowerAt(x,y);
         else if (this.adjustingFine) this.setFineAt(x,y);
@@ -409,13 +428,18 @@ export class BilliardsGame extends Component {
     }
     private release(x: number, y: number): void {
         const action=this.pendingAction;this.pendingAction=null;
-        if (action!==null&&this.hitUi(this.actionNode(action),x,y)) {
+        if (action!==null&&(this.hitUi(this.actionNode(action),x,y)||(action==='spin-cancel'&&this.tip.active&&!this.hitUi(this.spinPanel.panel,x,y)))) {
             if (action==='pause') this.pauseGame();
             else if (action==='resume'&&!this.backgrounded) { this.paused=false;this.confirmingRestart=false;this.accumulator=0; }
             else if (action==='restart') {
                 if (this.confirmingRestart) this.reset();else this.confirmingRestart=true;
             } else if (!this.paused&&!this.shotSequence.active) {
-                if (action==='shoot') this.shoot();
+                if(action==='spin-cancel')this.tip.cancel();
+                else if(action==='spin-done')this.tip.confirm();
+                else if(action==='spin-center')this.tip.recenter();
+                else if(this.tip.active)return;
+                else if (action==='shoot') this.shoot();
+                else if(action==='spin'&&this.referee.phase==='ready'&&!isMoving(this.balls))this.tip.open();
                 else if (action==='fine'&&this.referee.phase==='ready'&&!isMoving(this.balls)) {
                     if (this.fineAim.active) this.fineAim.close();else this.fineAim.open(this.direction.x,this.direction.z);
                 } else if ((action==='fine-minus'||action==='fine-plus')&&this.fineAim.active)
@@ -424,7 +448,11 @@ export class BilliardsGame extends Component {
             }
         }
         // Releasing a table drag only retains its direction; it never submits a shot.
-        this.dragging=false;this.placing=false;this.adjustingPower=false;this.adjustingFine=false;
+        this.dragging=false;this.placing=false;this.adjustingPower=false;this.adjustingFine=false;this.adjustingSpin=false;
+    }
+    private setSpinAt(x:number,y:number):void {
+        const p=this.spinPanel.surface.getComponent(UITransform)!.convertToNodeSpaceAR(this.hudCamera.screenToWorld(new Vec3(x,y,0)));
+        this.tip.select(p.x/this.spinPanel.selectionRadius,p.y/this.spinPanel.selectionRadius);
     }
     private setFineAt(x:number,y:number):void {
         const world=this.hudCamera.screenToWorld(new Vec3(x,y,0));
@@ -448,23 +476,23 @@ export class BilliardsGame extends Component {
             Math.abs(local.y) <= transform.contentSize.height / 2;
     }
     private cancelDrag(): void {
-        this.dragging = false; this.adjustingPower = false; this.adjustingFine=false; this.placing = false;
+        this.dragging = false; this.adjustingPower = false; this.adjustingFine=false; this.adjustingSpin=false; this.placing = false;
         this.activeTouch = null; this.pendingAction = null;
     }
     private shoot(): void {
-        if (this.paused||this.backgrounded||this.adjustingPower||!mayShoot(this.balls,this.referee)) return;
+        if (this.paused||this.backgrounded||this.tip.active||this.adjustingPower||!mayShoot(this.balls,this.referee)) return;
         if (this.shotSequence.begin({gameId:this.gameId,player:this.referee.current,
-            direction:this.direction,power:this.power,tipOffset:{x:0,y:0},selectedGroup:this.referee.selected})) {
+            direction:this.direction,power:this.power,tipOffset:this.tip.value,selectedGroup:this.referee.selected})) {
             this.fineAim.close();this.accumulator=0;
         }
     }
     private pauseGame():void {
-        this.paused=true;this.shotSequence.cancelBeforeContact();this.cancelDrag();this.fineAim.close();this.accumulator=0;
+        this.paused=true;this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.fineAim.close();this.accumulator=0;
     }
     private hideGame():void { this.backgrounded=true;this.pauseGame(); }
     private showGame():void { this.backgrounded=false;this.accumulator=0; }
     private touchCancel(event:EventTouch):void { if(event.getID()===this.activeTouch)this.cancelDrag(); }
-    onDisable():void { this.shotSequence.cancelBeforeContact();this.cancelDrag();this.accumulator=0; }
+    onDisable():void { this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.accumulator=0; }
     private touchStart(event: EventTouch): void {
         if (this.activeTouch !== null) return;
         this.activeTouch = event.getID();
@@ -488,8 +516,12 @@ export class BilliardsGame extends Component {
             this.accumulator=contactFrame?FIXED_STEP:Math.min(this.accumulator+dt,0.1);
             while(this.accumulator>=FIXED_STEP) {
                 step(this.balls,FIXED_STEP,{respawnCue:false,onEvent:event=>this.referee.observe(event,this.balls)});
+                this.balls.forEach(ball=>{
+                    const v=this.visualSpinDeltas[ball.id];v.x+=(ball.wx??0)*FIXED_STEP;
+                    v.y+=(ball.wy??0)*FIXED_STEP;v.z+=(ball.wz??0)*FIXED_STEP;
+                });
                 this.referee.trackCue(this.balls);
-                if(this.referee.phase==='shooting'&&!isMoving(this.balls))this.referee.finishShot(this.balls);
+                if(this.referee.phase==='shooting'&&!isMoving(this.balls)){this.referee.finishShot(this.balls);this.tip.reset();}
                 this.accumulator-=FIXED_STEP;
             }
         } else this.accumulator=0;
@@ -521,7 +553,7 @@ export class BilliardsGame extends Component {
         this.drawAimGuide();
         const rect=this.hudLayout.shoot;
         this.shotButton.render(rect.width,rect.height,this.hudLayout.scale,
-            !this.paused&&!this.shotSequence.active&&mayShoot(this.balls,ref),this.shotSequence.active,
+            !this.paused&&!this.tip.active&&!this.shotSequence.active&&mayShoot(this.balls,ref),this.shotSequence.active,
             this.shotSequence.elapsedMs,ref.phase==='shooting');
         this.balls.forEach(ball => {
             const node = this.numberNodes[ball.id];
@@ -553,7 +585,7 @@ export class BilliardsGame extends Component {
         };
         const active = labels.map((text, index) => text ? index : -1).filter(index => index !== -1);
         const showPower = this.referee.phase === 'ready' || this.referee.phase === 'shooting';
-        const stamp = [width, height, ...Object.values(insets), this.referee.current, this.referee.phase, ...this.referee.groups, this.power, showPower, this.fineAim.active, this.fineAim.degrees, this.shotSequence.active, this.paused, this.confirmingRestart,
+        const stamp = [width, height, ...Object.values(insets), this.referee.current, this.referee.phase, ...this.referee.groups, this.power, showPower, this.fineAim.active, this.fineAim.degrees, this.tip.active, this.tip.value.x, this.tip.value.y, this.tip.draft.x, this.tip.draft.y, this.shotSequence.active, this.paused, this.confirmingRestart,
             ...this.players.flatMap(player => [player.id, player.nickname, player.avatar]), ...this.balls.map(ball => ball.pocketed), ...labels].join('|');
         if (stamp === this.layoutStamp) return;
         this.layoutStamp = stamp;
@@ -612,7 +644,7 @@ export class BilliardsGame extends Component {
         this.powerLabel.node.getComponent(UITransform)!.setContentSize(layout.power.width, 20*s);
         this.powerLabel.node.setPosition(0, 19*s, 0);
         this.powerLabel.fontSize = 12*s; this.powerLabel.lineHeight = 18*s;
-        this.powerLabel.string = `击球力度  ${Math.round(this.power / 4 * 100)}%`;
+        this.powerLabel.string = `力度 ${Math.round(this.power / 4 * 100)}% · ${tipLabel(this.tip.value)}`;
         const fill = this.powerGraphics, half = this.powerHalfWidth, y = -6*s;
         fill.clear(); fill.fillColor = new Color().fromHEX(CLUB.track);
         fill.roundRect(-half, y - 2*s, half*2, 4*s, 2*s); fill.fill();
@@ -637,6 +669,16 @@ export class BilliardsGame extends Component {
         for(const [x1,y1,x2,y2] of [[-27,0,-23,0],[-15,0,-11,0],[-19,-8,-19,-4],[-19,4,-19,8]]) {
             fineIcon.moveTo(x1*s,y1*s);fineIcon.lineTo(x2*s,y2*s);fineIcon.stroke();
         }
+        this.spinButton.node.parent!.active=showPower;
+        decorate(this.spinButton,layout.spinButton,'打点');this.spinButton.node.setPosition(10*s,0,0);
+        const sg=this.spinButton.node.parent!.getComponent(Graphics)!;
+        const offset=this.tip.value;
+        sg.strokeColor=new Color().fromHEX(this.referee.phase==='ready'&&!this.shotSequence.active?CLUB.ink:CLUB.disabled);
+        sg.lineWidth=1.5*s;sg.circle(-19*s,0,7*s);sg.stroke();
+        sg.circle((-19+offset.x*4)*s,offset.y*4*s,1.6*s);sg.stroke();
+        if(offset.x||offset.y){sg.strokeColor=new Color().fromHEX(CLUB.gold);const r=layout.spinButton;
+            sg.roundRect(-r.width/2,-r.height/2,r.width,r.height,12*s);sg.stroke();}
+        this.spinPanel.render(width,height,insets,this.tip.draft,this.tip.active);
         this.fineControl.active=this.fineMinus.node.parent!.active=this.finePlus.node.parent!.active=showPower&&this.fineAim.active;
         place(this.fineControl,layout.fine);
         const fg=this.fineControl.getComponent(Graphics)!;fg.clear();fg.strokeColor=new Color().fromHEX(CLUB.muted);fg.lineWidth=s;
@@ -667,7 +709,7 @@ export class BilliardsGame extends Component {
 
     private drawAimGuide():void {
         const g=this.aimGraphics;g.clear();
-        if(this.paused||this.shotSequence.active||this.referee.phase!=='ready'||isMoving(this.balls))return;
+        if(this.paused||this.tip.active||this.shotSequence.active||this.referee.phase!=='ready'||isMoving(this.balls))return;
         const cue=this.balls[0],hit=predictContact(cue,this.direction.x,this.direction.z,this.balls);
         if(!hit)return;
         const point=(x:number,z:number):Vec3=>{
@@ -692,13 +734,9 @@ export class BilliardsGame extends Component {
             node.active = !ball.pocketed;
             if (ball.pocketed) return;
             if (wasHidden) node.setPosition(ball.x, TABLE.radius, ball.z);
-            const previous = node.position;
-            const dx = ball.x - previous.x, dz = ball.z - previous.z;
-            const distance = Math.hypot(dx, dz);
-            if (distance > 1e-7) {
-                const rotation = Quat.fromAxisAngle(new Quat(), new Vec3(dz / distance, 0, -dx / distance), distance / TABLE.radius);
-                node.rotate(rotation, Node.NodeSpace.WORLD);
-            }
+            const turn=this.visualSpinDeltas[ball.id],angle=Math.hypot(turn.x,turn.y,turn.z);
+            if(angle>1e-7)node.rotate(Quat.fromAxisAngle(new Quat(),new Vec3(turn.x/angle,turn.y/angle,turn.z/angle),angle),Node.NodeSpace.WORLD);
+            turn.x=turn.y=turn.z=0;
             node.setPosition(ball.x, TABLE.radius, ball.z);
         });
         const cue = this.balls[0];
@@ -707,8 +745,11 @@ export class BilliardsGame extends Component {
         // The tip is nearest the cue ball; the shaft extends opposite the outgoing velocity.
         const pose=shotPose(this.shotSequence.elapsedMs,this.shotSequence.active);
         const gap=0.02+this.power/4*0.025;
-        const behind=TABLE.radius+0.275+gap*(1-pose.cueShift/3.172);
-        this.aim.setPosition(cue.x - this.direction.x * behind, TABLE.radius, cue.z - this.direction.z * behind);
+        const tip=this.tip.value,lateral=tip.x*SPIN.contactFraction*TABLE.radius,vertical=tip.y*SPIN.contactFraction*TABLE.radius;
+        const surfaceDepth=TABLE.radius*Math.sqrt(1-SPIN.contactFraction**2*(tip.x**2+tip.y**2));
+        const behind=surfaceDepth+0.275+gap*(1-pose.cueShift/3.172);
+        this.aim.setPosition(cue.x-this.direction.x*behind-this.direction.z*lateral,TABLE.radius+vertical,
+            cue.z-this.direction.z*behind+this.direction.x*lateral);
         this.aim.setRotationFromEuler(0, Math.atan2(this.direction.x, this.direction.z) * 180 / Math.PI, 0);
     }
 

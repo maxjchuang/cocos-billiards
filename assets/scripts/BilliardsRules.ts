@@ -1,3 +1,4 @@
+import { clearSpin } from './BilliardsSpin';
 import { BallState, createRack, CushionSide, FOOT_SPOT, HEAD_LINE, isMoving, PhysicsEvent, POCKETS, POCKET_RADIUS, TABLE } from './BilliardsPhysics';
 
 // Digital, same-device implementation of CBSA Chinese Pool (January 2017), chapter III.
@@ -179,14 +180,14 @@ export class Referee {
     private awardHand(area: 'head' | 'any', balls: BallState[]): void {
         this.hand = area; this.phase = 'placing'; this.requireHeadShot = area === 'head';
         const cue = balls.find(ball => ball.id === 0)!;
-        cue.pocketed = true; cue.vx = 0; cue.vz = 0;
+        cue.pocketed = true; cue.vx = 0; cue.vz = 0; clearSpin(cue);
         // No automatic respawn: player must choose and confirm a legal spot.
     }
 
     placeCue(balls: BallState[], x: number, z: number): boolean {
         if (this.phase !== 'placing' || !validCuePosition(balls, x, z, this.hand === 'head')) return false;
         const cue = balls.find(ball => ball.id === 0)!;
-        cue.x = x; cue.z = z; cue.vx = 0; cue.vz = 0; cue.pocketed = false;
+        cue.x = x; cue.z = z; cue.vx = 0; cue.vz = 0; cue.pocketed = false; clearSpin(cue);
         return true;
     }
 
@@ -230,6 +231,7 @@ export function respotBall(balls: BallState[], id: number): void {
     }
     if (z > limit) throw new Error('No legal centre-line spot for respotted ball');
     Object.assign(ball, { x: 0, z, vx: 0, vz: 0, pocketed: false });
+    clearSpin(ball);
 }
 export const respotEight = (balls: BallState[]): void => respotBall(balls, 8);
 

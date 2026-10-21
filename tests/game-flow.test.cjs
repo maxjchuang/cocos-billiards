@@ -48,3 +48,20 @@ test('a cancelled secondary touch does not cancel the owning finger',()=>{
     const g=game();g.activeTouch=1;g.dragging=true;g.touchCancel({getID:()=>2});assert.equal(g.dragging,true);
     g.touchCancel({getID:()=>1});assert.equal(g.dragging,false);assert.equal(g.activeTouch,null);
 });
+
+test('tip panel cannot shoot; cancellation and pre-contact pause preserve the confirmed tip',()=>{
+    const g=game();g.tip.open();g.tip.select(.3,-.4);g.shoot();assert.equal(g.shotSequence.active,false);
+    g.tip.confirm();g.tip.open();g.tip.select(-.5,.5);g.tip.cancel();assert.deepEqual(g.tip.value,{x:.3,y:-.4});
+    g.shoot();assert.deepEqual(g.shotSequence.snapshot.tipOffset,{x:.3,y:-.4});
+    g.pauseGame();assert.equal(g.shotSequence.active,false);assert.deepEqual(g.tip.value,{x:.3,y:-.4});
+});
+test('reserved tip reaches physics at contact and resets only after the referee settles the shot',()=>{
+    const g=game();g.tip.open();g.tip.select(.3,-.4);g.tip.confirm();g.shoot();
+    const snapshot=g.shotSequence.snapshot;g.update(.219);
+    assert.deepEqual(g.tip.value,{x:.3,y:-.4});assert.equal(g.balls[0].wy,undefined);
+    g.update(.001);assert.ok(g.balls[0].wy>0);assert.ok(g.balls[0].wx>0);
+    assert.deepEqual(g.tip.value,{x:.3,y:-.4});
+    g.balls.forEach(b=>Object.assign(b,{vx:0,vz:0,wx:0,wy:0,wz:0}));g.update(1/240);
+    assert.notEqual(g.referee.phase,'shooting');assert.deepEqual(g.tip.value,{x:0,y:0});
+    assert.deepEqual(snapshot.tipOffset,{x:.3,y:-.4});
+});
