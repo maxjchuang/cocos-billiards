@@ -1,0 +1,1470 @@
+{
+  "codeBaseline": "19d06fd",
+  "scope": "Chromium Web Mobile build at local preview; excludes WeChat developer tools",
+  "nodeChecks": {
+    "passed": 81,
+    "failed": 0
+  },
+  "input": "Synthetic DOM TouchEvents routed through the browser and Cocos input; not physical device touch",
+  "matrix": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "dpr": 1,
+      "smoke": {
+        "engine": "3.8.7",
+        "inputMode": "Browser DOM touch events",
+        "results": [
+          {
+            "name": "Profiler is hidden by default",
+            "passed": true
+          },
+          {
+            "name": "Projected HUD stays outside the table viewport",
+            "passed": true
+          },
+          {
+            "name": "Table fits its reserved camera viewport",
+            "passed": true
+          },
+          {
+            "name": "16 balls, 15 number labels and generated textures",
+            "passed": true
+          },
+          {
+            "name": "Opening placement has no cue stick",
+            "passed": true
+          },
+          {
+            "name": "Touch placement does not shoot",
+            "passed": true
+          },
+          {
+            "name": "Head-line placement restriction",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation unlocks cue",
+            "passed": true
+          },
+          {
+            "name": "Touch power does not shoot",
+            "passed": true
+          },
+          {
+            "name": "Table release retains aim and never shoots",
+            "passed": true
+          },
+          {
+            "name": "Fine button nudges 0.1 degrees without shooting",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Dry miss offers break choices to P2",
+            "passed": true
+          },
+          {
+            "name": "Accepting foul grants free ball",
+            "passed": true
+          },
+          {
+            "name": "Touch free-ball confirmation",
+            "passed": true
+          },
+          {
+            "name": "Touch group selection",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical stripe pot assigns groups and keeps turn",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical early 8 loses",
+            "passed": true
+          },
+          {
+            "name": "Finished game rejects shots",
+            "passed": true
+          },
+          {
+            "name": "Touch next-game button",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical legal 8 wins",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input",
+            "passed": true
+          },
+          {
+            "name": "Restart first requires confirmation",
+            "passed": true
+          },
+          {
+            "name": "Touch restart clears referee",
+            "passed": true
+          }
+        ]
+      },
+      "spin": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "results": [
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Three touch-sized buttons fit without overlap",
+            "passed": true
+          },
+          {
+            "name": "Tip panel opens without shooting",
+            "passed": true
+          },
+          {
+            "name": "Draft does not apply until done",
+            "passed": true
+          },
+          {
+            "name": "Overlay blocks table placement and aiming",
+            "passed": true
+          },
+          {
+            "name": "Done applies tip without shooting",
+            "passed": true
+          },
+          {
+            "name": "Confirmed tip is visible beside power",
+            "passed": true
+          },
+          {
+            "name": "Cancel restores previous confirmed tip",
+            "passed": true
+          },
+          {
+            "name": "Recenter changes only draft",
+            "passed": true
+          },
+          {
+            "name": "Diagonal selection is bounded by a circle",
+            "passed": true
+          },
+          {
+            "name": "Confirmed recenter restores centre tip",
+            "passed": true
+          },
+          {
+            "name": "Shot reserves confirmed tip",
+            "passed": true
+          },
+          {
+            "name": "Preparing shot blocks tip editing",
+            "passed": true
+          },
+          {
+            "name": "Spin shot commits at contact",
+            "passed": true
+          },
+          {
+            "name": "Tip drives actual angular velocity",
+            "passed": true
+          },
+          {
+            "name": "Spin shot settles within timeout",
+            "passed": true
+          },
+          {
+            "name": "Tip recenters after referee settlement",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches object ball",
+            "passed": true
+          },
+          {
+            "name": "High tip follows after head-on contact",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches object ball",
+            "passed": true
+          },
+          {
+            "name": "Low tip draws after head-on contact",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches cushion",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches cushion",
+            "passed": true
+          },
+          {
+            "name": "Opposite english gives opposite cushion departure",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "followVz": -0.7071474151258199,
+          "drawVz": 0.645051744815608,
+          "leftVz": -0.4994180398406346,
+          "rightVz": 0.4967729304617049
+        }
+      },
+      "events": [],
+      "expanded": {
+        "viewport": {
+          "width": 320,
+          "height": 568,
+          "dpr": 1
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "firstMotionMs": 220,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "viewport": [
+        360,
+        640
+      ],
+      "dpr": 2,
+      "expanded": {
+        "viewport": {
+          "width": 360,
+          "height": 640,
+          "dpr": 2
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "firstMotionMs": 220,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      },
+      "events": []
+    },
+    {
+      "viewport": [
+        393,
+        852
+      ],
+      "dpr": 2,
+      "smokeSummary": {
+        "passed": 35,
+        "failed": 0
+      },
+      "spinSummary": {
+        "passed": 28,
+        "failed": 0
+      },
+      "expanded": {
+        "viewport": {
+          "width": 393,
+          "height": 852,
+          "dpr": 2
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "firstMotionMs": 220,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      }
+    },
+    {
+      "viewport": [
+        430,
+        932
+      ],
+      "dpr": 3,
+      "smoke": {
+        "engine": "3.8.7",
+        "inputMode": "Browser DOM touch events",
+        "results": [
+          {
+            "name": "Profiler is hidden by default",
+            "passed": true
+          },
+          {
+            "name": "Projected HUD stays outside the table viewport",
+            "passed": true
+          },
+          {
+            "name": "Table fits its reserved camera viewport",
+            "passed": true
+          },
+          {
+            "name": "16 balls, 15 number labels and generated textures",
+            "passed": true
+          },
+          {
+            "name": "Opening placement has no cue stick",
+            "passed": true
+          },
+          {
+            "name": "Touch placement does not shoot",
+            "passed": true
+          },
+          {
+            "name": "Head-line placement restriction",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation unlocks cue",
+            "passed": true
+          },
+          {
+            "name": "Touch power does not shoot",
+            "passed": true
+          },
+          {
+            "name": "Table release retains aim and never shoots",
+            "passed": true
+          },
+          {
+            "name": "Fine button nudges 0.1 degrees without shooting",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Dry miss offers break choices to P2",
+            "passed": true
+          },
+          {
+            "name": "Accepting foul grants free ball",
+            "passed": true
+          },
+          {
+            "name": "Touch free-ball confirmation",
+            "passed": true
+          },
+          {
+            "name": "Touch group selection",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical stripe pot assigns groups and keeps turn",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical early 8 loses",
+            "passed": true
+          },
+          {
+            "name": "Finished game rejects shots",
+            "passed": true
+          },
+          {
+            "name": "Touch next-game button",
+            "passed": true
+          },
+          {
+            "name": "Click starts icon motion without moving table balls",
+            "passed": true
+          },
+          {
+            "name": "Contact commits once in the real frame loop",
+            "passed": true
+          },
+          {
+            "name": "Physics shot settles before timeout",
+            "passed": true
+          },
+          {
+            "name": "Physical legal 8 wins",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input",
+            "passed": true
+          },
+          {
+            "name": "Restart first requires confirmation",
+            "passed": true
+          },
+          {
+            "name": "Touch restart clears referee",
+            "passed": true
+          }
+        ]
+      },
+      "spin": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "results": [
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Three touch-sized buttons fit without overlap",
+            "passed": true
+          },
+          {
+            "name": "Tip panel opens without shooting",
+            "passed": true
+          },
+          {
+            "name": "Draft does not apply until done",
+            "passed": true
+          },
+          {
+            "name": "Overlay blocks table placement and aiming",
+            "passed": true
+          },
+          {
+            "name": "Done applies tip without shooting",
+            "passed": true
+          },
+          {
+            "name": "Confirmed tip is visible beside power",
+            "passed": true
+          },
+          {
+            "name": "Cancel restores previous confirmed tip",
+            "passed": true
+          },
+          {
+            "name": "Recenter changes only draft",
+            "passed": true
+          },
+          {
+            "name": "Diagonal selection is bounded by a circle",
+            "passed": true
+          },
+          {
+            "name": "Confirmed recenter restores centre tip",
+            "passed": true
+          },
+          {
+            "name": "Shot reserves confirmed tip",
+            "passed": true
+          },
+          {
+            "name": "Preparing shot blocks tip editing",
+            "passed": true
+          },
+          {
+            "name": "Spin shot commits at contact",
+            "passed": true
+          },
+          {
+            "name": "Tip drives actual angular velocity",
+            "passed": true
+          },
+          {
+            "name": "Spin shot settles within timeout",
+            "passed": true
+          },
+          {
+            "name": "Tip recenters after referee settlement",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches object ball",
+            "passed": true
+          },
+          {
+            "name": "High tip follows after head-on contact",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches object ball",
+            "passed": true
+          },
+          {
+            "name": "Low tip draws after head-on contact",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches cushion",
+            "passed": true
+          },
+          {
+            "name": "Touch confirmation reaches ready",
+            "passed": true
+          },
+          {
+            "name": "Spin reaches cushion",
+            "passed": true
+          },
+          {
+            "name": "Opposite english gives opposite cushion departure",
+            "passed": true
+          }
+        ],
+        "measurements": {
+          "followVz": -0.7084807484591535,
+          "drawVz": 0.6463850781489419,
+          "leftVz": -0.4967729304617049,
+          "rightVz": 0.4967729304617049
+        }
+      },
+      "expanded": {
+        "viewport": {
+          "width": 430,
+          "height": 932,
+          "dpr": 3
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "firstMotionMs": 220,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      },
+      "events": []
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "expanded": {
+        "viewport": {
+          "width": 768,
+          "height": 1024,
+          "dpr": 2
+        },
+        "inputMode": "Synthetic DOM touch",
+        "results": [
+          {
+            "name": "Placement confirmation works through DOM touch",
+            "passed": true
+          },
+          {
+            "name": "Cancelling second finger preserves the owner",
+            "passed": true
+          },
+          {
+            "name": "Multi-touch aim release never shoots",
+            "passed": true
+          },
+          {
+            "name": "Power gesture never turns into table aim",
+            "passed": true
+          },
+          {
+            "name": "Cancelled power gesture releases ownership",
+            "passed": true
+          },
+          {
+            "name": "Releasing outside the shoot button cancels the click",
+            "passed": true
+          },
+          {
+            "name": "Cancelled shoot touch never starts a shot",
+            "passed": true
+          },
+          {
+            "name": "Tip drag stays within the radial selection boundary",
+            "passed": true
+          },
+          {
+            "name": "Tip drag does not apply or shoot",
+            "passed": true
+          },
+          {
+            "name": "Backdrop closes the draft without passing touch through",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at +5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Repeated fine nudges stop at -5 degrees",
+            "passed": true
+          },
+          {
+            "name": "Pause blocks table input and movement",
+            "passed": true
+          },
+          {
+            "name": "Restart requires a separate confirmation",
+            "passed": true
+          },
+          {
+            "name": "Cancelling restart preserves the current rack",
+            "passed": true
+          },
+          {
+            "name": "Projected controls stay inside the browser canvas",
+            "passed": true
+          },
+          {
+            "name": "Main buttons retain 44 logical pixel touch targets",
+            "passed": true
+          }
+        ]
+      },
+      "contact": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "firstMotionMs": 220,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      },
+      "events": []
+    }
+  ],
+  "cpu6Contact": {
+    "engine": "3.8.7",
+    "inputMode": "Browser synthetic DOM touch",
+    "timing": {
+      "frames": 65,
+      "preContactFrames": 13,
+      "noEarlyMotion": true,
+      "firstMotionMs": 220,
+      "contactFrames": 1,
+      "repeatIgnored": true
+    },
+    "checks": {
+      "noEarlyMotion": true,
+      "observedPreparation": true,
+      "contactFrameObserved": true,
+      "firstMotionAtContact": true,
+      "repeatIgnored": true,
+      "cancelledBeforeContact": true,
+      "noGhostAfterResume": true,
+      "frozenAfterContact": true,
+      "resumedWithoutReplay": true
+    },
+    "passed": true,
+    "cpuThrottlingRate": 6,
+    "errors": []
+  },
+  "lifecycle": {
+    "lifecycle": {
+      "mode": "Simulated Cocos hide/show events with DOM resume controls",
+      "checks": {
+        "preparingBeforeHide": true,
+        "hideCancelsPreparation": true,
+        "noMotionWhileHidden": true,
+        "showRequiresExplicitResume": true,
+        "noGhostShotAfterResume": true,
+        "committedShotFreezes": true,
+        "resumesSameShot": true
+      },
+      "passed": true
+    },
+    "round": {
+      "mode": "Controlled target positions; synthetic DOM controls and real physics",
+      "results": [
+        {
+          "name": "Weak break moves decision to the other player",
+          "passed": true
+        },
+        {
+          "name": "Break receiver obtains full-table placement",
+          "passed": true
+        },
+        {
+          "name": "Receiver selects stripes without prematurely assigning groups",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 9 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 10 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 11 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 12 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 13 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 14 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 15 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "All seven stripes are cleared before the black shot",
+          "passed": true
+        },
+        {
+          "name": "Separate legal black shot wins the complete round",
+          "passed": true
+        },
+        {
+          "name": "Next round clears groups, winner and tip",
+          "passed": true
+        }
+      ]
+    },
+    "events": []
+  },
+  "actualTabBackground": {
+    "attempted": true,
+    "observed": false,
+    "gamePageVisibility": "visible",
+    "companionPageVisibility": "visible",
+    "visibilityEvents": 0,
+    "conclusion": "Automation session kept both pages visible; actual tab backgrounding is not certified."
+  },
+  "layout": {
+    "portrait320": {
+      "viewport": [
+        320,
+        568
+      ],
+      "deviceDpr": 1,
+      "engineDpr": 1,
+      "buttons": [
+        {
+          "left": 20,
+          "right": 88,
+          "bottom": 15.999999999999979,
+          "top": 64.00000000000001,
+          "width": 68,
+          "height": 48.000000000000036
+        },
+        {
+          "left": 96,
+          "right": 224,
+          "bottom": 15.999999999999979,
+          "top": 64.00000000000001,
+          "width": 128,
+          "height": 48.000000000000036
+        },
+        {
+          "left": 232,
+          "right": 300,
+          "bottom": 15.999999999999979,
+          "top": 64.00000000000001,
+          "width": 68,
+          "height": 48.000000000000036
+        }
+      ],
+      "phase": "ready",
+      "spinOpen": true,
+      "panel": {
+        "left": 0,
+        "right": 320,
+        "bottom": 0,
+        "top": 495.99999999999994,
+        "width": 320,
+        "height": 495.99999999999994
+      },
+      "hint": {
+        "left": 15.999999999999996,
+        "right": 304,
+        "bottom": 98,
+        "top": 116,
+        "width": 288,
+        "height": 18
+      },
+      "summary": {
+        "left": 15.999999999999996,
+        "right": 304,
+        "bottom": 120,
+        "top": 142,
+        "width": 288,
+        "height": 22
+      },
+      "done": {
+        "left": 133.92000000000002,
+        "right": 296,
+        "bottom": 15.999999999999979,
+        "top": 64.00000000000001,
+        "width": 162.07999999999998,
+        "height": 48.000000000000036
+      },
+      "summaryOverlapsDone": false,
+      "hintInsidePanel": true
+    },
+    "portrait393": {
+      "viewport": [
+        393,
+        852
+      ],
+      "deviceDpr": 2,
+      "engineDpr": 2,
+      "buttons": [
+        {
+          "left": 19.999999999999982,
+          "right": 95.99999999999999,
+          "bottom": 15.999999999999995,
+          "top": 63.99999999999998,
+          "width": 76,
+          "height": 47.999999999999986
+        },
+        {
+          "left": 108,
+          "right": 285,
+          "bottom": 15.999999999999995,
+          "top": 63.99999999999998,
+          "width": 177,
+          "height": 47.999999999999986
+        },
+        {
+          "left": 297,
+          "right": 373,
+          "bottom": 15.999999999999995,
+          "top": 63.99999999999998,
+          "width": 76,
+          "height": 47.999999999999986
+        }
+      ],
+      "phase": "ready",
+      "spinOpen": false
+    },
+    "landscape": {
+      "viewport": [
+        852,
+        393
+      ],
+      "deviceDpr": 1,
+      "engineDpr": 1,
+      "buttons": [
+        {
+          "left": 13.83802816901408,
+          "right": 66.42253521126761,
+          "bottom": 11.070422535211318,
+          "top": 44.2816901408451,
+          "width": 52.584507042253534,
+          "height": 33.21126760563378
+        },
+        {
+          "left": 74.72535211267603,
+          "right": 777.2746478873239,
+          "bottom": 11.070422535211318,
+          "top": 44.2816901408451,
+          "width": 702.5492957746478,
+          "height": 33.21126760563378
+        },
+        {
+          "left": 785.5774647887324,
+          "right": 838.1619718309859,
+          "bottom": 11.070422535211318,
+          "top": 44.2816901408451,
+          "width": 52.58450704225345,
+          "height": 33.21126760563378
+        }
+      ],
+      "phase": "ready",
+      "spinOpen": true,
+      "panel": {
+        "left": 211.00000000000003,
+        "right": 640.9999999999999,
+        "bottom": 0,
+        "top": 385,
+        "width": 429.9999999999999,
+        "height": 385
+      },
+      "hint": {
+        "left": 227,
+        "right": 625,
+        "bottom": -13.000000000000007,
+        "top": 4.99999999999998,
+        "width": 398,
+        "height": 17.999999999999986
+      },
+      "summary": {
+        "left": 227,
+        "right": 625,
+        "bottom": 8.999999999999993,
+        "top": 30.999999999999993,
+        "width": 398,
+        "height": 22
+      },
+      "done": {
+        "left": 384.52,
+        "right": 617,
+        "bottom": 15.999999999999991,
+        "top": 63.999999999999986,
+        "width": 232.48000000000002,
+        "height": 47.99999999999999
+      },
+      "summaryOverlapsDone": true,
+      "hintInsidePanel": false
+    }
+  },
+  "knownIssues": [
+    {
+      "id": "LANDSCAPE-TOUCH",
+      "viewport": [
+        852,
+        393
+      ],
+      "minimumRequired": 44,
+      "observedHeight": 33.21126760563378,
+      "status": "Deferred; portrait baseline retained",
+      "description": "Main button touch height drops below 44 logical pixels."
+    },
+    {
+      "id": "LANDSCAPE-SPIN",
+      "viewport": [
+        852,
+        393
+      ],
+      "status": "Deferred; portrait baseline retained",
+      "description": "Tip summary overlaps Done and hint extends below the panel."
+    }
+  ],
+  "console": {
+    "finalFreshNavigationErrors": 0,
+    "finalFreshNavigationWarnings": 0,
+    "windowErrors": [],
+    "unhandledRejections": [],
+    "failedResources": [],
+    "historicalUndefinedRejection": "Not reproduced in this run; root cause remains unresolved."
+  },
+  "previewFix": {
+    "favicon": "Added local SVG favicon; /favicon.ico returns 200 image/svg+xml",
+    "encodedTraversal": "403 after change"
+  },
+  "limitations": [
+    "Only Chromium browser automation, not Safari/Firefox",
+    "No physical touchscreen, phone performance or real safe-area certification",
+    "Real tab backgrounding not observed: automation kept both pages visible; lifecycle events were simulated separately",
+    "Complete round used controlled target positions, not autonomous natural-rack play",
+    "No WeChat developer tool actions performed"
+  ],
+  "screenshots": [
+    "browser-320x568.png",
+    "browser-393x852.png",
+    "browser-430x932.png",
+    "browser-landscape-issue.png"
+  ],
+  "fps10Contact": {
+    "engine": "3.8.7",
+    "inputMode": "Browser synthetic DOM touch",
+    "timing": {
+      "frames": 11,
+      "preContactFrames": 2,
+      "noEarlyMotion": true,
+      "requestedFrameRate": 10,
+      "firstMotionMs": 220,
+      "firstMotionWallMs": 300,
+      "contactFrames": 1,
+      "repeatIgnored": true
+    },
+    "checks": {
+      "noEarlyMotion": true,
+      "observedPreparation": true,
+      "contactFrameObserved": true,
+      "firstMotionAtContact": true,
+      "repeatIgnored": true,
+      "cancelledBeforeContact": true,
+      "noGhostAfterResume": true,
+      "frozenAfterContact": true,
+      "resumedWithoutReplay": true
+    },
+    "passed": true,
+    "rateBefore": 60,
+    "errors": []
+  },
+  "lowFrameRateNote": "At a 10 FPS cap, 11 rendered frames were recorded. The first moving frame held the 220ms logical contact pose at about 300ms wall-clock; it did not fire early."
+}
+

@@ -1,15 +1,22 @@
-// Developer-only Creator 3.8.7 check. Injected engine events do not certify device/DOM touch.
-async function previewSpinSmoke(engineOverride) {
-    const engine=engineOverride||await System.import('cc');
+// Developer-only. Browser uses synthetic DOM touch; Creator uses its 3.8.7 engine dispatcher.
+async function previewSpinSmoke({inputMode=location.protocol==='packages:'?'engine':'dom'}={}) {
+    const engine=await System.import('cc');
     const game=engine.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
-    if(!game||!game.tip||typeof engine.input._dispatchEventTouch!=='function')throw new Error('Load the spin build in Creator 3.8.7.');
+    if(!game||!game.tip||(inputMode==='engine'&&typeof engine.input._dispatchEventTouch!=='function'))throw new Error('Load the spin build in Creator 3.8.7.');
     const results=[],measurements={};const originalPower=game.power;
     const wait=ms=>new Promise(r=>setTimeout(r,ms));
     const frame=async()=>{await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));await wait(60);};
     const check=(name,passed)=>{results.push({name,passed:!!passed});if(!passed)throw new Error(name);};
+    const canvas=document.getElementById('GameCanvas');
     const event=(point,type,id=94)=>{
-        const t=new engine.Touch(point.x,point.y,id),e=new engine.EventTouch([t],false,type,[t]);
-        e.touch=t;e.simulate=true;engine.input._dispatchEventTouch(e);
+        if(inputMode==='engine') {
+            const t=new engine.Touch(point.x,point.y,id),e=new engine.EventTouch([t],false,type,[t]);
+            e.touch=t;e.simulate=true;engine.input._dispatchEventTouch(e);
+        } else {
+            const rect=canvas.getBoundingClientRect(),t=new Touch({identifier:id,target:canvas,
+                clientX:rect.left+point.x/canvas.width*rect.width,clientY:rect.bottom-point.y/canvas.height*rect.height});
+            canvas.dispatchEvent(new TouchEvent(type.replace('-',''),{bubbles:true,touches:type===engine.Input.EventType.TOUCH_END?[]:[t],changedTouches:[t]}));
+        }
     };
     const tapPoint=async p=>{event(p,engine.Input.EventType.TOUCH_START);event(p,engine.Input.EventType.TOUCH_END);await frame();};
     const tap=n=>tapPoint(game.hudCamera.worldToScreen(n.worldPosition));
@@ -69,7 +76,7 @@ async function previewSpinSmoke(engineOverride) {
         measurements.leftVz=await shotCase({x:-.8,y:0},true);
         measurements.rightVz=await shotCase({x:.8,y:0},true);
         check('Opposite english gives opposite cushion departure',measurements.leftVz*measurements.rightVz<0);
-        return {engine:'3.8.7',inputMode:'Creator internal touch dispatcher',results,measurements};
+        return {engine:'3.8.7',inputMode:inputMode==='engine'?'Creator internal touch dispatcher':'Browser synthetic DOM touch',results,measurements};
     } catch(error){error.results=results;throw error;}
     finally{game.power=originalPower;game.reset();}
 }

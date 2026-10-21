@@ -90,3 +90,9 @@
 ## 用户体验反馈与版本保留
 
 用户已在浏览器手动体验阶段3代码 `19d06fd`，反馈基本可用，要求先推送这一版、其他问题后续修改。保留当前可用基线，本次仅记录反馈，不继续扩展功能或修改游戏行为。用户体验反馈不等同于完整DOM自动回归或微信真机验收。
+
+## 最新：非微信浏览器自动验收
+
+专用Chrome工具本轮正常直接访问8766，完成合成DOM触摸链路。5种竖屏/平板画幅的对应检查、13项受控完整球局、7项模拟Cocos前后台事件、6倍CPU降速和真正10 FPS同步通过；81项逻辑检查仍通过。游戏assets源码未改，新增scripts/preview-browser-validation.js，打点/时序探针支持DOM与Creator双驱动，本地preview.cjs补齐favicon。
+
+详细范围见docs/technical/validation-notes.md及validation/browser-validation.json。横屏触区33.21px与打点文字溢出/重叠按保留基线的决定留待修正。自动化真实页面切换仍报告visible，因此真实后台、真机、安全区和性能未认证。历史undefined rejection本轮未复现，根因未确认。未执行微信开发工具动作。

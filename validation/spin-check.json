@@ -44,7 +44,7 @@
     }
   },
   "temporaryAutorunnerRemoved": true,
-  "browserDomVerified": false,
+  "browserDomVerified": true,
   "wechatDeveloperToolsVerified": false,
   "realDeviceVerified": false,
   "limitations": [
@@ -60,5 +60,6 @@
     "decision": "先推送保留当前版本，其余问题后续迭代",
     "browserAndDevice": "not specified",
     "scope": "General manual browser experience; not exhaustive or automated DOM/device validation"
-  }
+  },
+  "browserDomScope": "Chromium synthetic DOM touch automation; profile-specific coverage and known landscape failures are in browser-validation.json. Not physical hardware or real tab backgrounding."
 }

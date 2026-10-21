@@ -24,8 +24,10 @@ const server = http.createServer((request, response) => {
     try { pathname = decodeURIComponent(new URL(request.url, 'http://127.0.0.1').pathname); }
     catch { response.writeHead(400); response.end(); return; }
     if (pathname.includes('\0')) { response.writeHead(400); response.end(); return; }
-    const file = path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
-    if (!file.startsWith(root + path.sep)) { response.writeHead(403); response.end(); return; }
+    const previewIcon = pathname === '/favicon.ico';
+    const file = previewIcon ? path.join(__dirname, 'preview-favicon.svg')
+        : path.resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
+    if (!previewIcon && !file.startsWith(root + path.sep)) { response.writeHead(403); response.end(); return; }
     fs.stat(file, (error, stat) => {
         if (error || !stat.isFile()) { response.writeHead(404); response.end('Not found'); return; }
         response.writeHead(200, {
