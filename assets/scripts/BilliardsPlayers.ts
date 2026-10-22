@@ -2,13 +2,13 @@
 export interface PlayerProfile {
     id: string;
     nickname: string;
-    avatar: 'forest' | 'sun' | 'default';
+    avatar: 'forest' | 'sun' | 'fox' | 'default';
 }
 
 export function createLocalPlayers(): [PlayerProfile, PlayerProfile] {
     return [
         { id: 'local-1', nickname: '玩家一', avatar: 'forest' },
-        { id: 'local-2', nickname: '玩家二', avatar: 'sun' },
+        { id: 'local-2', nickname: '玩家二', avatar: 'fox' },
     ];
 }
 
@@ -18,7 +18,17 @@ export function playerName(profile: PlayerProfile, seat: number): string {
 
 /** Conservative glyph budgeting; never split a supplementary Unicode character. */
 export function fitNickname(name: string, maxUnits: number): string {
-    const chars = Array.from(name);
+    const api=(typeof Intl==='undefined'?{}:Intl) as unknown as {Segmenter?:new(locale:string,options:{granularity:string})=>{segment(value:string):Iterable<{segment:string}>}};
+    let chars:string[]=[];
+    if(api.Segmenter)chars=Array.from(new api.Segmenter('zh',{granularity:'grapheme'}).segment(name),part=>part.segment);
+    else for(const char of Array.from(name)){
+        const code=char.codePointAt(0)!,previous=chars[chars.length-1]??'';
+        const mark=/[\u0300-\u036f\u1ab0-\u1aff\u1dc0-\u1dff\u20d0-\u20ff\ufe00-\ufe0f]/.test(char);
+        const regional=code>=0x1f1e6&&code<=0x1f1ff;
+        const previousCode=previous.codePointAt(0)??0;
+        if(previous&&(mark||char==='\u200d'||previous.endsWith('\u200d')||(code>=0x1f3fb&&code<=0x1f3ff)||(regional&&Array.from(previous).length===1&&previousCode>=0x1f1e6&&previousCode<=0x1f1ff)))chars[chars.length-1]+=char;
+        else chars.push(char);
+    }
     const units = (char: string): number => /^[\x20-\x7e]$/.test(char) ? 0.6 : 1;
     if (chars.reduce((sum, char) => sum + units(char), 0) <= maxUnits) return name;
     let result = '', used = 0;

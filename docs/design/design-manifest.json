@@ -1,6 +1,6 @@
 {
-  "version": "1.12",
-  "date": "2026-10-21",
+  "version": "1.13",
+  "date": "2026-10-23",
   "direction": "专业球房",
   "referenceFrame": [
     393,
@@ -51,7 +51,7 @@
     "pocket": "#080E0C"
   },
   "pocketGeometry": {
-    "status": "whole-table proportions calibrated; exact pocket profile not finalized; runtime unchanged",
+    "status": "whole-table proportions calibrated; runtime shares an explicitly approximate prototype; manufacturer pocket profile not finalized",
     "ballDiameterMm": 57.15,
     "tableReference": {
       "model": "JOY Q8 Pro",
@@ -80,6 +80,12 @@
       "sideMouthToBallRatio": 1.4348206474190726,
       "rearProfile": "round-ended illustrative path; not measured geometry",
       "physicsUse": false
+    },
+    "runtimeProxy": {
+      "jawRadiusInBallRadii": 0.5,
+      "dropDepthInBallRadii": 1,
+      "source": "assets/scripts/BilliardsTableGeometry.ts",
+      "measurementStatus": "gameplay approximation; not manufacturer measurements"
     },
     "exactGeometry": {
       "sideBackArcDepthMm": null,

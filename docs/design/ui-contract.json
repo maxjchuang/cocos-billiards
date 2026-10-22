@@ -1,0 +1,157 @@
+{
+  "version": "1.13",
+  "date": "2026-10-23",
+  "pixelReference": "screens/S01-正常瞄准.svg",
+  "referenceFrame": [
+    393,
+    852
+  ],
+  "referenceSafeArea": {
+    "top": 47,
+    "bottom": 34
+  },
+  "toleranceLogicalPx": {
+    "controls": 1,
+    "tableProjection": 2
+  },
+  "normalAim": {
+    "cards": [
+      {
+        "x": 20,
+        "y": 99,
+        "w": 171,
+        "h": 74
+      },
+      {
+        "x": 202,
+        "y": 99,
+        "w": 171,
+        "h": 74
+      }
+    ],
+    "table": {
+      "x": 66.52836879432624,
+      "y": 211,
+      "w": 259.9432624113475,
+      "h": 476
+    },
+    "buttons": [
+      {
+        "x": 24,
+        "y": 766,
+        "w": 76,
+        "h": 48
+      },
+      {
+        "x": 112,
+        "y": 766,
+        "w": 169,
+        "h": 48
+      },
+      {
+        "x": 293,
+        "y": 766,
+        "w": 76,
+        "h": 48
+      }
+    ],
+    "power": {
+      "x": 24,
+      "y": 703,
+      "w": 345,
+      "h": 48
+    },
+    "track": {
+      "x": 27,
+      "y": 739,
+      "w": 339,
+      "h": 4
+    },
+    "sliderDiameter": 18
+  },
+  "typography": {
+    "title": 18,
+    "subtitle": 9,
+    "body": 14,
+    "auxiliary": 12,
+    "bottomButton": 14,
+    "panelButton": 16,
+    "fontFamily": "PingFang SC, Noto Sans CJK SC, Arial, sans-serif",
+    "numericFontFamily": "Menlo, Consolas, monospace"
+  },
+  "panels": {
+    "pause": {
+      "x": 31,
+      "y": 248,
+      "w": 331,
+      "h": 374
+    },
+    "confirm": {
+      "x": 31,
+      "y": 265,
+      "w": 331,
+      "h": 314
+    },
+    "result": {
+      "x": 31,
+      "y": 265,
+      "w": 331,
+      "h": 314
+    },
+    "settings": {
+      "x": 24,
+      "y": 190,
+      "w": 345,
+      "h": 568
+    },
+    "rules": {
+      "x": 0,
+      "y": 294,
+      "w": 393,
+      "h": 558
+    },
+    "spin": {
+      "x": 0,
+      "y": 356,
+      "w": 393,
+      "h": 496
+    },
+    "break": {
+      "x": 0,
+      "y": 469,
+      "w": 393,
+      "h": 383
+    }
+  },
+  "adaptation": "Keep 44px touch targets; shorten table when extra actions/fine control consume vertical space. Landscape shows blocking rotation prompt.",
+  "pocketVisual": "Renderer consumes the shared prototype outline. Manufacturer-unverified physical fields remain null; no new measured-depth claims.",
+  "fixtures": "scripts/preview-scenarios.js S01-S15; previewScenarioRestore restores viewport service and match.",
+  "platformWaiver": "User explicitly waived all real-phone and WeChat-specific validation on 2026-10-23.",
+  "localBrowserPerformanceBudget": {
+    "viewport": [
+      393,
+      852,
+      2
+    ],
+    "durationSeconds": 3,
+    "idleAverageFpsMin": 50,
+    "magnifierAverageFpsMin": 45,
+    "p95FrameMsMax": 33.4,
+    "scope": "Local Chromium baseline only, not device certification"
+  },
+  "selectionButtons": [
+    {
+      "x": 24,
+      "y": 738,
+      "w": 166,
+      "h": 60
+    },
+    {
+      "x": 203,
+      "y": 738,
+      "w": 166,
+      "h": 60
+    }
+  ],
+  "colors": "Exact theme tokens; screenshot RGB allows one 8-bit quantization level, excluding anti-alias edges."
+}

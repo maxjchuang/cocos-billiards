@@ -65,3 +65,19 @@ test('reserved tip reaches physics at contact and resets only after the referee 
     assert.notEqual(g.referee.phase,'shooting');assert.deepEqual(g.tip.value,{x:0,y:0});
     assert.deepEqual(snapshot.tipOffset,{x:.3,y:-.4});
 });
+
+test('modal setting changes take effect without changing the match and sound-off stops feedback',()=>{
+ const g=game(),before=JSON.stringify(g.balls);let stopped=0;g.feedback={stop(){stopped++;}};
+ g.pauseGame();g.modalAction('settings');assert.equal(g.panelMode,'settings');g.modalAction('setting:sound');
+ assert.equal(g.settings.value.sound,false);assert.ok(stopped>=2);assert.equal(JSON.stringify(g.balls),before);
+});
+test('cancel restart resumes the existing match and does not reset confirmed tip or power',()=>{
+ const g=game();g.tip.open();g.tip.select(.3,-.4);g.tip.confirm();g.power=3;
+ const before=JSON.stringify(g.balls);g.pauseGame();g.modalAction('restart');assert.equal(g.confirmingRestart,true);
+ g.modalAction('cancel-restart');assert.equal(g.paused,false);assert.equal(g.panelMode,null);assert.equal(g.power,3);assert.deepEqual(g.tip.value,{x:.3,y:-.4});assert.equal(JSON.stringify(g.balls),before);
+});
+test('result table inspection stays paused and new round clears history while retaining preferences',()=>{
+ const g=game();g.paused=true;g.settings.set('magnifier',false);g.history.record({shotId:1,player:0,reason:'犯规',phase:'over',winner:1});
+ g.modalAction('view-table');assert.equal(g.panelMode,'view');assert.equal(g.paused,true);g.modalAction('return-result');assert.equal(g.panelMode,'result');
+ g.modalAction('new-round');assert.equal(g.referee.phase,'placing');assert.equal(g.history.entries.length,0);assert.equal(g.settings.value.magnifier,false);
+});

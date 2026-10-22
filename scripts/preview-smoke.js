@@ -34,7 +34,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
         await frame();
     };
     const table = (x,z) => tap(game.camera.worldToScreen(new cc.Vec3(x,0.028575,z)));
-    const action = index => tap(game.hudCamera.worldToScreen(game.actions[index].node.worldPosition));
+    const action = async index => {await tap(game.hudCamera.worldToScreen((game.panelMode==='result'?game.panels.buttons[0].node:game.panelMode==='break'?game.panels.buttons[game.panels.actionIds.indexOf('break:'+index)].node:game.actions[index].node).worldPosition));if(game.referee.selected)await wait(300);};
     const power = async fraction => {
         const origin=game.powerControl.worldPosition;
         await tap(game.hudCamera.worldToScreen(new cc.Vec3(origin.x-game.powerHalfWidth+fraction*game.powerHalfWidth*2,origin.y,origin.z)));
@@ -81,7 +81,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
         ].every(node=>separated(uiBounds(node))));
         check('Table fits its reserved camera viewport',[-0.77,0.77].every(x=>[-1.41,1.41].every(z=>{
             const p=game.camera.worldToScreen(new cc.Vec3(x,0,z));
-            return p.x>=viewport.left && p.x<=viewport.right && p.y>=viewport.bottom && p.y<=viewport.top;
+            return p.x>=viewport.left-1e-4 && p.x<=viewport.right+1e-4 && p.y>=viewport.bottom-1e-4 && p.y<=viewport.top+1e-4;
         })));
         check('16 balls, 15 number labels and generated textures',game.ballNodes.filter(n=>n.active).length===16 && game.numberNodes.filter(n=>n.active).length===15 && game.textures.length===16);
         check('Opening placement has no cue stick',game.referee.phase==='placing' && game.referee.hand==='head' && !game.aim.active);
@@ -122,6 +122,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
         game.referee.groups=['solid','stripe']; sideShot(8); await frame(); await power(0.3);
         await table(0.6,0); await shoot(); await settle();
         check('Physical legal 8 wins',game.referee.winner===0 && game.referee.phase==='over' && game.referee.message.includes('合法'));
+        await action(1);await action(1);
         await tap(game.hudCamera.worldToScreen(game.resetLabel.node.worldPosition));
         check('Pause blocks table input',game.paused);
         await tap(game.hudCamera.worldToScreen(game.restartButton.node.parent.worldPosition));

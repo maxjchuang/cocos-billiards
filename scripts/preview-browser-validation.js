@@ -140,7 +140,7 @@ async function previewControlledRound() {
     try {
         g.reset();await frame();await tap(g.actions[1].node.parent);g.power=.4;await frame();await table(.5,.65);await tap(g.shotButton.node);await settle();
         check('Weak break moves decision to the other player',g.referee.phase==='choice'&&g.referee.current===1);
-        await tap(g.actions[2].node.parent);check('Break receiver obtains full-table placement',g.referee.phase==='placing'&&g.referee.hand==='any');
+        await tap(g.panelMode==='break'?g.panels.buttons[g.panels.actionIds.indexOf('break:2')].node.parent:g.actions[2].node.parent);check('Break receiver obtains full-table placement',g.referee.phase==='placing'&&g.referee.hand==='any');
         const arrange=id=>{
             for(const b of g.balls){b.vx=b.vz=0;b.wx=b.wy=b.wz=0;
                 if(b.id===0){b.x=.35;b.z=0;}else if(b.id===id){b.x=.52;b.z=0;}
@@ -149,7 +149,7 @@ async function previewControlledRound() {
             g.syncVisuals();
         };
         arrange(9);await frame();await table(.35,0);await tap(g.actions[1].node.parent);await tap(g.actions[1].node.parent);
-        check('Receiver selects stripes without prematurely assigning groups',g.referee.selected==='stripe'&&g.referee.groups[1]===null);
+        await wait(300);check('Receiver selects stripes without prematurely assigning groups',g.referee.selected==='stripe'&&g.referee.groups[1]===null);
         for(let id=9;id<=15;id++) {
             arrange(id);g.power=1.2;await frame();await table(.6,0);await tap(g.shotButton.node);await settle();
             check(`Physical pot ${id} keeps the stripe player at the table`,g.balls[id].pocketed&&g.referee.current===1&&g.referee.phase==='ready'&&g.referee.groups[1]==='stripe');
@@ -157,7 +157,8 @@ async function previewControlledRound() {
         check('All seven stripes are cleared before the black shot',g.balls.filter(b=>b.id>=9&&!b.pocketed).length===0&&!g.balls[8].pocketed);
         arrange(8);await frame();await table(.6,0);await tap(g.shotButton.node);await settle();
         check('Separate legal black shot wins the complete round',g.referee.phase==='over'&&g.referee.winner===1&&g.referee.message.includes('合法'));
-        await tap(g.actions[1].node.parent);check('Next round clears groups, winner and tip',g.referee.phase==='placing'&&g.referee.winner===null&&g.referee.groups.every(x=>x===null)&&g.tip.value.x===0&&g.tip.value.y===0);
+        check('Every settled shot is retained in the actual match history',g.history.entries.length===9&&new Set(g.history.entries.map(e=>e.shotId)).size===9&&g.history.entries.at(-1).winner===1);
+        await tap(g.panelMode==='result'?g.panels.buttons[0].node.parent:g.actions[1].node.parent);check('Next round clears groups, winner and tip',g.referee.phase==='placing'&&g.referee.winner===null&&g.referee.groups.every(x=>x===null)&&g.tip.value.x===0&&g.tip.value.y===0);
         return {mode:'Controlled target positions; synthetic DOM controls and real physics',results};
     }catch(error){error.results=results;throw error;}
     finally{g.power=originalPower;g.reset();}

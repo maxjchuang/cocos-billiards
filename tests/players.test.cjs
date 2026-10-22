@@ -21,3 +21,8 @@ test('long nicknames truncate with ellipsis without splitting supplementary Unic
     assert.equal(fitNickname('凌晨三点还在练球', 6), '凌晨三点还…');
     assert.equal(fitNickname('🎱🎱🎱🎱', 3), '🎱🎱…');
 });
+
+test('nickname ellipsis never splits family emoji, skin tones, flags or combining accents',()=>{
+ for(const symbol of ['👨‍👩‍👦','👍🏽','🇨🇳','e\u0301'])assert.equal(fitNickname(symbol.repeat(3),2),symbol+'…');
+ const original=Intl.Segmenter;try{Intl.Segmenter=undefined;for(const symbol of ['👨‍👩‍👦','👍🏽','🇨🇳','e\u0301'])assert.equal(fitNickname(symbol.repeat(3),2),symbol+'…');}finally{Intl.Segmenter=original;}
+});

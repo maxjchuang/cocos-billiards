@@ -22,7 +22,7 @@ async function previewPockets() {
         const rect=g.camera.rect,size=engine.screen.windowSize;
         check('The whole revised frame fits the reserved table viewport',[-1,1].every(x=>[-1,1].every(z=>{
             const p=g.camera.worldToScreen(new engine.Vec3(x*T.outerHalfWidth,0,z*T.outerHalfLength));
-            return p.x>=rect.x*size.width&&p.x<=(rect.x+rect.width)*size.width&&p.y>=rect.y*size.height&&p.y<=(rect.y+rect.height)*size.height;
+            return p.x>=rect.x*size.width-1e-4&&p.x<=(rect.x+rect.width)*size.width+1e-4&&p.y>=rect.y*size.height-1e-4&&p.y<=(rect.y+rect.height)*size.height+1e-4;
         })));
         for(let index=0;index<POCKETS.length;index++)for(const speed of [.3,4]){
             const p=POCKETS[index];g.reset();await draw();

@@ -18,11 +18,12 @@ export class ShotButtonView {
         const icon=new Node('Animated line icon');icon.layer=Layers.Enum.UI_2D;this.iconRoot.addChild(icon);
         icon.addComponent(UITransform).setContentSize(24,24);this.icon=icon.addComponent(Graphics);
         const text=new Node('Shoot title');text.layer=Layers.Enum.UI_2D;this.node.addChild(text);text.addComponent(UITransform);
-        this.label=text.addComponent(Label);this.label.overflow=Label.Overflow.SHRINK;
+        this.label=text.addComponent(Label);this.label.fontFamily=CLUB.fontFamily;this.label.overflow=Label.Overflow.SHRINK;
     }
-    render(width: number, height: number, s: number, enabled: boolean, active: boolean, ms: number, moving: boolean): void {
+    render(width: number, height: number, s: number, enabled: boolean, active: boolean, ms: number, moving: boolean, reducedMotion=false, pressed=false): void {
         const bg=this.background, g=this.icon;
         bg.clear();bg.fillColor=new Color().fromHEX(enabled||active?CLUB.gold:CLUB.surface);
+        if(pressed)bg.fillColor=new Color().fromHEX('#CCB276');
         bg.roundRect(-width/2,-height/2,width,height,12*s);bg.fill();
         const color=enabled||active?CLUB.background:CLUB.muted;
         const title=active&&!moving?'出杆中':moving?'球运动中':'出杆';
@@ -30,9 +31,9 @@ export class ShotButtonView {
         this.label.color=new Color().fromHEX(color);
         this.label.node.getComponent(UITransform)!.setContentSize(title.length*14*s,32*s);
         this.label.node.setPosition(13*s,0,0);
-        this.iconRoot.setPosition(-(title.length*7+7)*s,0,0);this.iconRoot.setScale(s*20/24,s*20/24,1);
-        const pose=shotPose(ms,active), a=pose.cueShift;
-        g.clear();g.lineWidth=1.8;g.lineCap=Graphics.LineCap.ROUND;g.lineJoin=Graphics.LineJoin.ROUND;
+        this.iconRoot.setPosition(-(title.length*7+3)*s,0,0);this.iconRoot.setScale(s,s,1);
+        const pose=shotPose(ms,active,reducedMotion), a=pose.cueShift;
+        g.clear();g.lineWidth=1.5;g.lineCap=Graphics.LineCap.ROUND;g.lineJoin=Graphics.LineJoin.ROUND;
         g.strokeColor=new Color().fromHEX(color);
         const line=(x:number,y:number,x2:number,y2:number):void=>{g.moveTo(x-12,12-y);g.lineTo(x2-12,12-y2);g.stroke();};
         line(3+a,21-a,11+a,13-a);

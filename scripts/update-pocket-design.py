@@ -1,4 +1,4 @@
-"""Build V1.12 evidence-led design amendments from the committed 3ff5d2e baseline.
+"""Build V1.13 evidence-led design amendments from the committed 3ff5d2e baseline.
 Requires reportlab and pypdf. Game assets, physics and configuration are not modified.
 """
 import io, json, math, re, subprocess
@@ -11,7 +11,7 @@ from reportlab.lib.colors import HexColor
 from pypdf import PdfReader, PdfWriter
 from pypdf.generic import DecodedStreamObject, NameObject
 
-ROOT=Path(__file__).resolve().parents[1]; DESIGN=ROOT/'docs/design'; VERSION='1.12'
+ROOT=Path(__file__).resolve().parents[1]; DESIGN=ROOT/'docs/design'; VERSION='1.13'
 FONT=next(p for p in [Path('/Library/Fonts/Arial Unicode.ttf'),Path('/System/Library/Fonts/Supplemental/Arial Unicode.ttf')] if p.exists())
 pdfmetrics.registerFont(TTFont('Design',str(FONT)))
 BG='#F7F6F1'; INK='#223D32'; MUTED='#64786B'; FELT='#21584B'; WOOD='#69503A'; RAIL='#163E34'; GOLD='#DEC58D'
@@ -41,7 +41,7 @@ def rect(c,x,y,w,h,color,r=0):
     else:c.rect(x,y,w,h,fill=1,stroke=0)
 def frame(c,title,subtitle,page):
     rect(c,0,0,1200,900,BG);text(c,48,860,'EIGHT CLUB / UI UX DESIGN',11,MUTED)
-    text(c,970,860,'V1.12 / 2026.10.22',11,MUTED);text(c,48,812,title,29)
+    text(c,970,860,'V1.13 / 2026.10.23',11,MUTED);text(c,48,812,title,29)
     lines(c,48,780,subtitle,1100,13,20);text(c,48,22,'专业球房 / 资料核验修订 / 不作为实物加工图',10,MUTED);text(c,1130,22,str(page),11,MUTED)
 def line(c,x1,y1,x2,y2,color=MUTED,dash=False):
     c.setStrokeColor(HexColor(color));c.setLineWidth(1);c.setDash(4,3) if dash else c.setDash();c.line(x1,y1,x2,y2);c.setDash()
@@ -52,19 +52,16 @@ def dimension(c,x1,y1,x2,y2,label):
         else:line(c,x-5,y,x+5,y)
     text(c,(x1+x2)/2-40,(y1+y2)/2+9,label,13)
 
+def prototype_geometry():
+    code="""const fs=require('fs'),ts=require('typescript'),Module=require('module');
+const m=new Module('table-prototype');m._compile(ts.transpileModule(fs.readFileSync('assets/scripts/BilliardsTableGeometry.ts','utf8'),{compilerOptions:{target:7,module:1}}).outputText,'table-prototype.js');
+console.log(JSON.stringify({pockets:m.exports.POCKETS,rails:m.exports.CUSHION_PATHS}));"""
+    return json.loads(subprocess.check_output(['node','-e',code],cwd=ROOT))
+PROTOTYPE=prototype_geometry()
 def pocket_shapes(cx,cy,scale):
-    """Visual prototype only. Mouth width follows candidate 85/82 mm, rear is unmeasured."""
-    iw=IN_W*scale;ih=IN_L*scale
-    for sx in [-1,1]:
-        for sz in [-1,0,1]:
-            width=(85 if sz else 82)*scale
-            nx,ny=(sx/math.sqrt(2),sz/math.sqrt(2)) if sz else (sx,0)
-            x=cx+sx*iw/2;y=cy+sz*ih/2
-            if sz:x-=nx*width/2;y-=ny*width/2
-            # Round-ended opening is illustrative; these pixel ratios are not physical parameters.
-            local=[(-width/2,0)]+[(width/2*math.sin(a),width*.3+width/2*math.cos(a)) for a in [-math.pi/2+i*math.pi/32 for i in range(33)]]+[(width/2,0)]
-            pts=[(x+ny*u+nx*v,y-nx*u+ny*v) for u,v in local]
-            yield width,pts
+    for pocket in PROTOTYPE['pockets']:
+        yield pocket['mouth']*1000*scale,[(cx+p['x']*1000*scale,cy-p['z']*1000*scale) for p in pocket['outline']]
+
 
 def table(c,cx,cy,outer_h,balls=False):
     s=outer_h/OUT_L;ow=OUT_W*s;iw=IN_W*s;ih=IN_L*s
@@ -77,6 +74,11 @@ def table(c,cx,cy,outer_h,balls=False):
         p=c.beginPath();p.moveTo(*pts[0])
         for xy in pts[1:]:p.lineTo(*xy)
         p.close();c.drawPath(p,fill=1,stroke=1)
+    for rail in PROTOTYPE['rails']:
+        points=[(cx+p['x']*1000*s,cy-p['z']*1000*s) for p in rail['polygon']]
+        c.setFillColor(HexColor(RAIL));p=c.beginPath();p.moveTo(*points[0])
+        for point in points[1:]:p.lineTo(*point)
+        p.close();c.drawPath(p,fill=1,stroke=0)
     if balls:
         c.setFillColor(HexColor('#F5F1E6'));c.circle(cx,cy-ih*.24,BALL*s/2,fill=1,stroke=0)
     return s,ow,iw,ih
@@ -126,7 +128,7 @@ def appendix_ui():
         rect(c,50,y-66,1100,70,'#EAF0E7' if (710-y)//82%2==0 else BG)
         text(c,65,y-13,a,17);text(c,350,y-13,b,16);text(c,350,y-43,d,14,MUTED);y-=82
     lines(c,60,180,'落地前需同一型号的正俯视袋口参考和尺寸图或测量，明确胶边测量点、石板开孔、皮口与球心失去支承的位置。若只有照片，只能形成标注近似的视觉原型，不能宣称精确物理还原。',1080,16,27)
-    lines(c,60,78,'本轮仅修订设计文档与图稿。游戏仍沿用2540×1270 mm台面与旧袋口；不自动替换为1260 mm，也不实现尚未核实的深度。完整证据链接见pocket-geometry-spec.md。',1080,13,22)
+    lines(c,60,78,'V1.13按统一布局与共享仿真代理实现。功能与运行验收状态见execution-plan.md；此图不提供未经核实的实物深度。完整证据链接见pocket-geometry-spec.md。',1080,13,22)
     c.showPage();c.save();out.seek(0);return PdfReader(out)
 
 def appendix_product():
@@ -142,12 +144,12 @@ def appendix_product():
         ('图稿状态','整桌比例按厂家公开内外尺寸校准。局部中袋图为结构示意；其轮廓不标虚构毫米值，也不直接用于碰撞。早期PDF界面图仅说明流程，新图G01/G02说明比例与结构。'),
         ('落地前的证据','取得同一型号袋口俯视资料及尺寸图或测量，明确胶边测量点、开孔轮廓、皮口边缘和失去支承位置。无法精确核验时，仅做明确标注近似的视觉原型。'),
         ('验证要求','分别验证六袋正向、擦袋角、沿库与斜角、袋前不提前消失、白球落袋犯规、非法摆球及辅助线一致性。逻辑、Creator/浏览器与手机结果分别记录。'),
-        ('当前交付','产品、UI/UX、可编辑图稿、manifest和技术方案同步到V1.12。游戏代码未改，仍使用原台面及旧袋口；设计参考型号不自动改变当前游戏尺寸。')])]
+        ('当前交付','产品、UI/UX、可编辑图稿、manifest和技术方案同步到V1.13。当前实现与验收状态见execution-plan.md；未核验实物参数继续为空；当前游戏采用1260×2540 mm台面与共享简化袋口代理，不宣称厂家型号复刻。')])]
     for page,(title,items) in enumerate(sections,8):
         rect(c,0,0,596,842,BG);text(c,42,802,'EIGHT CLUB / PRODUCT DESIGN',10,MUTED);text(c,42,755,title,24)
-        text(c,42,724,'V1.12 / 2026-10-22 / 资料核验修订',11,MUTED);y=674
+        text(c,42,724,'V1.13 / 2026-10-23 / 资料核验修订',11,MUTED);y=674
         for a,b in items:text(c,42,y,a,15);y=lines(c,42,y-27,b,510,12,21)-22
-        text(c,42,28,'专业球房 / V1.12 / 整桌比例已校准，袋型仍需核验',8.5,MUTED);text(c,542,28,str(page),10);c.showPage()
+        text(c,42,28,'专业球房 / V1.13 / 整桌比例已校准，袋型仍需核验',8.5,MUTED);text(c,542,28,str(page),10);c.showPage()
     c.save();out.seek(0);return PdfReader(out)
 
 # A renderer-independent SVG reference: full table dimensions and readable candidate mouth proportions.
@@ -155,7 +157,11 @@ def svg_table(cx,cy,outer_h):
     s=outer_h/OUT_L;ow=OUT_W*s;iw=IN_W*s;ih=IN_L*s
     a=[f'<g data-table-reference="JOY Q8 Pro" data-pocket-status="candidate-mouth-width-unverified-rear-profile">',f'<rect x="{cx-ow/2}" y="{cy-outer_h/2}" width="{ow}" height="{outer_h}" rx="8" fill="{WOOD}"/>',f'<rect x="{cx-iw/2-3}" y="{cy-ih/2-3}" width="{iw+6}" height="{ih+6}" rx="3" fill="{RAIL}"/>',f'<rect x="{cx-iw/2}" y="{cy-ih/2}" width="{iw}" height="{ih}" fill="{FELT}"/>']
     for width,pts in pocket_shapes(cx,cy,s):
+        pts=[(x,2*cy-y) for x,y in pts]
         a.append('<path data-role="pocket-visual-prototype" d="M '+' L '.join(f'{x:.5f},{y:.5f}' for x,y in pts)+' Z" fill="#080E0C" stroke="#503F2E" stroke-width="'+str(max(.3,width*.04))+'"/>')
+    for rail in PROTOTYPE['rails']:
+        pts=[(cx+p['x']*1000*s,cy+p['z']*1000*s) for p in rail['polygon']]
+        a.append('<path d="M '+' L '.join(f'{x:.5f},{y:.5f}' for x,y in pts)+' Z" fill="'+RAIL+'"/>')
     return ''.join(a)+'</g>',s,iw,ih
 
 def update_screens():
@@ -197,6 +203,28 @@ def update_screens():
                         g.append(ballgroup);j=last+1;continue
                 root.remove(e);g.append(e);j+=1
             root.insert(start+1,g)
+
+        for element in root.iter():
+            if 'font-family' in element.attrib:element.set('font-family','Menlo, Consolas, monospace' if element.tag==SVG+'text' and (element.text or '').strip().replace('%','').isdigit() else 'PingFang SC, Noto Sans CJK SC, Arial, sans-serif')
+        # First-contact guide follows the same expanded-ball geometry as the engine.
+        fixture=ROOT/'validation/fixtures-s01.json'
+        if fixture.exists():
+            positions=json.loads(fixture.read_text())['positions'];cue=positions['0'];target=positions['4'];dx=target[0]-cue[0];dz=target[1]-cue[1];length=math.hypot(dx,dz);dx/=length;dz/=length;nearest=float('inf')
+            for key,point in positions.items():
+                if key=='0':continue
+                ox=cue[0]-point[0];oz=cue[1]-point[1];along=ox*dx+oz*dz;disc=along*along-(ox*ox+oz*oz-(BALL/1000)**2)
+                if along<0 and disc>=0:nearest=min(nearest,-along-math.sqrt(disc))
+            if math.isfinite(nearest) and payload:
+                world_x=cue[0]+dx*nearest;world_z=cue[1]+dz*nearest;px=196.5+world_x*(476/2.82);py=449+world_z*(476/2.82)
+                # Existing normal-state composition is uniformly fitted to this table.
+                k=iw/oldw;local_x=(px-cx*(1-k))/k;local_y=(py-cy*(1-k))/k
+                guides=[e for e in g if e.tag==SVG+'line' and e.attrib.get('stroke-dasharray')=='3,4']
+                if guides:
+                    guides[0].set('x2',str(local_x));guides[0].set('y2',str(local_y))
+                    for optional in guides[1:]:g.remove(optional)
+                    for circle in g:
+                        if circle.tag==SVG+'circle' and circle.attrib.get('stroke')=='#DDE9C8':
+                            circle.set('cx',str(local_x));circle.set('cy',str(local_y));circle.set('r',str(BALL/2000*(476/2.82)/k))
         root.set('data-design-version',VERSION);root.set('data-pocket-profile','not-finalized')
         p.write_text(ET.tostring(root,encoding='unicode'));count+=1
     return count
@@ -205,10 +233,10 @@ def editable_plates():
     markup,s,iw,ih=svg_table(275,455,560)
     template=f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="{BG}"/>'+markup
     def t(x,y,value,size=20):return f'<text x="{x}" y="{y}" font-family="Arial Unicode MS,PingFang SC,Arial,sans-serif" font-size="{size}" fill="{INK}">{value}</text>'
-    template+=t(48,70,'G01 · 整桌比例校准 / V1.12',30)+t(500,220,'JOY Q8 Pro：外沿2820×1540 mm',25)+t(500,265,'同一型号内沿2540×1260 mm',25)+t(500,330,'每侧整体边带约140 mm：推算，非胶条宽度',20)+t(500,395,'视觉原型开口约1.5球径，袋内曲线仅为示意',19)+t(500,455,'撤销旧浅弧与深度定稿；不从旧UI反推实物',19)+t(500,520,'BOJUE候选开口＋JOY整桌比例：不是型号复刻',19)+t(500,585,'精确中袋轮廓、皮口、支承区：待同型号核验',19)+t(48,820,'来源与状态见 pocket-geometry-spec.md；本图不用于生成物理参数。',17)+'</svg>'
+    template+=t(48,70,'G01 · 整桌比例校准 / V1.13',30)+t(500,220,'JOY Q8 Pro：外沿2820×1540 mm',25)+t(500,265,'同一型号内沿2540×1260 mm',25)+t(500,330,'每侧整体边带约140 mm：推算，非胶条宽度',20)+t(500,395,'视觉原型开口约1.5球径，袋内曲线仅为示意',19)+t(500,455,'撤销旧浅弧与深度定稿；不从旧UI反推实物',19)+t(500,520,'BOJUE候选开口＋JOY整桌比例：不是型号复刻',19)+t(500,585,'精确中袋轮廓、皮口、支承区：待同型号核验',19)+t(48,820,'来源与状态见 pocket-geometry-spec.md；本图不用于生成物理参数。',17)+'</svg>'
     (DESIGN/'screens/G01-袋口同比例规范.svg').write_text(template)
     # Qualitative layer diagram: intentionally no manufactured radius/depth values.
-    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="{BG}"/>'+t(48,70,'G02 · 中袋构造关系 / V1.12',30)
+    svg=f'<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900"><rect width="1200" height="900" fill="{BG}"/>'+t(48,70,'G02 · 中袋构造关系 / V1.13',30)
     svg+=f'<rect x="90" y="230" width="600" height="370" rx="12" fill="{WOOD}"/><rect x="90" y="415" width="600" height="185" fill="{FELT}"/><circle cx="390" cy="380" r="74" fill="#080E0C"/><path d="M 310 380 A 80 80 0 0 1 470 380" fill="none" stroke="{GOLD}" stroke-width="8"/><path d="M 90 415 H 310 Q 335 415 335 390 M 445 390 Q 445 415 470 415 H 690" fill="none" stroke="{RAIL}" stroke-width="18"/>'
     svg+=t(750,260,'胶边入口',23)+t(750,315,'石板圆弧缺口',23)+t(750,370,'皮口与下方袋网',23)+t(750,445,'轮廓未按同型号尺寸核验',19)+t(750,490,'不量取半径、纵深或落袋线',19)+t(90,690,'结构依据：CN115350466A。此图只区分部件，不是JOY Q8 Pro加工图。',19)+t(90,745,'18 mm浅弧、55 mm总深及旧12/25 mm参数均不再作为实施依据。',19)+'</svg>'
     (DESIGN/'screens/G02-中袋结构关系.svg').write_text(svg)
@@ -268,18 +296,24 @@ def patch_pdf_tables(page):
 
 def update_pdf(name,base_count,appendix,is_ui):
     r=PdfReader(io.BytesIO(baseline('docs/design/'+name)));w=PdfWriter()
-    for p in r.pages[:base_count]:
+    for page_index,p in enumerate(r.pages[:base_count]):
         data=patch_pdf_tables(p) if is_ui else p.get_contents().get_data()
-        stream=DecodedStreamObject();stream.set_data(data.replace(b'V1.9',b'V1.12').replace(b'2026.10.21',b'2026.10.22'));p[NameObject('/Contents')]=stream
+        stream=DecodedStreamObject();stream.set_data(data.replace(b'V1.9',b'V1.13').replace(b'2026.10.21',b'2026.10.23'));p[NameObject('/Contents')]=stream
         buf=io.BytesIO();c=canvas.Canvas(buf,pagesize=(float(p.mediabox.width),float(p.mediabox.height)))
         if is_ui:
-            rect(c,280,8,800,27,BG);text(c,290,21,'V1.12：旧球桌图仅说明流程；旧袋型参数停用。整桌比例与结构以25–27页为准。',10,MUTED)
+            rect(c,280,8,800,27,BG);text(c,290,21,'V1.13：旧球桌图仅说明流程；旧袋型参数停用。整桌比例与结构以25–27页为准。',10,MUTED)
         else:
-            rect(c,40,18,475,22,BG);text(c,42,28,'专业球房 / V1.12 / 撤销旧浅弧定稿；修订见8–9页',8.5,MUTED)
+            rect(c,40,18,475,22,BG);text(c,42,28,'专业球房 / V1.13 / 撤销旧浅弧定稿；修订见8–9页',8.5,MUTED)
+        if is_ui and page_index==1:
+            rect(c,625,412,525,42,BG)
+            text(c,632,434.16,'x66.53，y211，259.94×476',11)
+            text(c,887,434.16,'内沿按1260×2540换算',11)
+        if is_ui:
+            text(c,290,35,'像素基准：SVG与ui-contract.json；PDF用于规范、流程与页面索引。',9,MUTED)
         c.save();buf.seek(0);p.merge_page(PdfReader(buf).pages[0]);w.add_page(p)
     for p in appendix.pages:w.add_page(p)
     for p in w.pages:p.compress_content_streams()
-    w.add_metadata({'/Title':name[:-4]+' V1.12','/Author':'Cocos Billiards Design','/Subject':'Evidence review: table proportions and pocket structure; profile not finalized'})
+    w.add_metadata({'/Title':name[:-4]+' V1.13','/Author':'Cocos Billiards Design','/Subject':'Evidence review: table proportions and pocket structure; profile not finalized'})
     with open(DESIGN/name,'wb') as f:w.write(f)
     print(name,len(w.pages),'pages')
 
@@ -287,6 +321,6 @@ if __name__=='__main__':
     editable_plates();print('Editable screens calibrated:',update_screens())
     update_pdf('中式八球产品设计方案.pdf',7,appendix_product(),False)
     update_pdf('中式八球UIUX设计方案.pdf',24,appendix_ui(),True)
-    p=DESIGN/'design-manifest.json';m=json.loads(p.read_text());m['version']=VERSION
-    m['pocketGeometry']={'status':'whole-table proportions calibrated; exact pocket profile not finalized; runtime unchanged','ballDiameterMm':BALL,'tableReference':{'model':'JOY Q8 Pro','outerMm':[OUT_L,OUT_W],'innerMm':[IN_L,IN_W],'overallBorderInferredMm':140,'borderInference':'symmetric centred layout; not cushion-only width','source':JOY},'crossBrandCandidate':{'brand':'BOJUE','cornerMouthMm':85,'sideMouthMm':82,'status':'not verified for JOY; do not merge as one model','source':BOJUE},'visualPrototype':{'mouthSource':'BOJUE cross-brand candidate','cornerMouthToBallRatio':85/BALL,'sideMouthToBallRatio':82/BALL,'rearProfile':'round-ended illustrative path; not measured geometry','physicsUse':False},'exactGeometry':{'sideBackArcDepthMm':None,'sideTotalDepthMm':None,'jawRadiusMm':None,'shelfDepthMm':None,'slateCutProfile':None,'dropBoundary':None},'withdrawnV110':['18 mm shallow elliptical back','55 mm total depth','67.4 mm frame as real constraint','12.4 mm margin','12 mm jaw radius as implementation parameter','25 mm shelf as implementation parameter'],'structureSource':PATENT,'spec':'pocket-geometry-spec.md','uiuxPages':[25,26,27],'productPages':[8,9]}
+    p=DESIGN/'design-manifest.json';m=json.loads(p.read_text());m['version']=VERSION;m['date']='2026-10-23'
+    m['pocketGeometry']={'status':'whole-table proportions calibrated; runtime shares an explicitly approximate prototype; manufacturer pocket profile not finalized','ballDiameterMm':BALL,'tableReference':{'model':'JOY Q8 Pro','outerMm':[OUT_L,OUT_W],'innerMm':[IN_L,IN_W],'overallBorderInferredMm':140,'borderInference':'symmetric centred layout; not cushion-only width','source':JOY},'crossBrandCandidate':{'brand':'BOJUE','cornerMouthMm':85,'sideMouthMm':82,'status':'not verified for JOY; do not merge as one model','source':BOJUE},'visualPrototype':{'mouthSource':'BOJUE cross-brand candidate','cornerMouthToBallRatio':85/BALL,'sideMouthToBallRatio':82/BALL,'rearProfile':'round-ended illustrative path; not measured geometry','physicsUse':False},'runtimeProxy':{'jawRadiusInBallRadii':0.5,'dropDepthInBallRadii':1,'source':'assets/scripts/BilliardsTableGeometry.ts','measurementStatus':'gameplay approximation; not manufacturer measurements'},'exactGeometry':{'sideBackArcDepthMm':None,'sideTotalDepthMm':None,'jawRadiusMm':None,'shelfDepthMm':None,'slateCutProfile':None,'dropBoundary':None},'withdrawnV110':['18 mm shallow elliptical back','55 mm total depth','67.4 mm frame as real constraint','12.4 mm margin','12 mm jaw radius as implementation parameter','25 mm shelf as implementation parameter'],'structureSource':PATENT,'spec':'pocket-geometry-spec.md','uiuxPages':[25,26,27],'productPages':[8,9]}
     p.write_text(json.dumps(m,ensure_ascii=False,indent=2)+'\n')

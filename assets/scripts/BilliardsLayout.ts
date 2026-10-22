@@ -6,43 +6,32 @@ export interface HudLayout {
     status: HudRect; reset: HudRect; players: [HudRect, HudRect]; turn: HudRect;
     playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect; shoot: HudRect; fineButton: HudRect; fine: HudRect; spinButton: HudRect;
 }
-export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; }
+export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; showDecision?:boolean; }
 
-/** Reserve touch-sized controls first; shrink decorative spacing on short portrait screens. */
-export function computeHudLayout(width: number, height: number, options: HudOptions = {}): HudLayout {
-    const scale = Math.min(1, width / 320, height / 568);
-    const s = scale, gap = 8*s, margin = 20*s;
-    const inset = options.insets ?? {};
-    const left = Math.max(0, inset.left ?? 0), right = Math.max(0, inset.right ?? 0);
-    const top = Math.max(0, inset.top ?? 0), bottom = Math.max(0, inset.bottom ?? 0);
-    const innerWidth = width - left - right - margin*2;
-    const reset = { x: left + margin, y: top + gap, width: 44*s, height: 44*s };
-    // Keep the upper right free for the host menu. No fake host capsule is drawn.
-    const status = { x: reset.x + 56*s, y: reset.y, width: Math.max(44*s, innerWidth - 152*s), height: 44*s };
-    const playerWidth = (innerWidth - gap) / 2;
-    const players: [HudRect, HudRect] = [0, 1].map(index => ({
-        x: left + margin + index * (playerWidth + gap), y: reset.y + 52*s,
-        width: playerWidth, height: 74*s,
-    })) as [HudRect, HudRect];
-    const turn = { x: left+margin, y: players[0].y + players[0].height + 4*s, width: innerWidth, height: 24*s };
-    const count = options.actionCount ?? 1;
-    const showPower = options.showPower ?? true;
-    const actionHeight = count === 3 ? 172*s : count > 0 ? 48*s : 0;
-    const powerHeight = showPower ? 64*s : 0;
-    const decisionHeight = (count === 3 ? 48 : 40)*s;
-    const extraHeight = (options.showShot ? 56*s : 0)+(options.showFine ? 52*s : 0);
-    const dockHeight = extraHeight + decisionHeight + actionHeight + powerHeight + (count > 0 ? gap : 0) + (showPower ? gap : 0) + gap*2;
-    const dock = { x: left+margin, y: height-bottom-gap-dockHeight, width: innerWidth, height: dockHeight };
-    const decision = { x: dock.x, y: dock.y+gap, width: innerWidth, height: decisionHeight };
-    const actions = { x: dock.x, y: decision.y+decisionHeight+(count>0?gap:0), width: innerWidth, height: actionHeight };
-    const fine = { x: dock.x, y: actions.y+actionHeight+gap, width: innerWidth, height: options.showFine?44*s:0 };
-    const power = { x: dock.x, y: actions.y+actionHeight+(showPower?gap:0)+(options.showFine?52*s:0), width: innerWidth, height: powerHeight };
-    const fineButton = { x:dock.x, y:power.y+power.height+gap, width:76*s, height:48*s };
-    const sideWidth=(width<360?68:76)*s,buttonGap=(width<360?8:12)*s;
-    fineButton.width=sideWidth;
-    const spinButton={x:dock.x+innerWidth-sideWidth,y:fineButton.y,width:sideWidth,height:48*s};
-    const shoot = { x:dock.x+sideWidth+buttonGap, y:fineButton.y, width:innerWidth-2*sideWidth-2*buttonGap, height:48*s };
-    const tableTop = turn.y+turn.height+gap;
-    const playArea = { x: left+margin, y: tableTop, width: innerWidth, height: dock.y-gap-tableTop };
-    return { width, height, scale, status, reset, players, turn, playArea, dock, decision, actions, power, shoot, fineButton, fine, spinButton };
+/** Frozen reference layout. Short screens compress the table, never the touch targets. */
+export function computeHudLayout(width:number,height:number,options:HudOptions={}):HudLayout {
+    const compact=height<700;const s=1,scale=1,inset=options.insets??{},left=Math.max(0,inset.left??0),right=Math.max(0,inset.right??0);
+    const top=Math.max(0,inset.top??0),bottom=Math.max(0,inset.bottom??0),innerWidth=width-left-right-40;
+    const reset={x:left+14,y:top,width:44,height:44};
+    const status={x:left+68,y:top+8,width:Math.max(44,innerWidth-100),height:24};
+    const gap=11,playerWidth=(innerWidth-gap)/2;
+    const players=[0,1].map(i=>({x:left+20+i*(playerWidth+gap),y:top+(compact?46:52),width:playerWidth,height:compact?64:74})) as [HudRect,HudRect];
+    const turn={x:left+20,y:top+(compact?114:128),width:innerWidth,height:24};
+    const count=options.actionCount??1,showPower=options.showPower??true,showShot=options.showShot??showPower;
+    const sideWidth=width<360?68:76,buttonGap=width<360?8:12,controlMargin=width<360?20:24,controlWidth=width-left-right-controlMargin*2;
+    const buttonY=height-bottom-52;
+    const fineButton={x:left+controlMargin,y:buttonY,width:sideWidth,height:48};
+    const spinButton={x:width-right-controlMargin-sideWidth,y:buttonY,width:sideWidth,height:48};
+    const shoot={x:fineButton.x+sideWidth+buttonGap,y:buttonY,width:controlWidth-2*sideWidth-2*buttonGap,height:48};
+    const power={x:left+controlMargin,y:buttonY-63,width:controlWidth,height:showPower?48:0};
+    const fine={x:left+controlMargin,y:power.y-52,width:controlWidth,height:options.showFine?44:0};
+    const actionsHeight=count===3?160:count===2&&!showPower?60:count>0?48:0;
+    const decisionHeight=options.showDecision===false?0:!showPower&&count===1?48:40;
+    const bottomAnchor=showShot?power.y-(options.showFine?52:0):buttonY+48;
+    const actions={x:left+controlMargin,y:count===2&&!showPower?height-bottom-80:bottomAnchor-actionsHeight-(showShot&&actionsHeight?8:0),width:controlWidth,height:actionsHeight};
+    const decision={x:left+controlMargin,y:count===1&&!showPower?height-bottom-115:count===2&&!showPower?actions.y-44.5:actions.y-(decisionHeight?decisionHeight+8:0),width:controlWidth,height:decisionHeight};
+    const dock={x:left+20,y:decision.y,width:innerWidth,height:height-bottom-4-decision.y};
+    const tableTop=turn.y+turn.height+(compact?10:12);
+    const playArea={x:left+20,y:tableTop,width:innerWidth,height:Math.max(1,Math.min(476,dock.y-tableTop-(count===2&&!showPower?4:8)))};
+    return {width,height,scale,status,reset,players,turn,playArea,dock,decision,actions,power,shoot,fineButton,fine,spinButton};
 }

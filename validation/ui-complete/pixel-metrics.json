@@ -1,0 +1,163 @@
+{
+  "method": "Same local Chromium font stack, DPR2, glyph ink bounds in selected S01 regions; host chrome excluded. Control and panel bounds are independently checked by previewLayoutAcceptance. Not a whole-image equality claim.",
+  "text": {
+    "title": {
+      "reference": [
+        70.0,
+        59.0,
+        69.0,
+        17.0
+      ],
+      "actual": [
+        70.0,
+        58.5,
+        69.0,
+        17.0
+      ],
+      "maxLogicalPxError": 0.5,
+      "passed": true
+    },
+    "subtitle": {
+      "reference": [
+        69.0,
+        81.0,
+        34.5,
+        8.5
+      ],
+      "actual": [
+        69.0,
+        81.0,
+        34.5,
+        8.5
+      ],
+      "maxLogicalPxError": 0.0,
+      "passed": true
+    },
+    "nickname": {
+      "reference": [
+        70.5,
+        108.0,
+        55.0,
+        13.0
+      ],
+      "actual": [
+        70.5,
+        108.5,
+        55.0,
+        13.0
+      ],
+      "maxLogicalPxError": 0.5,
+      "passed": true
+    },
+    "shootText": {
+      "reference": [
+        197.0,
+        783.0,
+        25.5,
+        12.5
+      ],
+      "actual": [
+        197.0,
+        783.5,
+        25.5,
+        12.5
+      ],
+      "maxLogicalPxError": 0.5,
+      "passed": true
+    },
+    "powerCaption": {
+      "reference": [
+        25.0,
+        709.0,
+        46.5,
+        11.0
+      ],
+      "actual": [
+        25.0,
+        709.0,
+        46.5,
+        11.0
+      ],
+      "maxLogicalPxError": 0.0,
+      "passed": true
+    },
+    "powerValue": {
+      "reference": [
+        346.5,
+        710.0,
+        22.0,
+        9.5
+      ],
+      "actual": [
+        346.5,
+        710.0,
+        22.0,
+        9.5
+      ],
+      "maxLogicalPxError": 0.0,
+      "passed": true
+    }
+  },
+  "colors": {
+    "background": {
+      "token": "#101D1B",
+      "sample": [
+        16,
+        29,
+        27
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    },
+    "activeCard": {
+      "token": "#182B23",
+      "sample": [
+        24,
+        43,
+        35
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    },
+    "inactiveCard": {
+      "token": "#14231E",
+      "sample": [
+        20,
+        35,
+        30
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    },
+    "wood": {
+      "token": "#69503A",
+      "sample": [
+        105,
+        80,
+        58
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    },
+    "felt": {
+      "token": "#21584B",
+      "sample": [
+        33,
+        88,
+        75
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    },
+    "primary": {
+      "token": "#DEC58D",
+      "sample": [
+        222,
+        197,
+        141
+      ],
+      "maxChannelError": 0,
+      "passed": true
+    }
+  }
+}

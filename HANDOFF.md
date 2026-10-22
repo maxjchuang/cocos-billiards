@@ -1,3 +1,13 @@
+# 最新交接（2026-10-23）
+
+本轮已执行完整UI/UX计划，最新入口为docs/technical/execution-plan.md与validation/ui-complete/acceptance.json。99项测试通过，Creator CLI导入/Web Mobile构建及Chromium合成DOM触摸回归通过，15状态截图/像素测量与附加短屏/DPR/安全区、旋转/低帧率均有证据。26项通过；Q04仅原生Creator GUI复验仍受Mac锁屏阻止，Q05真实手机与所有微信构建/工具/真机已获用户明确豁免，不要再次要求AppID或启动微信验证。
+
+下一步：Mac解锁后从原生Creator启动预览完成Q04剩余复核；不要把CLI/browser证据冒充原生GUI预览。成功构建退出36后已有window.json恢复缓存错误，不是游戏运行错误。本轮浏览器error/warn/unhandledrejection为0，历史拒绝错误根因未确认。
+
+新增SettingsStore/MatchHistory、Panels、Feedback、Magnifier；默认音效/辅助/放大开、振动/减少动态关。设置本机保存且失败降级，本局判罚保留全部并分页，长昵称可查看完整身份。实际击球仍在图标220ms触球同帧且唯一提交。设计与实际共用近似袋型，精确厂家参数为空，未实现联网。
+
+以下为历史交接，涉及计数、缺失功能和待办时以上述最新清单为准。
+
 # 当前交接（2026-10-21）
 
 ## 最新补充：手机 UI 文字清晰度

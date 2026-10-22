@@ -1,3 +1,15 @@
+# 最新：完整UI/UX验收（2026-10-23）
+
+最新结果以[execution-plan.md](execution-plan.md)、[机器报告](../../validation/ui-complete/acceptance.json)与[截图总览](../../validation/ui-complete/contact-sheet.png)为准：99项Node检查、Web Mobile构建及浏览器回归通过；计划26项通过、Q04原生Creator GUI复验待解锁、Q05真机与微信相关用户豁免。下文旧横屏问题已由竖屏阻挡策略替代，局部放大/音效/振动与完整状态已实现，不再是当前缺失。
+
+参考393×852 DPR2、安全区47/34：56项布局、35项原对局、28打点、17异常输入、81完整方案、12反馈、14完整受控球局、28袋口、3分辨率通过。附加320×568 DPR1（0/0）、430×932 DPR3（59/34）、393×852 DPR2（59/34）各有17输入、81方案、45布局、9触球检查。15状态固定截图可通过preview-scenarios.js复现。
+
+真实viewport横竖旋转、横屏DOM触摸阻挡和旋回球局/力度保留通过；10 FPS逐帧9项通过。模拟Cocos前后台事件7项通过，真实操作系统后台不认证。音频解码与AudioSource播放状态、触球事件和关闭即停有检查，未认证实际扬声器听感；振动受控适配器检查不等于实体震动认证。
+
+本机Chromium普通与放大瞄准约60FPS，P95分别17.8/17.4ms，50次菜单往返组件365不增长；无新warn/error/unhandledrejection。历史undefined rejection根因仍未知。Creator CLI成功退出36后有既有编辑器window.json恢复缓存报错，未将其计为游戏异常。原生GUI仍需Mac解锁后复验。
+
+下文保留历史验证范围，不能用其旧计数覆盖本轮结果。
+
 # 浏览器自动验证记录
 
 代码基线 `19d06fd`。使用 Chromium 打开 Cocos Web Mobile 构建，通过合成 DOM TouchEvent 进入实际页面监听、Cocos输入、物理、裁判与绘制循环。未使用微信开发者工具；没有修改游戏assets源码。完整数据见 [browser-validation.json](../../validation/browser-validation.json)。

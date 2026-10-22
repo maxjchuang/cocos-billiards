@@ -1,6 +1,7 @@
 /** Shared design tokens. Values are logical pixels unless expressed as colours. */
 export const CLUB = {
-    background: '#101D1B', surface: '#1C2B25', activeSurface: '#243E32',
+    fontFamily: 'PingFang SC, Noto Sans CJK SC, Arial, sans-serif',numberFontFamily:'Menlo, Consolas, monospace',
+    background: '#101D1B', surface: '#1C2B25', activeSurface: '#182B23',
     felt: '#21584B', cushion: '#163E34', wood: '#69503A', gold: '#DEC58D',
     ink: '#F5F1E6', muted: '#A6B5AC', foul: '#E0AE73', loss: '#D99588',
     line: '#A4C3AD', pocket: '#080E0C', track: '#3A4D40',
