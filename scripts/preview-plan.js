@@ -1,12 +1,13 @@
-// Development-only acceptance: real Cocos UI and synthetic DOM touch. Resets current match.
-async function previewPlan() {
+// Development-only acceptance: real Cocos UI and synthetic DOM or Creator engine touch. Resets current match.
+async function previewPlan({inputMode=location.protocol==='packages:'?'engine':'dom'}={}) {
  const m=await System.import('cc'),g=m.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
- if(!g?.panels||!navigator.maxTouchPoints)throw Error('Load Main in touch emulation.');
+ if(!g?.panels||(inputMode==='dom'&&!navigator.maxTouchPoints))throw Error('Load Main in touch emulation.');
+ if(inputMode==='engine'&&(cc.ENGINE_VERSION!=='3.8.7'||typeof m.input._dispatchEventTouch!=='function'))throw Error('Engine touch driver is pinned to Creator 3.8.7.');
  const canvas=document.getElementById('GameCanvas'),results=[];
  const wait=ms=>new Promise(r=>setTimeout(r,ms));
  const frame=async()=>{await new Promise(r=>m.director.once(m.Director.EVENT_AFTER_DRAW,r));await wait(30);};
  const check=(name,passed)=>{results.push({name,passed:!!passed});if(!passed)throw Error(name);};
- const send=(type,p)=>{const rect=canvas.getBoundingClientRect(),t=new Touch({identifier:882,target:canvas,clientX:rect.left+p.x/canvas.width*rect.width,clientY:rect.bottom-p.y/canvas.height*rect.height});canvas.dispatchEvent(new TouchEvent(type,{bubbles:true,cancelable:true,touches:type==='touchend'||type==='touchcancel'?[]:[t],targetTouches:[],changedTouches:[t]}));};
+ const send=(type,p)=>{if(inputMode==='engine'){const finger=new m.Touch(p.x,p.y,882),event=new m.EventTouch([finger],false,({touchstart:m.Input.EventType.TOUCH_START,touchmove:m.Input.EventType.TOUCH_MOVE,touchend:m.Input.EventType.TOUCH_END,touchcancel:m.Input.EventType.TOUCH_CANCEL})[type],[finger]);event.touch=finger;event.simulate=true;m.input._dispatchEventTouch(event);return;}const rect=canvas.getBoundingClientRect(),t=new Touch({identifier:882,target:canvas,clientX:rect.left+p.x/canvas.width*rect.width,clientY:rect.bottom-p.y/canvas.height*rect.height});canvas.dispatchEvent(new TouchEvent(type,{bubbles:true,cancelable:true,touches:type==='touchend'||type==='touchcancel'?[]:[t],targetTouches:[],changedTouches:[t]}));};
  const tap=async node=>{const p=g.hudCamera.worldToScreen(node.worldPosition);send('touchstart',p);send('touchend',p);await frame();};
  const action=async id=>{const i=g.panels.actionIds.indexOf(id);check('Action exists: '+id,i>=0);await tap(g.panels.buttons[i].node.parent);};
  const saved={...g.settings.value},players=g.players.map(p=>({...p}));
@@ -37,7 +38,7 @@ async function previewPlan() {
   await action('back-pause');await action('restart');check('Restart requires separate confirmation',g.panelMode==='confirm'&&g.confirmingRestart);
   await action('cancel-restart');check('Cancelling restart retains the match',JSON.stringify(g.balls)===before);
   check('Resume dismisses the modal without shooting',!g.paused&&!g.panelMode&&g.referee.phase==='ready');
-  g.players[0].nickname='很长的昵称'.repeat(5)+'🎱'.repeat(10);await frame();await tap(g.playerCards[0].node);check('Identity shows the full nickname and avatar',g.panelMode==='identity'&&g.panels.body.string.includes(g.players[0].nickname)&&g.panels.body.actualFontSize/m.screen.devicePixelRatio>=12);await action('close-identity');check('Identity close preserves match',!g.paused&&JSON.stringify(g.balls)===before);
+  g.players[0].nickname='很长的昵称'.repeat(5)+'🎱'.repeat(10);await frame();await tap(g.playerCards[0].node);check('Identity shows the full nickname and avatar',g.panelMode==='identity'&&g.panels.body.string.includes(g.players[0].nickname)&&g.panels.body.actualFontSize/g.hudPixelRatio>=12);await action('close-identity');check('Identity close preserves match',!g.paused&&JSON.stringify(g.balls)===before);
   const cue=g.balls[0];const aim=g.camera.worldToScreen(new m.Vec3(.2,.028575,.3));send('touchstart',aim);await frame();check('Table aiming shows the contact magnifier',g.magnifier.node.active);send('touchend',aim);await frame();check('Magnifier closes on release',!g.magnifier.node.active&&!g.shotSequence.active);
   await tap(g.fineButton.node.parent);check('Fine aim keeps magnifier visible',g.fineAim.active&&g.magnifier.node.active);
   g.settings.set('magnifier',false);await frame();check('Magnifier setting hides it immediately',!g.magnifier.node.active);g.settings.set('magnifier',true);
@@ -56,7 +57,7 @@ async function previewPlan() {
   check('All four packed audio clips are loaded',g.feedback.available===4);
   g.settings.set('sound',false);const count=g.feedback.events.length;g.feedback.play('strike');check('Sound-off suppresses playback requests',g.feedback.events.length===count);
   check('No page errors were captured',(window.__uxErrors??[]).length===0);
-  return {engine:cc.ENGINE_VERSION,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},mode:'Synthetic DOM touch, real Cocos components',results};
+  return {engine:cc.ENGINE_VERSION,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},mode:inputMode==='engine'?'Creator synthetic engine touch, real Cocos components':'Synthetic DOM touch, real Cocos components',results};
  }catch(e){e.results=results;throw e;}
  finally{for(const key of Object.keys(saved))g.settings.set(key,saved[key]);g.players=players;g.reset();}
 }

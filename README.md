@@ -20,7 +20,7 @@ Cocos Creator **3.8.7** + TypeScript。目标仅为移动端小程序/小游戏�
 
 完整界面、暂停/设置/规则记录/重开确认/胜负与查看台面、长昵称身份、接触点放大、本地音效与可选振动已落地。五项设置立即生效并保存本机，存储不可用时提示本局有效；横屏显示旋转提示并保留球局，旋回后点击继续。
 
-99项Node测试与类型检查、Creator资源导入及Web Mobile构建通过。Chromium合成DOM触摸覆盖393参考与三种附加画幅、15状态截图、完整球局、六袋和10 FPS触球时序；本机瞄准/放大约60 FPS。证据见[验收报告](validation/ui-complete/acceptance.json)与[截图](validation/ui-complete/contact-sheet.png)。26项已通过；原生Creator GUI复验仍被Mac锁屏阻止（Q04部分通过）；真机及微信相关验收按用户要求豁免（Q05）。未声称所有验收全部通过。
+100项Node测试与类型检查、Creator资源导入及Web Mobile构建通过。Chromium合成DOM触摸覆盖393参考与三种附加画幅、15状态截图、完整球局、六袋和10 FPS触球时序；本机瞄准/放大约60 FPS。证据见[验收报告](validation/ui-complete/acceptance.json)与[截图](validation/ui-complete/contact-sheet.png)。27项已通过，真机及微信相关验收按用户要求豁免（Q05）。Creator内置预览另通过81项界面、35项对局、28项打点和9项触球检查，原生预览复核已完成。
 
 ## 触屏操作
 

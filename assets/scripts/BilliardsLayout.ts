@@ -8,6 +8,16 @@ export interface HudLayout {
 }
 export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; showDecision?:boolean; }
 
+/** A shrunken embedded preview still lays out a complete mobile frame.
+ * Physical pixels per HUD unit may differ from device DPR when the preview is zoomed.
+ * Mobile acceptance targets begin at 320 CSS pixels; smaller frames are scaled presentations.
+ */
+export function computeHudViewport(pixelWidth:number,pixelHeight:number,deviceDpr:number):{width:number;height:number;pixelRatio:number} {
+    const dpr=Math.max(1,deviceDpr||1),cssWidth=pixelWidth/dpr,cssHeight=pixelHeight/dpr;
+    const zoom=cssWidth>0&&cssWidth<320&&cssHeight>cssWidth?320/cssWidth:1;
+    return {width:cssWidth*zoom,height:cssHeight*zoom,pixelRatio:dpr/zoom};
+}
+
 /** Frozen reference layout. Short screens compress the table, never the touch targets. */
 export function computeHudLayout(width:number,height:number,options:HudOptions={}):HudLayout {
     const compact=height<700;const s=1,scale=1,inset=options.insets??{},left=Math.max(0,inset.left??0),right=Math.max(0,inset.right??0);

@@ -153,5 +153,7 @@
       "h": 60
     }
   ],
-  "colors": "Exact theme tokens; screenshot RGB allows one 8-bit quantization level, excluding anti-alias edges."
+  "colors": "Exact theme tokens; screenshot RGB allows one 8-bit quantization level, excluding anti-alias edges.",
+  "minimumCertifiedViewportWidth": 320,
+  "scaledEmbeddedPreview": "Frames narrower than 320 CSS pixels use a proportional mobile presentation with a minimum logical width of 320. Pointer conversion and font sampling use physical pixels per HUD unit; such zoomed frames do not certify physical 44px touch targets."
 }

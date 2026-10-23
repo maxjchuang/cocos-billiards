@@ -1,6 +1,6 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
-const {computeHudLayout}=require(process.env.BILLIARDS_LAYOUT_MODULE);
+const {computeHudLayout,computeHudViewport}=require(process.env.BILLIARDS_LAYOUT_MODULE);
 const overlap=(a,b)=>a.x<b.x+b.width-0.001 && b.x<a.x+a.width-0.001 && a.y<b.y+b.height-0.001 && b.y<a.y+a.height-0.001;
 
 for(const [width,height] of [[320,568],[360,640],[393,852],[430,932],[736,842],[768,1024],[852,393]]) {
@@ -65,4 +65,20 @@ test('frozen 393 reference matches approved cards, controls and table viewport',
  assert.deepEqual(l.players[0],{x:20,y:99,width:171,height:74});assert.deepEqual(l.players[1],{x:202,y:99,width:171,height:74});
  assert.deepEqual(l.shoot,{x:112,y:766,width:169,height:48});assert.equal(l.power.y,703);assert.equal(l.playArea.y,211);assert.equal(l.playArea.height,476);
  const projectedWidth=l.playArea.height*1.54/2.82;assert.ok(Math.abs(projectedWidth-259.9432624113475)<1e-6);
+});
+
+
+test('embedded preview zoom preserves a complete mobile layout and inverse pointer mapping',()=>{
+    const v=computeHudViewport(358,780,2);
+    assert.equal(v.width,320);assert.ok(Math.abs(v.height-697.2067039106145)<1e-8);
+    assert.ok(Math.abs(v.pixelRatio-358/320)<1e-10);
+    const ui=computeHudLayout(v.width,v.height,{showPower:true,showShot:true,actionCount:0,showDecision:false});
+    for(const r of [ui.shoot,ui.fineButton,ui.spinButton,...ui.players]){
+        assert.ok(r.x>=0&&r.width>=44&&r.height>=44&&r.x+r.width<=v.width);
+        const physicalX=(r.x+r.width/2)*v.pixelRatio,physicalY=(v.height-r.y-r.height/2)*v.pixelRatio;
+        assert.ok(Math.abs(physicalX/v.pixelRatio-r.x-r.width/2)<1e-8);
+        assert.ok(Math.abs((780-physicalY)/v.pixelRatio-r.y-r.height/2)<1e-8);
+    }
+    assert.ok(ui.playArea.height>200);
+    for(const [w,h,dpr] of [[786,1704,2],[320,568,1],[860,1864,2]])assert.deepEqual(computeHudViewport(w,h,dpr),{width:w/dpr,height:h/dpr,pixelRatio:dpr});
 });

@@ -2,7 +2,8 @@
 
 2026-10-23；Cocos Creator 3.8.7 Web Mobile，Chromium156，合成DOM触摸。不会认证手机硬件。项目入口和状态以docs/technical/execution-plan.md为准。
 
-- acceptance.json：99项Node测试、CLI构建结果、各画幅浏览器流程、S01–S15投影测量、性能、10FPS和旋转报告。反馈12项包含不支持音频解锁时不阻断触摸。
+- creator-native.json/png：从原生Creator打开Main并Play的153项引擎触摸检查和实际画面，游戏错误收集为空。
+- acceptance.json：100项Node测试、CLI构建结果、各画幅浏览器流程、S01–S15投影测量、性能、10FPS和旋转报告。反馈12项包含不支持音频解锁时不阻断触摸。
 - S01.png–S15.png：393×852 DPR2、安全区47/34的同状态引擎截图；contact-sheet.png为总览。
 - reference-S01.png：相同Chromium/字体/画幅的SVG截图；包含宿主示意，其状态栏、胶囊、底部指示条不属于游戏实现对照区域。
 - pixel-metrics.json：S01六处文字的字形墨迹范围（目标色阈值18/255）、六种纯色中心采样；不宣称整图栅格逐像素相同。
@@ -16,4 +17,4 @@
 
 previewScenario('S01')至'S15'会设置固定昵称、球位、状态和安全区，供截图对照；结束运行previewScenarioRestore()恢复安全区服务、设置和初始球局。球位夹具及SVG哈希保存在validation/fixtures-s01.json。previewPerformance()记录普通/放大各3秒与50次菜单往返。低帧率用引擎game.frameRate=10后执行previewContactProbe()，必须在finally恢复原帧率。
 
-原生Creator GUI复验仍被系统锁屏阻止；Q04只完成CLI导入/构建与浏览器运行部分。真实手机和微信构建/开发工具/真机为用户明确豁免。真实后台、实际扬声器听感、实体振动、设备安全区与Safari未认证；本机性能不推广到设备。
+原生Creator GUI复核已完成；creator-native.json/png记录从Main启动的81/35/28/9项引擎触摸检查与画面，游戏error/rejection为0。此前调试连接和更正前的粘贴诊断错误未混作游戏错误。真实手机和微信构建/开发工具/真机为用户明确豁免。真实后台、实际扬声器听感、实体振动、设备安全区与Safari未认证；本机性能不推广到设备。

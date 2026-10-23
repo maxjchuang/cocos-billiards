@@ -12,7 +12,7 @@ import { BallState, createRack, FIXED_STEP, isMoving, step, TABLE, HEAD_LINE } f
 
 import { Referee, groupName, remaining } from './BilliardsRules';
 
-import { computeHudLayout, HudLayout, HudRect } from './BilliardsLayout';
+import { computeHudLayout, computeHudViewport, HudLayout, HudRect } from './BilliardsLayout';
 import { CLUB, BALL_COLORS } from './BilliardsTheme';
 import { createLocalPlayers, playerName, playerMessage, fitNickname } from './BilliardsPlayers';
 import { PlayerCardView } from './BilliardsPlayerCard';
@@ -106,6 +106,7 @@ export class BilliardsGame extends Component {
     private groupHint!:Label;
     private decisionHint!:Label;
     private uiTime=0;
+    private hudPixelRatio=1;
     private notificationAt=0;
     private lastContactShotId=0;
     private groupSelectedAt=-1000;
@@ -440,7 +441,7 @@ export class BilliardsGame extends Component {
     private begin(x: number, y: number): void {
         this.pendingAction=null;
         this.feedback?.unlock();
-        this.lastPointer={x:x/Math.max(1,screen.devicePixelRatio),y:screen.windowSize.height/Math.max(1,screen.devicePixelRatio)-y/Math.max(1,screen.devicePixelRatio)};
+        this.lastPointer={x:x/this.hudPixelRatio,y:(screen.windowSize.height-y)/this.hudPixelRatio};
         if(this.rotationBlocked)return;
         if(this.panelMode&&this.panels){
             const modalTargets:Action[]=this.panels.actionIds.map((_,i)=>`modal-${i}` as Action);if(this.panelMode==='result')modalTargets.push('winner-identity');
@@ -468,7 +469,7 @@ export class BilliardsGame extends Component {
     }
     private move(x: number, y: number): void {
         if(this.panelMode||this.rotationBlocked)return;
-        this.lastPointer={x:x/Math.max(1,screen.devicePixelRatio),y:screen.windowSize.height/Math.max(1,screen.devicePixelRatio)-y/Math.max(1,screen.devicePixelRatio)};
+        this.lastPointer={x:x/this.hudPixelRatio,y:(screen.windowSize.height-y)/this.hudPixelRatio};
         if (this.pendingAction!==null||this.paused||this.shotSequence.active) return;
         if(this.adjustingSpin){this.setSpinAt(x,y);return;}
         if(this.tip.active)return;
@@ -638,14 +639,15 @@ export class BilliardsGame extends Component {
 
     private layoutHud(labels: string[]): void {
         const size = screen.windowSize;
-        // Window size is physical pixels; HUD geometry uses CSS/logical pixels.
-        const dpr = Math.max(1, screen.devicePixelRatio);
-        const width = size.width / dpr, height = size.height / dpr;
+        // A scaled embedded preview can be narrower than a mobile frame.
+        // Geometry and pointers share the same physical-pixel/HUD-unit ratio.
+        const {width,height,pixelRatio}=computeHudViewport(size.width,size.height,screen.devicePixelRatio);
+        this.hudPixelRatio=pixelRatio;
         // TTF labels rasterize using view.getScaleX(), independently of the HUD camera.
-        // Match the design resolution to logical pixels so text is sampled at render DPR,
+        // Match the design resolution to HUD units so text uses the actual render scale,
         // rather than enlarging low-resolution glyph textures from the old 960px design.
         const design = view.getDesignResolutionSize();
-        if (design.width !== width || design.height !== height || Math.abs(view.getScaleX() - dpr) > 0.001) {
+        if (design.width !== width || design.height !== height || Math.abs(view.getScaleX() - pixelRatio) > 0.001) {
             view.setDesignResolutionSize(width, height, ResolutionPolicy.EXACT_FIT);
             // Unchanged strings also need new textures after orientation/DPR changes.
             this.status.node.parent!.getComponentsInChildren(Label).forEach(label => label.updateRenderData(true));
@@ -856,7 +858,7 @@ export class BilliardsGame extends Component {
         const screenPoint=this.camera.worldToScreen(new Vec3(ball.x,TABLE.radius,ball.z));
         const p=this.hudCamera.screenToWorld(new Vec3(screenPoint.x,screenPoint.y,0));
         const edge=this.camera.worldToScreen(new Vec3(ball.x+TABLE.radius,TABLE.radius,ball.z));
-        const r=Math.abs(edge.x-screenPoint.x)/Math.max(1,screen.devicePixelRatio)+3;
+        const r=Math.abs(edge.x-screenPoint.x)/this.hudPixelRatio+3;
         g.strokeColor=new Color().fromHEX(invalid?CLUB.loss:CLUB.gold);g.lineWidth=1.5;g.circle(p.x,p.y,r);g.stroke();
         if(invalid){g.moveTo(p.x-4,p.y-4);g.lineTo(p.x+4,p.y+4);g.moveTo(p.x-4,p.y+4);g.lineTo(p.x+4,p.y-4);g.stroke();}
     }
