@@ -40,7 +40,7 @@ async function previewPlan({inputMode=location.protocol==='packages:'?'engine':'
   check('Resume dismisses the modal without shooting',!g.paused&&!g.panelMode&&g.referee.phase==='ready');
   g.players[0].nickname='很长的昵称'.repeat(5)+'🎱'.repeat(10);await frame();await tap(g.playerCards[0].node);check('Identity shows the full nickname and avatar',g.panelMode==='identity'&&g.panels.body.string.includes(g.players[0].nickname)&&g.panels.body.actualFontSize/g.hudPixelRatio>=12);await action('close-identity');check('Identity close preserves match',!g.paused&&JSON.stringify(g.balls)===before);
   const cue=g.balls[0];const aim=g.camera.worldToScreen(new m.Vec3(.2,.028575,.3));send('touchstart',aim);await frame();check('Table aiming shows the contact magnifier',g.magnifier.node.active);send('touchend',aim);await frame();check('Magnifier closes on release',!g.magnifier.node.active&&!g.shotSequence.active);
-  await tap(g.fineButton.node.parent);check('Fine aim keeps magnifier visible',g.fineAim.active&&g.magnifier.node.active);
+  await tap(g.fineButton.node.parent);check('Fine aim shows magnifier when space permits, keeping short-screen pockets unobstructed',g.fineAim.active&&(g.magnifier.node.active||g.hudLayout.playArea.height<300));
   g.settings.set('magnifier',false);await frame();check('Magnifier setting hides it immediately',!g.magnifier.node.active);g.settings.set('magnifier',true);
   g.settings.set('aimGuide',false);await frame();check('Aim switch retains direction',g.direction&&Number.isFinite(g.direction.x));g.settings.set('aimGuide',true);
   await tap(g.spinButton.node.parent);check('Spin overlay hides magnification',g.tip.active&&!g.magnifier.node.active);await tap(g.spinPanel.cancel.node.parent);

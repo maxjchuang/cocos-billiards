@@ -45,3 +45,40 @@ export function computeHudLayout(width:number,height:number,options:HudOptions={
     const playArea={x:left+20,y:tableTop,width:innerWidth,height:Math.max(1,Math.min(476,dock.y-tableTop-(count===2&&!showPower?4:8)))};
     return {width,height,scale,status,reset,players,turn,playArea,dock,decision,actions,power,shoot,fineButton,fine,spinButton};
 }
+
+/** Place a read-only magnifier without hiding pockets, cue/contact or the finger.
+ * Protected rectangles already include their visual clearance. A safe previous position
+ * is sticky: small aim changes must not make the window jump between equally good slots.
+ */
+export function placeMagnifier(area:HudRect,protectedRects:readonly HudRect[],pointer:{x:number;y:number}|null,previous:HudRect|null):HudRect|null {
+    const inset=8,left=area.x+inset,top=area.y+inset,right=area.x+area.width-inset,bottom=area.y+area.height-inset;
+    const overlap=(a:HudRect,b:HudRect):boolean=>a.x<b.x+b.width-.001&&a.x+a.width>b.x+.001&&a.y<b.y+b.height-.001&&a.y+a.height>b.y+.001;
+    const finger=pointer?{x:pointer.x-24,y:pointer.y-24,width:48,height:48}:null;
+    const safe=(r:HudRect):boolean=>r.x>=left-.001&&r.y>=top-.001&&r.x+r.width<=right+.001&&r.y+r.height<=bottom+.001&&
+        !protectedRects.some(p=>overlap(r,p))&&(!finger||!overlap(r,finger));
+    const distance=(r:HudRect,p:{x:number;y:number}):number=>Math.hypot(Math.max(r.x-p.x,0,p.x-r.x-r.width),Math.max(r.y-p.y,0,p.y-r.y-r.height));
+    if(previous&&safe(previous))return previous;
+    for(const scale of [1,112/132,96/132]) {
+        const width=132*scale,height=116*scale;
+        if(right-left<width||bottom-top<height)continue;
+        const xs=[left,(left+right-width)/2,right-width],ys=[top,bottom-height];
+        // Pocket and contact edges provide exact safe alternatives on short tables.
+        for(const p of [...protectedRects,...(finger?[finger]:[])]) {
+            xs.push(p.x-width,p.x+p.width);ys.push(p.y-height,p.y+p.height);
+        }
+        for(let y=top;y<=bottom-height;y+=16)ys.push(y);
+        const clamp=(v:number,min:number,max:number):number=>Math.max(min,Math.min(max,v));
+        const unique=(v:number[]):number[]=>Array.from(new Set(v));
+        const candidates=unique(xs.map(x=>clamp(x,left,right-width))).flatMap(x=>unique(ys.map(y=>clamp(y,top,bottom-height))).map(y=>({x,y,width,height}))).filter(safe);
+        // Stay near a lateral edge and away from the active finger/first-contact region.
+        const score=(r:HudRect):number=>{
+            const fingerDistance=pointer?distance(r,pointer):0;
+            const edge=Math.min(r.x-left,right-r.x-r.width);
+            return fingerDistance-edge*.5-(r.y-top)*.01;
+        };
+        candidates.sort((a,b)=>score(b)-score(a));
+        if(candidates.length)return candidates[0];
+    }
+    // A magnifier is optional; it must never win over an unobstructed pocket.
+    return null;
+}

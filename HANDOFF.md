@@ -1,6 +1,8 @@
 # 最新交接（2026-10-23）
 
-本轮已执行完整UI/UX计划，最新入口为docs/technical/execution-plan.md与validation/ui-complete/acceptance.json。100项测试通过，Creator CLI导入/Web Mobile构建及Chromium合成DOM触摸回归通过，15状态截图/像素测量与附加短屏/DPR/安全区、旋转/低帧率均有证据。27项通过；Q04原生Creator GUI复核已通过，Q05真实手机与所有微信构建/工具/真机已获用户明确豁免，不要再次要求AppID或启动微信验证。
+补充：修复放大窗遮挡袋口。按实际相机投影保护六袋12px与母球/首碰18px，避手24px；保持安全位置，132/112/96宽度分级，放不下则隐藏。约束见docs/design/magnifier-placement.md，专项证据见validation/magnifier。当前106项Node测试通过；既有100项和完整计划报告保留为上轮基线。Cocos构建器会将Set展开错误转成concat，因此去重使用Array.from(Set)，实际Web Mobile回归已覆盖。三个手机尺寸和缩小嵌入画幅各45项专项及81项界面回归通过，Creator重新打开Main并Play后45项原生引擎触摸检查通过。证据见validation/magnifier/acceptance.json与creator-native.json。
+
+此前已执行完整UI/UX计划，最新入口为docs/technical/execution-plan.md与validation/ui-complete/acceptance.json。100项测试通过，Creator CLI导入/Web Mobile构建及Chromium合成DOM触摸回归通过，15状态截图/像素测量与附加短屏/DPR/安全区、旋转/低帧率均有证据。27项通过；Q04原生Creator GUI复核已通过，Q05真实手机与所有微信构建/工具/真机已获用户明确豁免，不要再次要求AppID或启动微信验证。
 
 原生复核已完成：备份空的本机窗口恢复缓存后，从Creator打开Main并Play，使用固定3.8.7引擎触摸驱动通过81/35/28/9项。发现并修复缩小嵌入预览低于320 CSS宽时的控件挤压，使用320逻辑宽度同比例呈现，指针与字体统一使用真实像素/逻辑单位比例。正常手机画幅布局未变。证据为creator-native.json/png；不是硬件触摸认证。CLI可能重新写出空window.json；本机缓存备份不进入仓库。历史拒绝错误根因未确认，本轮游戏error/rejection为0。
 

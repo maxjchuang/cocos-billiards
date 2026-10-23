@@ -1,3 +1,11 @@
+# 最新补充：放大窗避让袋口（2026-10-23）
+
+106项Node测试与类型检查通过，Creator Web Mobile构建退出36。320×568 DPR1、393×852 DPR2、430×932 DPR3、179×390 DPR2缩小呈现各45项专项和81项界面回归通过；实际Mask四角投影验证与所有袋口12px禁入区不相交。短屏拖动使用96宽窗口，展开微调无安全位置时暂时隐藏，不遮挡袋口。Creator从Main重新Play后45项引擎触摸专项通过。浏览器与原生正确映射后的游戏error/rejection收集均为空。
+
+本机普通/放大瞄准各3秒约60 FPS，P95分别17.7/18.7ms，50次菜单往返组件365不增长。专项脚本与范围见[validation/magnifier](../../validation/magnifier/README.md)。初次原生探针沿用Web Mobile chunk路径导致导入失败，改用编辑器import-map文件URL后通过；不作为游戏异常。源码避免Set展开，防止Creator的loose转译把集合变成单项数组；Node测试不足以替代这次实际引擎回归。
+
+以下为完整UI/UX基线的历史记录，不以新专项替代历史安全区和设备范围。
+
 # 最新：完整UI/UX验收（2026-10-23）
 
 最新结果以[execution-plan.md](execution-plan.md)、[机器报告](../../validation/ui-complete/acceptance.json)与[截图总览](../../validation/ui-complete/contact-sheet.png)为准：100项Node检查、Web Mobile构建及浏览器回归通过；计划27项通过、Q05真机与微信相关用户豁免。下文旧横屏问题已由竖屏阻挡策略替代，局部放大/音效/振动与完整状态已实现，不再是当前缺失。

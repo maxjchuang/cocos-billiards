@@ -1,0 +1,497 @@
+{
+  "date": "2026-10-23",
+  "scope": "Creator GUI Main.scene Play; synthetic engine touch; repository geometry imported using editor import-map",
+  "report": {
+    "engine": "3.8.7",
+    "inputMode": "engine",
+    "viewport": {
+      "width": 203,
+      "height": 441,
+      "dpr": 2
+    },
+    "hud": {
+      "width": 320,
+      "height": 695.1724137931035,
+      "pixelRatio": 1.26875
+    },
+    "results": [
+      {
+        "name": "Pocket 0: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 0: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: aiming opens magnifier",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: every pocket retains 12px clearance",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: rendered mask matches reported bounds",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: cue and target stay visible",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: unchanged aim keeps a stable window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: release hides the window",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5: fine aim keeps pockets visible or hides in constrained space",
+        "passed": true
+      },
+      {
+        "name": "Spin overlay hides the magnifier",
+        "passed": true
+      },
+      {
+        "name": "Setting off hides it immediately",
+        "passed": true
+      },
+      {
+        "name": "Cancelled touch leaves no floating magnifier",
+        "passed": true
+      }
+    ],
+    "measurements": [
+      {
+        "pocket": 0,
+        "kind": "corner",
+        "bounds": {
+          "x": 99.14490095377846,
+          "y": 260.6810072736792,
+          "width": 131.99999999999997,
+          "height": 116
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      },
+      {
+        "pocket": 1,
+        "kind": "side",
+        "bounds": {
+          "x": 160,
+          "y": 187.18998647349656,
+          "width": 132,
+          "height": 115.99999999999991
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      },
+      {
+        "pocket": 2,
+        "kind": "corner",
+        "bounds": {
+          "x": 160,
+          "y": 187.18998647349656,
+          "width": 132,
+          "height": 115.99999999999991
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      },
+      {
+        "pocket": 3,
+        "kind": "corner",
+        "bounds": {
+          "x": 99.14490095377846,
+          "y": 260.6810072736792,
+          "width": 131.99999999999997,
+          "height": 116
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      },
+      {
+        "pocket": 4,
+        "kind": "side",
+        "bounds": {
+          "x": 160,
+          "y": 187.18998647349656,
+          "width": 132,
+          "height": 115.99999999999991
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      },
+      {
+        "pocket": 5,
+        "kind": "corner",
+        "bounds": {
+          "x": 160,
+          "y": 187.18998647349656,
+          "width": 132,
+          "height": 115.99999999999991
+        },
+        "pockets": [
+          {
+            "x": 59.993332947458825,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 53.78725895695767,
+            "y": 314.78958195769167,
+            "width": 35.06784008926388,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 59.993332947458825,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 149.61487855763278,
+            "width": 37.5751079158637,
+            "height": 37.57510791586367
+          },
+          {
+            "x": 231.14490095377846,
+            "y": 314.78958195769167,
+            "width": 35.06784008926385,
+            "height": 38.59324987772072
+          },
+          {
+            "x": 222.4315591366775,
+            "y": 480.9824273196075,
+            "width": 37.5751079158637,
+            "height": 37.57510791586378
+          }
+        ],
+        "scale": 1
+      }
+    ]
+  },
+  "errors": []
+}

@@ -3,11 +3,13 @@ import { AimContact } from './BilliardsAim';
 import { BallState,TABLE } from './BilliardsPhysics';
 import { CUSHION_SEGMENTS } from './BilliardsTableGeometry';
 import { ballColor,CLUB } from './BilliardsTheme';
-import { HudRect } from './BilliardsLayout';
+import { HudRect,placeMagnifier } from './BilliardsLayout';
 /** A clipped, non-interactive projection of the SAME first-contact geometry. */
 export class MagnifierView {
     readonly node:Node;private content:Graphics;private title:Label;private numbers:Label[]=[];
     bounds:HudRect={x:0,y:0,width:132,height:116};
+    private previous:HudRect|null=null;
+    private frame='';
     constructor(parent:Node){
         this.node=new Node('Contact magnifier');this.node.layer=Layers.Enum.UI_2D;parent.addChild(this.node);this.node.addComponent(UITransform).setContentSize(132,116);
         this.node.addComponent(MaskComponent).type=MaskComponent.Type.GRAPHICS_RECT;
@@ -17,14 +19,16 @@ export class MagnifierView {
         for(let id=1;id<=15;id++){const n=new Node('Magnifier number '+id);n.layer=Layers.Enum.UI_2D;artwork.addChild(n);n.addComponent(UITransform).setContentSize(14,14);const l=n.addComponent(Label);l.string=String(id);l.fontFamily=CLUB.numberFontFamily;l.fontSize=8;l.lineHeight=10;l.overflow=Label.Overflow.SHRINK;l.color=new Color().fromHEX('#223328');this.numbers.push(l);}
         this.node.active=false;
     }
-    render(width:number,height:number,area:HudRect,balls:readonly BallState[],hit:AimContact|null,pointer:{x:number;y:number}|null,active:boolean):void{
-        this.node.active=active&&!!hit&&area.height>=132;if(!this.node.active||!hit)return;
-        const candidates=[area.x+8,area.x+area.width-140].flatMap(x=>[area.y+8,area.y+area.height-124].map(y=>({x,y})));
-        const distance=(p:{x:number;y:number})=>pointer?Math.hypot(Math.max(p.x-pointer.x,0,pointer.x-p.x-132),Math.max(p.y-pointer.y,0,pointer.y-p.y-116)):0;
-        const upper=candidates.filter(p=>p.y===area.y+8&&distance(p)>=12),pool=upper.length?upper:candidates;
-        const chosen=pointer?pool.sort((a,b)=>distance(b)-distance(a))[0]:candidates[0];const {x,y}=chosen;
-        this.bounds={x,y,width:132,height:116};
-        this.node.setPosition(x+66-width/2,height/2-y-58,0);
+    hide():void{this.node.active=false;this.previous=null;}
+    render(width:number,height:number,area:HudRect,balls:readonly BallState[],hit:AimContact|null,pointer:{x:number;y:number}|null,active:boolean,protectedRects:readonly HudRect[]=[]):void{
+        this.node.active=active&&!!hit&&area.height>=116*96/132+16;if(!this.node.active||!hit){this.hide();return;}
+        const frame=[width,height,area.x,area.y,area.width,area.height].join('|');if(frame!==this.frame){this.previous=null;this.frame=frame;}
+        const chosen=placeMagnifier(area,protectedRects,pointer,this.previous);
+        if(!chosen){this.node.active=false;return;}
+        this.previous=chosen;this.bounds=chosen;
+        const {x,y}=chosen,zoom=chosen.width/132;
+        this.node.setScale(zoom,zoom,1);this.title.fontSize=11/zoom;
+        this.node.setPosition(x+chosen.width/2-width/2,height/2-y-chosen.height/2,0);
         const g=this.content,color=(s:string)=>new Color().fromHEX(s),scale=420;
         const point=(x:number,z:number)=>({x:(x-hit.x)*scale,y:-(z-hit.z)*scale-8});
         g.clear();g.fillColor=color(CLUB.felt);g.rect(-66,-58,132,116);g.fill();

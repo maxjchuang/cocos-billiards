@@ -27,6 +27,8 @@
 
 缩小的嵌入预览低于320 CSS宽时，以320逻辑宽度同比例呈现；HUD字体栅格采样和指针换算使用实际像素/逻辑单位比例，而非硬套设备DPR。标准手机画幅保持原像素规范。Creator GUI内81/35/28/9项触摸检查通过，100项Node测试通过；缓存恢复与调试器旧连接问题独立于游戏逻辑。
 
+放大窗袋口避让补充：Game将共享袋口outline投影成HUD禁入矩形（12px余量），同时保护母球、接触点/目标与手指；纯函数placeMagnifier负责安全择位和位置保持，MagnifierView只负责同比例绘制、尺寸与生命周期。每次交互结束/区域变化重置择位；标准、112宽、96宽均无解时隐藏，不猜测目标袋、不改物理预测。运行回归检查实际Mask四角投影，避免只验证计算数据。实现细节与验收见design/magnifier-placement.md及validation/magnifier。
+
 ## 1. 范围与约束
 
 - 使用 Cocos Creator 3.8.7 + TypeScript，保留现有 Main 场景和启动脚本 UUID；新增资源保留各自 `.meta`。

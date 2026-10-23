@@ -865,15 +865,31 @@ export class BilliardsGame extends Component {
 
     private drawAimGuide():void {
         const g=this.aimGraphics;g.clear();
-        if(this.magnifier)this.magnifier.node.active=false;
-        if(this.paused||this.tip.active||this.shotSequence.active||this.referee.phase!=='ready'||!mayShoot(this.balls,this.referee)||isMoving(this.balls))return;
+        const showMagnifier=!!this.magnifier&&this.settings.value.magnifier&&(this.dragging||this.fineAim.active);
+        if(!showMagnifier)this.magnifier?.hide();
+        if(this.paused||this.tip.active||this.shotSequence.active||this.referee.phase!=='ready'||!mayShoot(this.balls,this.referee)||isMoving(this.balls)){this.magnifier?.hide();return;}
         const cue=this.balls[0],hit=predictContact(cue,this.direction.x,this.direction.z,this.balls);
-        if(!hit)return;
+        if(!hit){this.magnifier?.hide();return;}
         const point=(x:number,z:number):Vec3=>{
             const screenPoint=this.camera.worldToScreen(new Vec3(x,TABLE.radius*2,z));
             return this.hudCamera.screenToWorld(new Vec3(screenPoint.x,screenPoint.y,0));
         };
-        this.magnifier?.render(this.hudLayout.width,this.hudLayout.height,this.hudLayout.playArea,this.balls,hit,this.lastPointer,this.settings.value.magnifier&&(this.dragging||this.fineAim.active));
+        if(showMagnifier){
+            // Protect actual projected pocket outlines, not guessed target pockets or UI corners.
+            const hudPoint=(x:number,z:number):{x:number;y:number}=>{
+                const p=this.camera.worldToScreen(new Vec3(x,TABLE.radius*2,z));
+                return {x:p.x/this.hudPixelRatio,y:this.hudLayout.height-p.y/this.hudPixelRatio};
+            };
+            const protectedRects=POCKETS.map(pocket=>{
+                const points=pocket.outline.map(p=>hudPoint(p.x,p.z));
+                const x=Math.min(...points.map(p=>p.x))-12,y=Math.min(...points.map(p=>p.y))-12;
+                return {x,y,width:Math.max(...points.map(p=>p.x))-x+12,height:Math.max(...points.map(p=>p.y))-y+12};
+            });
+            for(const p of [cue,hit,...this.balls.filter(b=>b.id===hit.target)]){
+                const q=hudPoint(p.x,p.z);protectedRects.push({x:q.x-18,y:q.y-18,width:36,height:36});
+            }
+            this.magnifier?.render(this.hudLayout.width,this.hudLayout.height,this.hudLayout.playArea,this.balls,hit,this.lastPointer,this.settings.value.magnifier&&(this.dragging||this.fineAim.active),protectedRects);
+        }
         if(!this.settings.value.aimGuide)return;
         const a=point(cue.x,cue.z),b=point(hit.x,hit.z),length=Math.hypot(b.x-a.x,b.y-a.y);
         const s=this.hudLayout.scale;g.lineWidth=s;g.strokeColor=new Color().fromHEX(CLUB.line);
