@@ -189,12 +189,14 @@
   },
   "rackVariation": {
     "spec": "rack-variation.md",
-    "version": "mass-slot-v1",
+    "version": "network-v2",
     "targetMassVariation": 0.005,
     "cueRelativeMass": 1,
     "randomShotError": false,
     "randomPositionGaps": false,
     "journalLimit": 32,
-    "scope": "New rack initialization only; fixed ball set across re-racks and reloads"
+    "scope": "New rack initialization only; fixed ball set across re-racks and reloads",
+    "contactModel": "compression network then restitution; no shot-specific extra force",
+    "coreSpreadSpec": "rack-variation.md#密集球堆散开修订2026-10-23"
   }
 }

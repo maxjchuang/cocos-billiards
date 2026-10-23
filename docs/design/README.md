@@ -40,3 +40,5 @@ V1.9 已确认：每杆停稳结算后打点回中；微调±5°、点按0.1°�
 BOJUE 85/82 mm仅保留为另一品牌配置的候选资料，不与JOY尺寸拼成已核验套件。尚需同一型号的袋口俯视与尺寸资料。设计先提交为`24ebe9a`，随后游戏已按[技术方案](../technical/pocket-geometry.md)实现简化代理；PDF中的“代码未改”记录的是设计交付阶段，不作为当前开发状态。
 
 修订生成脚本为`scripts/update-pocket-design.py`，从仓库`3ff5d2e`文档基线重建，依赖reportlab与pypdf；不参与游戏运行。
+
+密集球堆修订：见[rack-variation.md](rack-variation.md)的network-v2补充。无新UI，满力与输入预算不变，改为多球接触网络传递冲量，新增原球堆中心剩球和内部球位移验收。

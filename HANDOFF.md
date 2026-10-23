@@ -1,5 +1,7 @@
 # 最新交接（2026-10-23）
 
+中心球堆修复：当前130项检查通过，物理升级network-v2，密集接触先联合压缩、再统一恢复，保持8m/s/减速/球体质量微差，不加开球爆破力。50局默认满力开球中心17cm区域剩球平均4.94→0.24，最多1颗；原中央四球至少运动2球径。Web Mobile构建、浏览器新局与复现/对局/旋转/六袋/裁判/触球回归通过；原生GUI本轮未完成，真机/微信继续豁免。新版本种子使用eight-club.racks.v2，旧版本重放明确拒绝。见[完整证据](validation/core-spread/README.md)。
+
 随机开球补充：126项测试通过。BilliardsRack提供版本mass-slot-v1的RackConfig、合法球号洗牌、固定球组±0.5%目标球质量差异、RackSession最近32份本机配方；母球质量/默认位置/方向/出杆计算不变。Game.reset()生成新局，reset(config)用于开发重放且不消费种子；Referee注入rackFactory，重摆保留当前球组。物理bodyId与球号id分离，逆质量碰撞与修正。均质换号控制50局几何相同，变化50局均有不同几何终态，同种子精确复现。浏览器52/28/28项和旧流程回归通过，CLI构建成功；本轮GUI调试通道Channel closed / IPC message lost阻塞新原生专项，不以旧证据替代。见docs/design/rack-variation.md与validation/racks。不要恢复每帧随机力或按球号排序求解。
 
 力度补充：114项测试通过；UI内部力度仍0.4–4（100%=4），在220ms触球提交时通过powerToSpeed换算：≤60%原样、80%=4.2 m/s、100%=8 m/s。物理strike速度上限8，step按最大速度/每子步0.6球半径预算细分；中低速度的1/240s行为保留。标准球阵三种开球位置的散布与触库检查通过，基线4 m/s与新8 m/s的量化比较见validation/power/pure-break.json。不要再将snapshot.power直接解释成m/s。浏览器自然球阵三例24项、320/430各8项、Creator原生开球8项通过；原35对局/28打点/28六袋（高速改8）/14受控整局/17输入/9触球回归通过，game error/rejection为空。见validation/power。

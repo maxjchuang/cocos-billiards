@@ -66,3 +66,37 @@ test('replay validation rejects unknown versions, malformed seeds and exaggerate
  for(const bad of [null,{}, {...config(1),version:'future'}, {...config(1),rackSeed:NaN},{...config(1),rackSeed:-1},{...config(1),ballSetSeed:2**32},{...config(1),massVariation:.1}])assert.throws(()=>r.restoreRackConfig(bad));
  assert.deepEqual(r.restoreRackConfig(config(0)),config(0));
 });
+
+test('packed contact compression propagates to interior balls without creating energy',()=>{
+ const d=p.TABLE.radius*2+.00001,balls=Array.from({length:3},(_,i)=>({id:i,mass:1+i*.002,x:i*d,z:0,vx:i===0?2:0,vz:0})),events=[];
+ const momentum=balls.reduce((s,b)=>s+b.mass*b.vx,0),energy=balls.reduce((s,b)=>s+.5*b.mass*b.vx*b.vx,0);
+ p.step(balls,0,{respawnCue:false,onEvent:e=>events.push(e)});
+ assert.ok(balls[1].vx>.5&&balls[2].vx>.5);
+ assert.ok(Math.abs(balls.reduce((s,b)=>s+b.mass*b.vx,0)-momentum)<1e-10);
+ assert.ok(balls.reduce((s,b)=>s+.5*b.mass*b.vx*b.vx,0)<=energy+1e-10);
+ assert.deepEqual(events.map(e=>[e.a,e.b]),[[0,1],[1,2]]);
+});
+test('a resting or separating contact network gets no invented impulse or contact event',()=>{
+ for(const speed of [0,.3]){
+  const d=p.TABLE.radius*2+.00001,balls=Array.from({length:3},(_,i)=>({id:i,x:i*d,z:0,vx:i*speed,vz:0})),events=[];
+  p.step(balls,0,{respawnCue:false,onEvent:e=>events.push(e)});assert.deepEqual(balls.map(b=>b.vx),[0,speed,2*speed]);assert.equal(events.length,0);
+ }
+});
+test('default full-power break releases the original rack interior over 50 consecutive seeds',()=>{
+ const {measure}=require('../scripts/measure-core.cjs');
+ for(let seed=1;seed<=50;seed++){
+  const c=measure({p,r},seed);assert.ok(c.coreCount<=2,`seed ${seed}: ${c.coreCount} targets trapped in core`);
+  assert.ok(c.interiorMinMaxExcursionM>=p.TABLE.radius*4,`seed ${seed}: interior travelled ${c.interiorMinMaxExcursionM}`);
+  assert.ok(c.finite&&c.inBounds&&c.settled&&c.seconds<15);
+ }
+});
+test('dense unequal-mass contact networks conserve momentum and never add kinetic energy',()=>{
+ let state=19;const random=()=>((state=(Math.imul(state,1664525)+1013904223)>>>0)/4294967296);
+ const total=balls=>balls.reduce((s,b)=>({x:s.x+b.mass*b.vx,z:s.z+b.mass*b.vz,e:s.e+.5*b.mass*(b.vx*b.vx+b.vz*b.vz)}),{x:0,z:0,e:0});
+ for(let n=0;n<100;n++){
+  const balls=Array.from({length:16},(_,i)=>({id:i,mass:.995+random()*.01,x:(i%4-1.5)*p.TABLE.radius*2,z:(Math.floor(i/4)-1.5)*p.TABLE.radius*2,vx:(random()-.5)*16,vz:(random()-.5)*16}));
+  const before=total(balls);p.step(balls,0,{respawnCue:false});const after=total(balls);
+  assert.ok(Math.abs(before.x-after.x)<1e-9&&Math.abs(before.z-after.z)<1e-9);
+  assert.ok(Number.isFinite(after.e)&&after.e<=before.e+1e-9);
+ }
+});

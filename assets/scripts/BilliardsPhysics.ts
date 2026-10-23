@@ -90,6 +90,43 @@ function inverseMass(ball:BallState):number {
     return Number.isFinite(mass)&&mass>0?1/mass:1;
 }
 
+/** Compress a touching contact network first, then restore its restitution once.
+ * Pairwise full rebounds inside a packed rack leave artificial stationary interior balls.
+ * The accumulated nonnegative impulses propagate compression through resting neighbours.
+ * 20 micrometres covers the rack's 10 micrometre numerical spacing, not a gameplay gap.
+ */
+function solveBallContacts(balls:BallState[],onEvent?:StepOptions['onEvent']):void {
+    const diameter=TABLE.radius*2;
+    const contacts:{a:BallState;b:BallState;nx:number;nz:number;inverseA:number;inverseB:number;impulse:number}[]=[];
+    for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+        const a=balls[i],b=balls[j];if(a.pocketed||b.pocketed)continue;
+        const dx=b.x-a.x,dz=b.z-a.z,distance=Math.hypot(dx,dz);if(distance>diameter+.00002)continue;
+        const nx=distance>1e-8?dx/distance:1,nz=distance>1e-8?dz/distance:0;
+        const relative=(b.vx-a.vx)*nx+(b.vz-a.vz)*nz;
+        if(relative>1e-8)continue;
+        contacts.push({a,b,nx,nz,inverseA:inverseMass(a),inverseB:inverseMass(b),impulse:0});
+    }
+    const before=balls.map(b=>({vx:b.vx,vz:b.vz}));
+    for(let iteration=0;iteration<100;iteration++){
+        let change=0;
+        for(const c of contacts){
+            const relative=(c.b.vx-c.a.vx)*c.nx+(c.b.vz-c.a.vz)*c.nz;
+            const next=Math.max(0,c.impulse-relative/(c.inverseA+c.inverseB)),delta=next-c.impulse;c.impulse=next;change=Math.max(change,Math.abs(delta));
+            c.a.vx-=delta*c.nx*c.inverseA;c.a.vz-=delta*c.nz*c.inverseA;c.b.vx+=delta*c.nx*c.inverseB;c.b.vz+=delta*c.nz*c.inverseB;
+        }
+        if(change<1e-9)break;
+    }
+    // Finite iterations must not create energy when restitution is applied.
+    let work=0,deltaEnergy=0;
+    for(let i=0;i<balls.length;i++){
+        const dx=balls[i].vx-before[i].vx,dz=balls[i].vz-before[i].vz,mass=1/inverseMass(balls[i]);
+        work+=mass*(before[i].vx*dx+before[i].vz*dz);deltaEnergy+=mass*(dx*dx+dz*dz);
+    }
+    const scale=deltaEnergy>0?Math.min(1+TABLE.ballRestitution,Math.max(0,-work/deltaEnergy)*(1+TABLE.ballRestitution)):0;
+    for(let i=0;i<balls.length;i++){balls[i].vx=before[i].vx+scale*(balls[i].vx-before[i].vx);balls[i].vz=before[i].vz+scale*(balls[i].vz-before[i].vz);}
+    for(const c of contacts)if(c.impulse>1e-8)onEvent?.({type:'contact',a:c.a.id,b:c.b.id});
+}
+
 function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
     for (const ball of balls) {
         if (ball.pocketed) continue;
@@ -98,26 +135,13 @@ function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
         clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
     }
     const diameter = TABLE.radius * 2;
-    // A few iterations relax the closely packed rack; this is a prototype, not a sport simulator.
-    for (let iteration = 0; iteration < 3; iteration++) {
-        for (let i = 0; i < balls.length; i++) for (let j = i + 1; j < balls.length; j++) {
-            const a = balls[i], b = balls[j];
-            if (a.pocketed || b.pocketed) continue;
-            const dx = b.x - a.x, dz = b.z - a.z;
-            const distance = Math.hypot(dx, dz);
-            if (distance >= diameter) continue;
-            const nx = distance > 1e-8 ? dx / distance : 1;
-            const nz = distance > 1e-8 ? dz / distance : 0;
-            const inverseA=inverseMass(a),inverseB=inverseMass(b);
-            const inverseSum=inverseA+inverseB,penetration=diameter-distance;
-            a.x-=nx*penetration*inverseA/inverseSum;a.z-=nz*penetration*inverseA/inverseSum;
-            b.x+=nx*penetration*inverseB/inverseSum;b.z+=nz*penetration*inverseB/inverseSum;
-            const relative = (b.vx - a.vx) * nx + (b.vz - a.vz) * nz;
-            if (relative >= 0) continue;
-            options.onEvent?.({ type: 'contact', a: a.id, b: b.id });
-            const impulse = -(1 + TABLE.ballRestitution) * relative / inverseSum;
-            a.vx -= impulse * nx * inverseA; a.vz -= impulse * nz * inverseA;
-            b.vx += impulse * nx * inverseB; b.vz += impulse * nz * inverseB;
+    solveBallContacts(balls,options.onEvent);
+    for (let iteration=0;iteration<3;iteration++) {
+        for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+            const a=balls[i],b=balls[j];if(a.pocketed||b.pocketed)continue;
+            const dx=b.x-a.x,dz=b.z-a.z,distance=Math.hypot(dx,dz);if(distance>=diameter)continue;
+            const nx=distance>1e-8?dx/distance:1,nz=distance>1e-8?dz/distance:0,ia=inverseMass(a),ib=inverseMass(b),d=(diameter-distance)/(ia+ib);
+            a.x-=nx*d*ia;a.z-=nz*d*ia;b.x+=nx*d*ib;b.z+=nz*d*ib;
         }
         for (const ball of balls) {
             if (ball.pocketed) continue;

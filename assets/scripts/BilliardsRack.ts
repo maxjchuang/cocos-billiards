@@ -1,6 +1,6 @@
 /** Seeded initial conditions only. No randomness is sampled during physics or shooting. */
-export const RACK_VERSION = 'mass-slot-v1' as const;
-export const RACK_STORAGE_KEY = 'eight-club.racks.v1';
+export const RACK_VERSION = 'network-v2' as const;
+export const RACK_STORAGE_KEY = 'eight-club.racks.v2';
 export const TARGET_MASS_VARIATION = 0.005;
 // Stable simulation identities for spatial rack slots; independent of the visible ball numbers.
 // This priority preserves the original calibration when every mass is one.
