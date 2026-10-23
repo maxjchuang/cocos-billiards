@@ -17,6 +17,8 @@ export interface BallState {
 
 export const TABLE = {
     ...TABLE_GEOMETRY,
+    maxStrikeSpeed: 8,
+    maxSubstepTravel: TABLE_GEOMETRY.radius * 0.6,
     deceleration: 0.32,
     ballRestitution: 0.96,
     cushionRestitution: 0.82,
@@ -57,14 +59,26 @@ export function strike(balls: BallState[], dx: number, dz: number, speed: number
     if (isMoving(balls) || length < 1e-6 || !Number.isFinite(length) || !Number.isFinite(speed) || ![tip.x,tip.y].every(Number.isFinite) || Math.hypot(tip.x,tip.y)>1+1e-9) return false;
     const cue = balls.find(ball => ball.id === 0);
     if (!cue || cue.pocketed) return false;
-    const value = Math.max(0, Math.min(speed, 4));
+    const value = Math.max(0, Math.min(speed, TABLE.maxStrikeSpeed));
     if (value === 0) return false;
     strikeWithSpin(cue,dx/length,dz/length,value,tip,TABLE.radius);
     return true;
 }
 
-/** Fixed small steps prevent tunnelling at this prototype's capped strike speed. */
+/** Keep high-power spatial sampling at least as fine as the former 4m/s fixed step.
+ * The game still advances at 240Hz; faster motion gets extra internal collision substeps.
+ * This remains a discrete solver, not continuous collision detection for arbitrary grazing hits.
+ */
 export function step(balls: BallState[], dt: number, options: StepOptions = {}): void {
+    if (!Number.isFinite(dt) || dt < 0) return;
+    let fastest=0;
+    for(const ball of balls)if(!ball.pocketed)fastest=Math.max(fastest,Math.hypot(ball.vx,ball.vz));
+    if(!Number.isFinite(fastest))return;
+    const substeps=Math.max(1,Math.ceil(fastest*dt/TABLE.maxSubstepTravel));
+    for(let i=0;i<substeps;i++)stepOnce(balls,dt/substeps,options);
+}
+
+function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
     for (const ball of balls) {
         if (ball.pocketed) continue;
         ball.x += ball.vx * dt;

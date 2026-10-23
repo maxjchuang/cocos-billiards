@@ -1,10 +1,18 @@
-import { BallState, isMoving, strike } from './BilliardsPhysics';
+import { BallState, isMoving, strike, TABLE } from './BilliardsPhysics';
 import { Group, Player, Referee } from './BilliardsRules';
+
+/** UI strength remains 0..4 (100% = 4); it is no longer a speed in metres/second. */
+export function powerToSpeed(power:number):number {
+    if(!Number.isFinite(power)||power<=0)return 0;
+    const value=Math.min(4,power),boost=Math.max(0,(value-2.4)/1.6);
+    // Retain 10%-60% touch precision; progressively reserve more energy for firm shots.
+    return value+(TABLE.maxStrikeSpeed-4)*boost*boost;
+}
 
 export const SHOT_TIMING = { backswing: 140, contact: 220, flightEnd: 480, holdEnd: 640, end: 820 } as const;
 export interface ShotRequest {
     gameId: number; player: Player;
-    direction: { x: number; z: number }; power: number;
+    direction: { x: number; z: number }; power: number; // UI strength units; powerToSpeed maps at contact.
     tipOffset: { x: number; y: number }; selectedGroup: Group | null;
 }
 export interface ShotSnapshot extends ShotRequest { readonly shotId: number; }
@@ -64,7 +72,7 @@ export function commitShot(snapshot: Readonly<ShotSnapshot>, gameId: number, bal
         ![snapshot.tipOffset.x,snapshot.tipOffset.y].every(Number.isFinite) || Math.hypot(snapshot.tipOffset.x,snapshot.tipOffset.y)>1+1e-9) return false;
     const before = { phase: ref.phase, hand: ref.hand, message: ref.message, shot: ref.shot };
     if (!ref.beginShot(balls)) return false;
-    if (strike(balls, d.x, d.z, snapshot.power,snapshot.tipOffset)) return true;
+    if (strike(balls, d.x, d.z, powerToSpeed(snapshot.power),snapshot.tipOffset)) return true;
     Object.assign(ref, before);
     return false;
 }

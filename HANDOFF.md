@@ -1,5 +1,7 @@
 # 最新交接（2026-10-23）
 
+力度补充：114项测试通过；UI内部力度仍0.4–4（100%=4），在220ms触球提交时通过powerToSpeed换算：≤60%原样、80%=4.2 m/s、100%=8 m/s。物理strike速度上限8，step按最大速度/每子步0.6球半径预算细分；中低速度的1/240s行为保留。标准球阵三种开球位置的散布与触库检查通过，基线4 m/s与新8 m/s的量化比较见validation/power/pure-break.json。不要再将snapshot.power直接解释成m/s。浏览器自然球阵三例24项、320/430各8项、Creator原生开球8项通过；原35对局/28打点/28六袋（高速改8）/14受控整局/17输入/9触球回归通过，game error/rejection为空。见validation/power。
+
 补充：修复放大窗遮挡袋口。按实际相机投影保护六袋12px与母球/首碰18px，避手24px；保持安全位置，132/112/96宽度分级，放不下则隐藏。约束见docs/design/magnifier-placement.md，专项证据见validation/magnifier。当前106项Node测试通过；既有100项和完整计划报告保留为上轮基线。Cocos构建器会将Set展开错误转成concat，因此去重使用Array.from(Set)，实际Web Mobile回归已覆盖。三个手机尺寸和缩小嵌入画幅各45项专项及81项界面回归通过，Creator重新打开Main并Play后45项原生引擎触摸检查通过。证据见validation/magnifier/acceptance.json与creator-native.json。
 
 此前已执行完整UI/UX计划，最新入口为docs/technical/execution-plan.md与validation/ui-complete/acceptance.json。100项测试通过，Creator CLI导入/Web Mobile构建及Chromium合成DOM触摸回归通过，15状态截图/像素测量与附加短屏/DPR/安全区、旋转/低帧率均有证据。27项通过；Q04原生Creator GUI复核已通过，Q05真实手机与所有微信构建/工具/真机已获用户明确豁免，不要再次要求AppID或启动微信验证。

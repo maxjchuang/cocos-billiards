@@ -22,7 +22,7 @@ test('strike normalizes direction, caps speed and refuses another moving shot', 
     assert.equal(strike(balls, 0, 0, 2), false);
     assert.equal(strike(balls, NaN, 0, 2), false);
     assert.equal(strike(balls, 0, -10, 99), true);
-    assert.equal(balls[0].vz, -4);
+    assert.equal(balls[0].vz, -TABLE.maxStrikeSpeed);
     assert.equal(strike(balls, 1, 0, 2), false);
 });
 
@@ -43,7 +43,7 @@ test('cushion reflects an outgoing ball back into the table', () => {
 
 test('maximum-power break stays finite, stays on the table, and eventually stops', () => {
     const balls = createRack();
-    strike(balls, 0, -1, 4);
+    strike(balls, 0, -1, TABLE.maxStrikeSpeed);
     let targetMoved = false;
     for (let frame = 0; frame < 240 * 30; frame++) {
         step(balls, FIXED_STEP);
@@ -82,7 +82,7 @@ test('all six pockets capture targets approaching at maximum speed before cushio
     for (const pocket of POCKETS) {
         const dx = pocket.normal.x, dz = pocket.normal.z;
         const ball = { id: 1, x: pocket.x - dx * 0.15, z: pocket.z - dz * 0.15,
-            vx: dx * 4, vz: dz * 4 };
+            vx: dx * TABLE.maxStrikeSpeed, vz: dz * TABLE.maxStrikeSpeed };
         for (let i = 0; i < 20; i++) step([ball], FIXED_STEP);
         assert.equal(ball.pocketed, true);
         assert.equal(ball.vx, 0);

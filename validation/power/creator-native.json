@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-23",
+  "scope": "Creator GUI Main.scene Play; synthetic engine touch; natural standard rack",
+  "report": {
+    "engine": "3.8.7",
+    "inputMode": "engine",
+    "viewport": {
+      "width": 362,
+      "height": 786,
+      "dpr": 2
+    },
+    "results": [
+      {
+        "name": "0: slider reaches 100%",
+        "passed": true
+      },
+      {
+        "name": "0: click starts animation while rack stays still",
+        "passed": true
+      },
+      {
+        "name": "0: stronger stroke starts only at 220ms contact",
+        "passed": true
+      },
+      {
+        "name": "0: at least seven target balls reach cushions",
+        "passed": true
+      },
+      {
+        "name": "0: natural rack spreads across the table",
+        "passed": true
+      },
+      {
+        "name": "0: high-power break settles within timeout",
+        "passed": true
+      },
+      {
+        "name": "0: motion stays finite and inside the frame",
+        "passed": true
+      },
+      {
+        "name": "0: opening pots do not assign groups or award a winner",
+        "passed": true
+      }
+    ],
+    "measurements": [
+      {
+        "offset": 0,
+        "firstSpeed": 7.9925,
+        "contactMs": 220,
+        "targetCushionIds": [
+          15,
+          6,
+          7,
+          13,
+          11,
+          9,
+          14,
+          1
+        ],
+        "peakSpreadAreaM2": 2.6609199398757273,
+        "wallMs": 4375.400000095367,
+        "frames": 258,
+        "phase": "ready",
+        "potted": []
+      }
+    ],
+    "errors": []
+  }
+}

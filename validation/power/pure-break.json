@@ -1,0 +1,176 @@
+{
+  "scope": "Pure TS simulation; standard rack, centre tip, head-line positions aiming at apex. Prototype tuning, not measured real-table data.",
+  "curve": [
+    {
+      "percent": 10,
+      "speed": 0.4
+    },
+    {
+      "percent": 25,
+      "speed": 1
+    },
+    {
+      "percent": 50,
+      "speed": 2
+    },
+    {
+      "percent": 60,
+      "speed": 2.4
+    },
+    {
+      "percent": 70,
+      "speed": 3.05
+    },
+    {
+      "percent": 80,
+      "speed": 4.200000000000001
+    },
+    {
+      "percent": 90,
+      "speed": 5.850000000000001
+    },
+    {
+      "percent": 100,
+      "speed": 8
+    }
+  ],
+  "cases": [
+    {
+      "legacy": {
+        "speed": 4,
+        "offset": 0,
+        "frameDisplacementSumM": 5.2835057180635605,
+        "spreadAreaAt1sM2": 0.5962850517401513,
+        "targetCushionIds": [
+          15,
+          14,
+          5,
+          6
+        ],
+        "everDisplaced20cm": 10,
+        "potted": [],
+        "settleSeconds": 2.6083333333333334,
+        "settled": true,
+        "maxSpeed": 3.9925,
+        "finite": true,
+        "inBounds": true
+      },
+      "updated": {
+        "speed": 8,
+        "offset": 0,
+        "frameDisplacementSumM": 12.398009058654026,
+        "spreadAreaAt1sM2": 2.572241508433249,
+        "targetCushionIds": [
+          15,
+          6,
+          7,
+          13,
+          11,
+          9,
+          14,
+          1
+        ],
+        "everDisplaced20cm": 9,
+        "potted": [],
+        "settleSeconds": 4.125,
+        "settled": true,
+        "maxSpeed": 7.9925,
+        "finite": true,
+        "inBounds": true
+      }
+    },
+    {
+      "legacy": {
+        "speed": 4,
+        "offset": 0.12,
+        "frameDisplacementSumM": 5.258843828140046,
+        "spreadAreaAt1sM2": 0.6262919298392946,
+        "targetCushionIds": [
+          15,
+          14,
+          5,
+          6
+        ],
+        "everDisplaced20cm": 9,
+        "potted": [],
+        "settleSeconds": 2.3916666666666666,
+        "settled": true,
+        "maxSpeed": 3.9924999999999997,
+        "finite": true,
+        "inBounds": true
+      },
+      "updated": {
+        "speed": 8,
+        "offset": 0.12,
+        "frameDisplacementSumM": 16.97297589905713,
+        "spreadAreaAt1sM2": 1.4114783255899808,
+        "targetCushionIds": [
+          15,
+          14,
+          6,
+          5,
+          13,
+          11,
+          9,
+          12,
+          7,
+          1
+        ],
+        "everDisplaced20cm": 11,
+        "potted": [
+          1
+        ],
+        "settleSeconds": 3.975,
+        "settled": true,
+        "maxSpeed": 7.9925,
+        "finite": true,
+        "inBounds": true
+      }
+    },
+    {
+      "legacy": {
+        "speed": 4,
+        "offset": -0.12,
+        "frameDisplacementSumM": 4.711653621005547,
+        "spreadAreaAt1sM2": 0.5861233785371468,
+        "targetCushionIds": [
+          15,
+          14,
+          5,
+          6
+        ],
+        "everDisplaced20cm": 8,
+        "potted": [],
+        "settleSeconds": 2.845833333333333,
+        "settled": true,
+        "maxSpeed": 3.9924999999999997,
+        "finite": true,
+        "inBounds": true
+      },
+      "updated": {
+        "speed": 8,
+        "offset": -0.12,
+        "frameDisplacementSumM": 15.883102484938197,
+        "spreadAreaAt1sM2": 1.8502916758111474,
+        "targetCushionIds": [
+          15,
+          14,
+          5,
+          6,
+          13,
+          11,
+          7,
+          9,
+          12
+        ],
+        "everDisplaced20cm": 12,
+        "potted": [],
+        "settleSeconds": 4.141666666666667,
+        "settled": true,
+        "maxSpeed": 7.9925,
+        "finite": true,
+        "inBounds": true
+      }
+    }
+  ]
+}

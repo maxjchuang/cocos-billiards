@@ -29,6 +29,8 @@
 
 放大窗袋口避让补充：Game将共享袋口outline投影成HUD禁入矩形（12px余量），同时保护母球、接触点/目标与手指；纯函数placeMagnifier负责安全择位和位置保持，MagnifierView只负责同比例绘制、尺寸与生命周期。每次交互结束/区域变化重置择位；标准、112宽、96宽均无解时隐藏，不猜测目标袋、不改物理预测。运行回归检查实际Mask四角投影，避免只验证计算数据。实现细节与验收见design/magnifier-placement.md及validation/magnifier。
 
+力度修订：内部UI强度0.4–4不再等于物理速度；在唯一触球提交中调用powerToSpeed，≤2.4保持原值，超过后为p + (8−4)×((p−2.4)/1.6)²。100%=8 m/s，物理strike独立钳制到8；默认60%及UI百分比/动效位移仍按原强度单位换算。外层固定240Hz，step内部按当前最大线速度、dt和0.6球半径的位移预算计算整数子步。它降低高速穿透风险，不引入通用物理引擎或宣称CCD。验收见design/shot-power.md与validation/power。
+
 ## 1. 范围与约束
 
 - 使用 Cocos Creator 3.8.7 + TypeScript，保留现有 Main 场景和启动脚本 UUID；新增资源保留各自 `.meta`。

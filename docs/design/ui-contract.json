@@ -170,5 +170,21 @@
     "titleSize": 11,
     "stability": "Keep a safe slot for the interaction; reset on hide or viewport change",
     "noSafeSlot": "Hide instead of occluding a pocket"
+  },
+  "shotPower": {
+    "spec": "shot-power.md",
+    "displayPercentRange": [
+      10,
+      100
+    ],
+    "defaultPercent": 60,
+    "unchangedThroughPercent": 60,
+    "maximumCentreTipSpeedMps": 8,
+    "samples": {
+      "60": 2.4,
+      "80": 4.2,
+      "100": 8
+    },
+    "commitMs": 220
   }
 }
