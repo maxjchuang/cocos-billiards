@@ -23,3 +23,5 @@ Creator从Main场景重新Play，creator-native.json记录正中开球8项引擎
 浏览器额外回归：对局35、打点28、六袋28（包含8 m/s）、完整受控球局14、异常输入17、触球时序9均通过。类型检查与114项Node测试包括加强力度曲线、220ms唯一提交、两个8 m/s球对冲、满力碰库、极端打点能量与三种开球位置的量化门槛。未新增手机或微信验证。
 
 复验脚本scripts/preview-power.js支持DOM和Creator引擎触摸；会重置测试球局。量化指标及详细测量分别保存在pure-break.json、acceptance.json和creator-native.json。
+
+从mass-slot-v1起，previewPower默认传固定均质配方，维持上表力度校准的可复现条件；日常随机开球使用previewRacks验证，不保证每个随机局都达到旧校准例的触库数。

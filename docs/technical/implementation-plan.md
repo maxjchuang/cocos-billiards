@@ -31,6 +31,8 @@
 
 力度修订：内部UI强度0.4–4不再等于物理速度；在唯一触球提交中调用powerToSpeed，≤2.4保持原值，超过后为p + (8−4)×((p−2.4)/1.6)²。100%=8 m/s，物理strike独立钳制到8；默认60%及UI百分比/动效位移仍按原强度单位换算。外层固定240Hz，step内部按当前最大线速度、dt和0.6球半径的位移预算计算整数子步。它降低高速穿透风险，不引入通用物理引擎或宣称CCD。验收见design/shot-power.md与validation/power。
 
+随机开球：BilliardsRack独立提供可验证RackConfig与PRNG，rackSeed决定合法号码排列、ballSetSeed决定目标球质量配置。Game从本机RackSession获取新配方，保存最近32份；开发重放可显式传配方且不消费正常序列。Referee通过纯rackFactory生成重摆，不依赖Cocos或自行调用全局随机。BallState新增只读bodyId/mass，数组仍按球号给UI使用；物理按固定空间身份排序，逆质量冲量与穿透修正。质量相同的换号控制必须得到完全相同几何轨迹，防止数值遍历顺序制造假随机。母球与输入保持不变。规范及验收见design/rack-variation.md和validation/racks。
+
 ## 1. 范围与约束
 
 - 使用 Cocos Creator 3.8.7 + TypeScript，保留现有 Main 场景和启动脚本 UUID；新增资源保留各自 `.meta`。

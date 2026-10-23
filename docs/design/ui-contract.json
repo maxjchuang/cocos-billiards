@@ -186,5 +186,15 @@
       "100": 8
     },
     "commitMs": 220
+  },
+  "rackVariation": {
+    "spec": "rack-variation.md",
+    "version": "mass-slot-v1",
+    "targetMassVariation": 0.005,
+    "cueRelativeMass": 1,
+    "randomShotError": false,
+    "randomPositionGaps": false,
+    "journalLimit": 32,
+    "scope": "New rack initialization only; fixed ball set across re-racks and reloads"
   }
 }

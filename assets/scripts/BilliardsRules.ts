@@ -28,6 +28,7 @@ interface Shot {
 }
 
 export class Referee {
+    constructor(private rackFactory:()=>BallState[]=createRack){}
     current: Player = 0;
     groups: [Group | null, Group | null] = [null, null];
     selected: Group | null = null;
@@ -170,7 +171,7 @@ export class Referee {
             const breaker = choice === 'self' ? this.current : this.originalBreaker;
             if (choice === 'opponent') this.warnedBreaker = breaker;
             this.current = breaker;
-            balls.splice(0, balls.length, ...createRack());
+            balls.splice(0, balls.length, ...this.rackFactory());
             this.isBreak = true; this.groups = [null, null]; this.selected = null;
             this.awardHand('head', balls);
             this.message = choice === 'opponent' ? '原开球方重开：再次不足四球碰库将判负' : `P${breaker + 1} 重新开球`;

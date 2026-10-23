@@ -1,3 +1,4 @@
+import { RackConfig, RACK_BODY_ORDER, rackNumbers, ballMasses } from './BilliardsRack';
 import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement } from './BilliardsTableGeometry';
 export { POCKETS, POCKET_MODEL, CUSHION_SEGMENTS } from './BilliardsTableGeometry';
 export type { CushionSide } from './BilliardsTableGeometry';
@@ -6,6 +7,10 @@ import { clearSpin, clothStep, spinCushion, strikeWithSpin, TipOffset } from './
 /** Pure table-plane simulation. No Cocos dependency; one unit represents one metre. */
 export interface BallState {
     id: number;
+    /** Simulation identity is independent of the displayed ball number. */
+    readonly bodyId?: number;
+    /** Relative mass; legacy/unspecified states use one. */
+    readonly mass?: number;
     pocketed?: boolean;
     x: number;
     z: number;
@@ -36,14 +41,15 @@ export const HEAD_LINE = 0.635;
 export const FOOT_SPOT = -0.635;
 export const FIXED_STEP = 1 / 240;
 
-export function createRack(): BallState[] {
-    const balls: BallState[] = [{ id: 0, x: 0, z: 0.65, vx: 0, vz: 0 }];
+export function createRack(config?:Readonly<RackConfig>): BallState[] {
+    const masses=config?ballMasses(config):Array.from({length:16},()=>1);
+    const balls: BallState[] = [{ id: 0, bodyId:0, mass:1, x: 0, z: 0.65, vx: 0, vz: 0 }];
     const spacing = TABLE.radius * 2 + 0.00001;
     // Eight in the centre (third row), opposite groups in the two rear corners.
-    const order = [1, 9, 2, 10, 8, 3, 11, 4, 12, 5, 6, 13, 7, 14, 15];
+    const order = config?rackNumbers(config):Array.from(RACK_BODY_ORDER);
     for (let row = 0, id = 1; row < 5; row++) {
         for (let col = 0; col <= row; col++, id++) {
-            balls.push({ id: order[id - 1], x: (col - row / 2) * spacing,
+            balls.push({ id: order[id - 1], bodyId:RACK_BODY_ORDER[id-1],mass:masses[order[id-1]], x: (col - row / 2) * spacing,
                 z: FOOT_SPOT - row * spacing * Math.sqrt(3) / 2, vx: 0, vz: 0 });
         }
     }
@@ -75,7 +81,13 @@ export function step(balls: BallState[], dt: number, options: StepOptions = {}):
     for(const ball of balls)if(!ball.pocketed)fastest=Math.max(fastest,Math.hypot(ball.vx,ball.vz));
     if(!Number.isFinite(fastest))return;
     const substeps=Math.max(1,Math.ceil(fastest*dt/TABLE.maxSubstepTravel));
-    for(let i=0;i<substeps;i++)stepOnce(balls,dt/substeps,options);
+    const ordered=balls.slice().sort((a,b)=>(a.bodyId??a.id)-(b.bodyId??b.id));
+    for(let i=0;i<substeps;i++)stepOnce(ordered,dt/substeps,options);
+}
+
+function inverseMass(ball:BallState):number {
+    const mass=ball.mass??1;
+    return Number.isFinite(mass)&&mass>0?1/mass:1;
 }
 
 function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
@@ -96,15 +108,16 @@ function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
             if (distance >= diameter) continue;
             const nx = distance > 1e-8 ? dx / distance : 1;
             const nz = distance > 1e-8 ? dz / distance : 0;
-            const correction = (diameter - distance) / 2;
-            a.x -= nx * correction; a.z -= nz * correction;
-            b.x += nx * correction; b.z += nz * correction;
+            const inverseA=inverseMass(a),inverseB=inverseMass(b);
+            const inverseSum=inverseA+inverseB,penetration=diameter-distance;
+            a.x-=nx*penetration*inverseA/inverseSum;a.z-=nz*penetration*inverseA/inverseSum;
+            b.x+=nx*penetration*inverseB/inverseSum;b.z+=nz*penetration*inverseB/inverseSum;
             const relative = (b.vx - a.vx) * nx + (b.vz - a.vz) * nz;
             if (relative >= 0) continue;
             options.onEvent?.({ type: 'contact', a: a.id, b: b.id });
-            const impulse = -(1 + TABLE.ballRestitution) * relative / 2;
-            a.vx -= impulse * nx; a.vz -= impulse * nz;
-            b.vx += impulse * nx; b.vz += impulse * nz;
+            const impulse = -(1 + TABLE.ballRestitution) * relative / inverseSum;
+            a.vx -= impulse * nx * inverseA; a.vz -= impulse * nz * inverseA;
+            b.vx += impulse * nx * inverseB; b.vz += impulse * nz * inverseB;
         }
         for (const ball of balls) {
             if (ball.pocketed) continue;

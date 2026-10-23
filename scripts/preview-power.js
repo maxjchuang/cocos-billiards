@@ -1,5 +1,6 @@
-// Development-only: real UI touches launch natural full-power breaks; resets the match.
-async function previewPower({inputMode=location.protocol==='packages:'?'engine':'dom',offsets=[0,.12,-.12]}={}) {
+// Development-only: fixed equal-mass calibration recipe for the historical power baseline.
+// Real UI touches launch full-power breaks. Production rack variability is tested by previewRacks.
+async function previewPower({inputMode=location.protocol==='packages:'?'engine':'dom',offsets=[0,.12,-.12],recipe={version:'mass-slot-v1',rackSeed:1,ballSetSeed:0,massVariation:0}}={}) {
  const m=await System.import('cc'),g=m.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
  if(!g?.shotSequence)throw Error('Load Main first.');
  if(inputMode==='engine'&&(cc.ENGINE_VERSION!=='3.8.7'||typeof m.input._dispatchEventTouch!=='function'))throw Error('Engine driver requires Creator 3.8.7.');
@@ -15,7 +16,7 @@ async function previewPower({inputMode=location.protocol==='packages:'?'engine':
  try{
   g.settings.set('sound',false);
   for(const offset of offsets){
-   g.reset();await frame();await tap(g.camera.worldToScreen(new m.Vec3(offset,.028575,.65)));await node(g.actions[1].node.parent);
+   g.reset(recipe);await frame();await tap(g.camera.worldToScreen(new m.Vec3(offset,.028575,.65)));await node(g.actions[1].node.parent);
    await tap(g.camera.worldToScreen(new m.Vec3(0,.028575,-.635)));
    const t=g.powerControl.getComponent(m.UITransform);await tap(g.hudCamera.worldToScreen(t.convertToWorldSpaceAR(new m.Vec3(g.powerHalfWidth,0,0))));
    check(offset+': slider reaches 100%',g.power===4&&g.powerValue.string==='100%');

@@ -1,3 +1,4 @@
+import { RackConfig, RackSession, restoreRackConfig } from './BilliardsRack';
 import { SettingsStore,MatchHistory,SettingKey } from './BilliardsSettings';
 import { PanelsView,PanelMode,PanelModel } from './BilliardsPanels';
 import { Feedback } from './BilliardsFeedback';
@@ -85,6 +86,8 @@ export class BilliardsGame extends Component {
     private meshes: Mesh[] = [];
     private materials: Material[] = [];
 
+    private rackSession=new RackSession();
+    private rackConfig:Readonly<RackConfig>|null=null;
     private settings=new SettingsStore();
     private history=new MatchHistory();
     private panels!:PanelsView;
@@ -111,6 +114,7 @@ export class BilliardsGame extends Component {
     private lastContactShotId=0;
     private groupSelectedAt=-1000;
     start(): void {
+        this.rackSession=new RackSession(sys.localStorage);
         this.settings=new SettingsStore(sys.localStorage);
         this.feedback=new Feedback(this.node,()=>this.settings.value);
         this.buildTable();
@@ -361,13 +365,20 @@ export class BilliardsGame extends Component {
         this.pauseLayer.active=false;
     }
 
-    private reset(): void {
+    private nextRack(replay?:Readonly<RackConfig>,profile?:Pick<RackConfig,'ballSetSeed'|'massVariation'>):BallState[]{
+        this.rackConfig=replay?restoreRackConfig(replay):this.rackSession.next(profile);
+        return createRack(this.rackConfig);
+    }
+
+    private reset(replay?:Readonly<RackConfig>): void {
+        if(replay)replay=restoreRackConfig(replay);
         this.groupSelectedAt=-1000;this.history.reset();this.panelMode=null;this.resultShown=false;this.panelPage=0;this.placementInvalid=null;this.feedback?.stop();
         this.gameId++;this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
         this.visualSpinDeltas.forEach(v=>{v.x=v.y=v.z=0;});
         this.paused=false;this.confirmingRestart=false;this.layoutStamp='';
-        this.balls = createRack();
-        this.referee = new Referee();
+        this.balls = this.nextRack(replay);
+        const profile=this.rackConfig!;
+        this.referee = new Referee(()=>this.nextRack(undefined,profile));
         this.accumulator = 0;
         this.dragging = false;
         this.adjustingPower = false;

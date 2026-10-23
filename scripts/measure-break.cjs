@@ -21,7 +21,7 @@ module.exports={measureBreak};
 if(require.main===module){
  const ts=require('typescript'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'billiards-power-'));
  try{
-  for(const name of ['BilliardsTableGeometry','BilliardsSpin','BilliardsPhysics','BilliardsRules','BilliardsShot'])fs.writeFileSync(path.join(dir,name+'.js'),ts.transpileModule(fs.readFileSync('assets/scripts/'+name+'.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS}}).outputText);
+  for(const name of ['BilliardsRack','BilliardsTableGeometry','BilliardsSpin','BilliardsPhysics','BilliardsRules','BilliardsShot'])fs.writeFileSync(path.join(dir,name+'.js'),ts.transpileModule(fs.readFileSync('assets/scripts/'+name+'.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS}}).outputText);
   const p=require(path.join(dir,'BilliardsPhysics.js')),s=require(path.join(dir,'BilliardsShot.js'));
   const report={scope:'Pure TS simulation; standard rack, centre tip, head-line positions aiming at apex. Prototype tuning, not measured real-table data.',curve:[10,25,50,60,70,80,90,100].map(percent=>({percent,speed:s.powerToSpeed(percent/25)})),cases:[0,.12,-.12].map(offset=>({legacy:measureBreak(p,4,offset),updated:measureBreak(p,s.powerToSpeed(4),offset)}))};
   const output=process.argv[2];if(output){fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');}console.log(JSON.stringify(report,null,2));

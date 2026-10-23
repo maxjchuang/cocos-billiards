@@ -81,3 +81,11 @@ test('result table inspection stays paused and new round clears history while re
  g.modalAction('view-table');assert.equal(g.panelMode,'view');assert.equal(g.paused,true);g.modalAction('return-result');assert.equal(g.panelMode,'result');
  g.modalAction('new-round');assert.equal(g.referee.phase,'placing');assert.equal(g.history.entries.length,0);assert.equal(g.settings.value.magnifier,false);
 });
+
+test('component records fresh rack recipes, supports replay, and keeps the replay ball set on re-rack',()=>{
+ const path=require('node:path'),r=require(path.join(path.dirname(process.env.BILLIARDS_TEST_MODULE),'BilliardsRack.js')),g=game();
+ g.rackSession=new r.RackSession(undefined,()=>.25);g.reset();const a=g.rackConfig;g.reset();assert.notEqual(g.rackConfig.rackSeed,a.rackSeed);assert.equal(g.rackSession.history.length,2);
+ const recipe=r.rackConfig(123,987),history=g.rackSession.history.length;g.reset(recipe);assert.deepEqual(g.rackConfig,recipe);assert.equal(g.rackSession.history.length,history);
+ const masses=g.balls.map(b=>b.mass);g.referee.phase='choice';g.referee.breakChoice='illegal';g.referee.chooseBreak(g.balls,'self');assert.equal(g.rackConfig.ballSetSeed,987);assert.deepEqual(g.balls.map(b=>b.mass),masses);
+ const before=g.balls,id=g.gameId;assert.throws(()=>g.reset({...recipe,version:'bad'}));assert.equal(g.balls,before);assert.equal(g.gameId,id);
+});
