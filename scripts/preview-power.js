@@ -1,6 +1,6 @@
 // Development-only: fixed equal-mass calibration recipe for the historical power baseline.
 // Real UI touches launch full-power breaks. Production rack variability is tested by previewRacks.
-async function previewPower({inputMode=location.protocol==='packages:'?'engine':'dom',offsets=[0,.12,-.12],recipe={version:'network-v2',rackSeed:1,ballSetSeed:0,massVariation:0}}={}) {
+async function previewPower({inputMode=location.protocol==='packages:'?'engine':'dom',offsets=[0,.12,-.12],recipe={version:'hertz-reference-v6',rackSeed:1,ballSetSeed:0,massVariation:0,positionToleranceM:0}}={}) {
  const m=await System.import('cc'),g=m.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
  if(!g?.shotSequence)throw Error('Load Main first.');
  if(inputMode==='engine'&&(cc.ENGINE_VERSION!=='3.8.7'||typeof m.input._dispatchEventTouch!=='function'))throw Error('Engine driver requires Creator 3.8.7.');

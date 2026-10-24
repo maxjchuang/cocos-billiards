@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-24",
+  "scope": "XZ reduction, not a reproduction of the paper's full 3D solver or measured table",
+  "materialSource": "https://link.springer.com/article/10.1007/s11071-021-07117-4",
+  "materialSections": "Table 1, Table 2, section 3.2, equations 3.4/3.5",
+  "material": {"radius":0.028575,"baseMassKg":0.17,"youngPa":3800000000,"poisson":0.375,"restitution":0.93,"friction":0.06,"frictionVelocity":0.01,"maxStep":0.000002,"dampingScale":1.0151780657470224},
+  "inertia": "2*m*R^2/5; calculated uniform-sphere inertia, paper rounds to 0.000055 kg m^2",
+  "normalModelSource": "https://docs.lammps.org/pair_granular.html",
+  "normalModelSections": "hertz/material, damping coeff_restitution, limit_damping; unilateral-force correction scale fitted on an isolated 4m/s pair only",
+  "normalModel": "Hertz K*delta^1.5 plus restitution damping; differs from the paper's Lankarani-Nikravesh damping",
+  "tangentialModel": "Dissipative Coulomb force smoothly limited below 0.01m/s; planar side-spin and midpoint torque arms",
+  "fourBall": {
+    "sourceSections": "Section 3.4, Figure 7a and Table 3 alpha=1e-8m",
+    "timeOrigin": "paper initial positions projected to plane; first free-flight contact occurs analytically before numerical reference interval",
+    "initial": [
+      {"id":0,"x":-0.635,"z":0,"vx":10.729,"vz":0},
+      {"id":1,"x":0.635,"z":0,"vx":0,"vz":0},
+      {"id":2,"x":0.684493360486534,"z":-0.028575004999999,"vx":0,"vz":0},
+      {"id":3,"x":0.684493360486534,"z":0.028575004999999,"vx":0,"vz":0}
+    ],
+    "omitted": ["gravity and vertical cloth compliance", "cloth friction and cushions during the short free-space impact interval"],
+    "publishedOutputCurve": null,
+    "comparison": "independent SciPy DOP853 integration of documented reduced equations; not the authors' published output curve"
+  },
+  "rollingCut": {"source":"https://link.springer.com/article/10.1007/s11071-021-07117-4","equation":"4.1","hitFractions":[0.05,0.125,0.25,0.5,0.75,0.875,0.95],"assumptions":"equal masses, elastic frictionless ball collision, initially rolling cue; direction measured when rolling resumes"},
+  "clothReference": {"source":"https://pooltool.readthedocs.io/en/stable/autoapi/pooltool/index.html","slidingCoefficient":0.2,"rollingCoefficient":0.01,"g":9.81,"status":"published software reference parameters, not measurements of this project table"}
+}

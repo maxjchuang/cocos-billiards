@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-24",
+  "version": "hertz-reference-v6",
+  "sha256": {
+    "assets/scripts/BilliardsContact.ts": "23aa52861df440ba97bd07bbeac35e7a92e0c55f1b8017dc00ebf57eadeed1b2",
+    "assets/scripts/BilliardsPhysics.ts": "46210c7c5d2b501db7bd60f38fc227f93881de95a09cb3866e28e69839d115ae",
+    "assets/scripts/BilliardsSpin.ts": "fa71309db905efb1f874d9200fc5e17d70a0b1a6b974abe4f186db2e0e46074a",
+    "assets/scripts/BilliardsRack.ts": "9f5e362770f0fbd28561ecfbcd132748d3d16d6c66142ab4b667c115cdaa93f3",
+    "assets/scripts/BilliardsTableGeometry.ts": "e00975d826bef7540153d8e6d511eb60ffcf8155ee00104df9f95291e20da903",
+    "scripts/reference-contact-ode.py": "897aad8a731cb6cead55cdf15965a9386f4b143b8aea3d7f637181d696113033",
+    "scripts/verify-contact-reference.cjs": "213ec9e7c90f25d0f98c46a059b6068eb05e1e8a612b261caea1b33253e8c01e",
+    "scripts/measure-calibrated-breaks.cjs": "b4dec894ae3ac0eb0a53c43d66e1eee26809a730fd759f74aaeddbb462736a8c",
+    "scripts/preview-core.js": "15699a4bd388e3c34900d84e0894e8f5a3662e45328d0ab88b22e024a33fde24",
+    "scripts/preview-calibration-video.js": "7cab5a49a61f70f08473e6784bc4739c5c148cb8acf7e8ca7c5ca83d76380734"
+  }
+}

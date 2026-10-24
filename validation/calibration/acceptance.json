@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-24",
+  "version": "hertz-reference-v6",
+  "releaseAccepted": true,
+  "status": "numerical, browser, native Creator and user feel acceptance passed",
+  "validation": {
+    "node": {
+      "typecheck": true,
+      "passed": 145,
+      "failed": 0
+    },
+    "creatorCli": {
+      "platform": "web-mobile",
+      "version": "3.8.7",
+      "exitCode": 36,
+      "scope": "resource import and build only"
+    },
+    "browser": {
+      "engine": "3.8.7",
+      "viewport": "393x852 DPR2 mobile touch simulation",
+      "errors": [],
+      "consoleErrorsAndWarnings": 0,
+      "continuousUnselectedRecordings": 6,
+      "separateFailedSeedRecording": 1,
+      "reference": "browser-checks.json"
+    },
+    "nativeCreator": {
+      "status": "passed",
+      "version": "hertz-reference-v6",
+      "engine": "3.8.7",
+      "driver": "Creator internal engine touch dispatcher, not hardware",
+      "viewport": {
+        "width": 179,
+        "height": 390,
+        "dpr": 2
+      },
+      "checks": {
+        "racks": 28,
+        "gameplay": 35,
+        "spin": 28,
+        "contactTiming": 9,
+        "ui": 81,
+        "total": 181
+      },
+      "errors": [],
+      "evidence": "creator-native.json",
+      "startupNotes": [
+        "Multiple same-name launcher/editor processes prevented window binding; resolved by exiting all and launching with --project",
+        "Engine Gamepad secure-context warning and DevTools Autofill protocol notices are recorded separately from game errors"
+      ]
+    },
+    "hardwareAndWechat": "waived by user"
+  },
+  "limits": [
+    "Reduced planar model, not the original full 3D paper solver",
+    "Source-based parameter profile, not measured project table"
+  ],
+  "userAcceptance": {
+    "date": "2026-10-24",
+    "feedback": "这一版可以，提交并推送",
+    "scope": "current gameplay feel accepted; not measured full 3D physical validation"
+  }
+}

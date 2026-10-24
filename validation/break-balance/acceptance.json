@@ -1,0 +1,3197 @@
+{
+  "date": "2026-10-23",
+  "status": "candidate_not_approved_for_realism",
+  "version": "compliant-v3",
+  "baseline": "4397155",
+  "node": {
+    "tests": 131,
+    "passed": 131,
+    "typecheck": true
+  },
+  "creatorCli": {
+    "successExitCode": 36
+  },
+  "browser": {
+    "racks": {
+      "engine": "3.8.7",
+      "inputMode": "dom",
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "dpr": 2
+      },
+      "results": [
+        {
+          "name": "0: default cue, direction and tip remain exact",
+          "passed": true
+        },
+        {
+          "name": "Pause/resume does not reroll the rack or masses",
+          "passed": true
+        },
+        {
+          "name": "0: real power slider reaches 100%",
+          "passed": true
+        },
+        {
+          "name": "0: click keeps balls still before contact",
+          "passed": true
+        },
+        {
+          "name": "0: exact stroke still commits at 220ms",
+          "passed": true
+        },
+        {
+          "name": "0: break settles with finite bounded positions",
+          "passed": true
+        },
+        {
+          "name": "0: collisions and settlement do not mutate masses",
+          "passed": true
+        },
+        {
+          "name": "1: default cue, direction and tip remain exact",
+          "passed": true
+        },
+        {
+          "name": "1: new round advances rack seed and retains ball set",
+          "passed": true
+        },
+        {
+          "name": "1: physical properties stay attached to ball numbers",
+          "passed": true
+        },
+        {
+          "name": "1: real power slider reaches 100%",
+          "passed": true
+        },
+        {
+          "name": "1: click keeps balls still before contact",
+          "passed": true
+        },
+        {
+          "name": "1: exact stroke still commits at 220ms",
+          "passed": true
+        },
+        {
+          "name": "1: break settles with finite bounded positions",
+          "passed": true
+        },
+        {
+          "name": "1: collisions and settlement do not mutate masses",
+          "passed": true
+        },
+        {
+          "name": "2: default cue, direction and tip remain exact",
+          "passed": true
+        },
+        {
+          "name": "Recipe replay does not consume the normal rack sequence",
+          "passed": true
+        },
+        {
+          "name": "2: real power slider reaches 100%",
+          "passed": true
+        },
+        {
+          "name": "2: click keeps balls still before contact",
+          "passed": true
+        },
+        {
+          "name": "2: exact stroke still commits at 220ms",
+          "passed": true
+        },
+        {
+          "name": "2: break settles with finite bounded positions",
+          "passed": true
+        },
+        {
+          "name": "2: collisions and settlement do not mutate masses",
+          "passed": true
+        },
+        {
+          "name": "Fresh default rounds have different number arrangements",
+          "passed": true
+        },
+        {
+          "name": "Fresh rounds differ geometrically, ignoring ball numbers",
+          "passed": true
+        },
+        {
+          "name": "Same recipe exactly reproduces all settled ball coordinates",
+          "passed": true
+        },
+        {
+          "name": "Saved rack journal restores the ball set and recent recipes",
+          "passed": true
+        },
+        {
+          "name": "Referee-requested re-rack uses a fresh recipe with the same ball set",
+          "passed": true
+        },
+        {
+          "name": "No game errors or unhandled rejections were observed",
+          "passed": true
+        }
+      ],
+      "cases": [
+        {
+          "config": {
+            "version": "compliant-v3",
+            "rackSeed": 2182026987,
+            "ballSetSeed": 2003531172,
+            "massVariation": 0.005
+          },
+          "initial": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": 0,
+              "z": 0.65,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 9,
+              "mass": 0.9994382070970983,
+              "x": -0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 7,
+              "mass": 0.995,
+              "x": 0,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 12,
+              "mass": 1.0015059288914605,
+              "x": 0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 4,
+              "mass": 1.003970169402513,
+              "x": -0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 15,
+              "mass": 0.9978877330030193,
+              "x": 0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 3,
+              "mass": 0.99828272009206,
+              "x": 0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": 0,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 1,
+              "mass": 1.0017474207892105,
+              "x": 0,
+              "z": -0.635,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 6,
+              "mass": 1.0000459530781813,
+              "x": -0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 11,
+              "mass": 1.0018970342311537,
+              "x": -0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 14,
+              "mass": 1.0031740680763923,
+              "x": 0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 2,
+              "mass": 0.999153400831101,
+              "x": 0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 13,
+              "mass": 0.9972312957113235,
+              "x": -0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 5,
+              "mass": 1.0039054292158789,
+              "x": 0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "balls": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": -0.0009455331317636309,
+              "z": 1.236773293527245,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 9,
+              "mass": 0.9994382070970983,
+              "x": -0.383429361205691,
+              "z": 0.756837514453193,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 7,
+              "mass": 0.995,
+              "x": 0.011141217973441482,
+              "z": -1.0247735078648428,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.5507033649425387,
+              "z": -0.15411386584697437,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 12,
+              "mass": 1.0015059288914605,
+              "x": 0.0507804659588202,
+              "z": -0.9620865459575622,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 4,
+              "mass": 1.003970169402513,
+              "x": -0.07947748917622721,
+              "z": -0.944969685046595,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 15,
+              "mass": 0.9978877330030193,
+              "x": 0.3034374663364395,
+              "z": 0.47375086286142837,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 3,
+              "mass": 0.99828272009206,
+              "x": 0.5508732138828423,
+              "z": -0.1504414816880541,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": 3.836644737923872e-05,
+              "z": -0.7202002313293537,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 1,
+              "mass": 1.0017474207892105,
+              "x": 0.001006364370022129,
+              "z": 1.1290083439355734,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 6,
+              "mass": 1.0000459530781813,
+              "x": -0.25106036623916633,
+              "z": 0.4841671668143796,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 11,
+              "mass": 1.0018970342311537,
+              "x": -0.35688884438786367,
+              "z": -1.1380572324403229,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 14,
+              "mass": 1.0031740680763923,
+              "x": 0.21943956494071717,
+              "z": -0.8411135324920129,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 2,
+              "mass": 0.999153400831101,
+              "x": 0.31770840542375717,
+              "z": 0.7569865924684291,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 13,
+              "mass": 0.9972312957113235,
+              "x": -0.2205772088357414,
+              "z": -0.8400252312811686,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 5,
+              "mass": 1.0039054292158789,
+              "x": 0.35705096331113545,
+              "z": -1.13772587605945,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "phase": "ready",
+          "current": 1,
+          "contactMs": 220,
+          "firstSpeed": 7.9925,
+          "wallMs": 3539.2000000476837
+        },
+        {
+          "config": {
+            "version": "compliant-v3",
+            "rackSeed": 541495460,
+            "ballSetSeed": 2003531172,
+            "massVariation": 0.005
+          },
+          "initial": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": 0,
+              "z": 0.65,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 5,
+              "mass": 0.9994382070970983,
+              "x": 0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 4,
+              "mass": 0.995,
+              "x": -0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 15,
+              "mass": 1.0015059288914605,
+              "x": 0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 14,
+              "mass": 1.003970169402513,
+              "x": 0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 11,
+              "mass": 0.9978877330030193,
+              "x": -0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 1,
+              "mass": 0.99828272009206,
+              "x": 0,
+              "z": -0.635,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": 0,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 3,
+              "mass": 1.0017474207892105,
+              "x": 0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 9,
+              "mass": 1.0000459530781813,
+              "x": -0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 13,
+              "mass": 1.0018970342311537,
+              "x": -0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 12,
+              "mass": 1.0031740680763923,
+              "x": 0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 7,
+              "mass": 0.999153400831101,
+              "x": 0,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 6,
+              "mass": 0.9972312957113235,
+              "x": -0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 2,
+              "mass": 1.0039054292158789,
+              "x": 0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "balls": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": 0.007902122972968027,
+              "z": 1.2343559808277809,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 5,
+              "mass": 0.9994382070970983,
+              "x": 0.35452227956793725,
+              "z": -1.1379184204805102,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 4,
+              "mass": 0.995,
+              "x": -0.043235818672651825,
+              "z": -0.974874541915138,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.5509413492087034,
+              "z": -0.1583541538911848,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 15,
+              "mass": 1.0015059288914605,
+              "x": 0.3491122318103104,
+              "z": 0.4783887802174131,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 14,
+              "mass": 1.003970169402513,
+              "x": 0.22084150150946588,
+              "z": -0.8411354603813754,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 11,
+              "mass": 0.9978877330030193,
+              "x": -0.3526301620921374,
+              "z": -1.1368693090703146,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 1,
+              "mass": 0.99828272009206,
+              "x": -0.008741323505138034,
+              "z": 1.1332819891884782,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": -0.0003220618302035461,
+              "z": -0.7203911912087728,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 3,
+              "mass": 1.0017474207892105,
+              "x": 0.5509232288046794,
+              "z": -0.15750320068657095,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 9,
+              "mass": 1.0000459530781813,
+              "x": -0.29660261116209535,
+              "z": 0.7581420196421873,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 13,
+              "mass": 1.0018970342311537,
+              "x": -0.22047114156031153,
+              "z": -0.8408749964117407,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 12,
+              "mass": 1.0031740680763923,
+              "x": 0.07121884128471072,
+              "z": -0.9140714032678968,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 7,
+              "mass": 0.999153400831101,
+              "x": 0.0015224238327476137,
+              "z": -1.0229569223338302,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 6,
+              "mass": 0.9972312957113235,
+              "x": -0.319437906383963,
+              "z": 0.4731086288767725,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 2,
+              "mass": 1.0039054292158789,
+              "x": 0.25524460966578993,
+              "z": 0.7659219254981549,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "phase": "ready",
+          "current": 1,
+          "contactMs": 220,
+          "firstSpeed": 7.9925,
+          "wallMs": 3539.300000190735
+        },
+        {
+          "config": {
+            "version": "compliant-v3",
+            "rackSeed": 2182026987,
+            "ballSetSeed": 2003531172,
+            "massVariation": 0.005
+          },
+          "initial": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": 0,
+              "z": 0.65,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 9,
+              "mass": 0.9994382070970983,
+              "x": -0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 7,
+              "mass": 0.995,
+              "x": 0,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 12,
+              "mass": 1.0015059288914605,
+              "x": 0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 4,
+              "mass": 1.003970169402513,
+              "x": -0.02858,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 15,
+              "mass": 0.9978877330030193,
+              "x": 0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 3,
+              "mass": 0.99828272009206,
+              "x": 0.05716,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": 0,
+              "z": -0.734004024160637,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 1,
+              "mass": 1.0017474207892105,
+              "x": 0,
+              "z": -0.635,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 6,
+              "mass": 1.0000459530781813,
+              "x": -0.11432,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 11,
+              "mass": 1.0018970342311537,
+              "x": -0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 14,
+              "mass": 1.0031740680763923,
+              "x": 0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 2,
+              "mass": 0.999153400831101,
+              "x": 0.02858,
+              "z": -0.6845020120803185,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 13,
+              "mass": 0.9972312957113235,
+              "x": -0.05716,
+              "z": -0.8330080483212741,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 5,
+              "mass": 1.0039054292158789,
+              "x": 0.08574000000000001,
+              "z": -0.7835060362409556,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "balls": [
+            {
+              "id": 0,
+              "bodyId": 0,
+              "mass": 1,
+              "x": -0.0009455331317636309,
+              "z": 1.236773293527245,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 1,
+              "bodyId": 9,
+              "mass": 0.9994382070970983,
+              "x": -0.383429361205691,
+              "z": 0.756837514453193,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 2,
+              "bodyId": 7,
+              "mass": 0.995,
+              "x": 0.011141217973441482,
+              "z": -1.0247735078648428,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 3,
+              "bodyId": 10,
+              "mass": 1.0002338949345888,
+              "x": -0.5507033649425387,
+              "z": -0.15411386584697437,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 4,
+              "bodyId": 12,
+              "mass": 1.0015059288914605,
+              "x": 0.0507804659588202,
+              "z": -0.9620865459575622,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 5,
+              "bodyId": 4,
+              "mass": 1.003970169402513,
+              "x": -0.07947748917622721,
+              "z": -0.944969685046595,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 6,
+              "bodyId": 15,
+              "mass": 0.9978877330030193,
+              "x": 0.3034374663364395,
+              "z": 0.47375086286142837,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 7,
+              "bodyId": 3,
+              "mass": 0.99828272009206,
+              "x": 0.5508732138828423,
+              "z": -0.1504414816880541,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 8,
+              "bodyId": 8,
+              "mass": 0.9965267446460189,
+              "x": 3.836644737923872e-05,
+              "z": -0.7202002313293537,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 9,
+              "bodyId": 1,
+              "mass": 1.0017474207892105,
+              "x": 0.001006364370022129,
+              "z": 1.1290083439355734,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 10,
+              "bodyId": 6,
+              "mass": 1.0000459530781813,
+              "x": -0.25106036623916633,
+              "z": 0.4841671668143796,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 11,
+              "bodyId": 11,
+              "mass": 1.0018970342311537,
+              "x": -0.35688884438786367,
+              "z": -1.1380572324403229,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 12,
+              "bodyId": 14,
+              "mass": 1.0031740680763923,
+              "x": 0.21943956494071717,
+              "z": -0.8411135324920129,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 13,
+              "bodyId": 2,
+              "mass": 0.999153400831101,
+              "x": 0.31770840542375717,
+              "z": 0.7569865924684291,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 14,
+              "bodyId": 13,
+              "mass": 0.9972312957113235,
+              "x": -0.2205772088357414,
+              "z": -0.8400252312811686,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            },
+            {
+              "id": 15,
+              "bodyId": 5,
+              "mass": 1.0039054292158789,
+              "x": 0.35705096331113545,
+              "z": -1.13772587605945,
+              "vx": 0,
+              "vz": 0,
+              "wy": 0,
+              "wx": 0,
+              "wz": 0
+            }
+          ],
+          "phase": "ready",
+          "current": 1,
+          "contactMs": 220,
+          "firstSpeed": 7.9925,
+          "wallMs": 3539.2000000476837
+        }
+      ],
+      "journalPersistent": true,
+      "historyCount": 4,
+      "errors": []
+    },
+    "smoke": {
+      "engine": "3.8.7",
+      "inputMode": "Browser DOM touch events",
+      "results": [
+        {
+          "name": "Profiler is hidden by default",
+          "passed": true
+        },
+        {
+          "name": "Projected HUD stays outside the table viewport",
+          "passed": true
+        },
+        {
+          "name": "Table fits its reserved camera viewport",
+          "passed": true
+        },
+        {
+          "name": "16 balls, 15 number labels and generated textures",
+          "passed": true
+        },
+        {
+          "name": "Opening placement has no cue stick",
+          "passed": true
+        },
+        {
+          "name": "Touch placement does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Head-line placement restriction",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation unlocks cue",
+          "passed": true
+        },
+        {
+          "name": "Touch power does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Table release retains aim and never shoots",
+          "passed": true
+        },
+        {
+          "name": "Fine button nudges 0.1 degrees without shooting",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Dry miss offers break choices to P2",
+          "passed": true
+        },
+        {
+          "name": "Accepting foul grants free ball",
+          "passed": true
+        },
+        {
+          "name": "Touch free-ball confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch group selection",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical stripe pot assigns groups and keeps turn",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical early 8 loses",
+          "passed": true
+        },
+        {
+          "name": "Finished game rejects shots",
+          "passed": true
+        },
+        {
+          "name": "Touch next-game button",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical legal 8 wins",
+          "passed": true
+        },
+        {
+          "name": "Pause blocks table input",
+          "passed": true
+        },
+        {
+          "name": "Restart first requires confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch restart clears referee",
+          "passed": true
+        }
+      ]
+    },
+    "spin": {
+      "engine": "3.8.7",
+      "inputMode": "Browser synthetic DOM touch",
+      "results": [
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Three touch-sized buttons fit without overlap",
+          "passed": true
+        },
+        {
+          "name": "Tip panel opens without shooting",
+          "passed": true
+        },
+        {
+          "name": "Draft does not apply until done",
+          "passed": true
+        },
+        {
+          "name": "Overlay blocks table placement and aiming",
+          "passed": true
+        },
+        {
+          "name": "Done applies tip without shooting",
+          "passed": true
+        },
+        {
+          "name": "Confirmed tip is visible beside power",
+          "passed": true
+        },
+        {
+          "name": "Cancel restores previous confirmed tip",
+          "passed": true
+        },
+        {
+          "name": "Recenter changes only draft",
+          "passed": true
+        },
+        {
+          "name": "Diagonal selection is bounded by a circle",
+          "passed": true
+        },
+        {
+          "name": "Confirmed recenter restores centre tip",
+          "passed": true
+        },
+        {
+          "name": "Shot reserves confirmed tip",
+          "passed": true
+        },
+        {
+          "name": "Preparing shot blocks tip editing",
+          "passed": true
+        },
+        {
+          "name": "Spin shot commits at contact",
+          "passed": true
+        },
+        {
+          "name": "Tip drives actual angular velocity",
+          "passed": true
+        },
+        {
+          "name": "Spin shot settles within timeout",
+          "passed": true
+        },
+        {
+          "name": "Tip recenters after referee settlement",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches object ball",
+          "passed": true
+        },
+        {
+          "name": "High tip follows after head-on contact",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches object ball",
+          "passed": true
+        },
+        {
+          "name": "Low tip draws after head-on contact",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches cushion",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation reaches ready",
+          "passed": true
+        },
+        {
+          "name": "Spin reaches cushion",
+          "passed": true
+        },
+        {
+          "name": "Opposite english gives opposite cushion departure",
+          "passed": true
+        }
+      ],
+      "measurements": {
+        "followVz": -0.8000596434847023,
+        "drawVz": 0.7353964407942848,
+        "leftVz": -0.4965175267278531,
+        "rightVz": 0.49919628328424387
+      }
+    },
+    "round": {
+      "mode": "Controlled target positions; synthetic DOM controls and real physics",
+      "results": [
+        {
+          "name": "Weak break moves decision to the other player",
+          "passed": true
+        },
+        {
+          "name": "Break receiver obtains full-table placement",
+          "passed": true
+        },
+        {
+          "name": "Receiver selects stripes without prematurely assigning groups",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 9 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 10 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 11 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 12 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 13 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 14 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "Physical pot 15 keeps the stripe player at the table",
+          "passed": true
+        },
+        {
+          "name": "All seven stripes are cleared before the black shot",
+          "passed": true
+        },
+        {
+          "name": "Separate legal black shot wins the complete round",
+          "passed": true
+        },
+        {
+          "name": "Every settled shot is retained in the actual match history",
+          "passed": true
+        },
+        {
+          "name": "Next round clears groups, winner and tip",
+          "passed": true
+        }
+      ]
+    },
+    "input": {
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "dpr": 2
+      },
+      "inputMode": "Synthetic DOM touch",
+      "results": [
+        {
+          "name": "Placement confirmation works through DOM touch",
+          "passed": true
+        },
+        {
+          "name": "Cancelling second finger preserves the owner",
+          "passed": true
+        },
+        {
+          "name": "Multi-touch aim release never shoots",
+          "passed": true
+        },
+        {
+          "name": "Power gesture never turns into table aim",
+          "passed": true
+        },
+        {
+          "name": "Cancelled power gesture releases ownership",
+          "passed": true
+        },
+        {
+          "name": "Releasing outside the shoot button cancels the click",
+          "passed": true
+        },
+        {
+          "name": "Cancelled shoot touch never starts a shot",
+          "passed": true
+        },
+        {
+          "name": "Tip drag stays within the radial selection boundary",
+          "passed": true
+        },
+        {
+          "name": "Tip drag does not apply or shoot",
+          "passed": true
+        },
+        {
+          "name": "Backdrop closes the draft without passing touch through",
+          "passed": true
+        },
+        {
+          "name": "Repeated fine nudges stop at +5 degrees",
+          "passed": true
+        },
+        {
+          "name": "Repeated fine nudges stop at -5 degrees",
+          "passed": true
+        },
+        {
+          "name": "Pause blocks table input and movement",
+          "passed": true
+        },
+        {
+          "name": "Restart requires a separate confirmation",
+          "passed": true
+        },
+        {
+          "name": "Cancelling restart preserves the current rack",
+          "passed": true
+        },
+        {
+          "name": "Projected controls stay inside the browser canvas",
+          "passed": true
+        },
+        {
+          "name": "Main buttons retain 44 logical pixel touch targets",
+          "passed": true
+        }
+      ]
+    },
+    "contact": {
+      "engine": "3.8.7",
+      "inputMode": "Browser synthetic DOM touch",
+      "timing": {
+        "frames": 66,
+        "preContactFrames": 13,
+        "noEarlyMotion": true,
+        "requestedFrameRate": 60,
+        "firstMotionMs": 220,
+        "firstMotionWallMs": 233,
+        "contactFrames": 1,
+        "repeatIgnored": true
+      },
+      "checks": {
+        "noEarlyMotion": true,
+        "observedPreparation": true,
+        "contactFrameObserved": true,
+        "firstMotionAtContact": true,
+        "repeatIgnored": true,
+        "cancelledBeforeContact": true,
+        "noGhostAfterResume": true,
+        "frozenAfterContact": true,
+        "resumedWithoutReplay": true
+      },
+      "passed": true
+    },
+    "pockets": {
+      "mode": "Controlled velocities, actual Cocos frames; not hardware touch",
+      "viewport": {
+        "width": 393,
+        "height": 852,
+        "dpr": 2
+      },
+      "results": [
+        {
+          "name": "Visible outer frame uses the revised 1.54 by 2.82 metre proportions",
+          "passed": true
+        },
+        {
+          "name": "Eight continuous rail pieces and six individual pocket meshes are present",
+          "passed": true
+        },
+        {
+          "name": "All procedural meshes have finite bounds inside the outer frame",
+          "passed": true
+        },
+        {
+          "name": "The whole revised frame fits the reserved table viewport",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 1 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 2 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 3 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 4 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 5 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 captures speed 0.3 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 removes the sphere and number label together",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 captures speed 8 in the actual frame loop",
+          "passed": true
+        },
+        {
+          "name": "Pocket 6 removes the sphere and number label together",
+          "passed": true
+        }
+      ],
+      "measurements": [
+        {
+          "pocket": 1,
+          "speed": 0.3,
+          "elapsedMs": 299
+        },
+        {
+          "pocket": 1,
+          "speed": 8,
+          "elapsedMs": 31
+        },
+        {
+          "pocket": 2,
+          "speed": 0.3,
+          "elapsedMs": 298
+        },
+        {
+          "pocket": 2,
+          "speed": 8,
+          "elapsedMs": 31
+        },
+        {
+          "pocket": 3,
+          "speed": 0.3,
+          "elapsedMs": 298
+        },
+        {
+          "pocket": 3,
+          "speed": 8,
+          "elapsedMs": 48
+        },
+        {
+          "pocket": 4,
+          "speed": 0.3,
+          "elapsedMs": 298
+        },
+        {
+          "pocket": 4,
+          "speed": 8,
+          "elapsedMs": 32
+        },
+        {
+          "pocket": 5,
+          "speed": 0.3,
+          "elapsedMs": 299
+        },
+        {
+          "pocket": 5,
+          "speed": 8,
+          "elapsedMs": 31
+        },
+        {
+          "pocket": 6,
+          "speed": 0.3,
+          "elapsedMs": 297
+        },
+        {
+          "pocket": 6,
+          "speed": 8,
+          "elapsedMs": 31
+        }
+      ]
+    },
+    "performance": {
+      "scope": "Local Chromium, 393x852 DPR2, 60fps cap",
+      "idle": {
+        "frames": 180,
+        "averageFps": 59.92634750585872,
+        "p95FrameMs": 17.899999856948853
+      },
+      "magnifier": {
+        "frames": 180,
+        "averageFps": 60.08929470417585,
+        "p95FrameMs": 17.59999990463257
+      },
+      "nodesBefore": 365,
+      "nodesAfter": 365,
+      "checks": {
+        "idleFps": true,
+        "magnifierFps": true,
+        "idleP95": true,
+        "magnifierP95": true,
+        "stableNodeCount": true,
+        "clips": true
+      }
+    },
+    "errors": []
+  },
+  "naturalScreenshots": [
+    {
+      "config": {
+        "version": "compliant-v3",
+        "rackSeed": 2625806874,
+        "ballSetSeed": 2003531172,
+        "massVariation": 0.005
+      },
+      "initial": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": 0,
+          "z": 0.65,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 15,
+          "mass": 0.9994382070970983,
+          "x": 0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 9,
+          "mass": 0.995,
+          "x": -0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 1,
+          "mass": 1.0002338949345888,
+          "x": 0,
+          "z": -0.635,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 7,
+          "mass": 1.0015059288914605,
+          "x": 0,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 3,
+          "mass": 1.003970169402513,
+          "x": 0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 11,
+          "mass": 0.9978877330030193,
+          "x": -0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 12,
+          "mass": 0.99828272009206,
+          "x": 0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": 0,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 4,
+          "mass": 1.0017474207892105,
+          "x": -0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 5,
+          "mass": 1.0000459530781813,
+          "x": 0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 13,
+          "mass": 1.0018970342311537,
+          "x": -0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 6,
+          "mass": 1.0031740680763923,
+          "x": -0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 14,
+          "mass": 0.999153400831101,
+          "x": 0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 10,
+          "mass": 0.9972312957113235,
+          "x": -0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 2,
+          "mass": 1.0039054292158789,
+          "x": 0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "balls": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": 0.01875426626071358,
+          "z": 1.2369826880278219,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 15,
+          "mass": 0.9994382070970983,
+          "x": 0.35908320133360594,
+          "z": 0.4859592088950988,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 9,
+          "mass": 0.995,
+          "x": -0.472466732998677,
+          "z": 0.750724646777993,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 1,
+          "mass": 1.0002338949345888,
+          "x": -0.023072218466881116,
+          "z": 1.1361448832517105,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 7,
+          "mass": 1.0015059288914605,
+          "x": -0.001479950466800884,
+          "z": -1.0229088502622858,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 3,
+          "mass": 1.003970169402513,
+          "x": 0.5516451467526292,
+          "z": -0.16203398057801374,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 11,
+          "mass": 0.9978877330030193,
+          "x": -0.35365031233713945,
+          "z": -1.1390704427488598,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 12,
+          "mass": 0.99828272009206,
+          "x": 0.075371201294582,
+          "z": -0.9206764946366941,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": -0.0001343500976822469,
+          "z": -0.7203943025111545,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 4,
+          "mass": 1.0017474207892105,
+          "x": -0.048690753761227897,
+          "z": -0.9706804926878996,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 5,
+          "mass": 1.0000459530781813,
+          "x": 0.3573075840845991,
+          "z": -1.1375661192140152,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 13,
+          "mass": 1.0018970342311537,
+          "x": -0.2185263701121468,
+          "z": -0.8415428051334582,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 6,
+          "mass": 1.0031740680763923,
+          "x": -0.1836321524645895,
+          "z": 0.5004625305687276,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 14,
+          "mass": 0.999153400831101,
+          "x": 0.22235508275631446,
+          "z": -0.8401404622764811,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 10,
+          "mass": 0.9972312957113235,
+          "x": -0.5501679383977076,
+          "z": -0.14814138819302894,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 2,
+          "mass": 1.0039054292158789,
+          "x": 0.2404804273582434,
+          "z": 0.7664414918117805,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "coreCount": 1,
+      "phase": "ready",
+      "wallMs": 3539.4000000953674
+    },
+    {
+      "config": {
+        "version": "compliant-v3",
+        "rackSeed": 985275347,
+        "ballSetSeed": 2003531172,
+        "massVariation": 0.005
+      },
+      "initial": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": 0,
+          "z": 0.65,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 2,
+          "mass": 0.9994382070970983,
+          "x": 0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 14,
+          "mass": 0.995,
+          "x": 0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 11,
+          "mass": 1.0002338949345888,
+          "x": -0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 4,
+          "mass": 1.0015059288914605,
+          "x": -0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 9,
+          "mass": 1.003970169402513,
+          "x": -0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 3,
+          "mass": 0.9978877330030193,
+          "x": 0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 6,
+          "mass": 0.99828272009206,
+          "x": -0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": 0,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 1,
+          "mass": 1.0017474207892105,
+          "x": 0,
+          "z": -0.635,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 13,
+          "mass": 1.0000459530781813,
+          "x": -0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 7,
+          "mass": 1.0018970342311537,
+          "x": 0,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 15,
+          "mass": 1.0031740680763923,
+          "x": 0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 5,
+          "mass": 0.999153400831101,
+          "x": 0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 10,
+          "mass": 0.9972312957113235,
+          "x": -0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 12,
+          "mass": 1.0039054292158789,
+          "x": 0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "balls": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": -0.008416259804288511,
+          "z": 1.2363213973026637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 2,
+          "mass": 0.9994382070970983,
+          "x": 0.3942827971326556,
+          "z": 0.7566123276502527,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 14,
+          "mass": 0.995,
+          "x": 0.2200623731972397,
+          "z": -0.8401489064522221,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 11,
+          "mass": 1.0002338949345888,
+          "x": -0.3570429259227691,
+          "z": -1.1377015193495745,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 4,
+          "mass": 1.0015059288914605,
+          "x": -0.06976311677108675,
+          "z": -0.9520076920676941,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 9,
+          "mass": 1.003970169402513,
+          "x": -0.24903023870623003,
+          "z": 0.7664459957896832,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 3,
+          "mass": 0.9978877330030193,
+          "x": 0.5503646091947119,
+          "z": -0.15119245621210423,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 6,
+          "mass": 0.99828272009206,
+          "x": -0.35656356028260827,
+          "z": 0.47815857913594195,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": 0.00010567230510435155,
+          "z": -0.720202086732295,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 1,
+          "mass": 1.0017474207892105,
+          "x": 0.009288772588481056,
+          "z": 1.1302095052435241,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 13,
+          "mass": 1.0000459530781813,
+          "x": -0.22026358567495602,
+          "z": -0.8406869511832809,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 7,
+          "mass": 1.0018970342311537,
+          "x": -0.0008492574479012149,
+          "z": -1.0205835044238953,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 15,
+          "mass": 1.0031740680763923,
+          "x": 0.24369549969914414,
+          "z": 0.4837856101553054,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 5,
+          "mass": 0.999153400831101,
+          "x": 0.357688955940697,
+          "z": -1.1393088018021087,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 10,
+          "mass": 0.9972312957113235,
+          "x": -0.5501797907532683,
+          "z": -0.1544812302856827,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 12,
+          "mass": 1.0039054292158789,
+          "x": 0.07085707236044479,
+          "z": -0.9582460449902409,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "coreCount": 1,
+      "phase": "ready",
+      "wallMs": 3522.199999809265
+    },
+    {
+      "config": {
+        "version": "compliant-v3",
+        "rackSeed": 3639711116,
+        "ballSetSeed": 2003531172,
+        "massVariation": 0.005
+      },
+      "initial": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": 0,
+          "z": 0.65,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 5,
+          "mass": 0.9994382070970983,
+          "x": 0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 7,
+          "mass": 0.995,
+          "x": 0,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 12,
+          "mass": 1.0002338949345888,
+          "x": 0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 3,
+          "mass": 1.0015059288914605,
+          "x": 0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 13,
+          "mass": 1.003970169402513,
+          "x": -0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 2,
+          "mass": 0.9978877330030193,
+          "x": 0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 15,
+          "mass": 0.99828272009206,
+          "x": 0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": 0,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 1,
+          "mass": 1.0017474207892105,
+          "x": 0,
+          "z": -0.635,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 4,
+          "mass": 1.0000459530781813,
+          "x": -0.02858,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 6,
+          "mass": 1.0018970342311537,
+          "x": -0.11432,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 9,
+          "mass": 1.0031740680763923,
+          "x": -0.02858,
+          "z": -0.6845020120803185,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 10,
+          "mass": 0.999153400831101,
+          "x": -0.05716,
+          "z": -0.734004024160637,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 11,
+          "mass": 0.9972312957113235,
+          "x": -0.08574000000000001,
+          "z": -0.7835060362409556,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 14,
+          "mass": 1.0039054292158789,
+          "x": 0.05716,
+          "z": -0.8330080483212741,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "balls": [
+        {
+          "id": 0,
+          "bodyId": 0,
+          "mass": 1,
+          "x": -0.009445488983333885,
+          "z": 1.236573107768821,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 1,
+          "bodyId": 5,
+          "mass": 0.9994382070970983,
+          "x": 0.35287245207280804,
+          "z": -1.137095471196806,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 2,
+          "bodyId": 7,
+          "mass": 0.995,
+          "x": -0.00033550474535817197,
+          "z": -1.0243981557794968,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 3,
+          "bodyId": 12,
+          "mass": 1.0002338949345888,
+          "x": 0.06338772023105498,
+          "z": -0.9538090082402393,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 4,
+          "bodyId": 3,
+          "mass": 1.0015059288914605,
+          "x": 0.550923330981245,
+          "z": -0.15729420338238312,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 5,
+          "bodyId": 13,
+          "mass": 1.003970169402513,
+          "x": -0.22055807081940185,
+          "z": -0.8414119035670959,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 6,
+          "bodyId": 2,
+          "mass": 0.9978877330030193,
+          "x": 0.39666297613695767,
+          "z": 0.755625201678829,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 7,
+          "bodyId": 15,
+          "mass": 0.99828272009206,
+          "x": 0.24092688083756608,
+          "z": 0.4862653695207437,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 8,
+          "bodyId": 8,
+          "mass": 0.9965267446460189,
+          "x": 0.00015995404876796896,
+          "z": -0.7203807865397769,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 9,
+          "bodyId": 1,
+          "mass": 1.0017474207892105,
+          "x": 0.010510169464692944,
+          "z": 1.1303549379688331,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 10,
+          "bodyId": 4,
+          "mass": 1.0000459530781813,
+          "x": -0.06389370020568831,
+          "z": -0.952137377703431,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 11,
+          "bodyId": 6,
+          "mass": 1.0018970342311537,
+          "x": -0.34343619196679714,
+          "z": 0.4756241781535505,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 12,
+          "bodyId": 9,
+          "mass": 1.0031740680763923,
+          "x": -0.26432277069083926,
+          "z": 0.7648041869603767,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 13,
+          "bodyId": 10,
+          "mass": 0.999153400831101,
+          "x": -0.5507098453494143,
+          "z": -0.15605870154998647,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 14,
+          "bodyId": 11,
+          "mass": 0.9972312957113235,
+          "x": -0.3547073913475522,
+          "z": -1.1382147387226444,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        },
+        {
+          "id": 15,
+          "bodyId": 14,
+          "mass": 1.0039054292158789,
+          "x": 0.2197941269031257,
+          "z": -0.8413271154985087,
+          "vx": 0,
+          "vz": 0,
+          "wy": 0,
+          "wx": 0,
+          "wz": 0
+        }
+      ],
+      "coreCount": 1,
+      "phase": "ready",
+      "wallMs": 3522
+    }
+  ],
+  "knownLimitations": [
+    "30 fixed-centre breaks across five mass profiles produced zero target pots; frequency remains uncalibrated.",
+    "No measured Chinese-pool break trajectory dataset has been used.",
+    "Local linear compliance with frozen normals is not a full Hertz or 3D model.",
+    "Natural screenshots show cue ball retreating close to the head cushion; trajectory remains uncalibrated against footage."
+  ],
+  "creatorGui": "Not completed; no claim of new engine-touch certification.",
+  "hardware": "User waived real phones and WeChat validation."
+}

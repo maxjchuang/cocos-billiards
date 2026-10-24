@@ -2,7 +2,7 @@
 export interface TipOffset { x: number; y: number; }
 export interface SpinMotion { vx: number; vz: number; wx?: number; wy?: number; wz?: number; }
 const TIP_CONTACT_FRACTION=0.64;
-export const SPIN = { contactFraction:TIP_CONTACT_FRACTION, leverage:2.5*TIP_CONTACT_FRACTION, slidingAcceleration: 1.8, sideDecay: 12, cushionFriction: 0.18 } as const;
+export const SPIN = { contactFraction:TIP_CONTACT_FRACTION, leverage:2.5*TIP_CONTACT_FRACTION, slidingAcceleration: 1.962, sideDecay: 3.8141732283464567, cushionFriction: 0.2 } as const;
 
 export function tipOffset(x: number, y: number): TipOffset | null {
     if (!Number.isFinite(x) || !Number.isFinite(y)) return null;

@@ -42,7 +42,7 @@ async function previewRacks({inputMode=location.protocol==='packages:'?'engine':
   if(g.rackSession.persistent){const restored=new g.rackSession.constructor(m.sys.localStorage,()=>{throw Error('Expected a saved journal');});check('Saved rack journal restores the ball set and recent recipes',restored.ballSetSeed===g.rackSession.ballSetSeed&&JSON.stringify(restored.history)===JSON.stringify(g.rackSession.history));}
   const before=masses();g.referee.phase='choice';g.referee.breakChoice='illegal';g.referee.current=1;g.panelMode=null;await frame();
   const previous={...g.rackConfig},i=g.panels.actionIds.indexOf('break:0');await node(g.panels.buttons[i].node.parent);
-  check('Referee-requested re-rack uses a fresh recipe with the same ball set',g.referee.phase==='placing'&&g.rackConfig.rackSeed!==previous.rackSeed&&g.rackConfig.ballSetSeed===previous.ballSetSeed&&JSON.stringify(masses())===JSON.stringify(before));
+  check('Referee-requested re-rack uses a fresh recipe with the same ball set',g.referee.phase==='placing'&&g.rackConfig.rackSeed!==previous.rackSeed&&g.rackConfig.ballSetSeed===previous.ballSetSeed&&g.rackConfig.positionToleranceM===previous.positionToleranceM&&JSON.stringify(masses())===JSON.stringify(before));
   check('No game errors or unhandled rejections were observed',(window.__rackErrors??[]).length===0);
   return {engine:cc.ENGINE_VERSION,inputMode,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},results,cases,journalPersistent:g.rackSession.persistent,historyCount:g.rackSession.history.length,errors:window.__rackErrors??[]};
  }finally{g.power=power;for(const k of Object.keys(settings))g.settings.set(k,settings[k]);if(!keepFixture)g.reset();}

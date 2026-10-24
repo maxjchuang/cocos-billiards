@@ -1,5 +1,18 @@
 # 最新交接（2026-10-23）
 
+2026-10-24 已验收版本 **hertz-reference-v6**：正时间步已改用带材料参数的 Hertz 有限接触模型，保存压缩状态并耦合胶边/落袋时刻；摆球公差仍为默认0.25mm、上限0.5mm，固定质量微差仍为±0.5%，不增加出杆误差或散球推力。两球解析解与独立Python DOP853多球参考通过，最大归一化速度误差约0.065%；参考是明确简化的XZ模型，不能当作论文完整3D结果或实物标定。145项Node检查与Web Mobile浏览器回归通过；连续6局未筛选录像及历史失败种子复验已保存。[校准报告](validation/calibration/README.md)、[执行状态](docs/technical/physics-recalibration-plan.md)。Creator原生预览181项引擎触摸检查通过，真机/微信豁免。**用户已体验确认“这一版可以”，批准提交推送。软件参考参数仍不等于实物测量标定。**
+
+
+Creator窗口绑定排障（2026-10-24）：通过启动器打开工程会产生同名父/子进程，桌面工具可能只读到Dashboard提示。用户完全退出所有Creator窗口后，直接执行安装目录下CocosCreator --project "$PWD"，再绑定应用、双击Main、点击Play即可访问正确工程。最新181项原生报告见validation/calibration/creator-native.json；不用再次要求解锁或安装Dashboard。
+
+以下v2–v5段落为历史试验记录；其中“恢复v4”仅记录当时处置，不代表当前运行版本。
+
+用户再次否定v4对称观感（2026-10-24）：逐球扰动等实验未得到合格结果；TOI实验虽通过135项检查，实际第二局中心仍留8颗且开球违规，整体拒绝。实验源码和失败画面保留在validation/impact-timing，运行代码与预览恢复v4；不是声称v4已通过。新校准计划见docs/technical/physics-recalibration-plan.md。当前问题未解决，未提交推送。
+
+微小摆球公差候选（用户已允许，整体真实感待体验）：rack-tolerance-v4新增positionToleranceM，默认0.25mm上限、开发配置最多0.5mm。顶球固定，每排微小横向错位并计算纵向补偿，排内原间距、排面与底库平行，确保无重叠且每球仍有紧邻球。相同种子复现，新局变化，母球/瞄准/力度/打点不变。134项检查、Web Mobile构建和实际DOM回归通过；30对样本镜像误差平均3.28→8.68cm，双角袋同时进球均0。进球率与母球轨迹仍未实拍标定，仍为本机候选、未提交推送。见validation/rack-tolerance/README.md。
+
+候选修订（未验收真实感、未提交推送）：用户否定network-v2开球效果。30个种子/5组质量参数复现其球堆端两角袋同时进球率100%、在台目标球93.6%集中上半区，故撤销“中心≤2颗即达标”的单指标结论。当前compliant-v3候选改为逐接触点压缩/释放，131项检查和Web Mobile浏览器回归通过；正中样本上下约10:5、双角袋同时进球0次，但30次均不进球且母球回退较远，真实进球率和轨迹仍未标定。不能宣布已还原真实开球。详见validation/break-balance/README.md。旧network-v2证据仅为已被用户否定的历史实现。
+
 中心球堆修复：当前130项检查通过，物理升级network-v2，密集接触先联合压缩、再统一恢复，保持8m/s/减速/球体质量微差，不加开球爆破力。50局默认满力开球中心17cm区域剩球平均4.94→0.24，最多1颗；原中央四球至少运动2球径。Web Mobile构建、浏览器新局与复现/对局/旋转/六袋/裁判/触球回归通过；原生GUI本轮未完成，真机/微信继续豁免。新版本种子使用eight-club.racks.v2，旧版本重放明确拒绝。见[完整证据](validation/core-spread/README.md)。
 
 随机开球补充：126项测试通过。BilliardsRack提供版本mass-slot-v1的RackConfig、合法球号洗牌、固定球组±0.5%目标球质量差异、RackSession最近32份本机配方；母球质量/默认位置/方向/出杆计算不变。Game.reset()生成新局，reset(config)用于开发重放且不消费种子；Referee注入rackFactory，重摆保留当前球组。物理bodyId与球号id分离，逆质量碰撞与修正。均质换号控制50局几何相同，变化50局均有不同几何终态，同种子精确复现。浏览器52/28/28项和旧流程回归通过，CLI构建成功；本轮GUI调试通道Channel closed / IPC message lost阻塞新原生专项，不以旧证据替代。见docs/design/rack-variation.md与validation/racks。不要恢复每帧随机力或按球号排序求解。

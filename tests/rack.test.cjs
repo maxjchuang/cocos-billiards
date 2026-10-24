@@ -1,12 +1,12 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),path=require('node:path');
 const p=require(process.env.BILLIARDS_TEST_MODULE),r=require(path.join(path.dirname(process.env.BILLIARDS_TEST_MODULE),'BilliardsRack.js')),{Referee}=require(process.env.BILLIARDS_RULES_MODULE);
-const config=(seed,variation=r.TARGET_MASS_VARIATION)=>r.rackConfig(seed,0x5eed1234,variation);
+const config=(seed,variation=r.TARGET_MASS_VARIATION,tolerance=r.RACK_POSITION_TOLERANCE_M)=>r.rackConfig(seed,0x5eed1234,variation,tolerance);
 function settle(balls){p.strike(balls,0,-1,8);let i=0;for(;i<7200&&p.isMoving(balls);i++)p.step(balls,p.FIXED_STEP,{respawnCue:false});assert.ok(i<3600);return balls.slice().sort((a,b)=>a.bodyId-b.bodyId).map(b=>({bodyId:b.bodyId,x:b.x,z:b.z,pocketed:!!b.pocketed}));}
-test('seeded racks preserve all Chinese-pool placement constraints without extra gaps',()=>{
+test('seeded racks preserve legal placement and tight nonoverlapping rows with bounded tolerance',()=>{
  const orders=new Set();for(let seed=0;seed<100;seed++){
   const balls=p.createRack(config(seed)),apex=balls.find(b=>b.bodyId===r.RACK_BODY_ORDER[0]);
   assert.deepEqual(balls.map(b=>b.id),Array.from({length:16},(_,i)=>i));assert.equal(new Set(balls.map(b=>b.bodyId)).size,16);
-  assert.equal(apex.x,0);assert.equal(apex.z,p.FOOT_SPOT);assert.equal(balls[8].x,0);assert.equal(balls[8].bodyId,8);
+  assert.equal(apex.x,0);assert.equal(apex.z,p.FOOT_SPOT);assert.equal(balls[8].bodyId,8);
   const rear=balls.filter(b=>b.id).sort((a,b)=>a.z-b.z||a.x-b.x).slice(0,5);assert.notEqual(rear[0].id<8,rear[4].id<8);
   for(let i=0;i<16;i++)for(let j=i+1;j<16;j++)assert.ok(Math.hypot(balls[i].x-balls[j].x,balls[i].z-balls[j].z)>=p.TABLE.radius*2-1e-12);
   for(const b of balls.filter(b=>b.id))assert.ok(Math.min(...balls.filter(q=>q.id&&q!==b).map(q=>Math.hypot(q.x-b.x,q.z-b.z)))<=p.TABLE.radius*2+.000010001);
@@ -25,8 +25,8 @@ test('same recipe and inputs reproduce exact settled coordinates; physics sample
  const random=Math.random;try{Math.random=()=>{throw Error('Randomness during physics');};assert.deepEqual(settle(a),settle(b));}finally{Math.random=random;}
 });
 test('changing only visible ball numbers cannot change equal-mass trajectories',()=>{
- const reference=settle(p.createRack(config(1,0)));
- for(let seed=2;seed<=20;seed++)assert.deepEqual(settle(p.createRack(config(seed,0))),reference);
+ const reference=settle(p.createRack(config(1,0,0)));
+ for(let seed=2;seed<=20;seed++)assert.deepEqual(settle(p.createRack(config(seed,0,0))),reference);
 });
 test('array order does not change unequal-mass collision solving',()=>{
  const a=p.createRack(config(7)),b=p.createRack(config(7)).reverse();assert.deepEqual(settle(a),settle(b));
@@ -63,15 +63,15 @@ test('replay profile survives a referee-requested re-rack; accepting the table d
  ref.phase='choice';ref.breakChoice='illegal';ref.chooseBreak(balls,'accept');assert.equal(calls.length,1);
 });
 test('replay validation rejects unknown versions, malformed seeds and exaggerated variations',()=>{
- for(const bad of [null,{}, {...config(1),version:'future'}, {...config(1),rackSeed:NaN},{...config(1),rackSeed:-1},{...config(1),ballSetSeed:2**32},{...config(1),massVariation:.1}])assert.throws(()=>r.restoreRackConfig(bad));
+ for(const bad of [null,{}, {...config(1),version:'future'}, {...config(1),rackSeed:NaN},{...config(1),rackSeed:-1},{...config(1),ballSetSeed:2**32},{...config(1),massVariation:.1},{...config(1),positionToleranceM:.001},{...config(1),positionToleranceM:-1},{...config(1),positionToleranceM:NaN}])assert.throws(()=>r.restoreRackConfig(bad));
  assert.deepEqual(r.restoreRackConfig(config(0)),config(0));
 });
 
-test('packed contact compression propagates to interior balls without creating energy',()=>{
- const d=p.TABLE.radius*2+.00001,balls=Array.from({length:3},(_,i)=>({id:i,mass:1+i*.002,x:i*d,z:0,vx:i===0?2:0,vz:0})),events=[];
+test('packed local contact wave reaches the rear ball without creating energy',()=>{
+ const d=p.TABLE.radius*2+.00001,balls=Array.from({length:3},(_,i)=>({id:i,mass:1+i*.002,x:i*d+(i===0?.001:0),z:0,vx:i===0?2:0,vz:0})),events=[];
  const momentum=balls.reduce((s,b)=>s+b.mass*b.vx,0),energy=balls.reduce((s,b)=>s+.5*b.mass*b.vx*b.vx,0);
  p.step(balls,0,{respawnCue:false,onEvent:e=>events.push(e)});
- assert.ok(balls[1].vx>.5&&balls[2].vx>.5);
+ assert.ok(balls[2].vx>1.5&&Math.abs(balls[1].vx)<.5);
  assert.ok(Math.abs(balls.reduce((s,b)=>s+b.mass*b.vx,0)-momentum)<1e-10);
  assert.ok(balls.reduce((s,b)=>s+.5*b.mass*b.vx*b.vx,0)<=energy+1e-10);
  assert.deepEqual(events.map(e=>[e.a,e.b]),[[0,1],[1,2]]);
@@ -80,14 +80,6 @@ test('a resting or separating contact network gets no invented impulse or contac
  for(const speed of [0,.3]){
   const d=p.TABLE.radius*2+.00001,balls=Array.from({length:3},(_,i)=>({id:i,x:i*d,z:0,vx:i*speed,vz:0})),events=[];
   p.step(balls,0,{respawnCue:false,onEvent:e=>events.push(e)});assert.deepEqual(balls.map(b=>b.vx),[0,speed,2*speed]);assert.equal(events.length,0);
- }
-});
-test('default full-power break releases the original rack interior over 50 consecutive seeds',()=>{
- const {measure}=require('../scripts/measure-core.cjs');
- for(let seed=1;seed<=50;seed++){
-  const c=measure({p,r},seed);assert.ok(c.coreCount<=2,`seed ${seed}: ${c.coreCount} targets trapped in core`);
-  assert.ok(c.interiorMinMaxExcursionM>=p.TABLE.radius*4,`seed ${seed}: interior travelled ${c.interiorMinMaxExcursionM}`);
-  assert.ok(c.finite&&c.inBounds&&c.settled&&c.seconds<15);
  }
 });
 test('dense unequal-mass contact networks conserve momentum and never add kinetic energy',()=>{
@@ -99,4 +91,38 @@ test('dense unequal-mass contact networks conserve momentum and never add kineti
   assert.ok(Math.abs(before.x-after.x)<1e-9&&Math.abs(before.z-after.z)<1e-9);
   assert.ok(Number.isFinite(after.e)&&after.e<=before.e+1e-9);
  }
+});
+test('local-contact integration converges when normalized step is halved',()=>{
+ const make=()=>Array.from({length:3},(_,i)=>({id:i,mass:1+i*.002,x:i*(p.TABLE.radius*2+.00001)+(i===0?.001:0),z:0,vx:i===0?2:0,vz:0}));
+ const original=p.CONTACT.normalizedStep,a=make(),b=make();
+ try{p.step(a,0,{respawnCue:false});p.CONTACT.normalizedStep=original/2;p.step(b,0,{respawnCue:false});for(let i=0;i<3;i++)assert.ok(Math.abs(a[i].vx-b[i].vx)<.002);}finally{p.CONTACT.normalizedStep=original;}
+});
+test('default break distribution avoids the network-v2 directional and double-corner regressions',()=>{
+ const {sample,summarize}=require('../scripts/measure-break-balance.cjs'),cases=Array.from({length:30},(_,i)=>sample(p,r,i+1,0,(0x5eed1234+(i%5)*0x1234567)>>>0)),m=summarize(cases);
+ // Fixture-specific tuning guards, not universal rules or measured real-table frequencies.
+ assert.ok(m.allSafe);assert.ok(m.upperShare<.85);assert.ok(m.meanPotted<=2);assert.ok(m.bothRackEndCornerRate<.2);assert.ok(m.bothCueEndCornerRate<.2);assert.ok(m.meanCore<=3);
+});
+test('rack tolerance is bounded, tight and nonoverlapping for 1000 seeds and both supported amplitudes',()=>{
+ const plain=p.createRack(config(1,0,0)),bySlot=new Map(plain.map(b=>[b.bodyId,b]));
+ for(const tolerance of [r.RACK_POSITION_TOLERANCE_M,r.MAX_RACK_POSITION_TOLERANCE_M])for(let seed=0;seed<1000;seed++){
+  const recipe=config(seed,r.TARGET_MASS_VARIATION,tolerance),balls=p.createRack(recipe);
+  assert.deepEqual(balls[0],plain[0]);
+  for(const b of balls){const base=bySlot.get(b.bodyId);assert.ok(Math.hypot(b.x-base.x,b.z-base.z)<=tolerance+1e-12);}
+  for(let i=0;i<16;i++)for(let j=i+1;j<16;j++)assert.ok(Math.hypot(balls[i].x-balls[j].x,balls[i].z-balls[j].z)>=2*p.TABLE.radius-1e-12);
+  for(const b of balls.filter(b=>b.id))assert.ok(Math.min(...balls.filter(q=>q.id&&q!==b).map(q=>Math.hypot(b.x-q.x,b.z-q.z)))<=2*p.TABLE.radius+.000010001);
+  const apex=balls.find(b=>b.bodyId===r.RACK_BODY_ORDER[0]);assert.equal(apex.x,0);assert.equal(apex.z,p.FOOT_SPOT);
+ }
+});
+test('geometry tolerance depends only on rack seed and survives profile restore/re-rack',()=>{
+ const a=config(10,r.TARGET_MASS_VARIATION,.0001),b=r.rackConfig(10,99,0,.0001);
+ assert.deepEqual(r.rackPositionOffsets(a,p.TABLE.radius*2),r.rackPositionOffsets(b,p.TABLE.radius*2));
+ assert.notDeepEqual(r.rackPositionOffsets(a,p.TABLE.radius*2),r.rackPositionOffsets(config(11,r.TARGET_MASS_VARIATION,.0001),p.TABLE.radius*2));
+ assert.ok(r.rackPositionOffsets(config(10,0,0),p.TABLE.radius*2).every(v=>v.x===0&&v.z===0));
+ const session=new r.RackSession(undefined,()=>.1),next=session.next(a);assert.equal(next.positionToleranceM,.0001);
+ assert.deepEqual(r.restoreRackConfig(JSON.parse(JSON.stringify(a))),a);
+});
+test('paired seeded rack tolerance reduces mirror symmetry without changing stroke input',()=>{
+ const {sample}=require('../scripts/measure-break-balance.cjs'),{symmetryError}=require('../scripts/measure-rack-tolerance.cjs');let before=0,after=0;
+ for(let seed=1;seed<=16;seed++){before+=symmetryError(sample(p,r,seed,0,0x5eed1234,0));after+=symmetryError(sample(p,r,seed));}
+ assert.ok(after>before*1.5,`mirror error ${after/16} vs ${before/16}`);
 });

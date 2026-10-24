@@ -1,5 +1,6 @@
-import { RackConfig, RACK_BODY_ORDER, rackNumbers, ballMasses } from './BilliardsRack';
-import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement } from './BilliardsTableGeometry';
+import { advanceContacts, REFERENCE_MATERIAL, ContactBoundary } from './BilliardsContact';
+import { RackConfig, RACK_BODY_ORDER, rackNumbers, ballMasses, rackPositionOffsets } from './BilliardsRack';
+import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement, POCKETS, pocketCoordinates, traceTable } from './BilliardsTableGeometry';
 export { POCKETS, POCKET_MODEL, CUSHION_SEGMENTS } from './BilliardsTableGeometry';
 export type { CushionSide } from './BilliardsTableGeometry';
 import { CushionSide } from './BilliardsTableGeometry';
@@ -24,9 +25,9 @@ export const TABLE = {
     ...TABLE_GEOMETRY,
     maxStrikeSpeed: 8,
     maxSubstepTravel: TABLE_GEOMETRY.radius * 0.6,
-    deceleration: 0.32,
-    ballRestitution: 0.96,
-    cushionRestitution: 0.82,
+    deceleration: 0.0981,
+    ballRestitution: 0.95,
+    cushionRestitution: 0.85,
     stopSpeed: 0.005,
 };
 export type PhysicsEvent =
@@ -45,19 +46,23 @@ export function createRack(config?:Readonly<RackConfig>): BallState[] {
     const masses=config?ballMasses(config):Array.from({length:16},()=>1);
     const balls: BallState[] = [{ id: 0, bodyId:0, mass:1, x: 0, z: 0.65, vx: 0, vz: 0 }];
     const spacing = TABLE.radius * 2 + 0.00001;
+    const offsets=config?rackPositionOffsets(config,TABLE.radius*2):Array.from({length:15},()=>({x:0,z:0}));
     // Eight in the centre (third row), opposite groups in the two rear corners.
     const order = config?rackNumbers(config):Array.from(RACK_BODY_ORDER);
     for (let row = 0, id = 1; row < 5; row++) {
         for (let col = 0; col <= row; col++, id++) {
-            balls.push({ id: order[id - 1], bodyId:RACK_BODY_ORDER[id-1],mass:masses[order[id-1]], x: (col - row / 2) * spacing,
-                z: FOOT_SPOT - row * spacing * Math.sqrt(3) / 2, vx: 0, vz: 0 });
+            balls.push({ id: order[id - 1], bodyId:RACK_BODY_ORDER[id-1],mass:masses[order[id-1]], x: (col - row / 2) * spacing+offsets[id-1].x,
+                z: FOOT_SPOT - row * spacing * Math.sqrt(3) / 2+offsets[id-1].z, vx: 0, vz: 0 });
         }
     }
     return balls.sort((a, b) => a.id - b.id);
 }
 
 export function isMoving(balls: readonly BallState[]): boolean {
-    return balls.some(ball => !ball.pocketed && (Math.hypot(ball.vx, ball.vz) > TABLE.stopSpeed || Math.hypot(ball.wx??0,ball.wz??0)*TABLE.radius > TABLE.stopSpeed));
+    if(balls.some(ball=>!ball.pocketed&&(Math.hypot(ball.vx,ball.vz)>TABLE.stopSpeed||Math.hypot(ball.wx??0,ball.wz??0)*TABLE.radius>TABLE.stopSpeed)))return true;
+    // A contact can be at maximum compression with temporarily small velocities.
+    for(let a=0;a<balls.length;a++)for(let b=a+1;b<balls.length;b++)if(!balls[a].pocketed&&!balls[b].pocketed&&Math.hypot(balls[a].x-balls[b].x,balls[a].z-balls[b].z)<2*TABLE.radius-1e-6)return true;
+    return false;
 }
 
 export function strike(balls: BallState[], dx: number, dz: number, speed: number, tip: TipOffset = {x:0,y:0}): boolean {
@@ -90,54 +95,92 @@ function inverseMass(ball:BallState):number {
     return Number.isFinite(mass)&&mass>0?1/mass:1;
 }
 
-/** Compress a touching contact network first, then restore its restitution once.
- * Pairwise full rebounds inside a packed rack leave artificial stationary interior balls.
- * The accumulated nonnegative impulses propagate compression through resting neighbours.
- * 20 micrometres covers the rack's 10 micrometre numerical spacing, not a gameplay gap.
+export const CONTACT = {paddingM:0.00025,gapTimeScale:0.0003,normalizedStep:0.01,maxTime:16,quietSteps:20};
+
+/** Local compliant-impact approximation in normalized contact time.
+ * Each contact stores/releases its own compression; never rebound the entire rack at once.
+ * Normals stay fixed during this short impact solve. This is not a full Hertz/3D model.
  */
 function solveBallContacts(balls:BallState[],onEvent?:StepOptions['onEvent']):void {
-    const diameter=TABLE.radius*2;
-    const contacts:{a:BallState;b:BallState;nx:number;nz:number;inverseA:number;inverseB:number;impulse:number}[]=[];
+    const d=TABLE.radius*2,contacts:{i:number;j:number;nx:number;nz:number;q:number;c:number;sum:number}[]=[];
+    let closing=false;
     for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
         const a=balls[i],b=balls[j];if(a.pocketed||b.pocketed)continue;
-        const dx=b.x-a.x,dz=b.z-a.z,distance=Math.hypot(dx,dz);if(distance>diameter+.00002)continue;
-        const nx=distance>1e-8?dx/distance:1,nz=distance>1e-8?dz/distance:0;
-        const relative=(b.vx-a.vx)*nx+(b.vz-a.vz)*nz;
-        if(relative>1e-8)continue;
-        contacts.push({a,b,nx,nz,inverseA:inverseMass(a),inverseB:inverseMass(b),impulse:0});
+        const x=b.x-a.x,z=b.z-a.z,len=Math.hypot(x,z);if(len>d+CONTACT.paddingM)continue;
+        const nx=len>1e-8?x/len:1,nz=len>1e-8?z/len:0,ia=inverseMass(a),ib=inverseMass(b),v=(a.vx-b.vx)*nx+(a.vz-b.vz)*nz;
+        if(v>1e-8&&len<d)closing=true;
+        const log=Math.log(TABLE.ballRestitution),zeta=-log/Math.sqrt(Math.PI**2+log**2);
+        contacts.push({i,j,nx,nz,q:-Math.max(0,len-d)/CONTACT.gapTimeScale,c:2*zeta*Math.sqrt(1/(ia+ib)),sum:0});
     }
-    const before=balls.map(b=>({vx:b.vx,vz:b.vz}));
-    for(let iteration=0;iteration<100;iteration++){
-        let change=0;
-        for(const c of contacts){
-            const relative=(c.b.vx-c.a.vx)*c.nx+(c.b.vz-c.a.vz)*c.nz;
-            const next=Math.max(0,c.impulse-relative/(c.inverseA+c.inverseB)),delta=next-c.impulse;c.impulse=next;change=Math.max(change,Math.abs(delta));
-            c.a.vx-=delta*c.nx*c.inverseA;c.a.vz-=delta*c.nz*c.inverseA;c.b.vx+=delta*c.nx*c.inverseB;c.b.vz+=delta*c.nz*c.inverseB;
+    if(!closing)return;
+    if(contacts.length===1){const c=contacts[0],a=balls[c.i],b=balls[c.j],ia=inverseMass(a),ib=inverseMass(b),j=(1+TABLE.ballRestitution)*((a.vx-b.vx)*c.nx+(a.vz-b.vz)*c.nz)/(ia+ib);a.vx-=j*c.nx*ia;a.vz-=j*c.nz*ia;b.vx+=j*c.nx*ib;b.vz+=j*c.nz*ib;onEvent?.({type:'contact',a:a.id,b:b.id});return;}
+    const before=balls.map(b=>({vx:b.vx,vz:b.vz})),h=CONTACT.normalizedStep;
+    let quiet=0;
+    const kick=(scale:number)=>{let active=0;for(const c of contacts){const a=balls[c.i],b=balls[c.j],v=(a.vx-b.vx)*c.nx+(a.vz-b.vz)*c.nz,f=c.q>0?Math.max(0,c.q+c.c*v):0,j=f*scale;active+=f>1e-8?1:0;c.sum+=j;a.vx-=j*c.nx*inverseMass(a);a.vz-=j*c.nz*inverseMass(a);b.vx+=j*c.nx*inverseMass(b);b.vz+=j*c.nz*inverseMass(b);}return active;};
+    for(let n=0;n<Math.ceil(CONTACT.maxTime/h);n++){
+        kick(h/2);
+        for(const c of contacts){const a=balls[c.i],b=balls[c.j];c.q+=((a.vx-b.vx)*c.nx+(a.vz-b.vz)*c.nz)*h;}
+        const active=kick(h/2);quiet=active?0:quiet+1;if(n>CONTACT.quietSteps&&quiet>=CONTACT.quietSteps){
+            // A tiny rack gap can delay the next impact; quiet force is not necessarily rest.
+            let next=Infinity;
+            for(const c of contacts){const a=balls[c.i],b=balls[c.j],v=(a.vx-b.vx)*c.nx+(a.vz-b.vz)*c.nz;if(c.q<=0&&v>1e-6)next=Math.min(next,-c.q/v);}
+            if(!Number.isFinite(next)||n*h+next>CONTACT.maxTime)break;
+            const skip=Math.max(0,Math.floor(next/h)-1);
+            if(skip){for(const c of contacts){const a=balls[c.i],b=balls[c.j];c.q+=((a.vx-b.vx)*c.nx+(a.vz-b.vz)*c.nz)*skip*h;}n+=skip;}
+            quiet=0;
         }
-        if(change<1e-9)break;
     }
-    // Finite iterations must not create energy when restitution is applied.
-    let work=0,deltaEnergy=0;
-    for(let i=0;i<balls.length;i++){
-        const dx=balls[i].vx-before[i].vx,dz=balls[i].vz-before[i].vz,mass=1/inverseMass(balls[i]);
-        work+=mass*(before[i].vx*dx+before[i].vz*dz);deltaEnergy+=mass*(dx*dx+dz*dz);
+    let work=0,delta=0;for(let i=0;i<balls.length;i++){const x=balls[i].vx-before[i].vx,z=balls[i].vz-before[i].vz,m=1/inverseMass(balls[i]);work+=m*(before[i].vx*x+before[i].vz*z);delta+=m*(x*x+z*z);}
+    const scale=delta?Math.min(1,Math.max(0,-2*work/delta)):0;for(let i=0;i<balls.length;i++){balls[i].vx=before[i].vx+scale*(balls[i].vx-before[i].vx);balls[i].vz=before[i].vz+scale*(balls[i].vz-before[i].vz);}
+    for(const c of contacts)if(c.sum>1e-8)onEvent?.({type:'contact',a:balls[c.i].id,b:balls[c.j].id});
+}
+
+/** Swept table events prevent rail position projection from injecting contact energy.
+ * Contacts use continuous material forces; rails retain an effective planar impulse law.
+ */
+function nextTableBoundary(balls:readonly BallState[],remaining:number,onEvent?:StepOptions['onEvent']):ContactBoundary|null {
+    let best:ContactBoundary|null=null;
+    const choose=(event:ContactBoundary)=>{if(!best||event.time<best.time)best=event;};
+    const pocket=(ball:BallState,index:number)=>{if(ball.pocketed)return;ball.pocketed=true;ball.vx=ball.vz=0;clearSpin(ball);onEvent?.({type:'pocket',id:ball.id,pocket:index});};
+    const rail=(ball:BallState,segment:typeof CUSHION_SEGMENTS[number])=>{
+        const q=nearestOnSegment(ball,segment.a,segment.b),x=ball.x-q.x,z=ball.z-q.z,distance=Math.hypot(x,z),nx=distance>1e-12?x/distance:segment.inward.x,nz=distance>1e-12?z/distance:segment.inward.z;
+        if(distance<TABLE.radius+1e-9){ball.x+=nx*Math.max(0,TABLE.radius-distance+1e-10);ball.z+=nz*Math.max(0,TABLE.radius-distance+1e-10);}
+        if(ball.vx*nx+ball.vz*nz< -1e-10){spinCushion(ball,-nx,-nz,TABLE.radius,TABLE.cushionRestitution);onEvent?.({type:'cushion',id:ball.id,side:segment.side});}
+    };
+    for(const ball of balls){
+        if(ball.pocketed)continue;const speed=Math.hypot(ball.vx,ball.vz),travel=speed*remaining;
+        if(Math.abs(ball.x)<TABLE.halfWidth-.15-travel&&Math.abs(ball.z)<TABLE.halfLength-.15-travel)continue;
+        const index=pocketAt(ball);if(index>=0){choose({time:0,apply:()=>pocket(ball,index)});continue;}
+        let overlap=false;
+        for(const segment of CUSHION_SEGMENTS){const q=nearestOnSegment(ball,segment.a,segment.b);if(Math.hypot(ball.x-q.x,ball.z-q.z)<TABLE.radius-1e-9){choose({time:0,apply:()=>rail(ball,segment)});overlap=true;break;}}
+        if(overlap||speed<1e-12)continue;
+        const hit=traceTable(ball,ball.vx/speed,ball.vz/speed);if(!hit||hit.distance/speed>remaining)continue;
+        const x=ball.x+ball.vx/speed*hit.distance,z=ball.z+ball.vz/speed*hit.distance,time=hit.distance/speed;
+        if(hit.kind==='pocket'){
+            const index=POCKETS.findIndex(p=>{const q=pocketCoordinates({x,z},p);return q.v>=p.dropDepth-1e-8&&Math.abs(q.u)<=p.mouth/2-TABLE.radius+1e-8;});
+            if(index>=0)choose({time,apply:()=>pocket(ball,index)});
+        }else{
+            let segment:typeof CUSHION_SEGMENTS[number]|undefined,error=Infinity;
+            for(const candidate of CUSHION_SEGMENTS){const q=nearestOnSegment({x,z},candidate.a,candidate.b),dx=x-q.x,dz=z-q.z,len=Math.hypot(dx,dz),e=Math.abs(len-TABLE.radius);if(e<error&&ball.vx*dx+ball.vz*dz<0){error=e;segment=candidate;}}
+            if(segment&&error<1e-7){const target=segment;choose({time,apply:()=>rail(ball,target)});}
+        }
     }
-    const scale=deltaEnergy>0?Math.min(1+TABLE.ballRestitution,Math.max(0,-work/deltaEnergy)*(1+TABLE.ballRestitution)):0;
-    for(let i=0;i<balls.length;i++){balls[i].vx=before[i].vx+scale*(balls[i].vx-before[i].vx);balls[i].vz=before[i].vz+scale*(balls[i].vz-before[i].vz);}
-    for(const c of contacts)if(c.impulse>1e-8)onEvent?.({type:'contact',a:c.a.id,b:c.b.id});
+    return best;
 }
 
 function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
-    for (const ball of balls) {
-        if (ball.pocketed) continue;
-        ball.x += ball.vx * dt;
-        ball.z += ball.vz * dt;
-        clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
+    if(dt>0){
+        const material={...REFERENCE_MATERIAL,radius:TABLE.radius,restitution:TABLE.ballRestitution,friction:.05,dampingScale:1.0106472060550005};
+        advanceContacts(balls,dt,material,{onContact:(a,b)=>options.onEvent?.({type:'contact',a,b}),nextBoundary:(state,time)=>nextTableBoundary(state,time,options.onEvent)});
+        for(const ball of balls)if(!ball.pocketed)clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
+    }else{
+        // Retain the legacy zero-time diagnostic/repair API; gameplay always uses positive time.
+        for(const ball of balls)if(!ball.pocketed)clothStep(ball,TABLE.radius,0,TABLE.deceleration,TABLE.stopSpeed);
+        solveBallContacts(balls,options.onEvent);
     }
-    const diameter = TABLE.radius * 2;
-    solveBallContacts(balls,options.onEvent);
+    const diameter=TABLE.radius*2;
     for (let iteration=0;iteration<3;iteration++) {
-        for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
+        if(!dt||!isMoving(balls))for(let i=0;i<balls.length;i++)for(let j=i+1;j<balls.length;j++){
             const a=balls[i],b=balls[j];if(a.pocketed||b.pocketed)continue;
             const dx=b.x-a.x,dz=b.z-a.z,distance=Math.hypot(dx,dz);if(distance>=diameter)continue;
             const nx=distance>1e-8?dx/distance:1,nz=distance>1e-8?dz/distance:0,ia=inverseMass(a),ib=inverseMass(b),d=(diameter-distance)/(ia+ib);
@@ -145,7 +188,7 @@ function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
         }
         for (const ball of balls) {
             if (ball.pocketed) continue;
-            for (const segment of CUSHION_SEGMENTS) {
+            if(!dt)for (const segment of CUSHION_SEGMENTS) {
                 const q=nearestOnSegment(ball,segment.a,segment.b);
                 const dx=ball.x-q.x,dz=ball.z-q.z,distance=Math.hypot(dx,dz);
                 if (distance>=TABLE.radius) continue;

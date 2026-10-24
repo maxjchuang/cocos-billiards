@@ -365,7 +365,7 @@ export class BilliardsGame extends Component {
         this.pauseLayer.active=false;
     }
 
-    private nextRack(replay?:Readonly<RackConfig>,profile?:Pick<RackConfig,'ballSetSeed'|'massVariation'>):BallState[]{
+    private nextRack(replay?:Readonly<RackConfig>,profile?:Pick<RackConfig,'ballSetSeed'|'massVariation'|'positionToleranceM'>):BallState[]{
         this.rackConfig=replay?restoreRackConfig(replay):this.rackSession.next(profile);
         return createRack(this.rackConfig);
     }

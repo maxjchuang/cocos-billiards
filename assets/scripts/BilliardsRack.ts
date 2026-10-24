@@ -1,7 +1,9 @@
 /** Seeded initial conditions only. No randomness is sampled during physics or shooting. */
-export const RACK_VERSION = 'network-v2' as const;
-export const RACK_STORAGE_KEY = 'eight-club.racks.v2';
+export const RACK_VERSION = 'hertz-reference-v6' as const;
+export const RACK_STORAGE_KEY = 'eight-club.racks.v6';
 export const TARGET_MASS_VARIATION = 0.005;
+export const RACK_POSITION_TOLERANCE_M = 0.00025;
+export const MAX_RACK_POSITION_TOLERANCE_M = 0.0005;
 // Stable simulation identities for spatial rack slots; independent of the visible ball numbers.
 // This priority preserves the original calibration when every mass is one.
 export const RACK_BODY_ORDER = [1,9,2,10,8,3,11,4,12,5,6,13,7,14,15] as const;
@@ -10,17 +12,18 @@ export interface RackConfig {
     rackSeed: number;
     ballSetSeed: number;
     massVariation: number;
+    positionToleranceM: number;
 }
 const validSeed=(n:unknown):n is number=>typeof n==='number'&&Number.isInteger(n)&&n>=0&&n<=0xffffffff;
-export function rackConfig(rackSeed:number,ballSetSeed:number,massVariation=TARGET_MASS_VARIATION):Readonly<RackConfig> {
-    if(!validSeed(rackSeed)||!validSeed(ballSetSeed)||!Number.isFinite(massVariation)||massVariation<0||massVariation>.005)throw new RangeError('Invalid rack configuration');
-    return Object.freeze({version:RACK_VERSION,rackSeed,ballSetSeed,massVariation});
+export function rackConfig(rackSeed:number,ballSetSeed:number,massVariation=TARGET_MASS_VARIATION,positionToleranceM=RACK_POSITION_TOLERANCE_M):Readonly<RackConfig> {
+    if(!validSeed(rackSeed)||!validSeed(ballSetSeed)||!Number.isFinite(massVariation)||massVariation<0||massVariation>.005||!Number.isFinite(positionToleranceM)||positionToleranceM<0||positionToleranceM>MAX_RACK_POSITION_TOLERANCE_M)throw new RangeError('Invalid rack configuration');
+    return Object.freeze({version:RACK_VERSION,rackSeed,ballSetSeed,massVariation,positionToleranceM});
 }
 export function restoreRackConfig(value:unknown):Readonly<RackConfig> {
     const v=value as Partial<RackConfig>|null;
     if(!v||v.version!==RACK_VERSION)throw new RangeError('Unsupported rack version');
-    if(typeof v.massVariation!=='number')throw new RangeError('Invalid mass variation');
-    return rackConfig(v.rackSeed!,v.ballSetSeed!,v.massVariation);
+    if(typeof v.massVariation!=='number'||typeof v.positionToleranceM!=='number')throw new RangeError('Invalid mass variation');
+    return rackConfig(v.rackSeed!,v.ballSetSeed!,v.massVariation,v.positionToleranceM);
 }
 function random(seed:number):()=>number {
     let state=seed>>>0;
@@ -47,6 +50,25 @@ export function ballMasses(config:RackConfig):number[] {
     const mean=raw.reduce((a,b)=>a+b,0)/15,span=Math.max(1e-12,...raw.map(x=>Math.abs(x-mean)));
     return [1,...raw.map(x=>1+c.massVariation*(x-mean)/span)];
 }
+/** Tight rows with seeded sub-millimetre misalignment. Apex remains on the foot spot.
+ * Within each row the spacing stays fixed. The next row is lowered enough that
+ * its nearest parent distance is exactly the original spacing, never overlapping.
+ * Four increments <= tolerance/5 imply a centre offset below tolerance.
+ */
+export function rackPositionOffsets(config:RackConfig,diameter:number):{x:number;z:number}[]{
+    const c=restoreRackConfig(config),out=Array.from({length:15},()=>({x:0,z:0}));
+    if(!Number.isFinite(diameter)||diameter<=0)throw new RangeError('Invalid ball diameter');
+    if(!c.positionToleranceM)return out;
+    const next=random(c.rackSeed^0x723ab189),spacing=diameter+.00001;
+    let shift=0,depth=0,slot=1;
+    for(let row=1;row<5;row++){
+        const delta=(next()*2-1)*c.positionToleranceM/5;
+        shift+=delta;
+        depth+=Math.sqrt(spacing*spacing-(spacing/2-Math.abs(delta))**2)-spacing*Math.sqrt(3)/2;
+        for(let col=0;col<=row;col++,slot++)out[slot]={x:shift,z:-depth};
+    }
+    return out;
+}
 interface RackStorage {getItem(key:string):string|null;setItem(key:string,value:string):void;}
 /** Local bounded seed journal. Unavailable storage never prevents a new rack. */
 export class RackSession {
@@ -67,9 +89,9 @@ export class RackSession {
         this.sequence=saved?.sequence??Math.floor(entropy()*4294967296)>>>0;
         this.records=saved?.history??[];
     }
-    next(profile?:Pick<RackConfig,'ballSetSeed'|'massVariation'>):Readonly<RackConfig>{
+    next(profile?:Pick<RackConfig,'ballSetSeed'|'massVariation'|'positionToleranceM'>):Readonly<RackConfig>{
         this.sequence=(this.sequence+0x9e3779b9)>>>0;
-        const config=rackConfig(this.sequence,profile?.ballSetSeed??this.ballSetSeed,profile?.massVariation??TARGET_MASS_VARIATION);this.records.push(config);if(this.records.length>32)this.records.shift();
+        const config=rackConfig(this.sequence,profile?.ballSetSeed??this.ballSetSeed,profile?.massVariation??TARGET_MASS_VARIATION,profile?.positionToleranceM??RACK_POSITION_TOLERANCE_M);this.records.push(config);if(this.records.length>32)this.records.shift();
         try{if(this.storage){this.storage.setItem(RACK_STORAGE_KEY,JSON.stringify({version:RACK_VERSION,ballSetSeed:this.ballSetSeed,sequence:this.sequence,history:this.records}));this.persistent=true;}}
         catch{this.persistent=false;}
         return config;

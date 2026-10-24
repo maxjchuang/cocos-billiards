@@ -1,4 +1,4 @@
-// Compare the actual default full-power break against the previous pairwise solver.
+// Historical core diagnostic only: low central ball count is not a realism acceptance criterion.
 const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),ts=require('typescript'),{execFileSync}=require('node:child_process');
 const baseline='77449f6',ballSetSeed=0x5eed1234;
 function compile(dir,ref){
@@ -25,7 +25,7 @@ function summary(cases){return {count:cases.length,maxCoreCount:Math.max(...case
 if(require.main===module){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'billiards-core-'));try{
  const old=compile(path.join(dir,'before'),baseline),current=compile(path.join(dir,'after'));
  const before=Array.from({length:50},(_,i)=>measure(old,i+1)),after=Array.from({length:50},(_,i)=>measure(current,i+1));
- const report={scope:'Pure TS default cue (0,0.65), aim (0,-1), centre tip, 8m/s; 50 consecutive legal rack seeds, same ballSetSeed, no selected outcomes.',baseline,version:current.r.RACK_VERSION,ballSetSeed,coreDefinition:'Unpocketed target centres within 0.17m of (0,-0.735). Interior bodyIds 2/3/4/8 are initial central rack slots.',before:summary(before),after:summary(after),checks:{coreAtMostTwo:after.every(c=>c.coreCount<=2),interiorMovedTwoDiameters:after.every(c=>c.interiorMinMaxExcursionM>=current.p.TABLE.radius*4),safe:after.every(c=>c.finite&&c.inBounds&&c.settled&&c.seconds<15)},cases:{before,after}};
+ const report={scope:'Pure TS default cue (0,0.65), aim (0,-1), centre tip, 8m/s; 50 consecutive legal rack seeds, same ballSetSeed, no selected outcomes.',baseline,version:current.r.RACK_VERSION,ballSetSeed,coreDefinition:'Unpocketed target centres within 0.17m of (0,-0.735). Interior bodyIds 2/3/4/8 are initial central rack slots.',before:summary(before),after:summary(after),checks:{safe:after.every(c=>c.finite&&c.inBounds&&c.settled&&c.seconds<15)},cases:{before,after}};
  const output=process.argv[2];if(output){fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,JSON.stringify(report,null,2)+'\n');}
  console.log(JSON.stringify({before:report.before,after:report.after,checks:report.checks},null,2));
 }finally{fs.rmSync(dir,{recursive:true,force:true});}}

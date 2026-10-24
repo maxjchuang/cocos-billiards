@@ -1,0 +1,124 @@
+{
+  "processing": "Lossless WebM remux to write finite duration metadata; encoded frames copied without changes",
+  "files": [
+    {
+      "file": "round-6.webm",
+      "bytes": 650397,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "279"
+        }
+      ],
+      "format": {
+        "duration": "9.381000"
+      }
+    },
+    {
+      "file": "round-1.webm",
+      "bytes": 653022,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "274"
+        }
+      ],
+      "format": {
+        "duration": "9.142000"
+      }
+    },
+    {
+      "file": "round-2.webm",
+      "bytes": 663799,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "274"
+        }
+      ],
+      "format": {
+        "duration": "9.130000"
+      }
+    },
+    {
+      "file": "failed-seed.webm",
+      "bytes": 574554,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "218"
+        }
+      ],
+      "format": {
+        "duration": "7.318000"
+      }
+    },
+    {
+      "file": "round-3.webm",
+      "bytes": 636009,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "277"
+        }
+      ],
+      "format": {
+        "duration": "9.281000"
+      }
+    },
+    {
+      "file": "round-4.webm",
+      "bytes": 607928,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "221"
+        }
+      ],
+      "format": {
+        "duration": "7.381000"
+      }
+    },
+    {
+      "file": "round-5.webm",
+      "bytes": 633805,
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp9",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "281"
+        }
+      ],
+      "format": {
+        "duration": "9.398000"
+      }
+    }
+  ]
+}

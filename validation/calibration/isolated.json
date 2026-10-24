@@ -1,0 +1,260 @@
+{
+  "date": "2026-10-24",
+  "scope": "Isolated-pair damping fit only; no rack/pot outcomes used. Rolling-cut analytic comparison uses the rigid limit E*1e8, with microstep scaled by E^(-0.4).",
+  "fits": [
+    {
+      "restitution": 0.93,
+      "dampingScale": 1.0151780661661178
+    },
+    {
+      "restitution": 0.95,
+      "dampingScale": 1.0106472060550005
+    },
+    {
+      "restitution": 0.96,
+      "dampingScale": 1.008445641444996
+    }
+  ],
+  "pairs": [
+    {
+      "target": 0.93,
+      "speed": 1,
+      "ratio": 1,
+      "effective": 0.9299993229020772,
+      "relativeVelocityError": 3.385489636062444e-7,
+      "momentumError": 4.440892098500626e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 1,
+      "ratio": 1.005,
+      "effective": 0.9299993216504384,
+      "relativeVelocityError": 3.4002060204929574e-7,
+      "momentumError": 2.3314683517128287e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 4,
+      "ratio": 1,
+      "effective": 0.9299999999992971,
+      "relativeVelocityError": 3.5214886562329184e-13,
+      "momentumError": 1.3322676295501878e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 4,
+      "ratio": 1.005,
+      "effective": 0.9299999632014824,
+      "relativeVelocityError": 1.844514103260808e-8,
+      "momentumError": 2.55351295663786e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 8,
+      "ratio": 1,
+      "effective": 0.9300004393316795,
+      "relativeVelocityError": 2.1966584040633563e-7,
+      "momentumError": 1.5543122344752192e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 8,
+      "ratio": 1.005,
+      "effective": 0.9300004366875518,
+      "relativeVelocityError": 2.1888827528987465e-7,
+      "momentumError": 2.4424906541753444e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 10.729,
+      "ratio": 1,
+      "effective": 0.9300006345795377,
+      "relativeVelocityError": 3.172897695245918e-7,
+      "momentumError": 1.655659278031737e-15
+    },
+    {
+      "target": 0.93,
+      "speed": 10.729,
+      "ratio": 1.005,
+      "effective": 0.9300005930249857,
+      "relativeVelocityError": 2.972519245536233e-7,
+      "momentumError": 1.8212252058349106e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 1,
+      "ratio": 1,
+      "effective": 0.949999505272906,
+      "relativeVelocityError": 2.4736354975463115e-7,
+      "momentumError": 5.551115123125783e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 1,
+      "ratio": 1.005,
+      "effective": 0.9499994892714071,
+      "relativeVelocityError": 2.5600111306853246e-7,
+      "momentumError": 4.107825191113079e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 4,
+      "ratio": 1,
+      "effective": 0.9500000000057247,
+      "relativeVelocityError": 2.8645419369865976e-12,
+      "momentumError": 4.440892098500626e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 4,
+      "ratio": 1.005,
+      "effective": 0.9500000002553004,
+      "relativeVelocityError": 1.279667136144802e-10,
+      "momentumError": 3.774758283725532e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 8,
+      "ratio": 1,
+      "effective": 0.9500002965427393,
+      "relativeVelocityError": 1.48271373564407e-7,
+      "momentumError": 7.66053886991358e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 8,
+      "ratio": 1.005,
+      "effective": 0.9500003003382833,
+      "relativeVelocityError": 1.5054362523941878e-7,
+      "momentumError": 6.217248937900877e-15
+    },
+    {
+      "target": 0.95,
+      "speed": 10.729,
+      "ratio": 1,
+      "effective": 0.9500004768241839,
+      "relativeVelocityError": 2.384120921934112e-7,
+      "momentumError": 4.966977834095211e-16
+    },
+    {
+      "target": 0.95,
+      "speed": 10.729,
+      "ratio": 1.005,
+      "effective": 0.950000485166191,
+      "relativeVelocityError": 2.4318803965902713e-7,
+      "momentumError": 2.6490548448507793e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 1,
+      "ratio": 1,
+      "effective": 0.9599995805532324,
+      "relativeVelocityError": 2.097233853248781e-7,
+      "momentumError": 3.1086244689504383e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 1,
+      "ratio": 1.005,
+      "effective": 0.959999592325093,
+      "relativeVelocityError": 2.0434577707728607e-7,
+      "momentumError": 1.5543122344752192e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 4,
+      "ratio": 1,
+      "effective": 0.9600000000035764,
+      "relativeVelocityError": 1.789481757219491e-12,
+      "momentumError": 2.4424906541753444e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 4,
+      "ratio": 1.005,
+      "effective": 0.959999976199122,
+      "relativeVelocityError": 1.19301141014716e-8,
+      "momentumError": 3.6637359812630166e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 8,
+      "ratio": 1,
+      "effective": 0.9600002421343847,
+      "relativeVelocityError": 1.2106719276747113e-7,
+      "momentumError": 6.661338147750939e-16
+    },
+    {
+      "target": 0.96,
+      "speed": 8,
+      "ratio": 1.005,
+      "effective": 0.9600002355842308,
+      "relativeVelocityError": 1.1808586249453801e-7,
+      "momentumError": 2.3314683517128287e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 10.729,
+      "ratio": 1,
+      "effective": 0.9600003943132104,
+      "relativeVelocityError": 1.9715660601293236e-7,
+      "momentumError": 1.655659278031737e-15
+    },
+    {
+      "target": 0.96,
+      "speed": 10.729,
+      "ratio": 1.005,
+      "effective": 0.9600003791819043,
+      "relativeVelocityError": 1.9006374815928644e-7,
+      "momentumError": 1.1589614946222158e-15
+    }
+  ],
+  "rollingCut": [
+    {
+      "hitFraction": 0.05,
+      "angle": 0.22392266870021507,
+      "expected": 0.22392529791883553,
+      "error": 0.0000026292186204590617
+    },
+    {
+      "hitFraction": 0.125,
+      "angle": 0.3485748966752198,
+      "expected": 0.34857695203171635,
+      "error": 0.000002055356496555305
+    },
+    {
+      "hitFraction": 0.25,
+      "angle": 0.4758950291606497,
+      "expected": 0.47589638988789706,
+      "error": 0.0000013607272473792342
+    },
+    {
+      "hitFraction": 0.5,
+      "angle": 0.5876608889065817,
+      "expected": 0.5876610248513529,
+      "error": 1.359447711068995e-7
+    },
+    {
+      "hitFraction": 0.75,
+      "angle": 0.48217399644400316,
+      "expected": 0.4821731497248874,
+      "error": 8.467191157657261e-7
+    },
+    {
+      "hitFraction": 0.875,
+      "angle": 0.2899826264861904,
+      "expected": 0.28998183585152537,
+      "error": 7.906346650154994e-7
+    },
+    {
+      "hitFraction": 0.95,
+      "angle": 0.12343783424897045,
+      "expected": 0.1234374503780587,
+      "error": 3.838709117520711e-7
+    }
+  ],
+  "checks": {
+    "analyticPairs": true,
+    "rollingCut": true
+  }
+}

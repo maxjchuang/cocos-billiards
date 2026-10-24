@@ -1,0 +1,11 @@
+const fs=require('node:fs'),path=require('node:path'),os=require('node:os'),ts=require('typescript'),{sample}=require('./measure-break-balance.cjs'),{diagnostics}=require('./measure-rack-tolerance.cjs');
+if(require.main===module){const dir=fs.mkdtempSync(path.join(os.tmpdir(),'calibrated-break-'));try{
+ for(const n of ['BilliardsContact','BilliardsRack','BilliardsTableGeometry','BilliardsSpin','BilliardsPhysics'])fs.writeFileSync(path.join(dir,n+'.js'),ts.transpileModule(fs.readFileSync('assets/scripts/'+n+'.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS}}).outputText);
+ const p=require(path.join(dir,'BilliardsPhysics.js')),r=require(path.join(dir,'BilliardsRack.js')),failed=JSON.parse(fs.readFileSync('validation/impact-timing/acceptance.json','utf8')).naturalScreenshots.map(c=>c.config);
+ const regressions=failed.map(c=>sample(p,r,c.rackSeed,0,c.ballSetSeed,c.positionToleranceM));
+ const cases=Array.from({length:30},(_,i)=>sample(p,r,i+1,0,(0x5eed1234+(i%5)*0x1234567)>>>0));
+ const variants=[];for(const offset of [-.12,.12])for(const speed of [2.4,4.2,8]){const batch=Array.from({length:10},(_,i)=>sample(p,r,i+1,offset,0x5eed1234,undefined,speed));variants.push({offset,speed,summary:diagnostics(batch),cases:batch});}
+ const ideal=sample(p,{...r,rackConfig:(seed,ballSet)=>r.rackConfig(seed,ballSet,0,0)},1);
+ const report={date:'2026-10-24',version:r.RACK_VERSION,scope:'Continuous material contact + swept rail/drop events; source-based reference parameter profile, not measured project-table calibration',parameters:{table:p.TABLE,gameMaterial:{...require(path.join(dir,'BilliardsContact.js')).REFERENCE_MATERIAL,restitution:.95,friction:.05,dampingScale:1.0106472060550005}},summary:diagnostics(cases),variants,cases,failedSeedRegressions:regressions,idealControl:ideal};
+ fs.mkdirSync('validation/calibration',{recursive:true});fs.writeFileSync('validation/calibration/breaks.json',JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify({summary:report.summary,regressions:regressions.map(c=>({seed:c.config.rackSeed,core:c.core,potted:c.potted,upper:c.upper,lower:c.lower,safe:c.finite&&c.inBounds&&c.settled})),ideal:diagnostics([ideal])},null,2));
+}finally{fs.rmSync(dir,{recursive:true,force:true});}}

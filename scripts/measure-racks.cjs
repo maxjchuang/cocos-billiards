@@ -18,14 +18,14 @@ module.exports={run,hausdorff};
 if(require.main===module){
  const ts=require('typescript'),dir=fs.mkdtempSync(path.join(os.tmpdir(),'billiards-racks-'));
  try{
-  for(const n of ['BilliardsRack','BilliardsTableGeometry','BilliardsSpin','BilliardsPhysics'])fs.writeFileSync(path.join(dir,n+'.js'),ts.transpileModule(fs.readFileSync('assets/scripts/'+n+'.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS}}).outputText);
+  for(const n of ['BilliardsContact','BilliardsRack','BilliardsTableGeometry','BilliardsSpin','BilliardsPhysics'])fs.writeFileSync(path.join(dir,n+'.js'),ts.transpileModule(fs.readFileSync('assets/scripts/'+n+'.ts','utf8'),{compilerOptions:{target:ts.ScriptTarget.ES2020,module:ts.ModuleKind.CommonJS}}).outputText);
   const p=require(path.join(dir,'BilliardsPhysics.js')),r=require(path.join(dir,'BilliardsRack.js')),ballSetSeed=0x5eed1234;
-  const control=Array.from({length:50},(_,i)=>run(p,r.rackConfig(i+1,ballSetSeed,0))),cases=Array.from({length:50},(_,i)=>run(p,r.rackConfig(i+1,ballSetSeed)));
+  const control=Array.from({length:50},(_,i)=>run(p,r.rackConfig(i+1,ballSetSeed,0,0))),cases=Array.from({length:50},(_,i)=>run(p,r.rackConfig(i+1,ballSetSeed)));
   const canonical=x=>x.balls.slice().sort((a,b)=>a.bodyId-b.bodyId).map(b=>[b.x,b.z,b.pocketed]);
   const shape=x=>JSON.stringify(x.balls.filter(b=>!b.pocketed).map(b=>[+b.x.toFixed(3),+b.z.toFixed(3)]).sort((a,b)=>a[0]-b[0]||a[1]-b[1]));
   const pairDistances=[];for(let i=0;i<cases.length;i++)for(let j=i+1;j<cases.length;j++)pairDistances.push(hausdorff(cases[i],cases[j]));
   const replay=run(p,cases[0].config);
-  const report={scope:'Pure TS; default cue/aim, centre tip, full power. Same physical ball set, new legal rack permutations; no position/shot noise.',version:r.RACK_VERSION,massVariation:r.TARGET_MASS_VARIATION,ballSetSeed,
+  const report={scope:'Pure TS; default cue/aim, centre tip, full power. Same physical ball set, new legal rack permutations; seeded sub-millimetre rack tolerance, no shot noise.',version:r.RACK_VERSION,massVariation:r.TARGET_MASS_VARIATION,ballSetSeed,
    control:{count:50,uniqueUnlabelledShapes:new Set(control.map(shape)).size,identicalBodyTrajectories:control.every(x=>JSON.stringify(canonical(x))===JSON.stringify(canonical(control[0]))),reference:control[0]},
    variation:{count:50,uniqueUnlabelledShapesAt1mm:new Set(cases.map(shape)).size,pairs:pairDistances.length,pairsChangedAtLeast2cm:pairDistances.filter(d=>d>=.02).length,meanHausdorffM:pairDistances.reduce((a,b)=>a+b,0)/pairDistances.length,minHausdorffM:Math.min(...pairDistances),maxHausdorffM:Math.max(...pairDistances),allSafe:cases.every(x=>x.finite&&x.inBounds&&x.settled&&x.seconds<15),maxSettleSeconds:Math.max(...cases.map(x=>x.seconds))},
    replayExactlyEqual:JSON.stringify(replay.balls)===JSON.stringify(cases[0].balls),cases};

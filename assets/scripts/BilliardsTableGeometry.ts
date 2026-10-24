@@ -128,6 +128,7 @@ export function traceTable(p:TablePoint,dx:number,dz:number):{distance:number;ki
         const velocity=dx*nx+dz*nz;
         if(Math.abs(velocity)<1e-10)continue;
         for(const sign of [-1,1]) {
+            if(sign*velocity>=0)continue;
             const t=(sign*G.radius-((p.x-a.x)*nx+(p.z-a.z)*nz))/velocity;
             if(t<0||t>=distance)continue;
             const u=((p.x+dx*t-a.x)*x+(p.z+dz*t-a.z)*z)/(length*length);

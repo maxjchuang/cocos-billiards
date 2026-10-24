@@ -1,0 +1,49 @@
+{
+  "wallMs": 8967.799999952316,
+  "core": 3,
+  "updates": [
+    {
+      "cost": 31.5,
+      "shotMs": 820,
+      "phase": "shooting"
+    },
+    {
+      "cost": 28.899999856948853,
+      "shotMs": 820,
+      "phase": "shooting"
+    },
+    {
+      "cost": 13,
+      "shotMs": 820,
+      "phase": "shooting"
+    },
+    {
+      "cost": 5.6000001430511475,
+      "shotMs": 386.7000000476837,
+      "phase": "shooting"
+    },
+    {
+      "cost": 4.900000095367432,
+      "shotMs": 0,
+      "phase": "placing"
+    },
+    {
+      "cost": 2.4000000953674316,
+      "shotMs": 0,
+      "phase": "ready"
+    },
+    {
+      "cost": 1.9000000953674316,
+      "shotMs": 820,
+      "phase": "ready"
+    },
+    {
+      "cost": 1.4000000953674316,
+      "shotMs": 820,
+      "phase": "shooting"
+    }
+  ],
+  "maxFrameMs": 47.80000019073486,
+  "p95": 17.399999856948853,
+  "fps": 60.07173075364718
+}
