@@ -54,7 +54,7 @@ async function previewPlan({inputMode=location.protocol==='packages:'?'engine':'
   check('Scratch plus opening eight hides the forbidden accept-table option',g.panelMode==='break'&&!g.panels.actionIds.includes('break:0')&&g.panels.actionIds.includes('break:2'));await action('break:2');check('Opening eight scratch grants head-line placement',g.referee.phase==='placing'&&g.referee.hand==='head');
   g.reset();g.referee.phase='choice';g.referee.isBreak=false;g.referee.breakChoice='eight-foul';await frame();const white={x:g.balls[0].x,z:g.balls[0].z};await action('break:0');
   check('Accept-table option preserves a non-scratched cue',g.referee.phase==='ready'&&g.balls[0].x===white.x&&g.balls[0].z===white.z);
-  check('All four packed audio clips are loaded',g.feedback.available===4);
+  check('All fourteen Scheme A clips are loaded',g.feedback.available===14);
   g.settings.set('sound',false);const count=g.feedback.events.length;g.feedback.play('strike');check('Sound-off suppresses playback requests',g.feedback.events.length===count);
   check('No page errors were captured',(window.__uxErrors??[]).length===0);
   return {engine:cc.ENGINE_VERSION,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio},mode:inputMode==='engine'?'Creator synthetic engine touch, real Cocos components':'Synthetic DOM touch, real Cocos components',results};
@@ -72,13 +72,13 @@ async function previewFeedbackAndReduced() {
   g.settings.set('sound',true);g.settings.set('haptics',false);g.settings.set('reducedMotion',true);
   const unlockSource=g.feedback.sources.get('strike'),originalPlay=unlockSource.play;
   try{unlockSource.play=()=>{throw Error('unsupported playback');};g.feedback.unlocked=false;g.feedback.unlock();check('Unsupported audio unlock cannot interrupt the first touch',g.feedback.unlocked&&unlockSource.volume===1);}finally{unlockSource.play=originalPlay;}
-  g.feedback.play=function(kind){if(kind==='strike')calls.push({kind,ms:g.shotSequence.elapsedMs,shotId:g.lastContactShotId});return play.call(this,kind);};
+  g.feedback.play=function(kind,speed){if(kind==='strike')calls.push({kind,ms:g.shotSequence.elapsedMs,shotId:g.lastContactShotId});return play.call(this,kind,speed);};
   const timing=await previewContactProbe();check('Reduced motion preserves every contact/interruption assertion',timing.passed);
   check('Every strike sound is dispatched at the logical 220ms contact frame',calls.length>0&&calls.every(c=>c.ms===220));
   check('Each committed shot dispatches one strike sound',new Set(calls.map(c=>c.shotId)).size===calls.length);
   check('Cocos audio backend received strike playback',g.feedback.events.some(e=>e.kind==='strike'));
   await wait(100);g.feedback.play('pocket');await wait(20);check('Packed sound plays through the browser audio backend',g.feedback.sources.get('pocket').playing);
-  g.modalAction('setting:sound');check('Turning sound off stops active sources immediately',[...g.feedback.sources.values()].every(s=>!s.playing));
+  g.modalAction('setting:sound');check('Turning sound off stops active sources immediately',Array.from(g.feedback.voices.values()).flat().every(s=>!s.playing));
   Object.defineProperty(navigator,'vibrate',{configurable:true,value:()=>{vibrations++;return true;}});
   g.settings.set('haptics',true);await wait(90);g.feedback.haptic();check('Enabled vibration routes to the available platform adapter',vibrations===1);
   g.settings.set('haptics',false);await wait(90);g.feedback.haptic();check('Disabled vibration emits no platform request',vibrations===1);
@@ -101,6 +101,6 @@ async function previewPerformance() {
   const nodeCount=()=>g.node.getComponentsInChildren(m.Component).length,before=nodeCount();
   const idle=await measure();g.fineAim.open(g.direction.x,g.direction.z);await new Promise(r=>setTimeout(r,120));const magnifier=await measure();
   for(let i=0;i<50;i++){g.pauseGame();g.panelMode='settings';g.renderPanels(innerWidth,innerHeight,0);g.modalAction('resume');}
-  const after=nodeCount();return {scope:'Local Chromium, 393x852 DPR2, 60fps cap',idle,magnifier,nodesBefore:before,nodesAfter:after,checks:{idleFps:idle.averageFps>=50,magnifierFps:magnifier.averageFps>=45,idleP95:idle.p95FrameMs<=33.4,magnifierP95:magnifier.p95FrameMs<=33.4,stableNodeCount:before===after,clips:g.feedback.available===4}};
+  const after=nodeCount();return {scope:'Local Chromium, 393x852 DPR2, 60fps cap',idle,magnifier,nodesBefore:before,nodesAfter:after,checks:{idleFps:idle.averageFps>=50,magnifierFps:magnifier.averageFps>=45,idleP95:idle.p95FrameMs<=33.4,magnifierP95:magnifier.p95FrameMs<=33.4,stableNodeCount:before===after,clips:g.feedback.available===14}};
  }finally{m.game.frameRate=rate;for(const k of Object.keys(original))g.settings.set(k,original[k]);g.reset();}
 }

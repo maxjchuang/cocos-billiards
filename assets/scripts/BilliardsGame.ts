@@ -93,6 +93,7 @@ export class BilliardsGame extends Component {
     private panels!:PanelsView;
     private magnifier!:MagnifierView;
     private feedback!:Feedback;
+    private victoryApplause=false;
     private panelMode:PanelMode|null=null;
     private panelPage=0;
     private historyPage=0;
@@ -372,7 +373,7 @@ export class BilliardsGame extends Component {
 
     private reset(replay?:Readonly<RackConfig>): void {
         if(replay)replay=restoreRackConfig(replay);
-        this.groupSelectedAt=-1000;this.history.reset();this.panelMode=null;this.resultShown=false;this.panelPage=0;this.placementInvalid=null;this.feedback?.stop();
+        this.groupSelectedAt=-1000;this.history.reset();this.panelMode=null;this.resultShown=false;this.victoryApplause=false;this.panelPage=0;this.placementInvalid=null;this.feedback?.stop();
         this.gameId++;this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
         this.visualSpinDeltas.forEach(v=>{v.x=v.y=v.z=0;});
         this.paused=false;this.confirmingRestart=false;this.layoutStamp='';
@@ -552,8 +553,8 @@ export class BilliardsGame extends Component {
             this.fineAim.close();this.accumulator=0;
         }
     }
-    private pauseGame():void {
-        this.panelMode='pause';this.feedback?.stop();
+    private pauseGame(stopAudio=true):void {
+        this.panelMode='pause';if(stopAudio)this.feedback?.stop();
         this.paused=true;this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.fineAim.close();this.accumulator=0;
     }
     private hideGame():void { this.backgrounded=true;this.pauseGame(); }
@@ -582,12 +583,15 @@ export class BilliardsGame extends Component {
         if(!landscape&&this.rotationBlocked){this.rotationBlocked=false;this.panelMode='pause';}
 
         const contactFrame=!this.paused&&!this.backgrounded&&this.shotSequence.advance(dt,
-            snapshot=>{const committed=commitShot(snapshot,this.gameId,this.balls,this.referee);if(committed){this.lastContactShotId=snapshot.shotId;this.feedback?.play('strike');this.feedback?.haptic();}return committed;});
+            snapshot=>{const committed=commitShot(snapshot,this.gameId,this.balls,this.referee);if(committed){this.lastContactShotId=snapshot.shotId;this.feedback?.play('strike',Math.hypot(this.balls[0].vx,this.balls[0].vz));this.feedback?.haptic();}return committed;});
         if (!this.paused&&!this.backgrounded&&(!this.shotSequence.active||this.shotSequence.committed)) {
             // The first moving frame shares the exact visible contact pose, even after a long frame.
             this.accumulator=contactFrame?FIXED_STEP:Math.min(this.accumulator+dt,0.1);
             while(this.accumulator>=FIXED_STEP) {
-                step(this.balls,FIXED_STEP,{respawnCue:false,onEvent:event=>{this.referee.observe(event,this.balls);this.feedback?.play(event.type==='contact'?'collision':event.type==='cushion'?'cushion':'pocket');}});
+                step(this.balls,FIXED_STEP,{respawnCue:false,onEvent:event=>{this.referee.observe(event,this.balls);
+                    const key=event.type==='contact'?`${Math.min(event.a,event.b)}:${Math.max(event.a,event.b)}`:event.type==='cushion'?`${event.id}:${event.side}`:`${event.id}:${event.pocket}`;
+                    this.feedback?.enqueue(event.type==='contact'?'collision':event.type==='cushion'?'cushion':'pocket',event.speed??0,key);
+                }});
                 this.balls.forEach(ball=>{
                     const v=this.visualSpinDeltas[ball.id];v.x+=(ball.wx??0)*FIXED_STEP;
                     v.y+=(ball.wy??0)*FIXED_STEP;v.z+=(ball.wz??0)*FIXED_STEP;
@@ -595,12 +599,14 @@ export class BilliardsGame extends Component {
                 this.referee.trackCue(this.balls);
                 if(this.referee.phase==='shooting'&&!isMoving(this.balls)){
                     const player=this.referee.shot?.player??this.referee.current;this.referee.finishShot(this.balls);this.tip.reset();this.notificationAt=this.uiTime;
+                    this.victoryApplause=this.referee.winner===player;
                     this.history.record({shotId:this.lastContactShotId,player,reason:this.referee.message,phase:this.referee.phase,winner:this.referee.winner});
                     if(/犯规|判负|获胜/.test(this.referee.message))this.feedback?.haptic();
                 }
                 this.accumulator-=FIXED_STEP;
             }
         } else this.accumulator=0;
+        this.feedback?.flush();
         this.syncVisuals();
         const size = screen.windowSize;
         const ref = this.referee;
@@ -619,7 +625,7 @@ export class BilliardsGame extends Component {
         this.decision.string = playerMessage(this.decision.string, this.players);
         if(ref.phase==='placing')this.decision.string=ref.isBreak?'请在开球线后放置白球':playerMessage(ref.message,this.players);
         if(ref.phase==='ready'&&(ref.isBreak||!!ref.groups[ref.current]||!!ref.selected)&&this.uiTime-this.notificationAt>1.8)this.decision.string='';
-        if(ref.phase==='over'&&!this.shotSequence.active&&!this.resultShown&&this.panels){this.resultShown=true;this.pauseGame();this.panelMode='result';}
+        if(ref.phase==='over'&&!this.shotSequence.active&&!this.resultShown&&this.panels){this.resultShown=true;this.pauseGame(false);this.panelMode='result';if(this.victoryApplause)this.feedback?.celebrate();}
         let labels = ['', '', ''];
         if (ref.phase === 'placing') labels[1] = '确认摆球';
         if (ref.phase === 'ready' && !ref.isBreak && !ref.groups[ref.current]&&(!ref.selected||this.uiTime-this.groupSelectedAt<.25))
@@ -826,6 +832,7 @@ export class BilliardsGame extends Component {
         else if(action==='view-table')this.panelMode='view';
         else if(action==='return-result')this.panelMode='result';
         else if(action==='rule-history'){this.panelPage=this.panelPage===2?0:2;this.historyPage=0;}
+        else if(action==='audio-credits')this.panelPage=3;
         else if(action==='history-prev')this.historyPage=Math.max(0,this.historyPage-1);
         else if(action==='history-next')this.historyPage=Math.min(Math.max(0,Math.ceil(this.history.entries.length/5)-1),this.historyPage+1);
         else if(action==='rule-next')this.panelPage=this.panelPage===0?1:0;
@@ -847,12 +854,14 @@ export class BilliardsGame extends Component {
             const items:[SettingKey,string][]=[['sound','音效'],['haptics','振动反馈'],['aimGuide','辅助瞄准'],['magnifier','局部放大'],['reducedMotion','减少动态']];
             m.actions=[...items.map(([key,title])=>({id:'setting:'+key,title,checked:this.settings.value[key]})),{...back,title:'完成',primary:true}];
         } else if(mode==='rules'){
-            m.title=this.panelPage===2?`本局判罚记录 ${this.historyPage+1}/${Math.max(1,Math.ceil(this.history.entries.length/5))}`:'本局规则';
+            m.title=this.panelPage===3?'音频署名':this.panelPage===2?`本局判罚记录 ${this.historyPage+1}/${Math.max(1,Math.ceil(this.history.entries.length/5))}`:'本局规则';
             const pages=[
                 '球组：1–7全色，9–15半色，8为黑球。\n开球：有目标球进袋或至少四颗目标球碰库。开球进球不分组。\n开放球局：选择进攻组；合法首碰并进该组球后才确定球组。\n普通犯规：白球落袋、未碰目标、首碰非法，或碰球后无进球且无球碰库，给对方自由球。\n线后自由球：须在线后摆放，并遵守越线击球要求。',
                 '黑8：清完本组后，下一杆合法进8获胜。提前进8、同杆清最后一球并进8、进8同时犯规均判负。\n开球进8：重置8号，按裁判提供的开球选择处理，不直接判胜负。\n严重开球违规：按界面选择重开或接受台面；原开球方被要求重开后再次不足四球碰库会判负。\n无需指袋；无普通连续三次犯规自动输局。\n范围：不含跳球、飞台、身体犯规与完整赛事裁判。'];
             m.body=this.panelPage===2?(this.history.entries.slice(this.historyPage*5,this.historyPage*5+5).map((e,i)=>`${i+1}. ${playerName(this.players[e.player],e.player)}：${playerMessage(e.reason,this.players)}`).join('\n')||'本局暂无已结算判罚。'):pages[this.panelPage];
             m.actions=this.panelPage===2?[{id:'history-prev',title:'上一页'},{id:'history-next',title:'下一页'},{id:'rule-history',title:'返回规则'},back]:[{id:'rule-next',title:this.panelPage===0?'下一页':'规则首页'},{id:'rule-history',title:'查看本局记录'},back];
+            if(this.panelPage===3){m.body='球球／落袋片段：juskiddink\nBilliard balls single hit-dry.wav\nfreesound.org/s/108615\nCC BY 4.0 · 已剪辑、滤波与混音\ncreativecommons.org/licenses/by/4.0/\n\n其它底材：csaszi、Kenney、\nfreesound（CC0），经剪辑与混音。';m.actions=[{id:'rule-next',title:'返回规则'},back];}
+            else if(this.panelPage!==2)m.actions.splice(2,0,{id:'audio-credits',title:'音频署名'});
         } else if(mode==='identity'){
             const player=this.players[this.identitySeat];m.title='玩家资料';m.avatar=player.avatar;m.body=`完整昵称：\n${playerName(player,this.identitySeat)}\n\n球组：${groupName(this.referee.groups[this.identitySeat as 0|1])}\n本地同屏玩家 · 头像采用本地占位图`;m.actions=[...(!this.referee.isBreak&&!this.referee.groups[this.referee.current]&&this.identitySeat===this.referee.current?[{id:'select-group',title:'更改进攻球组'}]:[]),{id:'close-identity',title:'返回对局',primary:true}];
         } else if(mode==='result'){

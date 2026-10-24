@@ -31,9 +31,9 @@ export const TABLE = {
     stopSpeed: 0.005,
 };
 export type PhysicsEvent =
-    | { type: 'contact'; a: number; b: number }
-    | { type: 'cushion'; id: number; side?: CushionSide }
-    | { type: 'pocket'; id: number; pocket: number };
+    | { type: 'contact'; a: number; b: number; speed?:number }
+    | { type: 'cushion'; id: number; side?: CushionSide; speed?:number }
+    | { type: 'pocket'; id: number; pocket: number; speed?:number };
 export interface StepOptions {
     onEvent?: (event: PhysicsEvent) => void;
     respawnCue?: boolean;
@@ -141,11 +141,11 @@ function solveBallContacts(balls:BallState[],onEvent?:StepOptions['onEvent']):vo
 function nextTableBoundary(balls:readonly BallState[],remaining:number,onEvent?:StepOptions['onEvent']):ContactBoundary|null {
     let best:ContactBoundary|null=null;
     const choose=(event:ContactBoundary)=>{if(!best||event.time<best.time)best=event;};
-    const pocket=(ball:BallState,index:number)=>{if(ball.pocketed)return;ball.pocketed=true;ball.vx=ball.vz=0;clearSpin(ball);onEvent?.({type:'pocket',id:ball.id,pocket:index});};
+    const pocket=(ball:BallState,index:number)=>{if(ball.pocketed)return;const speed=Math.hypot(ball.vx,ball.vz);ball.pocketed=true;ball.vx=ball.vz=0;clearSpin(ball);onEvent?.({type:'pocket',id:ball.id,pocket:index,speed});};
     const rail=(ball:BallState,segment:typeof CUSHION_SEGMENTS[number])=>{
         const q=nearestOnSegment(ball,segment.a,segment.b),x=ball.x-q.x,z=ball.z-q.z,distance=Math.hypot(x,z),nx=distance>1e-12?x/distance:segment.inward.x,nz=distance>1e-12?z/distance:segment.inward.z;
         if(distance<TABLE.radius+1e-9){ball.x+=nx*Math.max(0,TABLE.radius-distance+1e-10);ball.z+=nz*Math.max(0,TABLE.radius-distance+1e-10);}
-        if(ball.vx*nx+ball.vz*nz< -1e-10){spinCushion(ball,-nx,-nz,TABLE.radius,TABLE.cushionRestitution);onEvent?.({type:'cushion',id:ball.id,side:segment.side});}
+        const speed=-(ball.vx*nx+ball.vz*nz);if(speed>1e-10){spinCushion(ball,-nx,-nz,TABLE.radius,TABLE.cushionRestitution);onEvent?.({type:'cushion',id:ball.id,side:segment.side,speed});}
     };
     for(const ball of balls){
         if(ball.pocketed)continue;const speed=Math.hypot(ball.vx,ball.vz),travel=speed*remaining;
@@ -171,7 +171,7 @@ function nextTableBoundary(balls:readonly BallState[],remaining:number,onEvent?:
 function stepOnce(balls: BallState[], dt: number, options: StepOptions): void {
     if(dt>0){
         const material={...REFERENCE_MATERIAL,radius:TABLE.radius,restitution:TABLE.ballRestitution,friction:.05,dampingScale:1.0106472060550005};
-        advanceContacts(balls,dt,material,{onContact:(a,b)=>options.onEvent?.({type:'contact',a,b}),nextBoundary:(state,time)=>nextTableBoundary(state,time,options.onEvent)});
+        advanceContacts(balls,dt,material,{onContact:(a,b,_time,speed)=>options.onEvent?.({type:'contact',a,b,speed}),nextBoundary:(state,time)=>nextTableBoundary(state,time,options.onEvent)});
         for(const ball of balls)if(!ball.pocketed)clothStep(ball,TABLE.radius,dt,TABLE.deceleration,TABLE.stopSpeed);
     }else{
         // Retain the legacy zero-time diagnostic/repair API; gameplay always uses positive time.

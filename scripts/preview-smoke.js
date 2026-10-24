@@ -1,6 +1,6 @@
 // Developer-only. Browser: DOM touch with mobile emulation. Creator embedded preview:
 // engine touch events (does not certify DOM/device input). Cases use the real frame loop and physics.
-async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'engine' : 'dom'} = {}) {
+async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'engine' : 'dom',afterSettlement} = {}) {
     const game = cc.director.getScene()?.getChildByName('Billiards')?.getComponent('BilliardsGame');
     const editorPreview = location.protocol === 'packages:';
     if (!game || (!navigator.maxTouchPoints && inputMode === 'dom' && !editorPreview)) throw new Error('Load Main and enable mobile touch emulation first.');
@@ -51,7 +51,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
     const settle = async () => {
         for(let i=0;i<300 && (game.referee.phase==='shooting'||game.shotSequence.active);i++) await wait(50);
         check('Physics shot settles before timeout',game.referee.phase!=='shooting'&&!game.shotSequence.active);
-        await frame();
+        await frame();if(afterSettlement)await afterSettlement(game);
     };
     const sideShot = id => {
         game.balls.forEach(b=>{b.vx=0;b.vz=0;b.wx=0;b.wy=0;b.wz=0;b.pocketed= ![0,8,id].includes(b.id);});

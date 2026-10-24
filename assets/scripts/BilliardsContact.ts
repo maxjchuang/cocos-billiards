@@ -20,7 +20,7 @@ export interface ContactSample {time:number;kinetic:number;elastic:number;px:num
 export interface ContactBoundary {time:number;apply:()=>void;}
 export interface ContactOptions {
     nextBoundary?:(balls:readonly ContactBody[],remaining:number)=>ContactBoundary|null;
-    onContact?:(a:number,b:number,time:number)=>void;
+    onContact?:(a:number,b:number,time:number,speed:number)=>void;
     onSample?:(sample:ContactSample)=>void;
     /** Optional audit of the actual half-kick force and its integration weight. */
     onForce?:(sample:{time:number;a:number;b:number;indentation:number;normal:number;tangent:number;weight:number;impulseX:number;impulseZ:number})=>void;
@@ -100,7 +100,7 @@ export function advanceContacts(input:ContactBody[],dt:number,m:ContactMaterial=
         const h=Math.min(m.maxStep,dt-time,boundary?.time??Infinity);
         force(acc0,touch0,time,h/2);kick(acc0,h/2);drift(h);force(acc1,touch1,time+h,h/2);kick(acc1,h/2);time+=h;microSteps++;
         if(boundary&&boundary.time<=h+1e-14)boundary.apply();
-        for(let p=0;p<pairs.length;p++)if(touch1[p]&&!touch0[p]){const {a,b}=pairs[p];contactStarts++;options.onContact?.(balls[a].id,balls[b].id,time);}
+        for(let p=0;p<pairs.length;p++)if(touch1[p]&&!touch0[p]){const {a,b}=pairs[p],A=balls[a],B=balls[b],x=B.x-A.x,z=B.z-A.z,len=Math.hypot(x,z);contactStarts++;options.onContact?.(A.id,B.id,time,Math.max(0,((A.vx-B.vx)*x+(A.vz-B.vz)*z)/len));}
         options.onSample?.(contactSample(balls,m,time));
     }
     return {time,microSteps,freeFlights,contactStarts,maxIndentation};

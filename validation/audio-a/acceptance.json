@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-24",
+  "bank": "A-club-v1",
+  "status": "automated and browser checks passed; user in-game listening review passed; native GUI remains unverified",
+  "node": {
+    "passed": 152,
+    "failed": 0,
+    "typecheck": true
+  },
+  "creatorCli": {
+    "version": "3.8.7",
+    "platform": "web-mobile",
+    "exitCode": 36
+  },
+  "nativeCreator": {
+    "status": "blocked",
+    "reason": "Desktop tool binds the launcher instead of the same-name project process"
+  },
+  "hardwareAndWechat": "waived by user",
+  "browser": {
+    "viewport": "393x852 DPR2 mobile touch simulation",
+    "audioChecks": 17,
+    "gameplay": 35,
+    "contactTiming": 9,
+    "feedback": 12,
+    "ui": 81,
+    "spin": 28,
+    "input": 17,
+    "pockets": 28,
+    "errors": 0
+  },
+  "limits": [
+    "No referee, ambient bed, UI sound, music or electronic reward sounds",
+    "Cushion and pocket are Foley adaptations, not measured project-table recordings",
+    "Public recorded material uses compressed previews, not original lossless masters"
+  ],
+  "userAcceptance": {
+    "date": "2026-10-25",
+    "feedback": "验证 ok，提交并推送",
+    "scope": "in-game sound accepted; native GUI status unchanged"
+  },
+  "publication": "approved for commit and push by user"
+}

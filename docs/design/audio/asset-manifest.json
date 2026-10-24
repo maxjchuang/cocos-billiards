@@ -1,0 +1,91 @@
+{
+  "version": "A-club-v1",
+  "sampleRate": 44100,
+  "sourceStatus": "Public compressed previews for the recorded material; no claim of lossless original masters. Cushion and pocket are designed Foley, not measured table recordings.",
+  "files": [
+    {
+      "file": "strike.wav",
+      "duration": 0.23,
+      "peak": 0.7799999999984933,
+      "sha256": "a35fad2c5e14831240146a3958f01435d50c975aefbcdfe2c7b1587df9e98f3a"
+    },
+    {
+      "file": "cushion.wav",
+      "duration": 0.29,
+      "peak": 0.779999999998638,
+      "sha256": "6c92ad8d98d0ef1a27c641143b29e9d6d9707de9893ed36357f6dee3385c6baf"
+    },
+    {
+      "file": "pocket.wav",
+      "duration": 0.52,
+      "peak": 0.7799999999969944,
+      "sha256": "30deaf93709aea345ab87fca4b783266ed0871645b1fc44cd63fdda99828695d"
+    },
+    {
+      "file": "strike-1.wav",
+      "duration": 0.23,
+      "peak": 0.7799999999985855,
+      "sha256": "3cf7ebb06ed97752bd4fd090f67efe88f4a929ebb5240b79ee6423244477927c"
+    },
+    {
+      "file": "cushion-1.wav",
+      "duration": 0.29,
+      "peak": 0.7799999999987139,
+      "sha256": "ac75964d7b1c642db9dc40ed3e5a806c55ef6d318a9c9daf57bde6e41c5a5769"
+    },
+    {
+      "file": "pocket-1.wav",
+      "duration": 0.52,
+      "peak": 0.7799999999967854,
+      "sha256": "f85d7b9423186fe05b2b783984c23cd33ef84d047a5492e743b00fbdb127e155"
+    },
+    {
+      "file": "strike-2.wav",
+      "duration": 0.23,
+      "peak": 0.7799999999985187,
+      "sha256": "bcdc291be8434d71868a8f234164778b24921aa14f6d986f5c2a6b4ac7b24ed4"
+    },
+    {
+      "file": "cushion-2.wav",
+      "duration": 0.29,
+      "peak": 0.7799999999987409,
+      "sha256": "e26c3d844cefc627c21658042dba970aebe928e09442a4ebd7f7176659f602eb"
+    },
+    {
+      "file": "pocket-2.wav",
+      "duration": 0.52,
+      "peak": 0.7799999999968359,
+      "sha256": "b84da77dd5675aecd7d60f362f0ce94732f3b0b5f48f9908bb0df542f41c7f37"
+    },
+    {
+      "file": "collision.wav",
+      "duration": 0.08358276643990929,
+      "peak": 0.779999999999,
+      "sha256": "4921dd87f705dbd5e8d8cb526fa2dd183392d971fe4277411d574edfaf166f4b"
+    },
+    {
+      "file": "collision-1.wav",
+      "duration": 0.08573696145124717,
+      "peak": 0.7799999999989965,
+      "sha256": "512579bb900e8da8772ec3a4b134353884dfb8549c647b99574bb20651bbfb26"
+    },
+    {
+      "file": "collision-2.wav",
+      "duration": 0.08156462585034013,
+      "peak": 0.7799999999989993,
+      "sha256": "db0de787dc4d75da803a7718444b5f330384d3ef3d0067d00098780778a28478"
+    },
+    {
+      "file": "collision-3.wav",
+      "duration": 0.08444444444444445,
+      "peak": 0.7799999999990118,
+      "sha256": "fb4e7abdeca308bb717e4d076339bb32cb209d28fe781f2fa6ae0b5377a6c8cc"
+    },
+    {
+      "file": "applause.wav",
+      "duration": 1.8,
+      "peak": 0.7799999999988725,
+      "sha256": "53d553038f471d85d89aae2bc559ca6892d1a4a956a9b255ea68d88d3b2ce788"
+    }
+  ]
+}
