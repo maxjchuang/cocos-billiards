@@ -1,7 +1,7 @@
 import { Color, Graphics, Label, Layers, Node, UITransform } from 'cc';
 import { drawAvatar } from './BilliardsPlayerCard';
 import { CLUB } from './BilliardsTheme';
-export type PanelMode='pause'|'confirm'|'settings'|'rules'|'identity'|'result'|'view'|'rotate'|'break';
+export type PanelMode='pause'|'confirm'|'settings'|'rules'|'identity'|'result'|'view'|'rotate'|'break'|'new-game'|'ai-options';
 export interface PanelAction { id:string; title:string; primary?:boolean; checked?:boolean; }
 export interface PanelModel { mode:PanelMode|null; title:string; body:string; actions:PanelAction[]; avatar?:string;pressed?:number; }
 /** One modal surface with stable buttons. No referee or shot mutation occurs here. */
@@ -28,7 +28,7 @@ export class PanelsView {
         overlay.clear();overlay.fillColor=model.mode==='rotate'?new Color(0,0,0,255):new Color(5,16,12,model.mode==='view'?0:163);
         overlay.rect(-width/2,-height/2,width,height);overlay.fill();this.node.getComponent(UITransform)!.setContentSize(width,height);
         const view=model.mode==='view',rotation=model.mode==='rotate',w=model.mode==='rules'||model.mode==='break'?width:Math.min(model.mode==='settings'?345:331,width-48),available=height-bottom-32;
-        const h=Math.min(available,model.mode==='pause'?374:model.mode==='result'?314:model.mode==='confirm'?314:model.mode==='settings'?568:model.mode==='rules'?558:model.mode==='break'?383:model.mode==='identity'?420:Math.max(420,Math.min(660,available)));
+        const h=Math.min(available,model.mode==='new-game'?500:model.mode==='pause'?(model.actions.some(a=>a.id==='ai-options')?490:436):model.mode==='result'?314:model.mode==='confirm'?314:model.mode==='settings'?568:model.mode==='rules'?558:model.mode==='break'?383:model.mode==='identity'?420:Math.max(420,Math.min(660,available)));
         this.card.active=true;let cardY=view?height/2-72:model.mode==='pause'?-9:4;
         if(model.mode==='rules'||model.mode==='break')cardY=-height/2+h/2;
         if(model.mode==='settings'){const top=Math.max(8,Math.min(height-bottom-h-8,(height-h)/2+48));cardY=height/2-top-h/2;}
@@ -40,9 +40,9 @@ export class PanelsView {
         this.title.string=model.title;this.title.fontSize=model.mode==='result'?26:model.mode==='rules'?23:model.mode==='break'?22:24;this.title.lineHeight=28;this.title.isBold=false;this.title.horizontalAlign=model.mode==='settings'||model.mode==='rules'||model.mode==='break'?Label.HorizontalAlign.LEFT:Label.HorizontalAlign.CENTER;
         this.title.node.setPosition(0,h/2-(model.mode==='result'?110:model.mode==='break'?54:42),0);this.title.node.getComponent(UITransform)!.setContentSize(w-48,44);
         if(model.mode==='identity')drawAvatar(bg,0,h/2-108,24,model.avatar??'default');
-        this.footer.node.active=model.mode==='pause'||model.mode==='rules';this.footer.string=model.mode==='rules'?(model.title==='音频署名'?'音效方案 A · 来源与授权':'中台协2017年1月修订版 · 核心规则'):'当前球局保持';this.footer.horizontalAlign=model.mode==='rules'?Label.HorizontalAlign.LEFT:Label.HorizontalAlign.CENTER;this.footer.fontSize=11;this.footer.color=color(CLUB.muted);this.footer.node.setPosition(0,h/2-(model.mode==='rules'?66.5:324.5),0);this.footer.node.getComponent(UITransform)!.setContentSize(w-48,20);
+        this.footer.node.active=model.mode==='pause'||model.mode==='rules';this.footer.string=model.mode==='rules'?(model.title==='音频署名'?'音效方案 A · 来源与授权':'中台协2017年1月修订版 · 核心规则'):'当前球局保持';this.footer.horizontalAlign=model.mode==='rules'?Label.HorizontalAlign.LEFT:Label.HorizontalAlign.CENTER;this.footer.fontSize=11;this.footer.color=color(CLUB.muted);this.footer.node.setPosition(0,h/2-(model.mode==='rules'?66.5:model.actions.some(a=>a.id==='ai-options')?454:400),0);this.footer.node.getComponent(UITransform)!.setContentSize(w-48,20);
         this.body.color=color(model.mode==='result'&&/提前|犯规|判负/.test(model.body)?CLUB.loss:CLUB.ink);this.body.string=model.body;this.body.fontSize=14;this.body.lineHeight=22;this.body.enableWrapText=true;this.body.verticalAlign=model.mode==='rules'||model.mode==='identity'?Label.VerticalAlign.TOP:Label.VerticalAlign.CENTER;
-        const count=model.actions.length,bottomButtons=count*54,bodyH=Math.max(38,h-110-bottomButtons);
+        const count=model.actions.length,bottomButtons=model.actions.filter(a=>a.id!=='cancel-match').length*54,bodyH=Math.max(38,h-110-bottomButtons);
         this.body.node.setPosition(0,h/2-88-bodyH/2,0);this.body.node.getComponent(UITransform)!.setContentSize(w-48,bodyH);
         if(model.mode==='identity'){this.body.node.setPosition(0,-28,0);this.body.node.getComponent(UITransform)!.setContentSize(w-48,180);}
         if(model.mode==='pause'){this.body.fontSize=12;this.body.horizontalAlign=Label.HorizontalAlign.CENTER;this.body.node.setPosition(0,h/2-77,0);this.body.node.getComponent(UITransform)!.setContentSize(w-48,22);}
@@ -56,8 +56,12 @@ export class PanelsView {
             const a=model.actions[i],n=label.node.parent!;n.active=!!a;if(!a)return;
             let bw=w-48,bh=48,x=0,y=view?0:-h/2+32+(count-1-i)*54,plain=false;
             if(model.mode==='pause'){
-                const top=a.id==='resume'?108:a.id==='rules'?170:232;y=h/2-top-24;
+                const top=a.id==='resume'?108:a.id==='rules'?170:a.id==='new-game'?294:a.id==='ai-options'?356:232;y=h/2-top-24;
                 if(a.id==='settings'||a.id==='restart'){bw=(w-59)/2;x=(a.id==='settings'?-1:1)*(bw/2+5.5);}
+            }
+            if(model.mode==='new-game'){
+                if(a.id==='cancel-match'){plain=true;bw=64;bh=44;x=w/2-48;y=h/2-38;}
+                else{const rows=model.actions.filter(a=>a.id!=='cancel-match');y=-h/2+32+(rows.length-1-rows.findIndex(r=>r.id===a.id))*54;}
             }
             if(model.mode==='break')y=h/2-(165+i*64);
             if(model.mode==='confirm')y=h/2-(a.id==='cancel-restart'?163:225);

@@ -1,0 +1,10 @@
+{
+  "assets/scripts/BilliardsAI.ts": "9356b120a1f16a95f01f6bf73712c701069d45015c0629d8fbd4514a781c4bf7",
+  "assets/scripts/BilliardsPractice.ts": "2dccdb8215338208a99839c8a585635a977633c5ff7c9e8c127fec477835146b",
+  "assets/scripts/BilliardsGame.ts": "cd56e26f27d3a74743233615ef760b74651cb5129a471037231697231e1794fd",
+  "assets/scripts/BilliardsPanels.ts": "246f6c58991a22da4ce0bfcf4baef5f0bd6a4a83fd15c763c435baf8ea77707c",
+  "assets/scripts/BilliardsRules.ts": "295001defc012e8aa84af9e2bc6d9bb1bf67955851c28d001ba642ae29de0a7c",
+  "scripts/preview-ai.js": "b0c03597349fbe213e5d6bbb83cec80824653464ec9a7253927d3a4f82d24585",
+  "scripts/measure-ai.cjs": "074425e1779559ebe5abdc040df9bf114a8e14e046e232591bfc4b183105e372",
+  "scripts/measure-ai-match.cjs": "afd609a06106b043782c0730ee33277a03bcb5383c0ff83457510029dd5c7e7d"
+}

@@ -1,0 +1,77 @@
+{
+  "date": "2026-10-25",
+  "status": "implemented; automated/browser/native checks passed; user gameplay review accepted",
+  "mode": "offline practice, AI seat 1, human first break",
+  "levels": [
+    "easy",
+    "standard",
+    "hard"
+  ],
+  "node": {
+    "typecheck": true,
+    "passed": 176,
+    "failed": 0
+  },
+  "creatorCli": {
+    "engine": "3.8.7",
+    "platform": "web-mobile",
+    "exitCode": 36
+  },
+  "browser": {
+    "reference": "393x852 DPR2",
+    "aiFlow": 45,
+    "additionalPortraitFlow": {
+      "320x568 DPR2": 43,
+      "430x932 DPR2": 43
+    },
+    "backgroundAndOrientation": "393 reference and Node; chooser/difficulty draft retained",
+    "legacyLocal": {
+      "ui": 81,
+      "spin": 28,
+      "input": 17,
+      "pockets": 28,
+      "audio": 17,
+      "trajectory": 16
+    },
+    "errors": 0
+  },
+  "nativeCreator": {
+    "aiFlow": 45,
+    "ui": 81,
+    "input": "Creator internal engine touch, not hardware",
+    "errors": 0
+  },
+  "difficultyFixtures": {
+    "boards": 7,
+    "executionSeeds": 3,
+    "perLevel": 21,
+    "legalPotShots": {
+      "easy": 9,
+      "standard": 10,
+      "hard": 12
+    },
+    "scope": "full candidate caps, no claim of player win rates"
+  },
+  "fullMatch": {
+    "scope": "offline standard vs standard, full seeded rack, actual physics and referee",
+    "shots": 31,
+    "winner": 1,
+    "fouls": [
+      1,
+      1
+    ]
+  },
+  "hardwareAndWechat": "waived by user",
+  "limits": [
+    "No online model, no ranking or automatic adaptive difficulty",
+    "Cooperative main-thread budget cannot preempt a material contact step",
+    "Real-time planner can reach its deadline before testing every candidate",
+    "Difficult occlusion or execution error can still cause a referee-adjudicated foul",
+    "Not a professional rating or universal win-rate guarantee"
+  ],
+  "userAcceptance": {
+    "date": "2026-10-25",
+    "feedback": "验证 ok，提交并推送",
+    "version": "ai-opponent-v2"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "scope": "Local foreground Chromium; full rack, challenge AI, active planning and aim animation; not hardware",
+  "frames": 294,
+  "wallMs": 5107.899999856949,
+  "averageFps": 57.48366718437583,
+  "p95FrameMs": 29.09999990463257,
+  "maxFrameMs": 40.89999985694885,
+  "maxUpdateMs": 31.700000047683716,
+  "trials": 13,
+  "commandProduced": true,
+  "checks": {
+    "responsive": true,
+    "p95": true,
+    "bounded": true,
+    "command": true
+  }
+}

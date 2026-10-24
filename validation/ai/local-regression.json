@@ -1,0 +1,1249 @@
+{
+  "previewPlan": {
+    "engine": "3.8.7",
+    "viewport": {
+      "width": 393,
+      "height": 852,
+      "dpr": 2
+    },
+    "mode": "Synthetic DOM touch, real Cocos components",
+    "results": [
+      {
+        "name": "Placement confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Pressed shoot appearance is visible before release",
+        "passed": true
+      },
+      {
+        "name": "Cancelling press restores the button without shooting",
+        "passed": true
+      },
+      {
+        "name": "Pause opens full menu and freezes balls",
+        "passed": true
+      },
+      {
+        "name": "Paused positions are preserved",
+        "passed": true
+      },
+      {
+        "name": "All four pause actions are present",
+        "passed": true
+      },
+      {
+        "name": "Action exists: settings",
+        "passed": true
+      },
+      {
+        "name": "Settings opens while preserving pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: sound",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: sound",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:haptics",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: haptics",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: haptics",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:haptics",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:magnifier",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: magnifier",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: magnifier",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:magnifier",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Storage failure keeps the UI usable and changes effective in memory",
+        "passed": true
+      },
+      {
+        "name": "Action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rules",
+        "passed": true
+      },
+      {
+        "name": "Rules include the correct baseline and break conditions",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rule-next",
+        "passed": true
+      },
+      {
+        "name": "Rules include black outcomes and no called-pocket variant",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rule-history",
+        "passed": true
+      },
+      {
+        "name": "Empty settlement history is explicit",
+        "passed": true
+      },
+      {
+        "name": "History opens the first page without dropping older entries",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-next",
+        "passed": true
+      },
+      {
+        "name": "History second page is accessible",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-next",
+        "passed": true
+      },
+      {
+        "name": "History last page is accessible",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-prev",
+        "passed": true
+      },
+      {
+        "name": "History supports navigating backwards",
+        "passed": true
+      },
+      {
+        "name": "Action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: restart",
+        "passed": true
+      },
+      {
+        "name": "Restart requires separate confirmation",
+        "passed": true
+      },
+      {
+        "name": "Action exists: cancel-restart",
+        "passed": true
+      },
+      {
+        "name": "Cancelling restart retains the match",
+        "passed": true
+      },
+      {
+        "name": "Resume dismisses the modal without shooting",
+        "passed": true
+      },
+      {
+        "name": "Identity shows the full nickname and avatar",
+        "passed": true
+      },
+      {
+        "name": "Action exists: close-identity",
+        "passed": true
+      },
+      {
+        "name": "Identity close preserves match",
+        "passed": true
+      },
+      {
+        "name": "Table aiming shows the contact magnifier",
+        "passed": true
+      },
+      {
+        "name": "Magnifier closes on release",
+        "passed": true
+      },
+      {
+        "name": "Fine aim shows magnifier when space permits, keeping short-screen pockets unobstructed",
+        "passed": true
+      },
+      {
+        "name": "Magnifier setting hides it immediately",
+        "passed": true
+      },
+      {
+        "name": "Aim switch retains direction",
+        "passed": true
+      },
+      {
+        "name": "Spin overlay hides magnification",
+        "passed": true
+      },
+      {
+        "name": "Action exists: restart",
+        "passed": true
+      },
+      {
+        "name": "Action exists: confirm-restart",
+        "passed": true
+      },
+      {
+        "name": "Confirmed restart clears history and returns to placement",
+        "passed": true
+      },
+      {
+        "name": "Illegal placement keeps cue position and shows feedback",
+        "passed": true
+      },
+      {
+        "name": "Result modal reports winner and reason",
+        "passed": true
+      },
+      {
+        "name": "Result identity reveals a long winner name without tiny title text",
+        "passed": true
+      },
+      {
+        "name": "Action exists: close-identity",
+        "passed": true
+      },
+      {
+        "name": "Closing winner identity returns to the result",
+        "passed": true
+      },
+      {
+        "name": "Action exists: view-table",
+        "passed": true
+      },
+      {
+        "name": "View-table mode blocks gameplay",
+        "passed": true
+      },
+      {
+        "name": "Action exists: return-result",
+        "passed": true
+      },
+      {
+        "name": "Result can be reopened",
+        "passed": true
+      },
+      {
+        "name": "Action exists: new-round",
+        "passed": true
+      },
+      {
+        "name": "New round clears result exactly once",
+        "passed": true
+      },
+      {
+        "name": "Scratch plus opening eight hides the forbidden accept-table option",
+        "passed": true
+      },
+      {
+        "name": "Action exists: break:2",
+        "passed": true
+      },
+      {
+        "name": "Opening eight scratch grants head-line placement",
+        "passed": true
+      },
+      {
+        "name": "Action exists: break:0",
+        "passed": true
+      },
+      {
+        "name": "Accept-table option preserves a non-scratched cue",
+        "passed": true
+      },
+      {
+        "name": "All fourteen Scheme A clips are loaded",
+        "passed": true
+      },
+      {
+        "name": "Sound-off suppresses playback requests",
+        "passed": true
+      },
+      {
+        "name": "No page errors were captured",
+        "passed": true
+      }
+    ]
+  },
+  "previewSpinSmoke": {
+    "engine": "3.8.7",
+    "inputMode": "Browser synthetic DOM touch",
+    "results": [
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Three touch-sized buttons fit without overlap",
+        "passed": true
+      },
+      {
+        "name": "Tip panel opens without shooting",
+        "passed": true
+      },
+      {
+        "name": "Draft does not apply until done",
+        "passed": true
+      },
+      {
+        "name": "Overlay blocks table placement and aiming",
+        "passed": true
+      },
+      {
+        "name": "Done applies tip without shooting",
+        "passed": true
+      },
+      {
+        "name": "Confirmed tip is visible beside power",
+        "passed": true
+      },
+      {
+        "name": "Cancel restores previous confirmed tip",
+        "passed": true
+      },
+      {
+        "name": "Recenter changes only draft",
+        "passed": true
+      },
+      {
+        "name": "Diagonal selection is bounded by a circle",
+        "passed": true
+      },
+      {
+        "name": "Confirmed recenter restores centre tip",
+        "passed": true
+      },
+      {
+        "name": "Shot reserves confirmed tip",
+        "passed": true
+      },
+      {
+        "name": "Preparing shot blocks tip editing",
+        "passed": true
+      },
+      {
+        "name": "Spin shot commits at contact",
+        "passed": true
+      },
+      {
+        "name": "Tip drives actual angular velocity",
+        "passed": true
+      },
+      {
+        "name": "Spin shot settles within timeout",
+        "passed": true
+      },
+      {
+        "name": "Tip recenters after referee settlement",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches object ball",
+        "passed": true
+      },
+      {
+        "name": "High tip follows after head-on contact",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches object ball",
+        "passed": true
+      },
+      {
+        "name": "Low tip draws after head-on contact",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches cushion",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches cushion",
+        "passed": true
+      },
+      {
+        "name": "Opposite english gives opposite cushion departure",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "followVz": -0.8084491179754449,
+      "drawVz": 0.7318517276196329,
+      "leftVz": -0.5587095066814318,
+      "rightVz": 0.5618844203203303
+    }
+  },
+  "previewBrowserValidation": {
+    "viewport": {
+      "width": 393,
+      "height": 852,
+      "dpr": 2
+    },
+    "inputMode": "Synthetic DOM touch",
+    "results": [
+      {
+        "name": "Placement confirmation works through DOM touch",
+        "passed": true
+      },
+      {
+        "name": "Cancelling second finger preserves the owner",
+        "passed": true
+      },
+      {
+        "name": "Multi-touch aim release never shoots",
+        "passed": true
+      },
+      {
+        "name": "Power gesture never turns into table aim",
+        "passed": true
+      },
+      {
+        "name": "Cancelled power gesture releases ownership",
+        "passed": true
+      },
+      {
+        "name": "Releasing outside the shoot button cancels the click",
+        "passed": true
+      },
+      {
+        "name": "Cancelled shoot touch never starts a shot",
+        "passed": true
+      },
+      {
+        "name": "Tip drag stays within the radial selection boundary",
+        "passed": true
+      },
+      {
+        "name": "Tip drag does not apply or shoot",
+        "passed": true
+      },
+      {
+        "name": "Backdrop closes the draft without passing touch through",
+        "passed": true
+      },
+      {
+        "name": "Repeated fine nudges stop at +5 degrees",
+        "passed": true
+      },
+      {
+        "name": "Repeated fine nudges stop at -5 degrees",
+        "passed": true
+      },
+      {
+        "name": "Pause blocks table input and movement",
+        "passed": true
+      },
+      {
+        "name": "Restart requires a separate confirmation",
+        "passed": true
+      },
+      {
+        "name": "Cancelling restart preserves the current rack",
+        "passed": true
+      },
+      {
+        "name": "Projected controls stay inside the browser canvas",
+        "passed": true
+      },
+      {
+        "name": "Main buttons retain 44 logical pixel touch targets",
+        "passed": true
+      }
+    ]
+  },
+  "previewPockets": {
+    "mode": "Controlled velocities, actual Cocos frames; not hardware touch",
+    "viewport": {
+      "width": 393,
+      "height": 852,
+      "dpr": 2
+    },
+    "results": [
+      {
+        "name": "Visible outer frame uses the revised 1.54 by 2.82 metre proportions",
+        "passed": true
+      },
+      {
+        "name": "Eight continuous rail pieces and six individual pocket meshes are present",
+        "passed": true
+      },
+      {
+        "name": "All procedural meshes have finite bounds inside the outer frame",
+        "passed": true
+      },
+      {
+        "name": "The whole revised frame fits the reserved table viewport",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 1 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 2 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 3 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 4 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 5 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 6 captures speed 0.3 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 6 removes the sphere and number label together",
+        "passed": true
+      },
+      {
+        "name": "Pocket 6 captures speed 8 in the actual frame loop",
+        "passed": true
+      },
+      {
+        "name": "Pocket 6 removes the sphere and number label together",
+        "passed": true
+      }
+    ],
+    "measurements": [
+      {
+        "pocket": 1,
+        "speed": 0.3,
+        "elapsedMs": 266
+      },
+      {
+        "pocket": 1,
+        "speed": 8,
+        "elapsedMs": 33
+      },
+      {
+        "pocket": 2,
+        "speed": 0.3,
+        "elapsedMs": 266
+      },
+      {
+        "pocket": 2,
+        "speed": 8,
+        "elapsedMs": 32
+      },
+      {
+        "pocket": 3,
+        "speed": 0.3,
+        "elapsedMs": 265
+      },
+      {
+        "pocket": 3,
+        "speed": 8,
+        "elapsedMs": 49
+      },
+      {
+        "pocket": 4,
+        "speed": 0.3,
+        "elapsedMs": 265
+      },
+      {
+        "pocket": 4,
+        "speed": 8,
+        "elapsedMs": 32
+      },
+      {
+        "pocket": 5,
+        "speed": 0.3,
+        "elapsedMs": 265
+      },
+      {
+        "pocket": 5,
+        "speed": 8,
+        "elapsedMs": 32
+      },
+      {
+        "pocket": 6,
+        "speed": 0.3,
+        "elapsedMs": 266
+      },
+      {
+        "pocket": 6,
+        "speed": 8,
+        "elapsedMs": 49
+      }
+    ]
+  },
+  "previewAudioA": {
+    "engine": "3.8.7",
+    "inputMode": "dom",
+    "bank": "A-club-v1",
+    "results": [
+      {
+        "name": "All fourteen Scheme A clips load locally",
+        "passed": true
+      },
+      {
+        "name": "Voice pool stays fixed at thirteen sources",
+        "passed": true
+      },
+      {
+        "name": "Actual weak and strong contacts receive different gains",
+        "passed": true
+      },
+      {
+        "name": "Collisions overlap on independent Cocos voices",
+        "passed": true
+      },
+      {
+        "name": "Playing impacts do not stop older impact tails",
+        "passed": true
+      },
+      {
+        "name": "Active source gains retain the 0.9 mix budget",
+        "passed": true
+      },
+      {
+        "name": "Dense contact frame selects three strongest audible contacts",
+        "passed": true
+      },
+      {
+        "name": "Pause cancels delayed applause without ghost replay",
+        "passed": true
+      },
+      {
+        "name": "Muted output creates no pending sound or applause",
+        "passed": true
+      },
+      {
+        "name": "Early eight-ball loss does not celebrate the foul",
+        "passed": true
+      },
+      {
+        "name": "Legal eight-ball victory plays one delayed applause",
+        "passed": true
+      },
+      {
+        "name": "Result frames never repeat the victory applause",
+        "passed": true
+      },
+      {
+        "name": "Actual touch gameplay still passes all 35 smoke assertions",
+        "passed": true
+      },
+      {
+        "name": "Controlled gameplay includes both legal and foul finishes",
+        "passed": true
+      },
+      {
+        "name": "Strike audio remains on the existing 220ms contact path",
+        "passed": true
+      },
+      {
+        "name": "Sound mute, reduced motion and platform fallback pass",
+        "passed": true
+      },
+      {
+        "name": "No game errors or unhandled rejections",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "gain": {
+        "weak": 0.07400000000000001,
+        "strong": 0.27
+      },
+      "settlements": [
+        {
+          "legal": false,
+          "message": "P1 获胜！对手提前打进8号球（含同杆清组进8）",
+          "applause": 0
+        },
+        {
+          "legal": true,
+          "message": "P1 获胜！合法打进8号球",
+          "applause": 1
+        }
+      ]
+    },
+    "timing": {
+      "engine": "3.8.7",
+      "inputMode": "Browser synthetic DOM touch",
+      "timing": {
+        "frames": 66,
+        "preContactFrames": 13,
+        "noEarlyMotion": true,
+        "requestedFrameRate": 60,
+        "firstMotionMs": 220,
+        "firstMotionWallMs": 234,
+        "contactFrames": 1,
+        "repeatIgnored": true
+      },
+      "checks": {
+        "noEarlyMotion": true,
+        "observedPreparation": true,
+        "contactFrameObserved": true,
+        "firstMotionAtContact": true,
+        "repeatIgnored": true,
+        "cancelledBeforeContact": true,
+        "noGhostAfterResume": true,
+        "frozenAfterContact": true,
+        "resumedWithoutReplay": true
+      },
+      "passed": true
+    },
+    "feedback": {
+      "mode": "Actual browser audio playback, reduced-motion render frames; vibration uses a controlled adapter",
+      "results": [
+        {
+          "name": "Unsupported audio unlock cannot interrupt the first touch",
+          "passed": true
+        },
+        {
+          "name": "Reduced motion preserves every contact/interruption assertion",
+          "passed": true
+        },
+        {
+          "name": "Every strike sound is dispatched at the logical 220ms contact frame",
+          "passed": true
+        },
+        {
+          "name": "Each committed shot dispatches one strike sound",
+          "passed": true
+        },
+        {
+          "name": "Cocos audio backend received strike playback",
+          "passed": true
+        },
+        {
+          "name": "Packed sound plays through the browser audio backend",
+          "passed": true
+        },
+        {
+          "name": "Turning sound off stops active sources immediately",
+          "passed": true
+        },
+        {
+          "name": "Enabled vibration routes to the available platform adapter",
+          "passed": true
+        },
+        {
+          "name": "Disabled vibration emits no platform request",
+          "passed": true
+        },
+        {
+          "name": "Unsupported vibration does not throw or mutate the match",
+          "passed": true
+        },
+        {
+          "name": "Enabled aim renders paths",
+          "passed": true
+        },
+        {
+          "name": "Disabled aim clears render paths without changing direction",
+          "passed": true
+        }
+      ],
+      "timing": {
+        "engine": "3.8.7",
+        "inputMode": "Browser synthetic DOM touch",
+        "timing": {
+          "frames": 66,
+          "preContactFrames": 13,
+          "noEarlyMotion": true,
+          "requestedFrameRate": 60,
+          "firstMotionMs": 220,
+          "firstMotionWallMs": 234,
+          "contactFrames": 1,
+          "repeatIgnored": true
+        },
+        "checks": {
+          "noEarlyMotion": true,
+          "observedPreparation": true,
+          "contactFrameObserved": true,
+          "firstMotionAtContact": true,
+          "repeatIgnored": true,
+          "cancelledBeforeContact": true,
+          "noGhostAfterResume": true,
+          "frozenAfterContact": true,
+          "resumedWithoutReplay": true
+        },
+        "passed": true
+      }
+    },
+    "smoke": {
+      "engine": "3.8.7",
+      "inputMode": "Browser DOM touch events",
+      "results": [
+        {
+          "name": "Profiler is hidden by default",
+          "passed": true
+        },
+        {
+          "name": "Projected HUD stays outside the table viewport",
+          "passed": true
+        },
+        {
+          "name": "Table fits its reserved camera viewport",
+          "passed": true
+        },
+        {
+          "name": "16 balls, 15 number labels and generated textures",
+          "passed": true
+        },
+        {
+          "name": "Opening placement has no cue stick",
+          "passed": true
+        },
+        {
+          "name": "Touch placement does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Head-line placement restriction",
+          "passed": true
+        },
+        {
+          "name": "Touch confirmation unlocks cue",
+          "passed": true
+        },
+        {
+          "name": "Touch power does not shoot",
+          "passed": true
+        },
+        {
+          "name": "Table release retains aim and never shoots",
+          "passed": true
+        },
+        {
+          "name": "Fine button nudges 0.1 degrees without shooting",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Dry miss offers break choices to P2",
+          "passed": true
+        },
+        {
+          "name": "Accepting foul grants free ball",
+          "passed": true
+        },
+        {
+          "name": "Touch free-ball confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch group selection",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical stripe pot assigns groups and keeps turn",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical early 8 loses",
+          "passed": true
+        },
+        {
+          "name": "Finished game rejects shots",
+          "passed": true
+        },
+        {
+          "name": "Touch next-game button",
+          "passed": true
+        },
+        {
+          "name": "Click starts icon motion without moving table balls",
+          "passed": true
+        },
+        {
+          "name": "Contact commits once in the real frame loop",
+          "passed": true
+        },
+        {
+          "name": "Physics shot settles before timeout",
+          "passed": true
+        },
+        {
+          "name": "Physical legal 8 wins",
+          "passed": true
+        },
+        {
+          "name": "Pause blocks table input",
+          "passed": true
+        },
+        {
+          "name": "Restart first requires confirmation",
+          "passed": true
+        },
+        {
+          "name": "Touch restart clears referee",
+          "passed": true
+        }
+      ]
+    },
+    "errors": []
+  },
+  "previewTrajectory": {
+    "engine": "3.8.7",
+    "inputMode": "dom",
+    "viewport": {
+      "width": 393,
+      "height": 852,
+      "dpr": 2
+    },
+    "results": [
+      {
+        "name": "Cue and first target both have full trajectories",
+        "passed": true
+      },
+      {
+        "name": "Prediction leaves live positions, spin and pocket flags unchanged",
+        "passed": true
+      },
+      {
+        "name": "Guide caption identifies white cue and gold numbered target",
+        "passed": true
+      },
+      {
+        "name": "Actual graphics contain visible trajectories",
+        "passed": true
+      },
+      {
+        "name": "Touch starts preparation without early ball motion",
+        "passed": true
+      },
+      {
+        "name": "The live shot settles",
+        "passed": true
+      },
+      {
+        "name": "Live cue stops at its predicted mark within 1mm",
+        "passed": true
+      },
+      {
+        "name": "Live target stops at its predicted mark within 1mm",
+        "passed": true
+      },
+      {
+        "name": "Bank prediction finds the target after cushion contact",
+        "passed": true
+      },
+      {
+        "name": "Predicted target pocket uses an in-pocket outcome",
+        "passed": true
+      },
+      {
+        "name": "Power edits discard the old endpoint immediately",
+        "passed": true
+      },
+      {
+        "name": "Confirmed tip edits invalidate the old prediction",
+        "passed": true
+      },
+      {
+        "name": "Aim edits invalidate the old prediction",
+        "passed": true
+      },
+      {
+        "name": "Aim setting clears trajectories and restores the power caption",
+        "passed": true
+      },
+      {
+        "name": "Pause hides all predicted paths",
+        "passed": true
+      },
+      {
+        "name": "No game errors or unhandled rejections",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "cutPredictionMs": 368.7999999523163,
+      "cut": {
+        "cue": {
+          "id": 0,
+          "points": [
+            {
+              "x": 0,
+              "z": 0.65
+            },
+            {
+              "x": 0,
+              "z": 0.15138793536709833
+            },
+            {
+              "x": -0.021939541987062484,
+              "z": 0.13743422862830132
+            },
+            {
+              "x": -0.04224557122424648,
+              "z": 0.12235701029443619
+            },
+            {
+              "x": -0.061062458293413995,
+              "z": 0.10568766897429294
+            },
+            {
+              "x": -0.07839020319456505,
+              "z": 0.08742620466787154
+            },
+            {
+              "x": -0.6014249999,
+              "z": -0.5434386322158054
+            },
+            {
+              "x": -0.5836216769356015,
+              "z": -0.5651098497472276
+            },
+            {
+              "x": -0.5742971802748941,
+              "z": -0.5840139449426702
+            },
+            {
+              "x": -0.44913922192407596,
+              "z": -0.9508374134952616
+            },
+            {
+              "x": -0.4491154459994937,
+              "z": -1.009926299089162
+            }
+          ],
+          "end": {
+            "x": -0.4491154459994937,
+            "z": -1.009926299089162
+          },
+          "pocket": null
+        },
+        "target": {
+          "id": 1,
+          "points": [
+            {
+              "x": 0.025,
+              "z": 0.1
+            },
+            {
+              "x": 0.6149976966681906,
+              "z": -1.2736788032033586
+            }
+          ],
+          "end": {
+            "x": 0.6149976966681906,
+            "z": -1.2736788032033586
+          },
+          "pocket": 3
+        }
+      },
+      "endpointErrorM": {
+        "cue": 0,
+        "target": 0
+      },
+      "bankPredictionMs": 252.59999990463257
+    },
+    "errors": []
+  },
+  "previewPerformance": {
+    "scope": "Local Chromium, 393x852 DPR2, 60fps cap",
+    "idle": {
+      "frames": 179,
+      "averageFps": 59.707500334480386,
+      "p95FrameMs": 18
+    },
+    "magnifier": {
+      "frames": 180,
+      "averageFps": 59.998659250714915,
+      "p95FrameMs": 17.5
+    },
+    "nodesBefore": 374,
+    "nodesAfter": 374,
+    "checks": {
+      "idleFps": true,
+      "magnifierFps": true,
+      "idleP95": true,
+      "magnifierP95": true,
+      "stableNodeCount": true,
+      "clips": true
+    }
+  }
+}

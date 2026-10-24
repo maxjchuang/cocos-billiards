@@ -228,5 +228,29 @@
     "pocketOutcome": "arrow at drop plane, no table rest marker",
     "prediction": "same full-table fixed-step physics on isolated copies; current power and confirmed tip",
     "incomplete": "partial path only, no terminal rest marker"
+  },
+  "aiPractice": {
+    "spec": "ai-opponent.md",
+    "modes": [
+      "ai",
+      "local"
+    ],
+    "levels": [
+      "easy",
+      "standard",
+      "hard"
+    ],
+    "defaultLevel": "standard",
+    "storageKey": "eight-club.practice.v1",
+    "aiSeat": 1,
+    "humanBreaksFirst": true,
+    "modePanelMaxHeight": 500,
+    "pausePanelMaxHeight": {
+      "local": 436,
+      "ai": 490
+    },
+    "difficultyChange": "next thinking task; locked and moving shots retain their parameters",
+    "aiInput": "pause and identity only; no human shot controls",
+    "contactMs": 220
   }
 }

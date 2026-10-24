@@ -1,0 +1,976 @@
+{
+  "scope": "Offline standard-vs-standard full seeded rack using full candidate caps, actual physics and referee; not a user win-rate",
+  "rackSeed": 31,
+  "ballSetSeed": 42,
+  "winner": 1,
+  "complete": true,
+  "shots": 31,
+  "cpuMs": 56076.580333,
+  "fouls": [
+    1,
+    1
+  ],
+  "history": [
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.00033550623967220896,
+          "z": -0.99999994371778
+        },
+        "power": 3.957704158965498,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": null,
+        "target": 6,
+        "kind": "break",
+        "prior": 100,
+        "difficulty": "standard",
+        "seed": 100,
+        "score": 361.9700608593407,
+        "trials": 3,
+        "fallback": false
+      },
+      "message": "合法开球；开放球局，先选进攻球组",
+      "phase": "ready",
+      "groups": [
+        null,
+        null
+      ],
+      "remaining": 15,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.011909055082215724,
+          "z": -0.9999290846890337
+        },
+        "power": 1.8798785337090644,
+        "tip": {
+          "x": 0,
+          "y": 0.45
+        },
+        "group": "stripe",
+        "target": 9,
+        "kind": "pot",
+        "prior": 241.88642136623895,
+        "difficulty": "standard",
+        "seed": 101,
+        "score": 1522.3232734029127,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权；球局仍开放",
+      "phase": "ready",
+      "groups": [
+        null,
+        null
+      ],
+      "remaining": 15,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.3228170204071032,
+          "z": 0.9464613945298983
+        },
+        "power": 1.8964037172538306,
+        "tip": {
+          "x": 0,
+          "y": 0.45
+        },
+        "group": "solid",
+        "target": 6,
+        "kind": "pot",
+        "prior": 245.92115464557742,
+        "difficulty": "standard",
+        "seed": 102,
+        "score": 1544.4946318853922,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权；球局仍开放",
+      "phase": "ready",
+      "groups": [
+        null,
+        null
+      ],
+      "remaining": 15,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": 0.6494599883483654,
+          "z": -0.7603957676989931
+        },
+        "power": 2.4203371930215507,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 11,
+        "kind": "safety",
+        "prior": 18.7481766462411,
+        "difficulty": "standard",
+        "seed": 103,
+        "score": 1563.1666757727376,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权；球局仍开放",
+      "phase": "ready",
+      "groups": [
+        null,
+        null
+      ],
+      "remaining": 15,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.997404191390534,
+          "z": -0.0720061038842889
+        },
+        "power": 3.04446928196121,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 4,
+        "kind": "safety",
+        "prior": 19.651753350215106,
+        "difficulty": "standard",
+        "seed": 104,
+        "score": 1556.4101215391238,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权；球局仍开放",
+      "phase": "ready",
+      "groups": [
+        null,
+        null
+      ],
+      "remaining": 15,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.997454990321808,
+          "z": 0.07129896410272667
+        },
+        "power": 1.5890915538901,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 2,
+        "kind": "pot",
+        "prior": 254.75315315879274,
+        "difficulty": "standard",
+        "seed": 105,
+        "score": 1538.9703182664614,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 14,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": 0.33967339978464556,
+          "z": 0.9405434500748705
+        },
+        "power": 1.7181492488872896,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 6,
+        "kind": "pot",
+        "prior": 255.73101250439314,
+        "difficulty": "standard",
+        "seed": 106,
+        "score": 1538.9684903373518,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 13,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": 0.9055085314963361,
+          "z": 0.4243280563282952
+        },
+        "power": 1.2211906188967159,
+        "tip": {
+          "x": 0,
+          "y": -0.45
+        },
+        "group": "solid",
+        "target": 7,
+        "kind": "pot",
+        "prior": 268.47009010685605,
+        "difficulty": "standard",
+        "seed": 107,
+        "score": 1429.1923344332752,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 12,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.14637283712180357,
+          "z": 0.9892294943808105
+        },
+        "power": 2.9106604446982964,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 3,
+        "kind": "safety",
+        "prior": 14.651100817007116,
+        "difficulty": "standard",
+        "seed": 108,
+        "score": 115.2375130121501,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 12,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.08900117090632582,
+          "z": -0.9960315213773623
+        },
+        "power": 2.343766588306054,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 9,
+        "kind": "safety",
+        "prior": 19.460357313450878,
+        "difficulty": "standard",
+        "seed": 109,
+        "score": 1570.0271853510271,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 11,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.9989485998122593,
+          "z": -0.045844246456088776
+        },
+        "power": 2.359004820853472,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 9,
+        "kind": "safety",
+        "prior": 19.82703033029405,
+        "difficulty": "standard",
+        "seed": 110,
+        "score": 1552.3994699759216,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 10,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.11085292581978055,
+          "z": 0.9938368220372972
+        },
+        "power": 2.6900633595532337,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 15,
+        "kind": "pot",
+        "prior": 227.97683585921794,
+        "difficulty": "standard",
+        "seed": 111,
+        "score": 1523.653395188775,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 10,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.3382833386659385,
+          "z": -0.9410443043667104
+        },
+        "power": 2.268893583181257,
+        "tip": {
+          "x": 0,
+          "y": 0.45
+        },
+        "group": "solid",
+        "target": 5,
+        "kind": "pot",
+        "prior": 211.6310110200415,
+        "difficulty": "standard",
+        "seed": 112,
+        "score": 1388.4916626547706,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 10,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.6435198377202422,
+          "z": 0.7654294340176062
+        },
+        "power": 2.4047195184957233,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 14,
+        "kind": "safety",
+        "prior": 19.22208490448831,
+        "difficulty": "standard",
+        "seed": 113,
+        "score": 118.07016767296277,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 10,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.0017074563102536134,
+          "z": -0.9999985422954119
+        },
+        "power": 1.4296093589322938,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 5,
+        "kind": "pot",
+        "prior": 264.29373631688213,
+        "difficulty": "standard",
+        "seed": 114,
+        "score": 1444.4360336912112,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 9,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": 0.9232663679930472,
+          "z": 0.3841604010474365
+        },
+        "power": 2.435195983590558,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 3,
+        "kind": "safety",
+        "prior": 14.767974862187032,
+        "difficulty": "standard",
+        "seed": 115,
+        "score": 215.2935701563641,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 9,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.921158568289636,
+          "z": 0.3891874767597076
+        },
+        "power": 2.4504342161379755,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 13,
+        "kind": "safety",
+        "prior": 19.491647453864854,
+        "difficulty": "standard",
+        "seed": 116,
+        "score": 1571.4331180624602,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 9,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.8597621495644807,
+          "z": 0.5106946702054599
+        },
+        "power": 1.3138516670492077,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "pot",
+        "prior": 276.4721900694482,
+        "difficulty": "standard",
+        "seed": 117,
+        "score": 1534.0612987388713,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 9,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.012760625173149477,
+          "z": 0.9999185799079795
+        },
+        "power": 3.1011383515410125,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 15,
+        "kind": "safety",
+        "prior": 19.91212249693643,
+        "difficulty": "standard",
+        "seed": 118,
+        "score": 1573.0939709091303,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 8,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.18834503065469557,
+          "z": -0.9821029220136155
+        },
+        "power": 2.328148913780227,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 4,
+        "kind": "safety",
+        "prior": 18.49459572420404,
+        "difficulty": "standard",
+        "seed": 119,
+        "score": 1448.737183876122,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 7,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.11485428535217992,
+          "z": 0.9933823499218415
+        },
+        "power": 2.3433871463276446,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "prior": 18.810914754875036,
+        "difficulty": "standard",
+        "seed": 120,
+        "score": -15000,
+        "trials": 14,
+        "fallback": false
+      },
+      "message": "P2 犯规：首碰非法目标球",
+      "phase": "placing",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 7,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.6071566166783126,
+          "z": 0.7945821812901072
+        },
+        "power": 1.012904492278409,
+        "tip": {
+          "x": 0,
+          "y": -0.45
+        },
+        "group": "stripe",
+        "target": 14,
+        "kind": "pot",
+        "prior": 290.4702433588391,
+        "difficulty": "standard",
+        "seed": 121,
+        "score": 1568.4168702560607,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 6,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.3225030962873658,
+          "z": -0.9465684089832399
+        },
+        "power": 2.354983105412269,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 12,
+        "kind": "pot",
+        "prior": 245.33375288071832,
+        "difficulty": "standard",
+        "seed": 122,
+        "score": 1548.2675830605726,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 6,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.8388146845435178,
+          "z": 0.5444170506093271
+        },
+        "power": 2.3891018439698963,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "prior": 18.8539661049781,
+        "difficulty": "standard",
+        "seed": 123,
+        "score": 1564.1528250568804,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 5,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": 0.5150631030115354,
+          "z": -0.8571522618042424
+        },
+        "power": 1.6035908296908912,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 8,
+        "kind": "pot",
+        "prior": 254.7911367019092,
+        "difficulty": "standard",
+        "seed": 124,
+        "score": 1000000,
+        "trials": 21,
+        "fallback": false
+      },
+      "message": "本杆结束，交换击球权",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 5,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.020470394451307022,
+          "z": 0.9997904595218979
+        },
+        "power": 2.0209621700727154,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 10,
+        "kind": "pot",
+        "prior": 231.88921622081602,
+        "difficulty": "standard",
+        "seed": 125,
+        "score": 2703.534782755965,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 4,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.9556969148750245,
+          "z": 0.29435252147443924
+        },
+        "power": 1.0118788997533534,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 10,
+        "kind": "pot",
+        "prior": 280.3181382917403,
+        "difficulty": "standard",
+        "seed": 126,
+        "score": 1563.0013061698346,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 3,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.2548754826265361,
+          "z": -0.9669738819409189
+        },
+        "power": 2.053977865335785,
+        "tip": {
+          "x": 0,
+          "y": 0.45
+        },
+        "group": "stripe",
+        "target": 15,
+        "kind": "pot",
+        "prior": 254.8861880560366,
+        "difficulty": "standard",
+        "seed": 127,
+        "score": 1567.8272471356506,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 2,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": -0.9855557338401439,
+          "z": 0.16935139649502526
+        },
+        "power": 1.0992096075624285,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 12,
+        "kind": "pot",
+        "prior": 259.7998918105647,
+        "difficulty": "standard",
+        "seed": 128,
+        "score": 1425.0143318357163,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "合法进球，继续击球",
+      "phase": "ready",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 1,
+      "winner": null
+    },
+    {
+      "seat": 0,
+      "decision": {
+        "direction": {
+          "x": 0.7955939979681553,
+          "z": -0.6058301662983173
+        },
+        "power": 2.4805312392544,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "stripe",
+        "target": 8,
+        "kind": "safety",
+        "prior": 18.67406193441516,
+        "difficulty": "standard",
+        "seed": 129,
+        "score": 112.8407345494217,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "P1 犯规：白球落袋",
+      "phase": "placing",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 1,
+      "winner": null
+    },
+    {
+      "seat": 1,
+      "decision": {
+        "direction": {
+          "x": -0.9194134005764261,
+          "z": 0.3932925105319096
+        },
+        "power": 2.3277694718018176,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 8,
+        "kind": "safety",
+        "prior": 19.78,
+        "difficulty": "standard",
+        "seed": 130,
+        "score": 1000000,
+        "trials": 26,
+        "fallback": false
+      },
+      "message": "P2 获胜！合法打进8号球",
+      "phase": "over",
+      "groups": [
+        "stripe",
+        "solid"
+      ],
+      "remaining": 0,
+      "winner": 1
+    }
+  ]
+}

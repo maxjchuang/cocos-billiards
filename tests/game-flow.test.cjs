@@ -89,3 +89,18 @@ test('component records fresh rack recipes, supports replay, and keeps the repla
  const masses=g.balls.map(b=>b.mass);g.referee.phase='choice';g.referee.breakChoice='illegal';g.referee.chooseBreak(g.balls,'self');assert.equal(g.rackConfig.ballSetSeed,987);assert.equal(g.rackConfig.positionToleranceM,.0001);assert.deepEqual(g.balls.map(b=>b.mass),masses);
  const before=g.balls,id=g.gameId;assert.throws(()=>g.reset({...recipe,version:'bad'}));assert.equal(g.balls,before);assert.equal(g.gameId,id);
 });
+test('AI seat rejects human shots and placement confirmation, while AI uses the ordinary shot sequence',()=>{
+ const g=game();g.matchMode='ai';g.referee.current=1;g.referee.isBreak=false;g.referee.groups=['stripe','solid'];g.shoot();assert.equal(g.shotSequence.active,false);g.shoot(true);assert.equal(g.shotSequence.snapshot.player,1);assert.equal(g.referee.phase,'ready');g.shotSequence.cancel();g.referee.phase='placing';g.referee.hand='any';g.ruleAction(1);assert.equal(g.referee.phase,'placing');
+});
+test('mode selection is a cancellable draft and start resets once with the selected stored difficulty',()=>{
+ const g=game(),before=JSON.stringify(g.balls),id=g.gameId;g.matchStarted=true;g.modalAction('new-game');g.modalAction('mode:ai');g.modalAction('draft-level:hard');assert.equal(g.draftDifficulty,'hard');assert.equal(g.gameId,id);g.modalAction('cancel-match');assert.equal(JSON.stringify(g.balls),before);g.modalAction('new-game');g.modalAction('draft-level:easy');g.modalAction('start-match');assert.equal(g.matchMode,'ai');assert.equal(g.practice.value.difficulty,'easy');assert.equal(g.referee.current,0);assert.equal(g.players[1].id,'ai-opponent');assert.equal(g.panelMode,null);
+});
+test('difficulty changes during a paused locked AI shot cannot change that command, and reset cancels it',()=>{
+ const g=game();g.matchMode='ai';g.referee.current=1;g.referee.isBreak=false;g.referee.groups=['stripe','solid'];const command=Object.freeze({difficulty:'standard',direction:Object.freeze({x:0,z:-1}),power:2,tip:Object.freeze({x:0,y:0})});g.aiTurn.locked=command;g.shoot(true);g.pauseGame();assert.equal(g.shotSequence.active,false);g.modalAction('ai-level:hard');assert.equal(g.practice.value.difficulty,'hard');assert.equal(g.aiTurn.locked,command);assert.equal(command.difficulty,'standard');g.reset();assert.equal(g.aiTurn.locked,null);assert.equal(g.referee.current,0);
+});
+test('AI handles the opponent opening foul and confirms its own free ball through the same referee',()=>{
+ const g=game();g.matchMode='ai';g.referee.current=1;g.referee.phase='choice';g.referee.breakChoice='illegal';g.uiTime=1;g.updateAI(.1);g.uiTime=2;g.updateAI(.1);assert.equal(g.referee.phase,'placing');assert.equal(g.referee.hand,'any');g.uiTime=3;g.updateAI(.1);g.uiTime=4;g.updateAI(.1);assert.equal(g.referee.phase,'ready');assert.equal(g.balls[0].pocketed,false);
+});
+test('backgrounding the initial mode chooser preserves the required choice and never starts AI work',()=>{
+ const g=game();g.modalAction('new-game');g.draftDifficulty='hard';const before=g.gameId;g.hideGame();assert.equal(g.panelMode,'new-game');assert.equal(g.backgrounded,true);assert.equal(g.paused,true);g.showGame();assert.equal(g.panelMode,'new-game');assert.equal(g.draftDifficulty,'hard');assert.equal(g.paused,true);assert.equal(g.gameId,before);assert.equal(g.aiTurn.planner,null);
+});

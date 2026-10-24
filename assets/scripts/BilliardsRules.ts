@@ -29,6 +29,15 @@ interface Shot {
 
 export class Referee {
     constructor(private rackFactory:()=>BallState[]=createRack){}
+    /** Isolated rule state for AI trials. No live shot, frozen-rail set or group array is shared. */
+    cloneForSimulation():Referee {
+        const copy=new Referee(this.rackFactory);
+        Object.assign(copy,this);
+        copy.rackFactory=createRack;
+        copy.groups=[...this.groups];copy.foulCount=[...this.foulCount];
+        copy.shot=this.shot?{...this.shot,potted:[...this.shot.potted],breakRails:new Set(this.shot.breakRails),frozen:new Map(Array.from(this.shot.frozen,([id,sides])=>[id,new Set(sides)]))}:null;
+        return copy;
+    }
     current: Player = 0;
     groups: [Group | null, Group | null] = [null, null];
     selected: Group | null = null;

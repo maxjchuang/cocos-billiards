@@ -1,0 +1,200 @@
+{
+  "engine": "3.8.7",
+  "inputMode": "dom",
+  "viewport": {
+    "width": 430,
+    "height": 932,
+    "dpr": 2
+  },
+  "results": [
+    {
+      "name": "New match dialog presents both modes and all three levels",
+      "passed": true
+    },
+    {
+      "name": "Mode and level touch targets fit without overlap",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: draft-level:standard",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: mode:ai",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: start-match",
+      "passed": true
+    },
+    {
+      "name": "AI match starts with the human placing first",
+      "passed": true
+    },
+    {
+      "name": "AI identity includes the selected difficulty",
+      "passed": true
+    },
+    {
+      "name": "AI automatically handles the opening foul and confirms free placement",
+      "passed": true
+    },
+    {
+      "name": "Human table and shot controls cannot alter an AI turn",
+      "passed": true
+    },
+    {
+      "name": "AI turn can be paused",
+      "passed": true
+    },
+    {
+      "name": "AI pause actions retain nonoverlapping touch targets",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: ai-options",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: ai-level:hard",
+      "passed": true
+    },
+    {
+      "name": "Pause menu stores a new difficulty",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: back-pause",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: resume",
+      "passed": true
+    },
+    {
+      "name": "Next thinking task uses the updated difficulty",
+      "passed": true
+    },
+    {
+      "name": "Pausing before contact cancels the animation",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: ai-options",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: ai-level:easy",
+      "passed": true
+    },
+    {
+      "name": "Difficulty update preserves the already locked command",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: back-pause",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: resume",
+      "passed": true
+    },
+    {
+      "name": "AI commits through the shared 220ms contact frame",
+      "passed": true
+    },
+    {
+      "name": "After-contact pause freezes the existing AI shot",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: resume",
+      "passed": true
+    },
+    {
+      "name": "AI resumes the same shot without a second commit",
+      "passed": true
+    },
+    {
+      "name": "Controlled AI pot is settled by the ordinary referee",
+      "passed": true
+    },
+    {
+      "name": "Displayed difficulty remains the locked level until the next thinking task",
+      "passed": true
+    },
+    {
+      "name": "AI selects an open-table group and establishes it through a legal pot",
+      "passed": true
+    },
+    {
+      "name": "AI completes the separate legal black-eight shot and wins",
+      "passed": true
+    },
+    {
+      "name": "AI victory opens the normal result panel",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: new-game",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: mode:local",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: start-match",
+      "passed": true
+    },
+    {
+      "name": "Changing mode cancels old AI work without a ghost shot",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: new-game",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: mode:ai",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: draft-level:hard",
+      "passed": true
+    },
+    {
+      "name": "Touch action exists: cancel-match",
+      "passed": true
+    },
+    {
+      "name": "Cancelling mode selection preserves the local match",
+      "passed": true
+    },
+    {
+      "name": "Mode and difficulty choices restore from local storage",
+      "passed": true
+    },
+    {
+      "name": "No game errors or rejected promises",
+      "passed": true
+    }
+  ],
+  "measurements": {
+    "openingPhases": [
+      "0:ready",
+      "0:shooting",
+      "1:choice",
+      "1:placing",
+      "1:ready"
+    ],
+    "locked": {
+      "difficulty": "hard",
+      "nextDifficulty": "easy",
+      "trials": 21,
+      "kind": "pot",
+      "committedId": 24
+    }
+  },
+  "errors": []
+}
