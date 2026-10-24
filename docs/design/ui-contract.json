@@ -202,5 +202,31 @@
     "maxPositionToleranceM": 0.0005,
     "toleranceModel": "seeded row misalignment; bounded centres, tight neighbours, no overlap; fixed apex",
     "parameterBasis": "published material and software reference profiles, not measured project table"
+  },
+  "trajectoryGuide": {
+    "spec": "trajectory-guide.md",
+    "cue": {
+      "color": "#F5F1E6",
+      "line": "dashed",
+      "restMarker": "circle with cross",
+      "dashLogicalPx": [
+        4,
+        4
+      ]
+    },
+    "target": {
+      "color": "#E5BD74",
+      "line": "dashed",
+      "restMarker": "diamond",
+      "selection": "first actual cue-object contact including a prior bank",
+      "dashLogicalPx": [
+        6,
+        4
+      ]
+    },
+    "lineWidthLogicalPx": 1.35,
+    "pocketOutcome": "arrow at drop plane, no table rest marker",
+    "prediction": "same full-table fixed-step physics on isolated copies; current power and confirmed tip",
+    "incomplete": "partial path only, no terminal rest marker"
   }
 }

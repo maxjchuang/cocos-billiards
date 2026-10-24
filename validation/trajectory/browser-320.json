@@ -1,0 +1,269 @@
+{
+  "previewTrajectory": {
+    "engine": "3.8.7",
+    "inputMode": "dom",
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "dpr": 2
+    },
+    "results": [
+      {
+        "name": "Cue and first target both have full trajectories",
+        "passed": true
+      },
+      {
+        "name": "Prediction leaves live positions, spin and pocket flags unchanged",
+        "passed": true
+      },
+      {
+        "name": "Guide caption identifies white cue and gold numbered target",
+        "passed": true
+      },
+      {
+        "name": "Actual graphics contain visible trajectories",
+        "passed": true
+      },
+      {
+        "name": "Touch starts preparation without early ball motion",
+        "passed": true
+      },
+      {
+        "name": "The live shot settles",
+        "passed": true
+      },
+      {
+        "name": "Live cue stops at its predicted mark within 1mm",
+        "passed": true
+      },
+      {
+        "name": "Live target stops at its predicted mark within 1mm",
+        "passed": true
+      },
+      {
+        "name": "Bank prediction finds the target after cushion contact",
+        "passed": true
+      },
+      {
+        "name": "Predicted target pocket uses an in-pocket outcome",
+        "passed": true
+      },
+      {
+        "name": "Power edits discard the old endpoint immediately",
+        "passed": true
+      },
+      {
+        "name": "Confirmed tip edits invalidate the old prediction",
+        "passed": true
+      },
+      {
+        "name": "Aim edits invalidate the old prediction",
+        "passed": true
+      },
+      {
+        "name": "Aim setting clears trajectories and restores the power caption",
+        "passed": true
+      },
+      {
+        "name": "Pause hides all predicted paths",
+        "passed": true
+      },
+      {
+        "name": "No game errors or unhandled rejections",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "cutPredictionMs": 392.7999999523163,
+      "cut": {
+        "cue": {
+          "id": 0,
+          "points": [
+            {
+              "x": 0,
+              "z": 0.65
+            },
+            {
+              "x": 0,
+              "z": 0.15138793536709833
+            },
+            {
+              "x": -0.021939541987062484,
+              "z": 0.13743422862830132
+            },
+            {
+              "x": -0.04224557122424648,
+              "z": 0.12235701029443619
+            },
+            {
+              "x": -0.061062458293413995,
+              "z": 0.10568766897429294
+            },
+            {
+              "x": -0.07839020319456505,
+              "z": 0.08742620466787154
+            },
+            {
+              "x": -0.6014249999,
+              "z": -0.5434386322158054
+            },
+            {
+              "x": -0.5836216769356015,
+              "z": -0.5651098497472276
+            },
+            {
+              "x": -0.5742971802748941,
+              "z": -0.5840139449426702
+            },
+            {
+              "x": -0.44913922192407596,
+              "z": -0.9508374134952616
+            },
+            {
+              "x": -0.4491154459994937,
+              "z": -1.009926299089162
+            }
+          ],
+          "end": {
+            "x": -0.4491154459994937,
+            "z": -1.009926299089162
+          },
+          "pocket": null
+        },
+        "target": {
+          "id": 1,
+          "points": [
+            {
+              "x": 0.025,
+              "z": 0.1
+            },
+            {
+              "x": 0.6149976966681906,
+              "z": -1.2736788032033586
+            }
+          ],
+          "end": {
+            "x": 0.6149976966681906,
+            "z": -1.2736788032033586
+          },
+          "pocket": 3
+        }
+      },
+      "endpointErrorM": {
+        "cue": 0,
+        "target": 0
+      },
+      "bankPredictionMs": 233.60000014305115
+    },
+    "errors": []
+  },
+  "previewBrowserValidation": {
+    "viewport": {
+      "width": 320,
+      "height": 568,
+      "dpr": 2
+    },
+    "inputMode": "Synthetic DOM touch",
+    "results": [
+      {
+        "name": "Placement confirmation works through DOM touch",
+        "passed": true
+      },
+      {
+        "name": "Cancelling second finger preserves the owner",
+        "passed": true
+      },
+      {
+        "name": "Multi-touch aim release never shoots",
+        "passed": true
+      },
+      {
+        "name": "Power gesture never turns into table aim",
+        "passed": true
+      },
+      {
+        "name": "Cancelled power gesture releases ownership",
+        "passed": true
+      },
+      {
+        "name": "Releasing outside the shoot button cancels the click",
+        "passed": true
+      },
+      {
+        "name": "Cancelled shoot touch never starts a shot",
+        "passed": true
+      },
+      {
+        "name": "Tip drag stays within the radial selection boundary",
+        "passed": true
+      },
+      {
+        "name": "Tip drag does not apply or shoot",
+        "passed": true
+      },
+      {
+        "name": "Backdrop closes the draft without passing touch through",
+        "passed": true
+      },
+      {
+        "name": "Repeated fine nudges stop at +5 degrees",
+        "passed": true
+      },
+      {
+        "name": "Repeated fine nudges stop at -5 degrees",
+        "passed": true
+      },
+      {
+        "name": "Pause blocks table input and movement",
+        "passed": true
+      },
+      {
+        "name": "Restart requires a separate confirmation",
+        "passed": true
+      },
+      {
+        "name": "Cancelling restart preserves the current rack",
+        "passed": true
+      },
+      {
+        "name": "Projected controls stay inside the browser canvas",
+        "passed": true
+      },
+      {
+        "name": "Main buttons retain 44 logical pixel touch targets",
+        "passed": true
+      }
+    ]
+  },
+  "previewContactProbe": {
+    "engine": "3.8.7",
+    "inputMode": "Browser synthetic DOM touch",
+    "timing": {
+      "frames": 66,
+      "preContactFrames": 13,
+      "noEarlyMotion": true,
+      "requestedFrameRate": 60,
+      "firstMotionMs": 220,
+      "firstMotionWallMs": 234,
+      "contactFrames": 1,
+      "repeatIgnored": true
+    },
+    "checks": {
+      "noEarlyMotion": true,
+      "observedPreparation": true,
+      "contactFrameObserved": true,
+      "firstMotionAtContact": true,
+      "repeatIgnored": true,
+      "cancelledBeforeContact": true,
+      "noGhostAfterResume": true,
+      "frozenAfterContact": true,
+      "resumedWithoutReplay": true
+    },
+    "passed": true
+  },
+  "caption": {
+    "text": "母球白／1号金入袋 · 低杆右塞",
+    "width": 220,
+    "measured": 162.80397033691406
+  }
+}

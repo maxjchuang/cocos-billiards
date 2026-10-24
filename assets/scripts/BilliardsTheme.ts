@@ -5,6 +5,7 @@ export const CLUB = {
     felt: '#21584B', cushion: '#163E34', wood: '#69503A', gold: '#DEC58D',
     ink: '#F5F1E6', muted: '#A6B5AC', foul: '#E0AE73', loss: '#D99588',
     line: '#A4C3AD', pocket: '#080E0C', track: '#3A4D40',
+    cueTrajectory:'#F5F1E6',targetTrajectory:'#E5BD74',
     disabled: '#66776B', buttonHeight: 48, touchSize: 44, radius: 12,
 } as const;
 

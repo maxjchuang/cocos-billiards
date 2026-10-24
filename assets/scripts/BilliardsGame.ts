@@ -19,6 +19,7 @@ import { createLocalPlayers, playerName, playerMessage, fitNickname } from './Bi
 import { PlayerCardView } from './BilliardsPlayerCard';
 import { commitShot, mayShoot, ShotSequence, shotPose } from './BilliardsShot';
 import { FineAim, predictContact } from './BilliardsAim';
+import { ShotPrediction,trajectoryKey,BallTrajectory } from './BilliardsTrajectory';
 import { ShotButtonView } from './BilliardsShotButton';
 import { SPIN, TipSelection, tipLabel } from './BilliardsSpin';
 import { SpinPanelView } from './BilliardsSpinPanel';
@@ -60,6 +61,8 @@ export class BilliardsGame extends Component {
     private fineMinus!: Label;
     private finePlus!: Label;
     private aimGraphics!: Graphics;
+    private aimPrediction:ShotPrediction|null=null;
+    private aimPredictionKey='';private aimPredictionAt=0;
     private pauseLayer!: Node;
     private pauseTitle!: Label;
     private resumeButton!: Label;
@@ -330,7 +333,7 @@ export class BilliardsGame extends Component {
         root.addChild(this.fineControl);this.fineControl.addComponent(UITransform);this.fineControl.addComponent(Graphics);
         this.fineLabel=uiLabel('Fine aim value',120,20);this.fineLabel.node.setParent(this.fineControl);
         this.fineMinus=control('Fine minus','−');this.finePlus=control('Fine plus','+');
-        const aimNode=new Node('First contact guide');aimNode.layer=Layers.Enum.UI_2D;root.addChild(aimNode);
+        const aimNode=new Node('Shot trajectory guide');aimNode.layer=Layers.Enum.UI_2D;root.addChild(aimNode);
         aimNode.addComponent(UITransform);this.aimGraphics=aimNode.addComponent(Graphics);
         for (let id = 0; id <= 15; id++) {
             const badge = new Node(`Number ${id}`); badge.layer = Layers.Enum.UI_2D; root.addChild(badge);
@@ -374,6 +377,7 @@ export class BilliardsGame extends Component {
     private reset(replay?:Readonly<RackConfig>): void {
         if(replay)replay=restoreRackConfig(replay);
         this.groupSelectedAt=-1000;this.history.reset();this.panelMode=null;this.resultShown=false;this.victoryApplause=false;this.panelPage=0;this.placementInvalid=null;this.feedback?.stop();
+        this.aimPrediction=null;this.aimPredictionKey='';
         this.gameId++;this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
         this.visualSpinDeltas.forEach(v=>{v.x=v.y=v.z=0;});
         this.paused=false;this.confirmingRestart=false;this.layoutStamp='';
@@ -885,6 +889,7 @@ export class BilliardsGame extends Component {
 
     private drawAimGuide():void {
         const g=this.aimGraphics;g.clear();
+        if(this.powerLabel)this.powerLabel.string='击球力度'+(this.tip.value.x||this.tip.value.y?' · '+tipLabel(this.tip.value).replace(/\s*\d+%/g,'').replace(/\s*·\s*/g,''):'');
         const showMagnifier=!!this.magnifier&&this.settings.value.magnifier&&(this.dragging||this.fineAim.active);
         if(!showMagnifier)this.magnifier?.hide();
         if(this.paused||this.tip.active||this.shotSequence.active||this.referee.phase!=='ready'||!mayShoot(this.balls,this.referee)||isMoving(this.balls)){this.magnifier?.hide();return;}
@@ -911,6 +916,22 @@ export class BilliardsGame extends Component {
             this.magnifier?.render(this.hudLayout.width,this.hudLayout.height,this.hudLayout.playArea,this.balls,hit,this.lastPointer,this.settings.value.magnifier&&(this.dragging||this.fineAim.active),protectedRects);
         }
         if(!this.settings.value.aimGuide)return;
+        const input={balls:this.balls,dx:this.direction.x,dz:this.direction.z,power:this.power,tip:this.tip.value},key=trajectoryKey(input);
+        if(key!==this.aimPredictionKey){this.aimPredictionKey=key;this.aimPrediction=null;this.aimPredictionAt=this.uiTime+.07;}
+        if(this.uiTime>=this.aimPredictionAt){
+            if(!this.aimPrediction)this.aimPrediction=new ShotPrediction(input);
+            const deadline=performance.now()+2;
+            for(let i=0;i<80&&this.aimPrediction.status==='running';i++){this.aimPrediction.advance();if(performance.now()>=deadline)break;}
+        }
+        if(this.aimPrediction&&this.aimPrediction.status!=='invalid'){
+            this.drawPredictedPaths(this.aimPrediction,point);
+            const target=this.aimPrediction.target;
+            const state=this.aimPrediction.status==='running'?'预测中 ':this.aimPrediction.status==='incomplete'?'未停稳 ':'';
+            const tipText=this.tip.value.x||this.tip.value.y?' · '+tipLabel(this.tip.value).replace(/\s*\d+%/g,'').replace(/\s*·\s*/g,''):'';
+            this.powerLabel.string=state+'母球白'+(this.aimPrediction.cue.pocket!==null?'入袋':'')+(target?`／${target.id}号金${target.pocket!==null?'入袋':''}`:'')+tipText;
+            return;
+        }
+        this.powerLabel.string=(this.aimPrediction?.status==='invalid'?'暂无法预测':'预测中')+(this.tip.value.x||this.tip.value.y?' · '+tipLabel(this.tip.value).replace(/\s*\d+%/g,'').replace(/\s*·\s*/g,''):'');
         const a=point(cue.x,cue.z),b=point(hit.x,hit.z),length=Math.hypot(b.x-a.x,b.y-a.y);
         const s=this.hudLayout.scale;g.lineWidth=s;g.strokeColor=new Color().fromHEX(CLUB.line);
         for(let offset=8*s;offset<length;offset+=7*s) {
@@ -920,6 +941,29 @@ export class BilliardsGame extends Component {
         }
         const edge=point(hit.x+TABLE.radius,hit.z),radius=Math.abs(edge.x-b.x);
         g.circle(b.x,b.y,radius);g.stroke();
+    }
+
+    private drawPredictedPaths(prediction:ShotPrediction,point:(x:number,z:number)=>Vec3):void {
+        const g=this.aimGraphics,s=this.hudLayout.scale;
+        const draw=(path:BallTrajectory,cue:boolean)=>{
+            const color=new Color().fromHEX(cue?CLUB.cueTrajectory:CLUB.targetTrajectory);g.strokeColor=new Color(color.r,color.g,color.b,200);g.lineWidth=1.35*s;
+            const dash=(cue?4:6)*s,period=dash+4*s;let distance=0;
+            for(let i=1;i<path.points.length;i++){
+                const a=point(path.points[i-1].x,path.points[i-1].z),b=point(path.points[i].x,path.points[i].z),length=Math.hypot(b.x-a.x,b.y-a.y);
+                if(length<1e-8)continue;
+                for(let t=0;t<length;){const phase=distance%period,run=Math.min(length-t,(phase<dash?dash:period)-phase);if(phase<dash){g.moveTo(a.x+(b.x-a.x)*t/length,a.y+(b.y-a.y)*t/length);g.lineTo(a.x+(b.x-a.x)*(t+run)/length,a.y+(b.y-a.y)*(t+run)/length);}t+=run;distance+=run;if(run<1e-8){distance+=1e-6;t+=1e-6;}}
+            }
+            g.stroke();
+            // A terminal marker means rest, never a computation budget endpoint.
+            if(prediction.status!=='complete')return;
+            const p=point(path.end.x,path.end.z),edge=point(path.end.x+TABLE.radius,path.end.z),r=Math.max(3*s,Math.abs(edge.x-p.x)+s);
+            g.strokeColor=new Color(color.r,color.g,color.b,255);g.lineWidth=1.6*s;
+            if(path.pocket!==null){g.moveTo(p.x-3*s,p.y+2*s);g.lineTo(p.x,p.y-2*s);g.lineTo(p.x+3*s,p.y+2*s);}
+            else if(cue){g.circle(p.x,p.y,r);g.moveTo(p.x-2*s,p.y);g.lineTo(p.x+2*s,p.y);g.moveTo(p.x,p.y-2*s);g.lineTo(p.x,p.y+2*s);}
+            else{g.moveTo(p.x,p.y+r);g.lineTo(p.x+r,p.y);g.lineTo(p.x,p.y-r);g.lineTo(p.x-r,p.y);g.close();}
+            g.stroke();
+        };
+        if(prediction.target)draw(prediction.target,false);draw(prediction.cue,true);
     }
 
     private syncVisuals(): void {

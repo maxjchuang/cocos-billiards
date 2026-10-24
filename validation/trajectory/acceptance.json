@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-25",
+  "feature": "full-table shot prediction, cue white dashed and first target gold dashed",
+  "status": "automated and browser checks passed; full prediction native checked before final line-style revision; user accepted dashed version",
+  "node": {
+    "typecheck": true,
+    "passed": 159,
+    "failed": 0
+  },
+  "creatorCli": {
+    "engine": "3.8.7",
+    "platform": "web-mobile",
+    "exitCode": 36
+  },
+  "browser": {
+    "reference": "393x852 DPR2",
+    "trajectory": 16,
+    "ui": 81,
+    "spin": 28,
+    "input": 17,
+    "pockets": 28,
+    "audio": 17,
+    "additionalViewports": [
+      "320x568 DPR2",
+      "430x932 DPR2"
+    ],
+    "eachAdditional": [
+      "trajectory 16",
+      "input 17",
+      "contact timing 9"
+    ],
+    "endpointErrorM": {
+      "cue": 0,
+      "target": 0
+    }
+  },
+  "nativeCreator": {
+    "trajectory": 16,
+    "audio": 17,
+    "ui": 81,
+    "viewport": "317x688 DPR2 embedded WebView, preset iPhone 14 Pro",
+    "endpointErrorM": {
+      "cue": 0,
+      "target": 0
+    },
+    "gameErrors": 0
+  },
+  "hardwareAndWechat": "waived by user",
+  "limits": [
+    "Uses current planar model and proxy pocket geometry, not real-table measurement",
+    "Only the first actual object-ball trajectory is drawn; all balls participate in the simulation",
+    "Drop outcome excludes referee repositioning/respotting",
+    "120 simulation second guard: unfinished paths never claim a final resting point"
+  ],
+  "styleRevision": {
+    "date": "2026-10-25",
+    "targetDashLogicalPx": [
+      6,
+      4
+    ],
+    "browserTrajectoryAssertions": 16,
+    "renderedGoldSegments": 26,
+    "maxSegmentLogicalPx": 6,
+    "nativeStyleRecheck": false
+  },
+  "userAcceptance": {
+    "date": "2026-10-25",
+    "feedback": "验证 ok，提交并推送",
+    "version": "trajectory-dashed-v2"
+  }
+}
