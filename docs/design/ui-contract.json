@@ -1,7 +1,7 @@
 {
-  "version": "1.13",
-  "date": "2026-10-23",
-  "pixelReference": "screens/S01-正常瞄准.svg",
+  "version": "1.14",
+  "date": "2026-10-25",
+  "pixelReference": "refinement/aim.png",
   "referenceFrame": [
     393,
     852
@@ -18,22 +18,22 @@
     "cards": [
       {
         "x": 20,
-        "y": 99,
+        "y": 95,
         "w": 171,
-        "h": 74
+        "h": 64
       },
       {
         "x": 202,
-        "y": 99,
+        "y": 95,
         "w": 171,
-        "h": 74
+        "h": 64
       }
     ],
     "table": {
-      "x": 66.52836879432624,
-      "y": 211,
-      "w": 259.9432624113475,
-      "h": 476
+      "x": 59.97517730496452,
+      "y": 193,
+      "w": 273.04964539007096,
+      "h": 500
     },
     "buttons": [
       {
@@ -57,13 +57,13 @@
     ],
     "power": {
       "x": 24,
-      "y": 703,
+      "y": 707,
       "w": 345,
-      "h": 48
+      "h": 44
     },
     "track": {
       "x": 27,
-      "y": 739,
+      "y": 735,
       "w": 339,
       "h": 4
     },
@@ -71,7 +71,7 @@
   },
   "typography": {
     "title": 18,
-    "subtitle": 9,
+    "subtitle": 11,
     "body": 14,
     "auxiliary": 12,
     "bottomButton": 14,
@@ -81,22 +81,22 @@
   },
   "panels": {
     "pause": {
-      "x": 31,
-      "y": 248,
-      "w": 331,
-      "h": 374
+      "x": 24,
+      "y": 235,
+      "w": 345,
+      "h": 400
     },
     "confirm": {
-      "x": 31,
+      "x": 24,
       "y": 265,
-      "w": 331,
+      "w": 345,
       "h": 314
     },
     "result": {
-      "x": 31,
-      "y": 265,
-      "w": 331,
-      "h": 314
+      "x": 24,
+      "y": 223,
+      "w": 345,
+      "h": 398
     },
     "settings": {
       "x": 24,
@@ -121,6 +121,24 @@
       "y": 469,
       "w": 393,
       "h": 383
+    },
+    "identity": {
+      "x": 24,
+      "y": 182,
+      "w": 345,
+      "h": 480
+    },
+    "newGame": {
+      "x": 24,
+      "y": 182,
+      "w": 345,
+      "h": 480
+    },
+    "aiOptions": {
+      "x": 24,
+      "y": 242,
+      "w": 345,
+      "h": 360
     }
   },
   "adaptation": "Keep 44px touch targets; shorten table when extra actions/fine control consume vertical space. Landscape shows blocking rotation prompt.",
@@ -227,7 +245,8 @@
     "lineWidthLogicalPx": 1.35,
     "pocketOutcome": "arrow at drop plane, no table rest marker",
     "prediction": "same full-table fixed-step physics on isolated copies; current power and confirmed tip",
-    "incomplete": "partial path only, no terminal rest marker"
+    "incomplete": "partial path only, no terminal rest marker",
+    "caption": "Independent status-row legend; power label always remains visible"
   },
   "aiPractice": {
     "spec": "ai-opponent.md",
@@ -244,13 +263,21 @@
     "storageKey": "eight-club.practice.v1",
     "aiSeat": 1,
     "humanBreaksFirst": true,
-    "modePanelMaxHeight": 500,
+    "modePanelMaxHeight": 480,
     "pausePanelMaxHeight": {
-      "local": 436,
-      "ai": 490
+      "local": 400,
+      "ai": 452
     },
     "difficultyChange": "next thinking task; locked and moving shots retain their parameters",
     "aiInput": "pause and identity only; no human shot controls",
     "contactMs": 220
+  },
+  "refinement": {
+    "spec": "refinement.md",
+    "approved": true,
+    "cardsHeight": 64,
+    "tableHeight": 500,
+    "materials": "fixed top-left soft shading; pocket outlines unchanged",
+    "aiWaiting": "fixed dock reservation; shot animation remains visible"
   }
 }

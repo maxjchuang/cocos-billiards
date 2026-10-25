@@ -25,15 +25,15 @@ export function computeHudLayout(width:number,height:number,options:HudOptions={
     const reset={x:left+14,y:top,width:44,height:44};
     const status={x:left+68,y:top+8,width:Math.max(44,innerWidth-100),height:24};
     const gap=11,playerWidth=(innerWidth-gap)/2;
-    const players=[0,1].map(i=>({x:left+20+i*(playerWidth+gap),y:top+(compact?46:52),width:playerWidth,height:compact?64:74})) as [HudRect,HudRect];
-    const turn={x:left+20,y:top+(compact?114:128),width:innerWidth,height:24};
+    const players=[0,1].map(i=>({x:left+20+i*(playerWidth+gap),y:top+48,width:playerWidth,height:64})) as [HudRect,HudRect];
+    const turn={x:left+24,y:top+116,width:innerWidth-8,height:22};
     const count=options.actionCount??1,showPower=options.showPower??true,showShot=options.showShot??showPower;
     const sideWidth=width<360?68:76,buttonGap=width<360?8:12,controlMargin=width<360?20:24,controlWidth=width-left-right-controlMargin*2;
     const buttonY=height-bottom-52;
     const fineButton={x:left+controlMargin,y:buttonY,width:sideWidth,height:48};
     const spinButton={x:width-right-controlMargin-sideWidth,y:buttonY,width:sideWidth,height:48};
     const shoot={x:fineButton.x+sideWidth+buttonGap,y:buttonY,width:controlWidth-2*sideWidth-2*buttonGap,height:48};
-    const power={x:left+controlMargin,y:buttonY-63,width:controlWidth,height:showPower?48:0};
+    const power={x:left+controlMargin,y:buttonY-59,width:controlWidth,height:showPower?44:0};
     const fine={x:left+controlMargin,y:power.y-52,width:controlWidth,height:options.showFine?44:0};
     const actionsHeight=count===3?160:count===2&&!showPower?60:count>0?48:0;
     const decisionHeight=options.showDecision===false?0:!showPower&&count===1?48:40;
@@ -41,8 +41,8 @@ export function computeHudLayout(width:number,height:number,options:HudOptions={
     const actions={x:left+controlMargin,y:count===2&&!showPower?height-bottom-80:bottomAnchor-actionsHeight-(showShot&&actionsHeight?8:0),width:controlWidth,height:actionsHeight};
     const decision={x:left+controlMargin,y:count===1&&!showPower?height-bottom-115:count===2&&!showPower?actions.y-44.5:actions.y-(decisionHeight?decisionHeight+8:0),width:controlWidth,height:decisionHeight};
     const dock={x:left+20,y:decision.y,width:innerWidth,height:height-bottom-4-decision.y};
-    const tableTop=turn.y+turn.height+(compact?10:12);
-    const playArea={x:left+20,y:tableTop,width:innerWidth,height:Math.max(1,Math.min(476,dock.y-tableTop-(count===2&&!showPower?4:8)))};
+    const tableTop=turn.y+turn.height+8;
+    const playArea={x:left+20,y:tableTop,width:innerWidth,height:Math.max(1,Math.min(500,dock.y-tableTop-(count===2&&!showPower?4:14)))};
     return {width,height,scale,status,reset,players,turn,playArea,dock,decision,actions,power,shoot,fineButton,fine,spinButton};
 }
 

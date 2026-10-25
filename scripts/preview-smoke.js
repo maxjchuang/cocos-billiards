@@ -83,7 +83,7 @@ async function previewSmoke({inputMode = location.protocol === 'packages:' ? 'en
             const p=game.camera.worldToScreen(new cc.Vec3(x,0,z));
             return p.x>=viewport.left-1e-4 && p.x<=viewport.right+1e-4 && p.y>=viewport.bottom-1e-4 && p.y<=viewport.top+1e-4;
         })));
-        check('16 balls, 15 number labels and generated textures',game.ballNodes.filter(n=>n.active).length===16 && game.numberNodes.filter(n=>n.active).length===15 && game.textures.length===16);
+        check('16 balls, 15 number labels, 16 ball and four surface textures',game.ballNodes.filter(n=>n.active).length===16 && game.numberNodes.filter(n=>n.active).length===15 && game.textures.length===20);
         check('Opening placement has no cue stick',game.referee.phase==='placing' && game.referee.hand==='head' && !game.aim.active);
         await table(0.25,0.9);
         check('Touch placement does not shoot',Math.abs(game.balls[0].x-0.25)<0.001 && game.referee.phase==='placing' && game.balls[0].vx===0);

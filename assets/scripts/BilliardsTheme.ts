@@ -1,9 +1,9 @@
 /** Shared design tokens. Values are logical pixels unless expressed as colours. */
 export const CLUB = {
     fontFamily: 'PingFang SC, Noto Sans CJK SC, Arial, sans-serif',numberFontFamily:'Menlo, Consolas, monospace',
-    background: '#101D1B', surface: '#1C2B25', activeSurface: '#182B23',
-    felt: '#21584B', cushion: '#163E34', wood: '#69503A', gold: '#DEC58D',
-    ink: '#F5F1E6', muted: '#A6B5AC', foul: '#E0AE73', loss: '#D99588',
+    background: '#0E1C19', surface: '#1C3028', activeSurface: '#20372C',
+    felt: '#286556', cushion: '#163E34', wood: '#614630', gold: '#D9BD83',
+    ink: '#F4F0E6', muted: '#ABBAB0', foul: '#DFB981', loss: '#D99588',
     line: '#A4C3AD', pocket: '#080E0C', track: '#3A4D40',
     cueTrajectory:'#F5F1E6',targetTrajectory:'#E5BD74',
     disabled: '#66776B', buttonHeight: 48, touchSize: 44, radius: 12,

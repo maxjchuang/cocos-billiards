@@ -18,7 +18,7 @@ async function previewScenario(id,{top=47,bottom=34}={}) {
  if(id==='S08'||id==='S09'){g.referee.phase='over';g.referee.winner=id==='S08'?0:1;g.balls[8].pocketed=true;if(id==='S08')g.balls.filter(b=>b.id>=1&&b.id<=7).forEach(b=>b.pocketed=true);g.referee.message=id==='S08'?'合法打进8号球':'提前进8号球，判对手获胜';}
  if(id==='S10'||id==='S11'||id==='S12'||id==='S13'){g.pauseGame();g.panelMode=({S10:'confirm',S11:'pause',S12:'settings',S13:'rules'})[id];g.confirmingRestart=id==='S10';}
  if(id==='S14'||id==='S15'){g.tip.open();g.tip.select(.3,-.4);if(id==='S15')g.tip.confirm();}
- g.layoutStamp='';g.syncVisuals();await new Promise(r=>setTimeout(r,100));
+ g.layoutStamp='';g.syncVisuals();await new Promise(r=>setTimeout(r,260));
  const scale=m.screen.devicePixelRatio,bounds=node=>{const t=node.getComponent(m.UITransform),s=t.contentSize;
   const ps=[-1,1].flatMap(x=>[-1,1].map(y=>g.hudCamera.worldToScreen(t.convertToWorldSpaceAR(new m.Vec3(x*s.width/2,y*s.height/2,0)))));
   return {x:Math.min(...ps.map(p=>p.x))/scale,y:innerHeight-Math.max(...ps.map(p=>p.y))/scale,w:(Math.max(...ps.map(p=>p.x))-Math.min(...ps.map(p=>p.x)))/scale,h:(Math.max(...ps.map(p=>p.y))-Math.min(...ps.map(p=>p.y)))/scale};};
@@ -46,11 +46,11 @@ async function previewLayoutAcceptance(options={}) {
    check(id+' active touch targets do not overlap',rects.every((a,index)=>rects.every((b,j)=>j<=index||!overlap(a,b))));
    if(innerWidth===393&&innerHeight===852&&options.top===47&&options.bottom===34){
     if(id==='S01'){
-     check('S01 table projection matches the SVG reference within 2px',close(record.table,{x:66.52836879432624,y:211,w:259.9432624113475,h:476},2));
+     check('S01 table projection matches the SVG reference within 2px',close(record.table,{x:59.97517730496455,y:193,w:273.0496453900709,h:500},2));
      check('S01 three buttons match within 1px',close(record.controls.fine,{x:24,y:766,w:76,h:48})&&close(record.controls.shoot,{x:112,y:766,w:169,h:48})&&close(record.controls.spin,{x:293,y:766,w:76,h:48}));
-     check('S01 cards match within 1px',close(record.layout.players[0],{x:20,y:99,width:171,height:74})&&close(record.layout.players[1],{x:202,y:99,width:171,height:74}));
+     check('S01 cards match within 1px',close(record.layout.players[0],{x:20,y:95,width:171,height:64})&&close(record.layout.players[1],{x:202,y:95,width:171,height:64}));
     }
-    const expected={S07:{x:0,y:469,w:393,h:383},S08:{x:31,y:265,w:331,h:314},S09:{x:31,y:265,w:331,h:314},S10:{x:31,y:265,w:331,h:314},S11:{x:31,y:248,w:331,h:374},S12:{x:24,y:190,w:345,h:568},S13:{x:0,y:294,w:393,h:558},S14:{x:0,y:356,w:393,h:496}}[id];
+    const expected={S07:{x:0,y:469,w:393,h:383},S08:{x:24,y:223,w:345,h:398},S09:{x:24,y:223,w:345,h:398},S10:{x:24,y:265,w:345,h:314},S11:{x:24,y:235,w:345,h:400},S12:{x:24,y:190,w:345,h:568},S13:{x:0,y:294,w:393,h:558},S14:{x:0,y:356,w:393,h:496}}[id];
     if(expected)check(id+' modal matches reference bounds within 1px',record.panel&&close(record.panel,expected));
    }
   }

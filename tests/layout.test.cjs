@@ -62,9 +62,9 @@ for(const [width,height,top,bottom] of [[320,568,0,0],[393,852,59,34],[430,932,5
 
 test('frozen 393 reference matches approved cards, controls and table viewport',()=>{
  const l=computeHudLayout(393,852,{insets:{top:47,bottom:34},actionCount:0,showPower:true,showShot:true,showDecision:false});
- assert.deepEqual(l.players[0],{x:20,y:99,width:171,height:74});assert.deepEqual(l.players[1],{x:202,y:99,width:171,height:74});
- assert.deepEqual(l.shoot,{x:112,y:766,width:169,height:48});assert.equal(l.power.y,703);assert.equal(l.playArea.y,211);assert.equal(l.playArea.height,476);
- const projectedWidth=l.playArea.height*1.54/2.82;assert.ok(Math.abs(projectedWidth-259.9432624113475)<1e-6);
+ assert.deepEqual(l.players[0],{x:20,y:95,width:171,height:64});assert.deepEqual(l.players[1],{x:202,y:95,width:171,height:64});
+ assert.deepEqual(l.shoot,{x:112,y:766,width:169,height:48});assert.equal(l.power.y,707);assert.equal(l.playArea.y,193);assert.equal(l.playArea.height,500);
+ const projectedWidth=l.playArea.height*1.54/2.82;assert.ok(Math.abs(projectedWidth-273.0496453900709)<1e-6);
 });
 
 

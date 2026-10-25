@@ -16,7 +16,7 @@ async function previewPlan({inputMode=location.protocol==='packages:'?'engine':'
   g.reset();await frame();await tap(g.actions[1].node.parent);check('Placement confirmation reaches ready',g.referee.phase==='ready');
   const pressPoint=g.hudCamera.worldToScreen(g.shotButton.node.worldPosition);send('touchstart',pressPoint);await frame();
   check('Pressed shoot appearance is visible before release',g.pendingAction==='shoot'&&!g.shotSequence.active&&g.shotButton.background.fillColor.r===204);
-  send('touchcancel',pressPoint);await frame();check('Cancelling press restores the button without shooting',g.pendingAction===null&&!g.shotSequence.active&&g.shotButton.background.fillColor.r===222);
+  send('touchcancel',pressPoint);await frame();check('Cancelling press restores the button without shooting',g.pendingAction===null&&!g.shotSequence.active&&g.shotButton.background.fillColor.r===217);
   const before=JSON.stringify(g.balls);await tap(g.resetLabel.node);check('Pause opens full menu and freezes balls',g.panelMode==='pause'&&g.paused);await wait(100);check('Paused positions are preserved',JSON.stringify(g.balls)===before);
   check('All four pause actions are present',['resume','restart','settings','rules'].every(id=>g.panels.actionIds.includes(id)));
   await action('settings');check('Settings opens while preserving pause',g.panelMode==='settings'&&g.paused);

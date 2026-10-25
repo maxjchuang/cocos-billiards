@@ -1,0 +1,785 @@
+{
+  "engine": "3.8.7",
+  "viewport": [
+    317,
+    688,
+    2
+  ],
+  "mode": "Creator embedded preview, synthetic engine touch; not hardware",
+  "refinement": {
+    "viewport": {
+      "width": 317,
+      "height": 688,
+      "dpr": 2
+    },
+    "checks": [
+      {
+        "name": "Power label is independent of prediction",
+        "passed": true
+      },
+      {
+        "name": "Full prediction completes",
+        "passed": true
+      },
+      {
+        "name": "Separate white cue and gold target captions",
+        "passed": true
+      },
+      {
+        "name": "Prediction never replaces power title",
+        "passed": true
+      },
+      {
+        "name": "Disabling guide clears both legends",
+        "passed": true
+      },
+      {
+        "name": "Tip draft hides the two guide labels",
+        "passed": true
+      },
+      {
+        "name": "Seven targets remain present and readable",
+        "passed": true
+      },
+      {
+        "name": "Target circles stay inside the compact card",
+        "passed": true
+      },
+      {
+        "name": "AI waiting replaces inactive human controls",
+        "passed": true
+      },
+      {
+        "name": "AI wait preserves the table allocation",
+        "passed": true
+      },
+      {
+        "name": "AI level is a separate card label",
+        "passed": true
+      },
+      {
+        "name": "AI preparation restores its visible shot animation",
+        "passed": true
+      },
+      {
+        "name": "Before-contact cancellation has not moved balls",
+        "passed": true
+      },
+      {
+        "name": "Pause has a list hierarchy and accessible restart",
+        "passed": true
+      },
+      {
+        "name": "Settings describes full trajectories",
+        "passed": true
+      },
+      {
+        "name": "Identity exposes enlarged target numbers",
+        "passed": true
+      },
+      {
+        "name": "Table surface uses local texture shading",
+        "passed": true
+      },
+      {
+        "name": "No browser errors or unhandled rejections",
+        "passed": true
+      }
+    ],
+    "errors": []
+  },
+  "ui": {
+    "engine": "3.8.7",
+    "viewport": {
+      "width": 317,
+      "height": 688,
+      "dpr": 2
+    },
+    "mode": "Creator synthetic engine touch, real Cocos components",
+    "results": [
+      {
+        "name": "Placement confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Pressed shoot appearance is visible before release",
+        "passed": true
+      },
+      {
+        "name": "Cancelling press restores the button without shooting",
+        "passed": true
+      },
+      {
+        "name": "Pause opens full menu and freezes balls",
+        "passed": true
+      },
+      {
+        "name": "Paused positions are preserved",
+        "passed": true
+      },
+      {
+        "name": "All four pause actions are present",
+        "passed": true
+      },
+      {
+        "name": "Action exists: settings",
+        "passed": true
+      },
+      {
+        "name": "Settings opens while preserving pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: sound",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: sound",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:haptics",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: haptics",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: haptics",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:haptics",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:aimGuide",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:magnifier",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: magnifier",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: magnifier",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:magnifier",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Setting updates immediately: reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Setting persists: reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:reducedMotion",
+        "passed": true
+      },
+      {
+        "name": "Action exists: setting:sound",
+        "passed": true
+      },
+      {
+        "name": "Storage failure keeps the UI usable and changes effective in memory",
+        "passed": true
+      },
+      {
+        "name": "Action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rules",
+        "passed": true
+      },
+      {
+        "name": "Rules include the correct baseline and break conditions",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rule-next",
+        "passed": true
+      },
+      {
+        "name": "Rules include black outcomes and no called-pocket variant",
+        "passed": true
+      },
+      {
+        "name": "Action exists: rule-history",
+        "passed": true
+      },
+      {
+        "name": "Empty settlement history is explicit",
+        "passed": true
+      },
+      {
+        "name": "History opens the first page without dropping older entries",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-next",
+        "passed": true
+      },
+      {
+        "name": "History second page is accessible",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-next",
+        "passed": true
+      },
+      {
+        "name": "History last page is accessible",
+        "passed": true
+      },
+      {
+        "name": "Action exists: history-prev",
+        "passed": true
+      },
+      {
+        "name": "History supports navigating backwards",
+        "passed": true
+      },
+      {
+        "name": "Action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Action exists: restart",
+        "passed": true
+      },
+      {
+        "name": "Restart requires separate confirmation",
+        "passed": true
+      },
+      {
+        "name": "Action exists: cancel-restart",
+        "passed": true
+      },
+      {
+        "name": "Cancelling restart retains the match",
+        "passed": true
+      },
+      {
+        "name": "Resume dismisses the modal without shooting",
+        "passed": true
+      },
+      {
+        "name": "Identity shows the full nickname and avatar",
+        "passed": true
+      },
+      {
+        "name": "Action exists: close-identity",
+        "passed": true
+      },
+      {
+        "name": "Identity close preserves match",
+        "passed": true
+      },
+      {
+        "name": "Table aiming shows the contact magnifier",
+        "passed": true
+      },
+      {
+        "name": "Magnifier closes on release",
+        "passed": true
+      },
+      {
+        "name": "Fine aim shows magnifier when space permits, keeping short-screen pockets unobstructed",
+        "passed": true
+      },
+      {
+        "name": "Magnifier setting hides it immediately",
+        "passed": true
+      },
+      {
+        "name": "Aim switch retains direction",
+        "passed": true
+      },
+      {
+        "name": "Spin overlay hides magnification",
+        "passed": true
+      },
+      {
+        "name": "Action exists: restart",
+        "passed": true
+      },
+      {
+        "name": "Action exists: confirm-restart",
+        "passed": true
+      },
+      {
+        "name": "Confirmed restart clears history and returns to placement",
+        "passed": true
+      },
+      {
+        "name": "Illegal placement keeps cue position and shows feedback",
+        "passed": true
+      },
+      {
+        "name": "Result modal reports winner and reason",
+        "passed": true
+      },
+      {
+        "name": "Result identity reveals a long winner name without tiny title text",
+        "passed": true
+      },
+      {
+        "name": "Action exists: close-identity",
+        "passed": true
+      },
+      {
+        "name": "Closing winner identity returns to the result",
+        "passed": true
+      },
+      {
+        "name": "Action exists: view-table",
+        "passed": true
+      },
+      {
+        "name": "View-table mode blocks gameplay",
+        "passed": true
+      },
+      {
+        "name": "Action exists: return-result",
+        "passed": true
+      },
+      {
+        "name": "Result can be reopened",
+        "passed": true
+      },
+      {
+        "name": "Action exists: new-round",
+        "passed": true
+      },
+      {
+        "name": "New round clears result exactly once",
+        "passed": true
+      },
+      {
+        "name": "Scratch plus opening eight hides the forbidden accept-table option",
+        "passed": true
+      },
+      {
+        "name": "Action exists: break:2",
+        "passed": true
+      },
+      {
+        "name": "Opening eight scratch grants head-line placement",
+        "passed": true
+      },
+      {
+        "name": "Action exists: break:0",
+        "passed": true
+      },
+      {
+        "name": "Accept-table option preserves a non-scratched cue",
+        "passed": true
+      },
+      {
+        "name": "All fourteen Scheme A clips are loaded",
+        "passed": true
+      },
+      {
+        "name": "Sound-off suppresses playback requests",
+        "passed": true
+      },
+      {
+        "name": "No page errors were captured",
+        "passed": true
+      }
+    ]
+  },
+  "spin": {
+    "engine": "3.8.7",
+    "inputMode": "Creator internal touch dispatcher",
+    "results": [
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Three touch-sized buttons fit without overlap",
+        "passed": true
+      },
+      {
+        "name": "Tip panel opens without shooting",
+        "passed": true
+      },
+      {
+        "name": "Draft does not apply until done",
+        "passed": true
+      },
+      {
+        "name": "Overlay blocks table placement and aiming",
+        "passed": true
+      },
+      {
+        "name": "Done applies tip without shooting",
+        "passed": true
+      },
+      {
+        "name": "Confirmed tip is visible beside power",
+        "passed": true
+      },
+      {
+        "name": "Cancel restores previous confirmed tip",
+        "passed": true
+      },
+      {
+        "name": "Recenter changes only draft",
+        "passed": true
+      },
+      {
+        "name": "Diagonal selection is bounded by a circle",
+        "passed": true
+      },
+      {
+        "name": "Confirmed recenter restores centre tip",
+        "passed": true
+      },
+      {
+        "name": "Shot reserves confirmed tip",
+        "passed": true
+      },
+      {
+        "name": "Preparing shot blocks tip editing",
+        "passed": true
+      },
+      {
+        "name": "Spin shot commits at contact",
+        "passed": true
+      },
+      {
+        "name": "Tip drives actual angular velocity",
+        "passed": true
+      },
+      {
+        "name": "Spin shot settles within timeout",
+        "passed": true
+      },
+      {
+        "name": "Tip recenters after referee settlement",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches object ball",
+        "passed": true
+      },
+      {
+        "name": "High tip follows after head-on contact",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches object ball",
+        "passed": true
+      },
+      {
+        "name": "Low tip draws after head-on contact",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches cushion",
+        "passed": true
+      },
+      {
+        "name": "Touch confirmation reaches ready",
+        "passed": true
+      },
+      {
+        "name": "Spin reaches cushion",
+        "passed": true
+      },
+      {
+        "name": "Opposite english gives opposite cushion departure",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "followVz": -0.8100766669888849,
+      "drawVz": 0.7272134630194641,
+      "leftVz": -0.5587095066814318,
+      "rightVz": 0.5587095066814318
+    }
+  },
+  "contact": {
+    "engine": "3.8.7",
+    "inputMode": "Creator 3.8.7 internal touch dispatcher",
+    "timing": {
+      "frames": 62,
+      "preContactFrames": 12,
+      "noEarlyMotion": true,
+      "requestedFrameRate": 60,
+      "firstMotionMs": 220,
+      "firstMotionWallMs": 225,
+      "contactFrames": 1,
+      "repeatIgnored": true
+    },
+    "checks": {
+      "noEarlyMotion": true,
+      "observedPreparation": true,
+      "contactFrameObserved": true,
+      "firstMotionAtContact": true,
+      "repeatIgnored": true,
+      "cancelledBeforeContact": true,
+      "noGhostAfterResume": true,
+      "frozenAfterContact": true,
+      "resumedWithoutReplay": true
+    },
+    "passed": true
+  },
+  "ai": {
+    "engine": "3.8.7",
+    "inputMode": "engine",
+    "viewport": {
+      "width": 317,
+      "height": 688,
+      "dpr": 2
+    },
+    "results": [
+      {
+        "name": "New match dialog presents both modes and all three levels",
+        "passed": true
+      },
+      {
+        "name": "Mode and level touch targets fit without overlap",
+        "passed": true
+      },
+      {
+        "name": "Backgrounding preserves the mode chooser",
+        "passed": true
+      },
+      {
+        "name": "Foregrounding still requires an explicit mode choice",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: draft-level:standard",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: mode:ai",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: start-match",
+        "passed": true
+      },
+      {
+        "name": "AI match starts with the human placing first",
+        "passed": true
+      },
+      {
+        "name": "AI identity includes the selected difficulty",
+        "passed": true
+      },
+      {
+        "name": "AI automatically handles the opening foul and confirms free placement",
+        "passed": true
+      },
+      {
+        "name": "Human table and shot controls cannot alter an AI turn",
+        "passed": true
+      },
+      {
+        "name": "AI turn can be paused",
+        "passed": true
+      },
+      {
+        "name": "AI pause actions retain nonoverlapping touch targets",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: ai-options",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: ai-level:hard",
+        "passed": true
+      },
+      {
+        "name": "Pause menu stores a new difficulty",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: resume",
+        "passed": true
+      },
+      {
+        "name": "Next thinking task uses the updated difficulty",
+        "passed": true
+      },
+      {
+        "name": "Pausing before contact cancels the animation",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: ai-options",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: ai-level:easy",
+        "passed": true
+      },
+      {
+        "name": "Difficulty update preserves the already locked command",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: back-pause",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: resume",
+        "passed": true
+      },
+      {
+        "name": "AI commits through the shared 220ms contact frame",
+        "passed": true
+      },
+      {
+        "name": "After-contact pause freezes the existing AI shot",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: resume",
+        "passed": true
+      },
+      {
+        "name": "AI resumes the same shot without a second commit",
+        "passed": true
+      },
+      {
+        "name": "Controlled AI pot is settled by the ordinary referee",
+        "passed": true
+      },
+      {
+        "name": "Displayed difficulty remains the locked level until the next thinking task",
+        "passed": true
+      },
+      {
+        "name": "AI selects an open-table group and establishes it through a legal pot",
+        "passed": true
+      },
+      {
+        "name": "AI completes the separate legal black-eight shot and wins",
+        "passed": true
+      },
+      {
+        "name": "AI victory opens the normal result panel",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: new-game",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: mode:local",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: start-match",
+        "passed": true
+      },
+      {
+        "name": "Changing mode cancels old AI work without a ghost shot",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: new-game",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: mode:ai",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: draft-level:hard",
+        "passed": true
+      },
+      {
+        "name": "Touch action exists: cancel-match",
+        "passed": true
+      },
+      {
+        "name": "Cancelling mode selection preserves the local match",
+        "passed": true
+      },
+      {
+        "name": "Mode and difficulty choices restore from local storage",
+        "passed": true
+      },
+      {
+        "name": "No game errors or rejected promises",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "openingPhases": [
+        "0:ready",
+        "0:shooting",
+        "1:choice",
+        "1:placing",
+        "1:ready"
+      ],
+      "locked": {
+        "difficulty": "hard",
+        "nextDifficulty": "easy",
+        "trials": 32,
+        "kind": "pot",
+        "committedId": 12
+      }
+    },
+    "errors": []
+  },
+  "errors": []
+}

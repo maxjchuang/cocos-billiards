@@ -67,17 +67,17 @@ export class SpinPanelView {
         const cy=h/2-216*s;
         this.surface.setPosition(0,cy,0);this.surface.getComponent(UITransform)!.setContentSize(208*s,208*s);
         this.selectionRadius=60*s;
-        const g=this.face;g.clear();g.fillColor=colour('#F4EFDE');g.circle(0,0,88*s);g.fill();
-        g.fillColor=colour('#EFE7D0');g.circle(0,0,this.selectionRadius);g.fill();
-        g.lineWidth=.8*s;g.strokeColor=colour('#B8A777');g.circle(0,0,this.selectionRadius);g.stroke();
-        g.strokeColor=colour('#B3B199');for(let i=-60;i<60;i+=8){g.moveTo(i,0);g.lineTo(i+4,0);g.moveTo(0,i);g.lineTo(0,i+4);g.stroke();}
+        const g=this.face;g.clear();g.fillColor=colour('#D5CEBA');g.circle(0,0,88*s);g.fill();for(let i=0;i<12;i++){g.fillColor=new Color(255,253,244,14);g.circle(-i*.5*s,i*.6*s,(87-i*2)*s);g.fill();}
+        g.fillColor=new Color(120,139,114,20);g.circle(0,0,this.selectionRadius);g.fill();
+        g.lineWidth=1*s;g.strokeColor=colour('#728475');for(let a=0;a<Math.PI*2;a+=.14){g.arc(0,0,this.selectionRadius,a,a+.08,false);g.stroke();}
+        g.strokeColor=colour('#728475');for(let i=-60;i<60;i+=8){g.moveTo(i,0);g.lineTo(i+4,0);g.moveTo(0,i);g.lineTo(0,i+4);g.stroke();}
         g.fillColor=colour(CLUB.muted);g.circle(0,0,3*s);g.fill();
         g.strokeColor=colour(CLUB.gold);g.moveTo(0,0);g.lineTo(tip.x*this.selectionRadius,tip.y*this.selectionRadius);g.stroke();
         g.fillColor=colour(CLUB.cushion);g.strokeColor=colour(CLUB.gold);g.lineWidth=2*s;g.circle(tip.x*this.selectionRadius,tip.y*this.selectionRadius,8*s);g.fill();g.stroke();
         text(this.axes[0],'高杆',0,cy+108.5*s,60*s,13,true);text(this.axes[1],'低杆',0,cy-108.5*s,60*s,13,true);
         text(this.axes[2],'左塞',-w/2+67*s,cy,60*s,13,true);text(this.axes[3],'右塞',w/2-67*s,cy,60*s,13,true);this.axes.forEach(label=>label.color=colour(CLUB.gold));
         text(this.summary,tipLabel(tip),0,cy-146.5*s,w-32*s,15);
-        text(this.hint,'相对选择范围的偏移量',0,cy-170*s,w-32*s,10,true);
+        text(this.hint,'虚线圆内选择 · 百分比表示打点偏移',0,cy-170*s,w-32*s,11,true);
         const button=(label:Label,x:number,y:number,bw:number,title:string,primary=false):void=>{
             const n=label.node.parent!;n.setPosition(x,y,0);n.getComponent(UITransform)!.setContentSize(bw,48*s);
             const g=n.getComponent(Graphics)!;g.clear();g.fillColor=colour(primary?CLUB.gold:CLUB.background);

@@ -1,7 +1,7 @@
 {
-  "version": "1.13",
-  "date": "2026-10-23",
-  "direction": "专业球房",
+  "version": "1.14",
+  "date": "2026-10-25",
+  "direction": "专业球房 · 精修",
   "referenceFrame": [
     393,
     852
@@ -19,7 +19,8 @@
     "微调±5°，点按步长0.1°",
     "局部放大默认开启，瞄准拖动与微调时显示",
     "音效和辅助瞄准默认开，振动与减少动态默认关，设置本机保存且立即生效",
-    "高低杆与加塞采用简化仿真，可组合并受力度距离碰撞角度影响"
+    "高低杆与加塞采用简化仿真，可组合并受力度距离碰撞角度影响",
+    "专业球房精修：500px台面、64px身份卡、独立轨迹图例、分组开局、轻材质与AI等待区"
   ],
   "proposals": [],
   "interaction": {
@@ -37,14 +38,14 @@
   "productPdf": "中式八球产品设计方案.pdf",
   "uiuxPdf": "中式八球UIUX设计方案.pdf",
   "colors": {
-    "bg": "#101D1B",
-    "surface": "#1C2B25",
-    "felt": "#21584B",
+    "bg": "#0E1C19",
+    "surface": "#1C3028",
+    "felt": "#286556",
     "cushion": "#163E34",
-    "wood": "#69503A",
-    "gold": "#DEC58D",
-    "ink": "#F5F1E6",
-    "muted": "#A6B5AC",
+    "wood": "#614630",
+    "gold": "#D9BD83",
+    "ink": "#F4F0E6",
+    "muted": "#ABBAB0",
     "foul": "#E0AE73",
     "loss": "#D99588",
     "line": "#A4C3AD",
@@ -106,13 +107,10 @@
     "structureSource": "https://patents.google.com/patent/CN115350466A/zh",
     "spec": "pocket-geometry-spec.md",
     "uiuxPages": [
-      25,
-      26,
-      27
+      11
     ],
     "productPages": [
-      8,
-      9
+      6
     ]
   }
 }

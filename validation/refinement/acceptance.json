@@ -1,0 +1,63 @@
+{
+  "date": "2026-10-25",
+  "status": "implemented; automated/browser/Creator checks passed; user approved commit and push",
+  "design": "V1.14 professional club refinement",
+  "baseCommit": "7f1e304",
+  "node": {
+    "typecheck": true,
+    "passed": 179,
+    "failed": 0
+  },
+  "creatorCli": {
+    "engine": "3.8.7",
+    "platform": "web-mobile",
+    "exitCode": 36
+  },
+  "browser": {
+    "393": {
+      "layout": 56,
+      "refinement": 18,
+      "ui": 81,
+      "ai": 45,
+      "spin": 28,
+      "input": 17,
+      "pockets": 28,
+      "trajectory": 16,
+      "audio": 17,
+      "contact": 9
+    },
+    "320": {
+      "layout": 45,
+      "refinement": 18,
+      "ai": 45
+    },
+    "430": {
+      "layout": 45,
+      "refinement": 18
+    },
+    "errors": 0,
+    "warnings": 0
+  },
+  "nativeCreator": {
+    "viewport": [
+      317,
+      688,
+      2
+    ],
+    "checks": 181,
+    "errors": [],
+    "input": "synthetic engine touch; scaled embedded preview, not hardware"
+  },
+  "physicalChanges": false,
+  "hardwareAndWechat": "waived by user",
+  "pdf": {
+    "productPages": 6,
+    "uiuxPages": 13,
+    "renderedAndReviewed": true
+  },
+  "releaseApproval": {
+    "date": "2026-10-26",
+    "request": "提交并推送",
+    "version": "refinement-v1"
+  }
+}

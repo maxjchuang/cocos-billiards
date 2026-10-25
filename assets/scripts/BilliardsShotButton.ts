@@ -24,7 +24,7 @@ export class ShotButtonView {
         const bg=this.background, g=this.icon;
         bg.clear();bg.fillColor=new Color().fromHEX(enabled||active?CLUB.gold:CLUB.surface);
         if(pressed)bg.fillColor=new Color().fromHEX('#CCB276');
-        bg.roundRect(-width/2,-height/2,width,height,12*s);bg.fill();
+        bg.roundRect(-width/2,-height/2,width,height,12*s);bg.fill();bg.strokeColor=new Color().fromHEX(enabled||active?'#E5D1A5':'#405247');bg.lineWidth=.7*s;bg.stroke();
         const color=enabled||active?CLUB.background:CLUB.muted;
         const title=active&&!moving?'出杆中':moving?'球运动中':'出杆';
         this.label.string=title;this.label.fontSize=14*s;this.label.lineHeight=20*s;

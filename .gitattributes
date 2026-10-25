@@ -1,0 +1,2 @@
+# Generated design PDFs are binary documents, not line-oriented source.
+*.pdf binary

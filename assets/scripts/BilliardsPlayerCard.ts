@@ -9,6 +9,7 @@ export class PlayerCardView {
     readonly nameLabel: Label;
     private readonly groupLabel: Label;
     private readonly fallbackLabel: Label;
+    private readonly levelLabel:Label;
     private readonly artwork: Graphics;
     private readonly numbers: Label[] = [];
     private stamp = '';
@@ -21,7 +22,7 @@ export class PlayerCardView {
         this.artwork = this.node.addComponent(Graphics);
         this.nameLabel = this.text('Nickname', CLUB.ink);
         this.groupLabel = this.text('Group', CLUB.muted);
-        this.fallbackLabel = this.text('Targets status', CLUB.muted);
+        this.fallbackLabel = this.text('Targets status', CLUB.muted);this.levelLabel=this.text('AI difficulty badge',CLUB.gold,true);
         for (let i = 0; i < 7; i++) this.numbers.push(this.text(`Target ${i}`, CLUB.background, true));
     }
 
@@ -37,8 +38,8 @@ export class PlayerCardView {
     }
 
     render(profile: PlayerProfile, seat: number, group: Group | null, ids: number[], active: boolean,
-        width: number, height: number, scale: number): void {
-        const stamp = [profile.id, profile.nickname, profile.avatar, seat, group, ...ids, active, width, height, scale].join('|');
+        width: number, height: number, scale: number,level=''): void {
+        const stamp = [profile.id, profile.nickname, profile.avatar, level, seat, group, ...ids, active, width, height, scale].join('|');
         if (stamp === this.stamp) return;
         this.stamp = stamp;
         const g = this.artwork, x = -width / 2, y = height / 2, s = scale;
@@ -50,21 +51,22 @@ export class PlayerCardView {
             label.string = value; label.fontSize = size * s; label.lineHeight = (size + 4) * s;
             label.node.setPosition(cx, cy, 0); label.node.getComponent(UITransform)!.setContentSize(w, (size + 6) * s);
         };
-        g.clear(); g.fillColor = colour(active ? CLUB.activeSurface : '#14231E');
+        g.clear(); g.fillColor = colour(active ? CLUB.activeSurface : '#15251F');
         g.roundRect(x, -height / 2, width, height, CLUB.radius * s); g.fill();
-        const ax = x + 26 * s, ay = y - 24 * s;
-        drawAvatar(g,ax,ay,16*s,profile.avatar);
-        if (active) { g.strokeColor = colour(CLUB.gold);g.lineWidth = 1.5*s;g.circle(ax, ay, 18*s);g.stroke(); }
-        const textX = x + 50*s, textWidth = Math.max(1, width - 58*s);
-        text(this.nameLabel, fitNickname(playerName(profile, seat), textWidth / (14*s)), textX + textWidth/2, y - 16*s, textWidth, 14);
-        text(this.groupLabel, group ? `${groupName(group)} · 剩${ids.length}` : '未分组', textX + textWidth/2, y - 34.5*s, textWidth, 11);
-        this.fallbackLabel.node.active = !group || ids.length === 0;
+        const ax = x + 23 * s, ay = y - 21 * s;
+        drawAvatar(g,ax,ay,14*s,profile.avatar);
+        if (active) { g.strokeColor = colour(CLUB.gold);g.lineWidth = 1.5*s;g.circle(ax, ay, 16*s);g.stroke(); }
+        const textX = x + 46*s, textWidth = Math.max(1, width - 54*s-(level?29*s:0));
+        text(this.nameLabel, fitNickname(level?'AI 陪练':playerName(profile, seat), textWidth / (13*s)), textX + textWidth/2, y - 14*s, textWidth, 13);
+        this.levelLabel.node.active=!!level;if(level){const lx=x+width-20*s;text(this.levelLabel,level,lx,y-14*s,28*s,11);g.strokeColor=colour('#8D7855');g.lineWidth=.6;g.roundRect(lx-14*s,y-22*s,28*s,16*s,4);g.stroke();}
+        text(this.groupLabel, group ? `${groupName(group)} · 剩${ids.length}` : '尚未分组', textX + (width-54*s)/2, y - 30*s, width-54*s, 11);
+        this.fallbackLabel.node.active = !!group && ids.length === 0;
         text(this.fallbackLabel, group ? '目标 8 号' : '等待分组', x + width/2, -height/2 + 15*s, width - 20*s, 11);
         this.numbers.forEach((label, i) => {
             label.node.active = i < ids.length;
             if (i >= ids.length) return;
-            const spacing=Math.min(21*s,(width-36*s)/Math.max(1,ids.length-1));
-            const id = ids[i], cx = x + 18*s+i*spacing, cy = -height/2 + 15*s, r = 8*s;
+            const diameter=width<150?16*s:18*s,spacing=Math.min(diameter+3*s,(width-18*s-diameter)/Math.max(1,ids.length-1));
+            const id = ids[i], cx = x + 9*s+diameter/2+i*spacing, cy = -height/2 + 13*s, r = diameter/2;
             circle(cx, cy, r, id > 8 ? '#F5F2E8' : ballColor(id));
             if (id > 8) {
                 // The strip terminates on the circle, leaving continuous white caps.
@@ -74,8 +76,9 @@ export class PlayerCardView {
                 g.bezierCurveTo(cx+r, cy+2*s, cx+r, cy-2*s, cx+half, cy-3.5*s);
                 g.lineTo(cx-half, cy-3.5*s);g.bezierCurveTo(cx-r, cy-2*s, cx-r, cy+2*s, cx-half, cy+3.5*s);g.close();g.fill();
             }
-            circle(cx, cy, 3.84*s, '#FCF9F0');
-            text(label, String(id), cx, cy, 13*s, 5.92);
+            circle(cx, cy, r*.61, '#FCF9F0');
+            text(label, String(id), cx, cy, 14*s, 8);
+            circle(cx-r*.35,cy+r*.5,r*.16,'#FFFFFF38');
         });
     }
 }

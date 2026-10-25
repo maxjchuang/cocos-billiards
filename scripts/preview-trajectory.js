@@ -19,7 +19,7 @@ async function previewTrajectory({inputMode=location.protocol==='packages:'?'eng
   fixture();const before=JSON.stringify(g.balls);measurements.cutPredictionMs=await complete();
   const prediction=g.aimPrediction;check('Cue and first target both have full trajectories',prediction.cue.points.length>2&&prediction.target?.id===1&&prediction.target.points.length>1);
   check('Prediction leaves live positions, spin and pocket flags unchanged',JSON.stringify(g.balls)===before);
-  check('Guide caption identifies white cue and gold numbered target',g.powerLabel.string.includes('母球白')&&g.powerLabel.string.includes('1号金'));
+  check('Guide caption identifies white cue and gold numbered target',g.trajectoryCaption.includes('母球白')&&g.trajectoryCaption.includes('1号金'));
   check('Actual graphics contain visible trajectories',g.aimGraphics.impl.pathLength>0);
   measurements.cut={cue:prediction.cue,target:prediction.target};
   await node(g.shotButton.node);check('Touch starts preparation without early ball motion',g.shotSequence.active&&!g.shotSequence.committed&&JSON.stringify(g.balls)===before);
@@ -28,7 +28,7 @@ async function previewTrajectory({inputMode=location.protocol==='packages:'?'eng
   const cue=g.balls[0],target=g.balls[1];measurements.endpointErrorM={cue:Math.hypot(cue.x-prediction.cue.end.x,cue.z-prediction.cue.end.z),target:Math.hypot(target.x-prediction.target.end.x,target.z-prediction.target.end.z)};
   check('Live cue stops at its predicted mark within 1mm',measurements.endpointErrorM.cue<=.001);check('Live target stops at its predicted mark within 1mm',measurements.endpointErrorM.target<=.001);
   fixture('bank');measurements.bankPredictionMs=await complete();check('Bank prediction finds the target after cushion contact',g.aimPrediction.target?.id===1&&g.aimPrediction.cue.points.some(p=>p.x>.599));
-  fixture('pocket');await complete();check('Predicted target pocket uses an in-pocket outcome',g.aimPrediction.target?.pocket!==null&&g.powerLabel.string.includes('入袋'));
+  fixture('pocket');await complete();check('Predicted target pocket uses an in-pocket outcome',g.aimPrediction.target?.pocket!==null&&g.trajectoryCaption.includes('入袋'));
   fixture();await complete();const old=g.aimPrediction;g.power=1.2;await frame();check('Power edits discard the old endpoint immediately',g.aimPrediction!==old);await complete();
   const low=g.aimPrediction;g.tip.open();g.tip.select(0,-.7);g.tip.confirm();await frame();check('Confirmed tip edits invalidate the old prediction',g.aimPrediction!==low);await complete();
   const spun=g.aimPrediction;g.direction={x:.03,z:-Math.sqrt(1-.03*.03)};await frame();check('Aim edits invalidate the old prediction',g.aimPrediction!==spun);await complete();
