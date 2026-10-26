@@ -1,0 +1,8 @@
+{
+  "scope": "Creator embedded preview manual location.reload diagnostic, before clean restart",
+  "message": "Module [SceneFacadeManager] does not exist.(Method: queryNodeTree / queryIs2D / callPreviewPlayMethod)",
+  "origin": "editor IPC / preview lifecycle",
+  "gameLoaded": false,
+  "recovery": "Restart own Creator project process, open Main, use normal Play; rerun final engine validation",
+  "status": "editor issue recorded, not claimed fixed"
+}

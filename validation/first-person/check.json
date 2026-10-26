@@ -1,0 +1,10 @@
+{
+  "command": "npm run check",
+  "exitCode": 0,
+  "typecheck": true,
+  "tests": 238,
+  "pass": 238,
+  "fail": 0,
+  "baselineTests": 179,
+  "newTests": 59
+}

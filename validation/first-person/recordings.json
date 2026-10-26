@@ -1,0 +1,6134 @@
+[
+  {
+    "name": "open-far-height.webm",
+    "bytes": 529977,
+    "unchanged": true,
+    "scope": "Actual exported Cocos canvas; observation height changes only"
+  },
+  {
+    "name": "open-near-height.webm",
+    "bytes": 525127,
+    "unchanged": true,
+    "scope": "Actual exported Cocos canvas; observation height changes only"
+  },
+  {
+    "name": "rail-far-height.webm",
+    "bytes": 611868,
+    "unchanged": true,
+    "scope": "Actual exported Cocos canvas; observation height changes only"
+  },
+  {
+    "name": "rail-near-height.webm",
+    "bytes": 642331,
+    "unchanged": true,
+    "scope": "Actual exported Cocos canvas; observation height changes only"
+  },
+  {
+    "name": "contact-60fps.webm",
+    "bytes": 505606,
+    "fps": 60,
+    "frames": [
+      {
+        "elapsedMs": 16.900000002235174,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 33.400000002235174,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 50.70000000298023,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 66.80000000074506,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 83.5,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 100.30000000074506,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 117.60000000149012,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 132.70000000298023,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 150.90000000223517,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 167.70000000298023,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 183.70000000298023,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 200.10000000149012,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 217.5,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 220,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 236.80000000074506,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 253.40000000223517,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 270,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 286.69999999925494,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 303.5,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 320,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 336.80000000074506,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 353.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 370.19999999925494,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 386.9000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 403.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 420.1000000014901,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 436.6000000014901,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 453.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 470,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 486.69999999925494,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 503.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 520,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 536.8000000007451,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 553.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 570.1999999992549,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 587,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 603.6999999992549,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 620,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 636.8000000007451,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 653.5,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 670.1000000014901,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 686.8000000007451,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 703.8000000007451,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 720,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 736.9000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 753.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 769.1999999992549,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 787.1999999992549,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 803.4000000022352,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      }
+    ],
+    "passed": true,
+    "scope": "Actual frame-loop recording, direct command trigger; touch independently validated"
+  },
+  {
+    "name": "contact-10fps.webm",
+    "bytes": 194855,
+    "fps": 10,
+    "frames": [
+      {
+        "elapsedMs": 16.800000000745058,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 116.5,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 216.60000000149012,
+        "moved": false,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 220,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 319.8999999985099,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 420,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 520.1999999992549,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 619.8999999985099,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 720.1000000014901,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      },
+      {
+        "elapsedMs": 820,
+        "moved": true,
+        "pose": {
+          "position": {
+            "x": 0,
+            "y": 0.2,
+            "z": 1.1
+          },
+          "target": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.27
+          },
+          "distance": 0.45,
+          "height": 0.2,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0,
+            "y": 0.028575,
+            "z": 0.719825
+          }
+        }
+      }
+    ],
+    "passed": true,
+    "scope": "Actual frame-loop recording, direct command trigger; touch independently validated"
+  }
+]

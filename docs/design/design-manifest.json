@@ -1,6 +1,6 @@
 {
-  "version": "1.14",
-  "date": "2026-10-25",
+  "version": "1.15.2",
+  "date": "2026-10-26",
   "direction": "专业球房 · 精修",
   "referenceFrame": [
     393,
@@ -112,5 +112,66 @@
     "productPages": [
       6
     ]
+  },
+  "implementationBaseline": "1.14",
+  "firstPerson": {
+    "status": "implemented; local-browser-and-native-validated; user-visual-review-pending",
+    "spec": "first-person.md",
+    "productPages": [
+      7,
+      8,
+      9
+    ],
+    "uiuxPages": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21
+    ],
+    "candidateParameters": "camera distance/height/vertical FOV, gesture sensitivity and transitions require prototype validation",
+    "groundingRevision": {
+      "status": "implemented-local-cocos-validation",
+      "figure": "first-person/FP06-contact.svg",
+      "sphere": "centre height equals cloth height plus radius; projected silhouette",
+      "shadow": "contact core and soft planar footprint; no offset screen circle",
+      "trajectory": "route projected on cloth; same XZ prediction data",
+      "acceptance": "FP-A11"
+    },
+    "runtimeEvidence": "validation/view-access/README.md",
+    "runtimeConfig": {
+      "distanceM": 0.45,
+      "distanceCandidatesM": [
+        0.45,
+        0.4,
+        0.35
+      ],
+      "eyeHeightM": 0.2,
+      "heightRangeM": [
+        0.15,
+        0.25
+      ],
+      "verticalFovDeg": 55,
+      "nearM": 0.01,
+      "farM": 6,
+      "lookAheadM": 0.38,
+      "transitionMs": 280,
+      "thresholdLogicalPx": 6,
+      "axisRatio": 1.3,
+      "yawPerSceneWidthDeg": 60,
+      "verticalPerSceneHeightM": 0.2
+    },
+    "forcedOverhead": [
+      "placement"
+    ],
+    "collisionFallback": [
+      "camera eye clearance",
+      "display-only cue tail lift up to 8 degrees",
+      "local rail/frame transparency; never deny perspective for cue obstruction"
+    ],
+    "accessRevision": "view-access.md"
   }
 }

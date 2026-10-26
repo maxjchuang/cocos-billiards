@@ -1,0 +1,278 @@
+{
+  "name": "camera-boundary.webm",
+  "bytes": 622451,
+  "fixture": "C25",
+  "samples": [
+    {
+      "angle": 1.5707963267948966,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571078059351738,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571336967612352,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5715520763692508,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571705958790251,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5717861482367774,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5717861482367774,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571705958790251,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5715520763692508,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571336967612352,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571078059351738,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5707963267948966,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5705145942380552,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.570255685977441,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5700405772205424,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.569886694799542,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5698065053530157,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5698065053530157,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.569886694799542,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5700405772205424,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.570255685977441,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5705145942380552,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5707963267948966,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571078059351738,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571336967612352,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5715520763692508,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571705958790251,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5717861482367774,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5717861482367774,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571705958790251,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5715520763692508,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571336967612352,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.571078059351738,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5707963267948966,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5705145942380552,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.570255685977441,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5700405772205424,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.569886694799542,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5698065053530157,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5698065053530157,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.569886694799542,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5700405772205424,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.570255685977441,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5705145942380552,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    },
+    {
+      "angle": 1.5707963267948966,
+      "mode": "overhead",
+      "reason": "unsafe-camera",
+      "preference": "first-person"
+    }
+  ],
+  "passed": true
+}

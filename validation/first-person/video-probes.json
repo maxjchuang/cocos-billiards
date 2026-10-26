@@ -1,0 +1,121 @@
+[
+  {
+    "file": "validation/first-person/replays/camera-boundary.webm",
+    "bytes": 622451,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "68"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/contact-10fps.webm",
+    "bytes": 194855,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "30"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/contact-60fps.webm",
+    "bytes": 505606,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "90"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/open-far-height.webm",
+    "bytes": 529977,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "93"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/open-near-height.webm",
+    "bytes": 525127,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "93"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/rail-far-height.webm",
+    "bytes": 611868,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "93"
+        }
+      ]
+    }
+  },
+  {
+    "file": "validation/first-person/replays/rail-near-height.webm",
+    "bytes": 642331,
+    "decoded": true,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "codec_name": "vp8",
+          "width": 786,
+          "height": 1704,
+          "nb_read_frames": "93"
+        }
+      ]
+    }
+  }
+]

@@ -1,6 +1,6 @@
 {
-  "version": "1.14",
-  "date": "2026-10-25",
+  "version": "1.15.2",
+  "date": "2026-10-26",
   "pixelReference": "refinement/aim.png",
   "referenceFrame": [
     393,
@@ -279,5 +279,126 @@
     "tableHeight": 500,
     "materials": "fixed top-left soft shading; pocket outlines unchanged",
     "aiWaiting": "fixed dock reservation; shot animation remains visible"
+  },
+  "implementationBaseline": "1.14",
+  "firstPerson": {
+    "status": "implemented; local-browser-and-native-validated; user-visual-review-pending",
+    "spec": "first-person.md",
+    "referenceFigures": [
+      "first-person/FP01-overhead.svg",
+      "first-person/FP02-aim.svg",
+      "first-person/FP03-raised.svg",
+      "first-person/FP04-rail.svg",
+      "first-person/FP05-offscreen.svg",
+      "first-person/FP06-contact.svg"
+    ],
+    "modes": [
+      "overhead",
+      "first-person"
+    ],
+    "defaultPreference": "overhead",
+    "preferenceScope": "shared per device; temporary forced overhead does not overwrite it",
+    "switchControl": {
+      "reference": {
+        "x": 148,
+        "y": 47,
+        "w": 68,
+        "h": 44
+      },
+      "compact320": {
+        "x": 148,
+        "y": 47,
+        "w": 56,
+        "h": 44
+      },
+      "titleWidth": 72,
+      "hostCapsuleClearanceMin": 8,
+      "label": "current mode; accessible name describes the target mode"
+    },
+    "sceneViewport": {
+      "x": 20,
+      "y": 193,
+      "w": 353,
+      "h": 500,
+      "note": "perspective scene viewport, not projected table bounds"
+    },
+    "forcedOverhead": [
+      "placement"
+    ],
+    "shooting": {
+      "preContact": "shot command locked; view switching allowed",
+      "contactMs": 220,
+      "moving": "bidirectional switch; same shot-origin camera",
+      "nextAnchor": "after rest"
+    },
+    "gestures": {
+      "horizontal": "relative aim yaw",
+      "vertical": "view only; never changes shot parameters",
+      "axisLock": "dominant axis per touch gesture",
+      "edge": "lift and continue without a new absolute target",
+      "multiTouch": "single owner; cancellation never shoots"
+    },
+    "cameraCandidates": {
+      "status": "prototype-tuning-required",
+      "behindCueM": [
+        0.35,
+        0.55
+      ],
+      "heightAboveBedM": [
+        0.15,
+        0.25
+      ],
+      "verticalFovDeg": [
+        50,
+        60
+      ],
+      "transitionMs": [
+        240,
+        320
+      ],
+      "gestureThresholdPx": 6,
+      "dominantAxisRatio": 1.3,
+      "yawDegreesPerViewportWidth": 60
+    },
+    "collisionFallback": [
+      "camera eye clearance",
+      "display-only cue tail lift up to 8 degrees",
+      "local rail/frame transparency; never deny perspective for cue obstruction"
+    ],
+    "magnifier": "temporarily hidden in first-person; setting remains unchanged",
+    "occlusion": "respect depth; no rear-ball labels through foreground surfaces; offscreen results stay in prediction data",
+    "releaseGate": "FP-A01 through FP-A11 in first-person.md",
+    "groundingRevision": {
+      "status": "implemented-local-cocos-validation",
+      "figure": "first-person/FP06-contact.svg",
+      "sphere": "centre height equals cloth height plus radius; projected silhouette",
+      "shadow": "contact core and soft planar footprint; no offset screen circle",
+      "trajectory": "route projected on cloth; same XZ prediction data",
+      "acceptance": "FP-A11"
+    },
+    "runtimeEvidence": "validation/view-access/README.md",
+    "runtimeConfig": {
+      "distanceM": 0.45,
+      "distanceCandidatesM": [
+        0.45,
+        0.4,
+        0.35
+      ],
+      "eyeHeightM": 0.2,
+      "heightRangeM": [
+        0.15,
+        0.25
+      ],
+      "verticalFovDeg": 55,
+      "nearM": 0.01,
+      "farM": 6,
+      "lookAheadM": 0.38,
+      "transitionMs": 280,
+      "thresholdLogicalPx": 6,
+      "axisRatio": 1.3,
+      "yawPerSceneWidthDeg": 60,
+      "verticalPerSceneHeightM": 0.2
+    },
+    "accessRevision": "view-access.md"
   }
 }

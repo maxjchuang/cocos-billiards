@@ -1,0 +1,246 @@
+{
+  "date": "2026-10-26",
+  "baseCommit": "a84fb99ac608dee0c7b49956d5d62421ba198677",
+  "status": "local-automated-and-developer-visual-checks-passed; user-review-pending",
+  "tasks": [
+    {
+      "id": "T01",
+      "status": "passed-local-scope",
+      "evidence": [
+        "baseline.json",
+        "fixtures.json",
+        "check.json"
+      ]
+    },
+    {
+      "id": "T02",
+      "status": "passed-local-scope",
+      "evidence": [
+        "lighting-probe.json",
+        "screens/",
+        "replays/"
+      ]
+    },
+    {
+      "id": "T03",
+      "status": "passed-local-scope",
+      "evidence": [
+        "check.json",
+        "browser-393.json"
+      ]
+    },
+    {
+      "id": "T04",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-320.json",
+        "browser-393.json",
+        "creator-native.json"
+      ]
+    },
+    {
+      "id": "T05",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-393.json",
+        "creator-native.json",
+        "camera-reference.json"
+      ]
+    },
+    {
+      "id": "T06",
+      "status": "passed-local-scope",
+      "evidence": [
+        "safety-393.json",
+        "creator-native.json",
+        "screens/",
+        "camera-boundary.json",
+        "replays/camera-boundary.webm"
+      ]
+    },
+    {
+      "id": "T07",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-393.json",
+        "browser-10fps.json",
+        "audio-regression.json",
+        "recordings.json"
+      ]
+    },
+    {
+      "id": "T08",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-393.json",
+        "orientation.json",
+        "legacy-regression.json",
+        "creator-native.json"
+      ]
+    },
+    {
+      "id": "T09",
+      "status": "passed-local-scope",
+      "evidence": [
+        "screens/",
+        "check.json",
+        "source-hashes.json"
+      ]
+    },
+    {
+      "id": "T10",
+      "status": "passed-local-scope",
+      "evidence": [
+        "screens/",
+        "check.json",
+        "replays/"
+      ]
+    },
+    {
+      "id": "T11",
+      "status": "passed-local-scope",
+      "evidence": [
+        "lighting-probe.json",
+        "screens/",
+        "recordings.json"
+      ]
+    },
+    {
+      "id": "T12",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-393.json",
+        "legacy-regression.json",
+        "screens/"
+      ]
+    },
+    {
+      "id": "T13",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-393.json",
+        "browser-320.json",
+        "creator-native.json"
+      ]
+    },
+    {
+      "id": "T14",
+      "status": "passed-local-scope",
+      "evidence": [
+        "browser-320.json",
+        "browser-393.json",
+        "browser-430.json",
+        "layout-states.json"
+      ]
+    },
+    {
+      "id": "T15",
+      "status": "passed-local-scope",
+      "evidence": [
+        "paired-shots.json",
+        "creator-native.json",
+        "legacy-regression.json",
+        "audio-regression.json",
+        "check.json"
+      ]
+    },
+    {
+      "id": "T16",
+      "status": "passed-local-scope",
+      "evidence": [
+        "performance.json",
+        "resource-plateau.json"
+      ]
+    },
+    {
+      "id": "T17",
+      "status": "passed-local-scope",
+      "evidence": [
+        "build.json",
+        "creator-native.json",
+        "browser-393.json"
+      ]
+    },
+    {
+      "id": "T18",
+      "status": "passed-local-scope",
+      "evidence": [
+        "README.md",
+        "acceptance.json",
+        "source-hashes.json"
+      ]
+    }
+  ],
+  "criteria": {
+    "FP-A01": [
+      "T01",
+      "T15"
+    ],
+    "FP-A02": [
+      "T03",
+      "T05",
+      "T07"
+    ],
+    "FP-A03": [
+      "T04"
+    ],
+    "FP-A04": [
+      "T07",
+      "T17"
+    ],
+    "FP-A05": [
+      "T03",
+      "T08"
+    ],
+    "FP-A06": [
+      "T06",
+      "T09",
+      "T11"
+    ],
+    "FP-A07": [
+      "T10",
+      "T12",
+      "T13"
+    ],
+    "FP-A08": [
+      "T14",
+      "T17"
+    ],
+    "FP-A09": [
+      "T07",
+      "T08"
+    ],
+    "FP-A10": [
+      "T15",
+      "T16",
+      "T17"
+    ],
+    "FP-A11": [
+      "T02",
+      "T09",
+      "T10",
+      "T11"
+    ]
+  },
+  "performance": {
+    "samples": 18,
+    "minimumFps": 59.97076550329836,
+    "maximumP95Ms": 18.600000001490116,
+    "resourcesStable": true,
+    "gpuStable": true,
+    "predictionReused": true
+  },
+  "userVisualReview": "pending",
+  "realDevices": "waived by user",
+  "wechatSpecific": "waived by user",
+  "HDR": "not verified",
+  "remotePublication": "not requested for this implementation turn; not committed or pushed",
+  "immutableSourcesUnchanged": true,
+  "limitations": [
+    "Tight-rail horizontal mid/low cue may force overhead without modifying tip or physics.",
+    "Dense-rack prediction starts after 550ms of settled input; sparse table 70ms. An indivisible physics step can still exceed a frame budget.",
+    "Local desktop performance is not real-device certification.",
+    "Creator manual embedded-page reload failed its editor IPC; restored through a clean editor restart.",
+    "Native offscreen canvas streams produced empty video and were rejected; non-empty exported-browser canvas recordings replace them."
+  ]
+}

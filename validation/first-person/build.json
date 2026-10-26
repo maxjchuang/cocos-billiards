@@ -1,0 +1,10 @@
+{
+  "engine": "3.8.7",
+  "platform": "web-mobile",
+  "debug": true,
+  "startScene": "6193b456-902a-4a13-a5f8-3dedbf3cab39",
+  "exitCode": 36,
+  "success": true,
+  "successConvention": "Creator 3.8.7 CLI successful build exits 36",
+  "nativePreviewEntry": "Open Main and Play editor preview; do not location.reload embedded WebView"
+}

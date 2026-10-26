@@ -1,7 +1,10 @@
-"""Rebuild the approved V1.14 product/UIUX documents from local design references.
+"""Rebuild the V1.15.2 product/UIUX documents from local design references.
 Requires reportlab; no remote assets and no game-source edits.
 """
 from pathlib import Path
+import sys
+sys.dont_write_bytecode = True
+from first_person_design_content import UI_FIRST_PERSON,PRODUCT_FIRST_PERSON
 import re,json
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
@@ -17,7 +20,7 @@ def lines(c,x,y,s,width,size=16,leading=27):
  for para in s.split('\n'):
   row=''
   for ch in para:
-   if pdfmetrics.stringWidth(row+ch,'Club',size)>width:
+   if pdfmetrics.stringWidth(row+ch,'Club',size)>width and ch not in '。，；、：！？）】':
     text(c,x,y,row,size);y-=leading;row=''
    row+=ch
   if row:text(c,x,y,row,size);y-=leading
@@ -29,11 +32,11 @@ def frame(c,title,subtitle,page,product=False):
  text(c,42,h-38,'EIGHT CLUB / '+('PRODUCT DESIGN' if product else 'UI UX DESIGN'),10,MUTED)
  text(c,42,h-88,title,24 if product else 29)
  lines(c,42,h-118,subtitle,w-84,11 if product else 14,18 if product else 22)
- text(c,42,24,'V1.14 / 2026.10.25 / 专业球房 · 精修 / 用户已批准实施',8 if product else 10,MUTED)
+ text(c,42,24,'V1.15.2 / 2026.10.26 / 俯视已实现 · 第一人称已实施 / 用户视觉评审待进行',8 if product else 10,MUTED)
  text(c,w-60,24,str(page),10,MUTED)
 
 def image(c,name,x,y,h):
- w=h*393/852;c.drawImage(str(D/'refinement'/f'{name}.png'),x,y,width=w,height=h,mask='auto');return w
+ w=h*393/852;source=D/(name+'.png') if name.startswith('first-person/') else D/'refinement'/f'{name}.png';c.drawImage(str(source),x,y,width=w,height=h,mask='auto');return w
 
 def paragraphs(c,items,x=440,y=706,width=700):
  for title,body in items:
@@ -41,13 +44,13 @@ def paragraphs(c,items,x=440,y=706,width=700):
  return y
 
 ui=[
- ('专业球房 · 精修','保持墨绿、胡桃木、香槟金。画面由信息层级与轻材质建立品质感；本稿替代V1.13的当前UI规范。',None,[
- ('已批准边界','双人同屏与离线AI练习；三档难度；母球白色、目标球金色完整虚线轨迹；线框图标；220ms触球同步。'),
- ('读图说明','画板393×852，安全区47/34为样例；昵称、球位、力度为展示数据。图稿不代表物理预测或真机结果。')]),
- ('主界面尺寸与安全区','R01 / 正常瞄准。所有尺寸均为逻辑像素；运行时使用平台实际安全区。','aim',[
+ ('专业球房 · 双视角','延续V1.14俯视精修，新增第一人称瞄准设计。FP章节已落地本地实现；用户视觉评审待进行。',None,[
+ ('设计范围','俯视观察与第一人称瞄准共用同一球局。新增视角不改方向、力度、打点、物理与裁判；保留双虚线和220ms触球同步。'),
+ ('读图说明','画板393×852，安全区47/34为样例；昵称、球位、力度为展示数据。FP图为构图示意，不代表引擎渲染、物理预测或设备结果。')]),
+ ('主界面尺寸与安全区','R01 / 已实现俯视布局基线；双视角入口修订见FP01。所有尺寸均为逻辑像素；运行时使用平台实际安全区。','aim',[
  ('顶部与身份','导航y47、44高；卡片x20/202、y95、171×64；头像28；球图18，号字8。状态条y163、22高，行动左对齐，图例右对齐。'),
  ('球桌与底部','球桌外框x59.98、y193、273.05×500；严格按1540:2820等比。力度x24、y707、345×44；按钮y766、高48，宽76/169/76，间隔12。'),
- ('适配顺序','320宽侧按钮68、间隔8、边距20。核心触区≥44；短屏先压留白再缩球桌，六袋完整可见。宿主菜单预留而不自绘。')]),
+ ('适配顺序','320宽侧按钮68、间隔8、边距20。核心触区≥44；短屏先压留白再缩球桌，俯视六袋完整可见。宿主菜单预留而不自绘。')]),
  ('力度与双球轨迹','R02 / 力度含义永远保留，预测状态独立显示。','aim',[
  ('独立说明','力度条常驻“击球力度”和10%–100%。轨迹图例放于回合条右侧，母球白、目标球金；预测中/未停稳/暂无法预测不覆盖力度标签。'),
  ('路径与终点','保留两球完整预测：母球4/4虚线、目标球6/4虚线，线宽1.35；白色圆十字、金色菱形停点，进袋为箭头。未完成推演不显示终点。'),
@@ -91,14 +94,15 @@ ui=[
  ('新面板过渡','进入180ms、最多4px轻位移与淡入；减少动态立即呈现。不使用循环闪烁；保留已批准A音效，不添加裁判、环境或UI声音。')]),
  ('状态覆盖与验收','R12 / 图稿用于设计，运行验收独立记录。',None,[
  ('必须覆盖','开局三档/本地模式、开放选组、摆球及非法位置、正常瞄准与所有预测状态、微调/打点、AI摆球/思考/瞄准/出杆、暂停/重开、设置/规则/记录、合法胜利/判负/看台面。'),
- ('画幅与触摸','393参考控制框误差≤1px、球桌≤2px；320/393/430画幅，无重叠或袋口遮挡，关键触区≥44。长中文、英文、emoji与七球整排要有证据。'),
+ ('画幅与触摸','393参考控制框误差≤1px、球桌≤2px；320/393/430画幅，无UI重叠，俯视无遮挡袋口，关键触区≥44；第一人称允许自然遮挡，依FP章节处理。长中文、英文、emoji与七球整排要有证据。'),
  ('验收边界','Node类型与回归测试、Creator构建、浏览器、原生Creator分别记录。真机和微信按用户既有授权豁免。联网身份/重连只保留未来规划；不把设计图作为运行通过证明。')])]
-c=canvas.Canvas(str(D/'中式八球UIUX设计方案.pdf'),pagesize=(1200,900));c.setTitle('中式八球 UI/UX V1.14');c.setAuthor('Cocos Billiards')
+ui.extend(UI_FIRST_PERSON)
+c=canvas.Canvas(str(D/'中式八球UIUX设计方案.pdf'),pagesize=(1200,900));c.setTitle('中式八球 UI/UX V1.15.2');c.setAuthor('Cocos Billiards')
 for i,(title,sub,img,items) in enumerate(ui,1):
  frame(c,title,sub,i)
  if i==1:
-  for k,n in enumerate(['aim','entry','spin','result']):image(c,n,55+k*285,210,500)
-  lines(c,55,165,'已批准：'+items[0][1],1090,15,24);lines(c,55,100,'读图说明：'+items[1][1],1090,14,24)
+  for k,n in enumerate(['first-person/FP01-overhead','first-person/FP02-aim','first-person/FP03-raised','first-person/FP04-rail']):image(c,n,55+k*285,210,500)
+  lines(c,55,165,'设计方向：'+items[0][1],1090,15,24);lines(c,55,100,'读图说明：'+items[1][1],1090,14,24)
  elif img:image(c,img,70,65,650);paragraphs(c,items)
  else:paragraphs(c,items,60,700,1080)
  c.showPage()
@@ -106,12 +110,13 @@ c.save()
 product=[
  ('产品范围与设计目标',[
  ('目标','让玩家迅速判断轮到谁、该打哪些球、如何击球，以及为什么犯规或获胜。球桌是视觉中心。'),
- ('当前范围','双人同屏与离线人机练习、单局对战，玩家一先开。AI入门/标准/挑战可调。目标仅移动端小游戏，全玩法触摸；浏览器用于开发。'),
+ ('已实现范围','双人同屏与离线人机练习、单局对战，玩家一先开。AI入门/标准/挑战可调。目标仅移动端小游戏，全玩法触摸；浏览器用于开发。'),
  ('已批准视觉','专业球房精修：墨绿、胡桃木与香槟金，轻材料层次、64高身份卡、参考500高球桌，分组开局与独立轨迹图例。'),
+ ('新增设计','第一人称瞄准与俯视切换已按V1.15.2实施；详细流程、限制与验收见后续三页及UI/UX的FP章节。'),
  ('范围外','账号、匹配、联网、排名、多局赛事、商业化、跳球/飞台和现实身体犯规不在本期。联网身份展示仍为将来预留。')]),
  ('一局流程与触摸操作',[
  ('开始','选择玩法与难度。人类先开球，在线后摆放母球，确认后进入瞄准；非法位置保留最后合法球位。'),
- ('瞄准','台面拖动只调整方向；力度10%–100%；微调±5°、步长0.1°；打点控制高低杆和左右塞，完成只确认。'),
+ ('瞄准','当前俯视台面拖动只调整方向；力度10%–100%；微调±5°、步长0.1°；打点控制高低杆和左右塞，完成只确认。'),
  ('出杆','点击锁定本杆参数、启动820ms动效；实际击球与220ms杆头触球同帧且只提交一次。球运动中禁止重复出杆。'),
  ('结算','停稳后裁判结算、打点回中；合法进本组续杆，否则按规则换人、自由球或处理开球选择。胜负显示身份和具体原因。'),
  ('恢复','暂停、后台、旋转均保留原局；继续不能重复击球。局中重开确认、结束后再来一局；可查看结束台面。')]),
@@ -138,9 +143,10 @@ product=[
  ('材料与尺寸','球径57.15mm；整桌外2820×1540、内2540×1260来自JOY Q8 Pro公开参数。整体边带推算不等于胶条宽度。BOJUE85/82为跨品牌候选，不拼成同一实测型号。'),
  ('袋口','沿用明确标注近似的共享代理，材质不能改入口边界。精确袋角、支承区、落袋线、深度未实测；旧18mm浅弧和55mm总深等参数仍作废。'),
  ('验收','布局、真实触摸流程、220ms、防重复、AI暂停恢复、七球/长名、三画幅与多次碰库均检查。Node/Creator/浏览器/真机独立报告，真机和微信已获用户豁免。')])]
-c=canvas.Canvas(str(D/'中式八球产品设计方案.pdf'),pagesize=(595.28,841.89));c.setTitle('中式八球 产品 V1.14');c.setAuthor('Cocos Billiards')
+product.extend(PRODUCT_FIRST_PERSON)
+c=canvas.Canvas(str(D/'中式八球产品设计方案.pdf'),pagesize=(595.28,841.89));c.setTitle('中式八球 产品 V1.15.2');c.setAuthor('Cocos Billiards')
 for i,(title,items) in enumerate(product,1):
- frame(c,title,'专业球房精修 / 双人同屏与离线人机练习 / 已批准实施',i,True);y=675
+ frame(c,title,'专业球房 / 双人同屏与AI已实现 / 第一人称已实施 / 用户视觉评审待进行',i,True);y=675
  for a,b in items:
   text(c,42,y,a,16);y=lines(c,42,y-26,b,510,12,21)-22
   if y<55:raise RuntimeError('Product page overflow '+str(i))

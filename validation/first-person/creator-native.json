@@ -1,0 +1,6540 @@
+{
+  "flow": {
+    "engine": "3.8.7",
+    "inputMode": "engine",
+    "viewport": [
+      294,
+      639,
+      2
+    ],
+    "results": [
+      {
+        "name": "First-person modules and fixtures are available",
+        "passed": true
+      },
+      {
+        "name": "Placement forces overhead and disables the view action",
+        "passed": true
+      },
+      {
+        "name": "Touch placement reaches ready",
+        "passed": true
+      },
+      {
+        "name": "View toggle 0",
+        "passed": true
+      },
+      {
+        "name": "View toggle 1",
+        "passed": true
+      },
+      {
+        "name": "View toggle 2",
+        "passed": true
+      },
+      {
+        "name": "View toggle 3",
+        "passed": true
+      },
+      {
+        "name": "View toggle 4",
+        "passed": true
+      },
+      {
+        "name": "View toggle 5",
+        "passed": true
+      },
+      {
+        "name": "View toggle 6",
+        "passed": true
+      },
+      {
+        "name": "View toggle 7",
+        "passed": true
+      },
+      {
+        "name": "View toggle 8",
+        "passed": true
+      },
+      {
+        "name": "View toggle 9",
+        "passed": true
+      },
+      {
+        "name": "Ten actual view touches preserve all shot parameters and rack configuration",
+        "passed": true
+      },
+      {
+        "name": "Preferred mode is stored independently",
+        "passed": true
+      },
+      {
+        "name": "Perspective camera and depth-tested world table are active",
+        "passed": true
+      },
+      {
+        "name": "HUD number impostors are hidden in perspective",
+        "passed": true
+      },
+      {
+        "name": "Small diagonal touch does not move aim",
+        "passed": true
+      },
+      {
+        "name": "Horizontal axis changes direction without lifting the eye",
+        "passed": true
+      },
+      {
+        "name": "Vertical axis changes observation and preserves exact shot direction",
+        "passed": true
+      },
+      {
+        "name": "Lifting and starting a new relative gesture never jumps to the touch point",
+        "passed": true
+      },
+      {
+        "name": "Second touch cannot steal the first-person owner",
+        "passed": true
+      },
+      {
+        "name": "Touch cancellation never shoots",
+        "passed": true
+      },
+      {
+        "name": "Tip draft freezes perspective and disables switching",
+        "passed": true
+      },
+      {
+        "name": "Tip cancel keeps view and observation height",
+        "passed": true
+      },
+      {
+        "name": "Fine aim is shared by both modes",
+        "passed": true
+      },
+      {
+        "name": "View change closes fine control without changing its result",
+        "passed": true
+      },
+      {
+        "name": "During the camera transition neither a shot nor a second switch is accepted",
+        "passed": true
+      },
+      {
+        "name": "Perspective uses the existing full-table prediction",
+        "passed": true
+      },
+      {
+        "name": "Vertical observation reuses the exact same prediction object",
+        "passed": true
+      },
+      {
+        "name": "View switches do not rerun the prediction",
+        "passed": true
+      },
+      {
+        "name": "Perspective temporarily hides the magnifier without changing its setting",
+        "passed": true
+      },
+      {
+        "name": "Real first-person touch starts motion only on the shared 220ms frame",
+        "passed": true
+      },
+      {
+        "name": "Camera stays at its shot-time pose while the cue moves",
+        "passed": true
+      },
+      {
+        "name": "Pause freezes the first-person physical shot",
+        "passed": true
+      },
+      {
+        "name": "Modal action exists resume",
+        "passed": true
+      },
+      {
+        "name": "Resume retains the shot and camera lock without committing again",
+        "passed": true
+      },
+      {
+        "name": "Moving perspective can return to overhead without overwriting the preference",
+        "passed": true
+      },
+      {
+        "name": "Moving overhead cannot enter first person",
+        "passed": true
+      },
+      {
+        "name": "A foul/free-ball state forces overhead and preserves preference",
+        "passed": true
+      },
+      {
+        "name": "Legal placement restores the preferred human view",
+        "passed": true
+      },
+      {
+        "name": "AI remains overhead and cannot be controlled through view or table input",
+        "passed": true
+      },
+      {
+        "name": "Backgrounding a camera change leaves an explicitly paused match",
+        "passed": true
+      },
+      {
+        "name": "Modal action exists resume",
+        "passed": true
+      },
+      {
+        "name": "Reset invalidates old camera lock and transitions",
+        "passed": true
+      },
+      {
+        "name": "A real side-spin prediction reports offscreen world segments",
+        "passed": true
+      },
+      {
+        "name": "Returning to perspective restores its offscreen hint without a new prediction",
+        "passed": true
+      },
+      {
+        "name": "Incomplete world prediction clears terminal markers and says not settled",
+        "passed": true
+      },
+      {
+        "name": "Invalid prediction hides the world guide while preserving the power label",
+        "passed": true
+      },
+      {
+        "name": "A paused result modal forces overhead rather than freezing the last aim view",
+        "passed": true
+      },
+      {
+        "name": "Modal action exists view-table",
+        "passed": true
+      },
+      {
+        "name": "Finished-table inspection is overhead",
+        "passed": true
+      },
+      {
+        "name": "View storage failure remains usable and displays an in-session warning",
+        "passed": true
+      },
+      {
+        "name": "No game errors or unhandled rejections",
+        "passed": true
+      }
+    ],
+    "measurements": {
+      "controlledPredictionStates": true,
+      "contact": [
+        {
+          "ms": 17.099999997764826,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 35.099999997764826,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 51.69999999925494,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 69.09999999776483,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 86.19999999925494,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 103.69999999925494,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 120.5,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 138.30000000074506,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 156.09999999776483,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 173,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 189.5,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 206.5,
+          "moved": false,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        },
+        {
+          "ms": 220,
+          "moved": true,
+          "pose": "{\"position\":{\"x\":0,\"y\":0.25,\"z\":1.1},\"target\":{\"x\":0,\"y\":0.028575,\"z\":0.27},\"distance\":0.45,\"height\":0.25,\"safe\":true,\"reason\":\"\",\"direction\":{\"x\":0,\"z\":-1},\"tip\":{\"x\":0,\"y\":0.028575,\"z\":0.7135750000000001}}"
+        }
+      ],
+      "worldBuilds": {
+        "before": 4,
+        "after": 12
+      }
+    },
+    "errors": []
+  },
+  "safety": {
+    "viewport": [
+      294,
+      639,
+      2
+    ],
+    "report": [
+      {
+        "id": "C01",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.15,
+            "z": -0.65
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": -0.65
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": -0.65
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C01",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.25,
+            "z": -0.65
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": -0.65
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": -0.65
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C02",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.15,
+            "z": -0.3
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": -0.3
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": -0.3
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999986,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C02",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.25,
+            "z": -0.3
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": -0.3
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": -0.3
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C03",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.15,
+            "z": 0.45
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": 0.45
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": 0.45
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C03",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.15042499999999998,
+            "y": 0.25,
+            "z": 0.45
+          },
+          "target": {
+            "x": -0.980425,
+            "y": 0.028575,
+            "z": 0.45
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -1,
+            "z": 0
+          },
+          "tip": {
+            "x": -0.53685,
+            "y": 0.028575,
+            "z": 0.45
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C04",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.15,
+            "z": -0.65
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": -0.65
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": -0.65
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C04",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.25,
+            "z": -0.65
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": -0.65
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": -0.65
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C05",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.15,
+            "z": -0.3
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": -0.3
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": -0.3
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000014,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C05",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.25,
+            "z": -0.3
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": -0.3
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": -0.3
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C06",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.15,
+            "z": 0.45
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": 0.45
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": 0.45
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C06",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.15042499999999998,
+            "y": 0.25,
+            "z": 0.45
+          },
+          "target": {
+            "x": 0.980425,
+            "y": 0.028575,
+            "z": 0.45
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 1,
+            "z": 0
+          },
+          "tip": {
+            "x": 0.53685,
+            "y": 0.028575,
+            "z": 0.45
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C07",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.42250000000000004,
+            "y": 0.15,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C07",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.42250000000000004,
+            "y": 0.25,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 159.9999999999999,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C08",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.195,
+            "y": 0.15,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000003,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C08",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.195,
+            "y": 0.25,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C09",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.29250000000000004,
+            "y": 0.15,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C09",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.29250000000000004,
+            "y": 0.25,
+            "z": -0.7904250000000002
+          },
+          "target": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": -1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": -1
+          },
+          "tip": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": -1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C10",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.42250000000000004,
+            "y": 0.15,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C10",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.42250000000000004,
+            "y": 0.25,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": -0.42250000000000004,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 439.4512000521053
+        },
+        "passed": true
+      },
+      {
+        "id": "C11",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.195,
+            "y": 0.15,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000003,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C11",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.195,
+            "y": 0.25,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": -0.195,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.4512000521053
+        },
+        "passed": true
+      },
+      {
+        "id": "C12",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.29250000000000004,
+            "y": 0.15,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C12",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.29250000000000004,
+            "y": 0.25,
+            "z": 0.7904250000000002
+          },
+          "target": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": 1.620425
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0,
+            "z": 1
+          },
+          "tip": {
+            "x": 0.29250000000000004,
+            "y": 0.028575,
+            "z": 1.1768500000000002
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.4512000521053
+        },
+        "passed": true
+      },
+      {
+        "id": "C13",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.13578589135497837,
+            "y": 0.15,
+            "z": -0.8978774678487971
+          },
+          "target": {
+            "x": -0.849640307025441,
+            "y": 0.028575,
+            "z": -1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.8600655610487502,
+            "z": -0.5101835264862034
+          },
+          "tip": {
+            "x": -0.4681367257832417,
+            "y": 0.028575,
+            "z": -1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000014,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C13",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.13578589135497837,
+            "y": 0.25,
+            "z": -0.8978774678487971
+          },
+          "target": {
+            "x": -0.849640307025441,
+            "y": 0.028575,
+            "z": -1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.8600655610487502,
+            "z": -0.5101835264862034
+          },
+          "tip": {
+            "x": -0.4681367257832417,
+            "y": 0.028575,
+            "z": -1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000014,
+          "y": 439.4512000521055
+        },
+        "passed": true
+      },
+      {
+        "id": "C14",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.2578774678487971,
+            "y": 0.15,
+            "z": -0.7757858913549782
+          },
+          "target": {
+            "x": -0.6813297948323459,
+            "y": 0.028575,
+            "z": -1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.5101835264862034,
+            "z": -0.8600655610487502
+          },
+          "tip": {
+            "x": -0.45502513707122827,
+            "y": 0.028575,
+            "z": -1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 406.713425463226
+        },
+        "passed": true
+      },
+      {
+        "id": "C14",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.2578774678487971,
+            "y": 0.25,
+            "z": -0.7757858913549782
+          },
+          "target": {
+            "x": -0.6813297948323459,
+            "y": 0.028575,
+            "z": -1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.5101835264862034,
+            "z": -0.8600655610487502
+          },
+          "tip": {
+            "x": -0.45502513707122827,
+            "y": 0.028575,
+            "z": -1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000003,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C15",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.06827691023020988,
+            "y": 0.15,
+            "z": -0.08633178166453531
+          },
+          "target": {
+            "x": -0.8724742202500451,
+            "y": 0.028575,
+            "z": 0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.9689124217106447,
+            "z": 0.24740395925452294
+          },
+          "tip": {
+            "x": -0.44268889278974577,
+            "y": 0.028575,
+            "z": 0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000014,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C15",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.06827691023020988,
+            "y": 0.25,
+            "z": -0.08633178166453531
+          },
+          "target": {
+            "x": -0.8724742202500451,
+            "y": 0.028575,
+            "z": 0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.9689124217106447,
+            "z": 0.24740395925452294
+          },
+          "tip": {
+            "x": -0.44268889278974577,
+            "y": 0.028575,
+            "z": 0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000003,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C16",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.06827691023020988,
+            "y": 0.15,
+            "z": 0.08633178166453531
+          },
+          "target": {
+            "x": -0.8724742202500451,
+            "y": 0.028575,
+            "z": -0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.9689124217106447,
+            "z": -0.24740395925452294
+          },
+          "tip": {
+            "x": -0.44268889278974577,
+            "y": 0.028575,
+            "z": -0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C16",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.06827691023020988,
+            "y": 0.25,
+            "z": 0.08633178166453531
+          },
+          "target": {
+            "x": -0.8724742202500451,
+            "y": 0.028575,
+            "z": -0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.9689124217106447,
+            "z": -0.24740395925452294
+          },
+          "tip": {
+            "x": -0.44268889278974577,
+            "y": 0.028575,
+            "z": -0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C17",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.2578774678487971,
+            "y": 0.15,
+            "z": 0.7757858913549782
+          },
+          "target": {
+            "x": -0.6813297948323459,
+            "y": 0.028575,
+            "z": 1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.5101835264862034,
+            "z": 0.8600655610487502
+          },
+          "tip": {
+            "x": -0.45502513707122827,
+            "y": 0.028575,
+            "z": 1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000003,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C17",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.2578774678487971,
+            "y": 0.25,
+            "z": 0.7757858913549782
+          },
+          "target": {
+            "x": -0.6813297948323459,
+            "y": 0.028575,
+            "z": 1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.5101835264862034,
+            "z": 0.8600655610487502
+          },
+          "tip": {
+            "x": -0.45502513707122827,
+            "y": 0.028575,
+            "z": 1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C18",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.13578589135497837,
+            "y": 0.15,
+            "z": 0.8978774678487971
+          },
+          "target": {
+            "x": -0.849640307025441,
+            "y": 0.028575,
+            "z": 1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.8600655610487502,
+            "z": 0.5101835264862034
+          },
+          "tip": {
+            "x": -0.4681367257832417,
+            "y": 0.028575,
+            "z": 1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C18",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": -0.13578589135497837,
+            "y": 0.25,
+            "z": 0.8978774678487971
+          },
+          "target": {
+            "x": -0.849640307025441,
+            "y": 0.028575,
+            "z": 1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": -0.8600655610487502,
+            "z": 0.5101835264862034
+          },
+          "tip": {
+            "x": -0.4681367257832417,
+            "y": 0.028575,
+            "z": 1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000014,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C19",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.2578774678487971,
+            "y": 0.15,
+            "z": -0.7757858913549782
+          },
+          "target": {
+            "x": 0.6813297948323459,
+            "y": 0.028575,
+            "z": -1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.5101835264862034,
+            "z": -0.8600655610487502
+          },
+          "tip": {
+            "x": 0.45502513707122827,
+            "y": 0.028575,
+            "z": -1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 406.713425463226
+        },
+        "passed": true
+      },
+      {
+        "id": "C19",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.2578774678487971,
+            "y": 0.25,
+            "z": -0.7757858913549782
+          },
+          "target": {
+            "x": 0.6813297948323459,
+            "y": 0.028575,
+            "z": -1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.5101835264862034,
+            "z": -0.8600655610487502
+          },
+          "tip": {
+            "x": 0.45502513707122827,
+            "y": 0.028575,
+            "z": -1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999997,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C20",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.13578589135497837,
+            "y": 0.15,
+            "z": -0.8978774678487971
+          },
+          "target": {
+            "x": 0.849640307025441,
+            "y": 0.028575,
+            "z": -1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.8600655610487502,
+            "z": -0.5101835264862034
+          },
+          "tip": {
+            "x": 0.4681367257832417,
+            "y": 0.028575,
+            "z": -1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999986,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C20",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.13578589135497837,
+            "y": 0.25,
+            "z": -0.8978774678487971
+          },
+          "target": {
+            "x": 0.849640307025441,
+            "y": 0.028575,
+            "z": -1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.8600655610487502,
+            "z": -0.5101835264862034
+          },
+          "tip": {
+            "x": 0.4681367257832417,
+            "y": 0.028575,
+            "z": -1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 159.9999999999999,
+          "y": 439.4512000521055
+        },
+        "passed": true
+      },
+      {
+        "id": "C21",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.06827691023020988,
+            "y": 0.15,
+            "z": 0.08633178166453531
+          },
+          "target": {
+            "x": 0.8724742202500451,
+            "y": 0.028575,
+            "z": -0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.9689124217106447,
+            "z": -0.24740395925452294
+          },
+          "tip": {
+            "x": 0.44268889278974577,
+            "y": 0.028575,
+            "z": -0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 160.00000000000006,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C21",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.06827691023020988,
+            "y": 0.25,
+            "z": 0.08633178166453531
+          },
+          "target": {
+            "x": 0.8724742202500451,
+            "y": 0.028575,
+            "z": -0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.9689124217106447,
+            "z": -0.24740395925452294
+          },
+          "tip": {
+            "x": 0.44268889278974577,
+            "y": 0.028575,
+            "z": -0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C22",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.06827691023020988,
+            "y": 0.15,
+            "z": -0.08633178166453531
+          },
+          "target": {
+            "x": 0.8724742202500451,
+            "y": 0.028575,
+            "z": 0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.9689124217106447,
+            "z": 0.24740395925452294
+          },
+          "tip": {
+            "x": 0.44268889278974577,
+            "y": 0.028575,
+            "z": 0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999986,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C22",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.06827691023020988,
+            "y": 0.25,
+            "z": -0.08633178166453531
+          },
+          "target": {
+            "x": 0.8724742202500451,
+            "y": 0.028575,
+            "z": 0.11901350451671872
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.9689124217106447,
+            "z": 0.24740395925452294
+          },
+          "tip": {
+            "x": 0.44268889278974577,
+            "y": 0.028575,
+            "z": 0.009271293290393709
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999997,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C23",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.13578589135497837,
+            "y": 0.15,
+            "z": 0.8978774678487971
+          },
+          "target": {
+            "x": 0.849640307025441,
+            "y": 0.028575,
+            "z": 1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.8600655610487502,
+            "z": 0.5101835264862034
+          },
+          "tip": {
+            "x": 0.4681367257832417,
+            "y": 0.028575,
+            "z": 1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 160,
+          "y": 406.71342546322614
+        },
+        "passed": true
+      },
+      {
+        "id": "C23",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.13578589135497837,
+            "y": 0.25,
+            "z": 0.8978774678487971
+          },
+          "target": {
+            "x": 0.849640307025441,
+            "y": 0.028575,
+            "z": 1.321329794832346
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.8600655610487502,
+            "z": 0.5101835264862034
+          },
+          "tip": {
+            "x": 0.4681367257832417,
+            "y": 0.028575,
+            "z": 1.0950251370712283
+          }
+        },
+        "projectedCue": {
+          "x": 159.9999999999999,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C24",
+        "height": 0.15,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.2578774678487971,
+            "y": 0.15,
+            "z": 0.7757858913549782
+          },
+          "target": {
+            "x": 0.6813297948323459,
+            "y": 0.028575,
+            "z": 1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.15,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.5101835264862034,
+            "z": 0.8600655610487502
+          },
+          "tip": {
+            "x": 0.45502513707122827,
+            "y": 0.028575,
+            "z": 1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999997,
+          "y": 406.71342546322603
+        },
+        "passed": true
+      },
+      {
+        "id": "C24",
+        "height": 0.25,
+        "mode": "first-person",
+        "pose": {
+          "position": {
+            "x": 0.2578774678487971,
+            "y": 0.25,
+            "z": 0.7757858913549782
+          },
+          "target": {
+            "x": 0.6813297948323459,
+            "y": 0.028575,
+            "z": 1.489640307025441
+          },
+          "distance": 0.45,
+          "height": 0.25,
+          "safe": true,
+          "reason": "",
+          "direction": {
+            "x": 0.5101835264862034,
+            "z": 0.8600655610487502
+          },
+          "tip": {
+            "x": 0.45502513707122827,
+            "y": 0.028575,
+            "z": 1.1081367257832415
+          }
+        },
+        "projectedCue": {
+          "x": 159.99999999999994,
+          "y": 439.45120005210543
+        },
+        "passed": true
+      },
+      {
+        "id": "C25",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 260.40700535533387
+        },
+        "passed": true
+      },
+      {
+        "id": "C25",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 260.40700535533387
+        },
+        "passed": true
+      },
+      {
+        "id": "C26",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 313.0944420321323
+        },
+        "passed": true
+      },
+      {
+        "id": "C26",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 313.0944420321323
+        },
+        "passed": true
+      },
+      {
+        "id": "C27",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 425.99609205384314
+        },
+        "passed": true
+      },
+      {
+        "id": "C27",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 69.61470238095237,
+          "y": 425.99609205384314
+        },
+        "passed": true
+      },
+      {
+        "id": "C28",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 260.40700535533387
+        },
+        "passed": true
+      },
+      {
+        "id": "C28",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 260.40700535533387
+        },
+        "passed": true
+      },
+      {
+        "id": "C29",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 313.0944420321323
+        },
+        "passed": true
+      },
+      {
+        "id": "C29",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 313.0944420321323
+        },
+        "passed": true
+      },
+      {
+        "id": "C30",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 425.99609205384314
+        },
+        "passed": true
+      },
+      {
+        "id": "C30",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 250.38529761904763,
+          "y": 425.99609205384314
+        },
+        "passed": true
+      },
+      {
+        "id": "C31",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 96.39873715443623,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C31",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 96.39873715443623,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C32",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 130.64557099435518,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C32",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 130.64557099435518,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C33",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 204.03164350846723,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C33",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 204.03164350846723,
+          "y": 171.5270630699091
+        },
+        "passed": true
+      },
+      {
+        "id": "C34",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 96.39873715443623,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      },
+      {
+        "id": "C34",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 96.39873715443623,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      },
+      {
+        "id": "C35",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 130.64557099435518,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      },
+      {
+        "id": "C35",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 130.64557099435518,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      },
+      {
+        "id": "C36",
+        "height": 0.15,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 204.03164350846723,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      },
+      {
+        "id": "C36",
+        "height": 0.25,
+        "mode": "overhead",
+        "pose": null,
+        "projectedCue": {
+          "x": 204.03164350846723,
+          "y": 544.9831410117242
+        },
+        "passed": true
+      }
+    ]
+  },
+  "layout": {
+    "viewport": [
+      294,
+      639,
+      2
+    ],
+    "hud": [
+      320.00000000000006,
+      695.5102040816328,
+      1.8375
+    ],
+    "rects": [
+      {
+        "x": 147.99999999999997,
+        "y": 1.1368683772161603e-13,
+        "w": 55.99999999999999,
+        "h": 43.99999999999995
+      },
+      {
+        "x": 14.000000000000004,
+        "y": 1.1368683772161603e-13,
+        "w": 43.999999999999986,
+        "h": 43.99999999999995
+      },
+      {
+        "x": 20,
+        "y": 643.5102040816328,
+        "w": 68,
+        "h": 48.00000000000002
+      },
+      {
+        "x": 95.99999999999997,
+        "y": 643.5102040816328,
+        "w": 128.00000000000006,
+        "h": 48.00000000000002
+      },
+      {
+        "x": 232.00000000000006,
+        "y": 643.5102040816328,
+        "w": 67.99999999999997,
+        "h": 48.00000000000002
+      },
+      {
+        "x": 20,
+        "y": 584.5102040816328,
+        "w": 280,
+        "h": 44.00000000000001
+      }
+    ],
+    "checks": [
+      {
+        "name": "All perspective HUD touch targets are at least 44 logical pixels",
+        "passed": true
+      },
+      {
+        "name": "All perspective controls remain inside the canvas and safe area",
+        "passed": true
+      },
+      {
+        "name": "Perspective controls do not overlap",
+        "passed": true
+      },
+      {
+        "name": "View action keeps eight pixels before the reference host capsule",
+        "passed": true
+      },
+      {
+        "name": "HUD remains orthographic in perspective mode",
+        "passed": true
+      },
+      {
+        "name": "Camera aspect matches the actual reserved scene rectangle",
+        "passed": true
+      }
+    ]
+  },
+  "pairs": {
+    "scope": "Actual Cocos frame loop, synthetic engine touch, controlled 0.1s per rendered frame; separate contact tests use natural time",
+    "report": [
+      {
+        "id": "E01",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -0.28702450678222624,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.501265735508597,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.9583108968661875
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 1.2990437658247354
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.3904937297237246
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 837.1999999992549
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -0.28702450678222624,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.501265735508597,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.9583108968661875
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 1.2990437658247354
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.3904937297237246
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 831.6000000014901
+          }
+        ]
+      },
+      {
+        "id": "E02",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.32618354993591625,
+                "z": -1.2126423371591912,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0.6149950210633113,
+                "z": -1.2736814788082378,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.7609819907022664
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 3,
+                "speed": 1.1328360798596517
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.4117404992092833
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 0.17909843500984857
+              }
+            ],
+            "winner": null,
+            "message": "合法进球，继续击球",
+            "wallMs": 861.5999999977648
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.32618354993591625,
+                "z": -1.2126423371591912,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0.6149950210633113,
+                "z": -1.2736814788082378,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.7609819907022664
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 3,
+                "speed": 1.1328360798596517
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.4117404992092833
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 0.17909843500984857
+              }
+            ],
+            "winner": null,
+            "message": "合法进球，继续击球",
+            "wallMs": 870.8000000007451
+          }
+        ]
+      },
+      {
+        "id": "E03",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.3261835499359177,
+                "z": -1.2126423371591895,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": -0.03224264156912472,
+                "z": -0.7443873214553489,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.30240391712219294,
+                "z": -0.8162125511031263,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.7609819907022664
+              },
+              {
+                "type": "contact",
+                "a": 1,
+                "b": 8,
+                "speed": 0.1698882839974592
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "left",
+                "speed": 0.5431151912046704
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.8381547591868277
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 0.4117404992092833
+              },
+              {
+                "type": "contact",
+                "a": 1,
+                "b": 8,
+                "speed": 0.09314891772370557
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 0.17909843500984857
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 923.5
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.3261835499359177,
+                "z": -1.2126423371591895,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": -0.03224264156912472,
+                "z": -0.7443873214553489,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.30240391712219294,
+                "z": -0.8162125511031263,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.7609819907022664
+              },
+              {
+                "type": "contact",
+                "a": 1,
+                "b": 8,
+                "speed": 0.1698882839974592
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "left",
+                "speed": 0.5431151912046704
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.8381547591868277
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 0.4117404992092833
+              },
+              {
+                "type": "contact",
+                "a": 1,
+                "b": 8,
+                "speed": 0.09314891772370557
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 0.17909843500984857
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 907.5
+          }
+        ]
+      },
+      {
+        "id": "E04",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -1.1296172865461973,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -1.2402558704448572,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 4.242453539490452
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 4.071791001277191
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 3.6318022494343216
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "bottom",
+                "speed": 1.9153136448673413
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.17540177688757486
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.044502068422446736
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 1310.3999999985099
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -1.1296172865461973,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -1.2402558704448572,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 4.242453539490452
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 4.071791001277191
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 3.6318022494343216
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "bottom",
+                "speed": 1.9153136448673413
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.17540177688757486
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.044502068422446736
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 1320.199999999255
+          }
+        ]
+      },
+      {
+        "id": "E05",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.3467290382430727,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.9766837394493214,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.187323912000766
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.6205787115797606
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 836.1000000014901
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.3467290382430727,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.9766837394493214,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.187323912000766
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.6205787115797606
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 827
+          }
+        ]
+      },
+      {
+        "id": "E06",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -0.6067785488728814,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -1.0354430101282233,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 2.0049067139035155
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 1.3347702060303257
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.8504051277354834
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 760.6000000014901
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": -0.6067785488728814,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -1.0354430101282233,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 2.0049067139035155
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 1.3347702060303257
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 0.8504051277354834
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 765.8000000007451
+          }
+        ]
+      },
+      {
+        "id": "E07",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.2409887051068245,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.5576004436108152,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.5737012239769392
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.9980303045066988
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 908.6000000014901
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.2409887051068245,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": -0.5576004436108152,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.5737012239769392
+              },
+              {
+                "type": "cushion",
+                "id": 1,
+                "side": "top",
+                "speed": 0.9980303045066988
+              }
+            ],
+            "winner": null,
+            "message": "本杆结束，交换击球权",
+            "wallMs": 904.3999999985099
+          }
+        ]
+      },
+      {
+        "id": "E08",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.48757151806336724,
+                "z": -0.6953509847602691,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 1.4950543527756637
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.31587864916385605
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 880
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.48757151806336724,
+                "z": -0.6953509847602691,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 1.4950543527756637
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.31587864916385605
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 884.6999999992549
+          }
+        ]
+      },
+      {
+        "id": "E09",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.5068719063937541,
+                "z": 1.2312867260540663,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 1.4950543527756637
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.31587864916385605
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "bottom",
+                "speed": 0.0947047430368565
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 781.5
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.5068719063937541,
+                "z": 1.2312867260540663,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 1.4950543527756637
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 0.31587864916385605
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "bottom",
+                "speed": 0.0947047430368565
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 786.3000000007451
+          }
+        ]
+      },
+      {
+        "id": "E10",
+        "passed": true,
+        "endpointErrorM": null,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6171404701971229,
+                "z": 1.2715360296744262,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.6728625,
+                "z": 0.004184777960341647,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 7.052850000000017
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 5.613632118487249
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 3.909682462921945
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 2.0392191871241705
+              },
+              {
+                "type": "cushion",
+                "id": 8,
+                "side": "right",
+                "speed": 3.011668196918493
+              },
+              {
+                "type": "cushion",
+                "id": 8,
+                "side": "left",
+                "speed": 0.6516087306188256
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 1,
+                "speed": 1.3286898646676955
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 0.8144700512549663
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 2,
+                "speed": 0.3285186591756783
+              }
+            ],
+            "winner": 1,
+            "message": "P2 获胜！对手进8同时犯规：白球落袋",
+            "wallMs": 947.1000000014901
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6171404701971229,
+                "z": 1.2715360296744262,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.6728625,
+                "z": 0.004184777960341647,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 7.052850000000017
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "left",
+                "speed": 5.613632118487249
+              },
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 3.909682462921945
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "top",
+                "speed": 2.0392191871241705
+              },
+              {
+                "type": "cushion",
+                "id": 8,
+                "side": "right",
+                "speed": 3.011668196918493
+              },
+              {
+                "type": "cushion",
+                "id": 8,
+                "side": "left",
+                "speed": 0.6516087306188256
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 1,
+                "speed": 1.3286898646676955
+              },
+              {
+                "type": "cushion",
+                "id": 0,
+                "side": "right",
+                "speed": 0.8144700512549663
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 2,
+                "speed": 0.3285186591756783
+              }
+            ],
+            "winner": 1,
+            "message": "P2 获胜！对手进8同时犯规：白球落袋",
+            "wallMs": 946.1000000014901
+          }
+        ]
+      },
+      {
+        "id": "E11",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 4,
+                "speed": 0.8526466071428564
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋、未碰目标球",
+            "wallMs": 153
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 4,
+                "speed": 0.8526466071428564
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋、未碰目标球",
+            "wallMs": 157.19999999925494
+          }
+        ]
+      },
+      {
+        "id": "E12",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6243382499357671,
+                "z": -1.264338249935782,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.6243382499357761,
+                "z": -1.264338249935773,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.574719230277437
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 0,
+                "speed": 1.2085749954098886
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 0,
+                "speed": 0.24385089613579297
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋",
+            "wallMs": 275.30000000074506
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6243382499357671,
+                "z": -1.264338249935782,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.6243382499357761,
+                "z": -1.264338249935773,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.574719230277437
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 0,
+                "speed": 1.2085749954098886
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 0,
+                "speed": 0.24385089613579297
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋",
+            "wallMs": 271.0999999977648
+          }
+        ]
+      },
+      {
+        "id": "E13",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.5747189776306465
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 1,
+                "speed": 1.2085748754227668
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 1,
+                "speed": 0.24385098184087461
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋",
+            "wallMs": 269.80000000074506
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": -0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 1,
+                "speed": 1.5747189776306465
+              },
+              {
+                "type": "pocket",
+                "id": 1,
+                "pocket": 1,
+                "speed": 1.2085748754227668
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 1,
+                "speed": 0.24385098184087461
+              }
+            ],
+            "winner": null,
+            "message": "P1 犯规：白球落袋",
+            "wallMs": 279.5999999977648
+          }
+        ]
+      },
+      {
+        "id": "E14",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.551623184327345,
+                "z": 0,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 0.9271180397611967
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 4,
+                "speed": 0.6351251339964519
+              }
+            ],
+            "winner": 0,
+            "message": "P1 获胜！合法打进8号球",
+            "wallMs": 359.6000000014901
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.551623184327345,
+                "z": 0,
+                "pocketed": false
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": true
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 0.9271180397611967
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 4,
+                "speed": 0.6351251339964519
+              }
+            ],
+            "winner": 0,
+            "message": "P1 获胜！合法打进8号球",
+            "wallMs": 357.5
+          }
+        ]
+      },
+      {
+        "id": "E15",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.3,
+                "z": -0.7,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 1.1411023013186776
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 4,
+                "speed": 0.7923471786724875
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 4,
+                "speed": 0.2842924641846496
+              }
+            ],
+            "winner": 1,
+            "message": "P2 获胜！对手提前打进8号球（含同杆清组进8）",
+            "wallMs": 242.5
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": -0.3,
+                "z": -0.7,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": 0.6728625,
+                "z": 0,
+                "pocketed": true
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [
+              {
+                "type": "contact",
+                "a": 0,
+                "b": 8,
+                "speed": 1.1411023013186776
+              },
+              {
+                "type": "pocket",
+                "id": 8,
+                "pocket": 4,
+                "speed": 0.7923471786724875
+              },
+              {
+                "type": "pocket",
+                "id": 0,
+                "pocket": 4,
+                "speed": 0.2842924641846496
+              }
+            ],
+            "winner": 1,
+            "message": "P2 获胜！对手提前打进8号球（含同杆清组进8）",
+            "wallMs": 234.89999999850988
+          }
+        ]
+      },
+      {
+        "id": "E16",
+        "passed": true,
+        "endpointErrorM": 0,
+        "eventsEqual": true,
+        "outcome": true,
+        "runs": [
+          {
+            "mode": "overhead",
+            "actualMode": "overhead",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.21323528943453388,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 564.2000000029802
+          },
+          {
+            "mode": "first-person",
+            "actualMode": "first-person",
+            "balls": [
+              {
+                "id": 0,
+                "x": 0,
+                "z": 0.21323528943453388,
+                "pocketed": true
+              },
+              {
+                "id": 1,
+                "x": 0,
+                "z": 0.1,
+                "pocketed": false
+              },
+              {
+                "id": 2,
+                "x": 0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 3,
+                "x": 0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 4,
+                "x": -0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 5,
+                "x": 0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 6,
+                "x": -0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 7,
+                "x": 0,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 8,
+                "x": -0.35,
+                "z": -0.8,
+                "pocketed": false
+              },
+              {
+                "id": 9,
+                "x": -0.02858,
+                "z": -0.6845020120803185,
+                "pocketed": true
+              },
+              {
+                "id": 10,
+                "x": -0.05716,
+                "z": -0.734004024160637,
+                "pocketed": true
+              },
+              {
+                "id": 11,
+                "x": -0.08574000000000001,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 12,
+                "x": 0.02858,
+                "z": -0.7835060362409556,
+                "pocketed": true
+              },
+              {
+                "id": 13,
+                "x": -0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 14,
+                "x": 0.05716,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              },
+              {
+                "id": 15,
+                "x": 0.11432,
+                "z": -0.8330080483212741,
+                "pocketed": true
+              }
+            ],
+            "events": [],
+            "winner": null,
+            "message": "P1 犯规：未碰目标球",
+            "wallMs": 563.1999999992549
+          }
+        ]
+      }
+    ]
+  }
+}

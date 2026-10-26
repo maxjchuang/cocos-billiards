@@ -1,0 +1,16 @@
+{
+  "privacyScan": "passed; tracked and candidate text plus PDF extracted text",
+  "sourceAndBuildHashes": "passed",
+  "immutableHashes": "passed",
+  "mainSceneAndGameMeta": "unchanged",
+  "evidenceLinks": "passed",
+  "runtimeErrors": 0,
+  "editorWarning": "Cocos engine getGamepad Secure Context warning; no gameplay gamepad input added",
+  "tests": 238,
+  "buildExit": 36,
+  "tasks": 18,
+  "criteria": 11,
+  "screenshots": 96,
+  "decodedVideos": 7,
+  "remotePublication": "not committed or pushed"
+}

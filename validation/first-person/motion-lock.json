@@ -1,0 +1,16 @@
+[
+  {
+    "clip": "contact-60fps.webm",
+    "fps": 60,
+    "firstMoveMs": 220,
+    "lateFrames": 131,
+    "poseStableAfter820ms": true
+  },
+  {
+    "clip": "contact-10fps.webm",
+    "fps": 10,
+    "firstMoveMs": 220,
+    "lateFrames": 21,
+    "poseStableAfter820ms": true
+  }
+]

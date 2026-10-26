@@ -1,0 +1,22 @@
+{
+  "baseCommit": "a84fb99ac608dee0c7b49956d5d62421ba198677",
+  "date": "2026-10-26",
+  "design": "1.15.1",
+  "status": "implementation started; checks pending",
+  "existingTests": 179,
+  "hardwareAndWechat": "waived by user",
+  "baselineChecks": {
+    "typecheck": true,
+    "tests": 179,
+    "failures": 0
+  },
+  "immutableSources": {
+    "BilliardsPhysics": "b600ca82c2e6980ecb43be33c43cc6a1774526ad96c48d4f460c9d599d761fcb",
+    "BilliardsContact": "0765a86e1a1e773ea5a614866185773cf1c34bf659b739ad5cc1fa2d87303cb0",
+    "BilliardsRules": "295001defc012e8aa84af9e2bc6d9bb1bf67955851c28d001ba642ae29de0a7c",
+    "BilliardsShot": "d7a620429624324820b3a7e58e26e5c84f81fa80c1507c801ca5b67af1e968ca",
+    "BilliardsTableGeometry": "e00975d826bef7540153d8e6d511eb60ffcf8155ee00104df9f95291e20da903",
+    "BilliardsAI": "9356b120a1f16a95f01f6bf73712c701069d45015c0629d8fbd4514a781c4bf7",
+    "BilliardsRack": "9f5e362770f0fbd28561ecfbcd132748d3d16d6c66142ab4b667c115cdaa93f3"
+  }
+}

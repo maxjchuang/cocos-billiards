@@ -1,0 +1,1113 @@
+{
+  "scope": "Actual Creator preview canvas captures; synthetic setups, no real-device certification",
+  "samples": [
+    {
+      "label": "open-far-low-clean",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-far-low-guide",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-far-low-shadow-off",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "open-far-high-clean",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-far-high-guide",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-far-high-shadow-off",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": false,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "open-near-low-clean",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-near-low-guide",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-near-low-shadow-off",
+      "heightRequested": 0.15,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.15,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "open-near-high-clean",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-near-high-guide",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "open-near-high-shadow-off",
+      "heightRequested": 0.25,
+      "gapM": null,
+      "rail": false,
+      "near": true,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 0,
+          "y": 0.25,
+          "z": 1.1
+        },
+        "target": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.27
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": 0,
+          "z": -1
+        },
+        "tip": {
+          "x": 0,
+          "y": 0.028575,
+          "z": 0.7135750000000001
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "rail-far-low-clean",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-far-low-guide",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-far-low-shadow-off",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "rail-far-high-clean",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-far-high-guide",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-far-high-shadow-off",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": false,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "rail-near-low-clean",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-near-low-guide",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-near-low-shadow-off",
+      "heightRequested": 0.15,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.15,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.15,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    },
+    {
+      "label": "rail-near-high-clean",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": false,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-near-high-guide",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": true,
+      "shadows": true,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 2
+    },
+    {
+      "label": "rail-near-high-shadow-off",
+      "heightRequested": 0.25,
+      "gapM": 0.02,
+      "rail": true,
+      "near": true,
+      "guides": false,
+      "shadows": false,
+      "mode": "first-person",
+      "pose": {
+        "position": {
+          "x": 1.031425,
+          "y": 0.25,
+          "z": 0.25
+        },
+        "target": {
+          "x": 0.20142499999999997,
+          "y": 0.028575,
+          "z": 0.25
+        },
+        "distance": 0.45,
+        "height": 0.25,
+        "safe": true,
+        "reason": "",
+        "direction": {
+          "x": -1,
+          "z": 0
+        },
+        "tip": {
+          "x": 0.6383813130101572,
+          "y": 0.046863,
+          "z": 0.25
+        }
+      },
+      "ballHeight": 0.028575,
+      "radius": 0.028575,
+      "clothTop": 0,
+      "hdr": false,
+      "light": {
+        "illuminance": 0.85,
+        "pcf": 3,
+        "mapSize": 1024
+      },
+      "footprints": 0
+    }
+  ],
+  "videos": [
+    {
+      "name": "open-far-height.webm",
+      "bytes": 0,
+      "unchanged": true,
+      "valid": false
+    },
+    {
+      "name": "open-near-height.webm",
+      "bytes": 0,
+      "unchanged": true,
+      "valid": false
+    },
+    {
+      "name": "rail-far-height.webm",
+      "bytes": 0,
+      "unchanged": true,
+      "valid": false
+    },
+    {
+      "name": "rail-near-height.webm",
+      "bytes": 0,
+      "unchanged": true,
+      "valid": false
+    }
+  ],
+  "cameraScreens": 72,
+  "nativeRecordingFailure": "Creator offscreen canvas captureStream produced empty blobs; not valid video evidence. Browser canvas recordings used instead."
+}
