@@ -38,3 +38,32 @@ test('search deadline returns the current best immutable command without requiri
 test('AI referee copies cannot consume the live rack factory on a simulated re-rack',()=>{
  let calls=0;const ref=new rules.Referee(()=>{calls++;return p.createRack();});Object.assign(ref,{phase:'choice',breakChoice:'illegal',current:1});const copy=ref.cloneForSimulation(),balls=p.createRack();copy.chooseBreak(balls,'self');assert.equal(calls,0);assert.equal(ref.phase,'choice');assert.equal(copy.phase,'placing');
 });
+
+const {naturalFixtures}=require('../scripts/ai-natural-fixtures.cjs');
+const natural=name=>naturalFixtures(rules).find(f=>f.name===name);
+for(const difficulty of ['easy','standard','hard'])test(`natural ${difficulty} does not kick around an available direct defense`,()=>{
+ const f=natural('draw'),{planner,decision}=run(f,difficulty,19),result=evaluate(modules,f.balls,f.ref,decision);
+ assert.equal(decision.route,'direct');assert.equal(decision.reason,'direct-priority');assert.ok(result.legal);
+ if(difficulty!=='hard')assert.ok(planner.reports.every(r=>r.preContactCushions===0));
+});
+test('a blocked centre ray still admits a visible thin direct contact',()=>{
+ const f=natural('partly-blocked'),candidates=ai.generateAICandidates(f.balls,f.ref,'standard');assert.ok(candidates.some(c=>c.route==='direct'));
+ const {decision}=run(f,'standard',19);assert.equal(decision.route,'direct');assert.ok(evaluate(modules,f.balls,f.ref,decision).legal);
+});
+for(const difficulty of ['easy','standard','hard'])test(`natural ${difficulty} retains a referee-evaluated kick escape when fully blocked`,()=>{
+ const f=natural('fully-blocked'),candidates=ai.generateAICandidates(f.balls,f.ref,difficulty);assert.ok(candidates.length);assert.ok(candidates.every(c=>c.route==='kick'));
+ const {planner,decision}=run(f,difficulty,19);assert.equal(decision.route,'kick');assert.equal(decision.reason,'no-safe-direct-contact');assert.ok(planner.reports.some(r=>r.complete&&!r.foul&&r.preContactCushions>0));assert.ok(evaluate(modules,f.balls,f.ref,decision).settled);
+});
+test('challenge risk work is deterministic, bounded and may be cancelled without publishing a stale shot',()=>{
+ const f=natural('simple'),a=run(f,'hard',19),b=run(f,'hard',19);assert.deepEqual(a.planner.riskReports,b.planner.riskReports);assert.ok(a.planner.riskReports.length>0&&a.planner.riskReports.length<=8);assert.deepEqual(a.decision,b.decision);assert.equal(a.decision.route,'direct');
+ const turn=new ai.AITurn();turn.begin(f.balls,f.ref,'hard',19);while(turn.planner.reports.length<1)turn.work(80);turn.clock(ai.AI_LEVELS.hard.deadlineMs);assert.equal(turn.locked.route,'direct');assert.notEqual(turn.locked.reason,'robust-kick-advantage');turn.cancel();assert.equal(turn.locked,null);
+});
+test('challenge rejects a nominal kick pot when execution-error stress exposes its risk',()=>{
+ const f=natural('rail-contact'),{planner,decision}=run(f,'hard',19);
+ const attacking=planner.reports.find(r=>r.preContactCushions>0&&!r.foul&&r.targetPotted);
+ assert.ok(attacking,'fixture contains a real nominal kick pot');const probes=planner.riskReports.filter(r=>r.index===attacking.index);assert.equal(probes.length,4);assert.ok(probes.some(r=>r.foul||!r.targetPotted||r.preContactCushions!==1));assert.equal(decision.route,'direct');assert.equal(decision.reason,'direct-priority');
+});
+test('beginner spends its escape budget on a gap narrower than its execution error',()=>{
+ const f=natural('partly-blocked'),candidates=ai.generateAICandidates(f.balls,f.ref,'easy'),direct=candidates.filter(c=>c.route==='direct');assert.ok(direct.length>0&&direct.length<=2);assert.ok(direct.every(c=>c.contactStable===false));assert.ok(candidates.some(c=>c.route==='kick'));
+ const {planner,decision}=run(f,'easy',19);assert.equal(decision.route,'kick');assert.equal(decision.reason,'no-safe-direct-contact');assert.ok(planner.reports.some(r=>r.preContactCushions>0));assert.ok(planner.reports.length<=ai.AI_LEVELS.easy.trials);
+});

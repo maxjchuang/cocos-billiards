@@ -1,0 +1,180 @@
+{
+  "scope": "Actual engine frame loop; unit-mass layouts, fixed AI execution seed19; checks selection, first contact and logical 220ms, not full-match win rates",
+  "viewport": [
+    226,
+    490,
+    2
+  ],
+  "cases": [
+    {
+      "name": "draw",
+      "difficulty": "standard",
+      "decision": {
+        "direction": {
+          "x": 0.9947871944233382,
+          "z": 0.1019727307241674
+        },
+        "power": 2.316325659038499,
+        "tip": {
+          "x": 0,
+          "y": 0.45
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "route": "direct",
+        "prior": 19.45,
+        "contactStable": true,
+        "difficulty": "standard",
+        "seed": 19,
+        "score": 101.47550791627519,
+        "trials": 18,
+        "fallback": false,
+        "reason": "direct-priority",
+        "robustness": {
+          "samples": 1,
+          "passed": 0,
+          "meanScore": 101.47550791627519
+        }
+      },
+      "preContactCushions": 0,
+      "firstContact": {
+        "type": "contact",
+        "a": 0,
+        "b": 1,
+        "speed": 1.839190257612182
+      },
+      "contactMs": 220,
+      "wallMs": 3828.1000000089407,
+      "passed": true
+    },
+    {
+      "name": "fully-blocked",
+      "difficulty": "standard",
+      "decision": {
+        "direction": {
+          "x": 0.7093351639881804,
+          "z": -0.7048713536028125
+        },
+        "power": 2.8954070737981237,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "route": "kick",
+        "prior": 14.150463637844148,
+        "difficulty": "standard",
+        "seed": 19,
+        "score": 95.0149861446405,
+        "trials": 14,
+        "fallback": false,
+        "reason": "no-safe-direct-contact",
+        "robustness": {
+          "samples": 1,
+          "passed": 0,
+          "meanScore": 95.0149861446405
+        }
+      },
+      "preContactCushions": 1,
+      "firstContact": {
+        "type": "contact",
+        "a": 0,
+        "b": 1,
+        "speed": 1.2100832585441992
+      },
+      "contactMs": 220,
+      "wallMs": 4129.9000000059605,
+      "passed": true
+    },
+    {
+      "name": "partly-blocked",
+      "difficulty": "standard",
+      "decision": {
+        "direction": {
+          "x": -0.031368226881817986,
+          "z": -0.9995078960880153
+        },
+        "power": 2.316325659038499,
+        "tip": {
+          "x": 0,
+          "y": -0.45
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "route": "direct",
+        "prior": 18.1,
+        "contactStable": true,
+        "difficulty": "standard",
+        "seed": 19,
+        "score": 83.27549194949711,
+        "trials": 11,
+        "fallback": false,
+        "reason": "direct-priority",
+        "robustness": {
+          "samples": 1,
+          "passed": 0,
+          "meanScore": 83.27549194949711
+        }
+      },
+      "preContactCushions": 0,
+      "firstContact": {
+        "type": "contact",
+        "a": 0,
+        "b": 1,
+        "speed": 0.7847689314173918
+      },
+      "contactMs": 220,
+      "wallMs": 4565.5999999940395,
+      "passed": true
+    },
+    {
+      "name": "rail-contact",
+      "difficulty": "hard",
+      "decision": {
+        "direction": {
+          "x": -0.00635819440904439,
+          "z": 0.9999797864776352
+        },
+        "power": 2.380874436351657,
+        "tip": {
+          "x": 0,
+          "y": 0
+        },
+        "group": "solid",
+        "target": 1,
+        "kind": "safety",
+        "route": "direct",
+        "prior": 19.2,
+        "contactStable": true,
+        "difficulty": "hard",
+        "seed": 19,
+        "score": 1657.9227761576567,
+        "trials": 20,
+        "fallback": false,
+        "reason": "direct-priority",
+        "robustness": {
+          "samples": 1,
+          "passed": 1,
+          "meanScore": 1657.9227761576567
+        }
+      },
+      "preContactCushions": 0,
+      "firstContact": {
+        "type": "contact",
+        "a": 0,
+        "b": 1,
+        "speed": 1.692047533736093
+      },
+      "contactMs": 220,
+      "wallMs": 5722,
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "engine": "3.8.7",
+  "engineVersionSource": "same-session creator-native.json regression cc.ENGINE_VERSION"
+}

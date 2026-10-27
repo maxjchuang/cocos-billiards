@@ -1,5 +1,5 @@
 {
-  "version": "1.15.2",
+  "version": "1.15.3",
   "date": "2026-10-26",
   "direction": "专业球房 · 精修",
   "referenceFrame": [
@@ -173,5 +173,12 @@
       "local rail/frame transparency; never deny perspective for cue obstruction"
     ],
     "accessRevision": "view-access.md"
+  },
+  "aiNaturalSelection": {
+    "spec": "ai-opponent.md",
+    "priority": "stable direct attack/defense; kicks for no safe direct contact",
+    "hardProactiveKick": "five stress points all legal, first intended target and pot; mean score at least 600 above best direct",
+    "evidence": "validation/ai-natural/README.md",
+    "simulation": "same fixed-step physics and referee; no rack RNG changes"
   }
 }

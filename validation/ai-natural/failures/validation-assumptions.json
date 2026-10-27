@@ -1,0 +1,20 @@
+{
+  "observerProbe": {
+    "failure": "Hypothetical trial contact was recorded before a real decision/commit",
+    "cause": "Test bound live.observe to the live referee; simulation clones inherited the bound callback",
+    "correction": "Use prototype observe with dynamic this; only record events when this is the live referee",
+    "productionRulesChanged": false
+  },
+  "legacyNativeRegression": {
+    "failure": "AI completes the separate legal black-eight shot and wins",
+    "originalFixture": "Controlled positions but random rack masses and game-id execution seed retained",
+    "completeFailingCommandSaved": false,
+    "correction": "Explicit success fixtures now specify unit masses and execution seed19, matching the pure controlled suite. Ordinary live opening retains its production seed.",
+    "productionErrorsOrMassesChanged": false,
+    "limits": "This does not establish that every arbitrary execution seed wins; all 66 before/after cases including fouls are retained."
+  },
+  "initialNodeEscapeAssertion": {
+    "failure": "Easy legal kick escape assertion failed after execution error",
+    "correction": "Assert a referee-validated nominal escape exists and the actual shot settles; actual legality under execution noise is reported in the full 66-case data instead of guaranteed."
+  }
+}

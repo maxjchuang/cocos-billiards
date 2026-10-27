@@ -1,0 +1,40 @@
+{
+  "scope": "Same 66 controlled inputs; full candidate cap, not a win-rate claim",
+  "summary": [
+    {
+      "difficulty": "easy",
+      "cases": 22,
+      "beforeKicksWithNominalDirect": 0,
+      "afterKicksWithStableDirect": 0,
+      "afterKicksWithNarrowDirect": 2,
+      "legalBefore": 19,
+      "legalAfter": 19,
+      "potShotsBefore": 8,
+      "potShotsAfter": 8
+    },
+    {
+      "difficulty": "standard",
+      "cases": 22,
+      "beforeKicksWithNominalDirect": 2,
+      "afterKicksWithStableDirect": 0,
+      "afterKicksWithNarrowDirect": 0,
+      "legalBefore": 21,
+      "legalAfter": 21,
+      "potShotsBefore": 8,
+      "potShotsAfter": 8
+    },
+    {
+      "difficulty": "hard",
+      "cases": 22,
+      "beforeKicksWithNominalDirect": 4,
+      "afterKicksWithStableDirect": 0,
+      "afterKicksWithNarrowDirect": 0,
+      "legalBefore": 20,
+      "legalAfter": 21,
+      "potShotsBefore": 10,
+      "potShotsAfter": 10
+    }
+  ],
+  "failuresAfter": 5,
+  "note": "Narrow geometric direct contact need not tolerate the difficulty angle error; all cases retained."
+}

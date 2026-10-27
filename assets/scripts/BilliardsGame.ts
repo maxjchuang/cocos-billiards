@@ -677,7 +677,7 @@ export class BilliardsGame extends Component {
         const decision=this.aiTurn.locked;if(!decision||this.aiTurn.elapsedMs<AI_LEVELS[decision.difficulty].minThinkMs)return;
         if(!this.aiAimAt){
             this.aiAimAt=this.uiTime;this.aiAimStart={angle:Math.atan2(this.direction.x,this.direction.z),power:this.power};
-            this.aiDebugLog.push({gameId:this.gameId,decision,reports:this.aiTurn.planner?.reports.map(r=>({...r})),config:this.rackConfig});if(this.aiDebugLog.length>32)this.aiDebugLog.shift();
+            this.aiDebugLog.push({gameId:this.gameId,decision,reports:this.aiTurn.planner?.reports.map(r=>({...r})),riskReports:this.aiTurn.planner?.riskReports.map(r=>({...r})),config:this.rackConfig});if(this.aiDebugLog.length>32)this.aiDebugLog.shift();
         }
         const t=Math.min(1,(this.uiTime-this.aiAimAt)/.45),angle=Math.atan2(decision.direction.x,decision.direction.z),delta=Math.atan2(Math.sin(angle-this.aiAimStart.angle),Math.cos(angle-this.aiAimStart.angle));
         this.direction={x:Math.sin(this.aiAimStart.angle+delta*t),z:Math.cos(this.aiAimStart.angle+delta*t)};this.power=this.aiAimStart.power+(decision.power-this.aiAimStart.power)*t;
