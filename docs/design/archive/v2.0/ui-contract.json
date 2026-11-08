@@ -1,0 +1,528 @@
+{
+  "version": "2.0-design-review",
+  "date": "2026-11-03",
+  "status": "design-only; not implemented or runtime-validated",
+  "runtimeBaseline": {
+    "version": "1.15.3",
+    "commit": "21abab2",
+    "historicalContract": "archive/v1.15.3/ui-contract.json"
+  },
+  "orientation": "landscape-only gameplay; portrait entry/interruption shell",
+  "referenceFrame": [
+    852,
+    393
+  ],
+  "unit": "logical pixels, origin top-left",
+  "referenceSafeInsets": {
+    "left": 44,
+    "right": 44,
+    "top": 0,
+    "bottom": 21
+  },
+  "sceneViewport": {
+    "x": 0,
+    "y": 0,
+    "width": 852,
+    "height": 393
+  },
+  "referenceHostRegion": {
+    "x": 708,
+    "y": 8,
+    "width": 92,
+    "height": 32,
+    "clearanceMin": 8,
+    "note": "platform-reserved; not painted as a game control"
+  },
+  "referenceInteractiveBounds": {
+    "pause": {
+      "x": 52,
+      "y": 8,
+      "width": 44,
+      "height": 44
+    },
+    "view": {
+      "x": 104,
+      "y": 8,
+      "width": 68,
+      "height": 44
+    },
+    "immersive": {
+      "x": 544,
+      "y": 8,
+      "width": 44,
+      "height": 44
+    },
+    "fine": {
+      "x": 624,
+      "y": 300,
+      "width": 48,
+      "height": 56
+    },
+    "shot": {
+      "x": 680,
+      "y": 292,
+      "width": 64,
+      "height": 64
+    },
+    "spin": {
+      "x": 752,
+      "y": 300,
+      "width": 48,
+      "height": 56
+    },
+    "power": {
+      "x": 756,
+      "y": 132,
+      "width": 44,
+      "height": 144
+    },
+    "player1": {
+      "x": 184,
+      "y": 8,
+      "width": 176.0,
+      "height": 44
+    },
+    "player2": {
+      "x": 360.0,
+      "y": 8,
+      "width": 176.0,
+      "height": 44
+    }
+  },
+  "firstVisitReadyDefault": {
+    "value": "first-person",
+    "status": "proposal in this review; remember explicit later choice"
+  },
+  "viewPolicy": "only cue placement forces overhead; no cue-obstruction denial; shot-origin observation stays fixed during motion",
+  "surfaceCoverageTargets": {
+    "normalMaxFraction": 0.15,
+    "minimalMaxFraction": 0.08,
+    "note": "visual high-occlusion area, not a fake giant transparent input blocker; real scenes require later validation"
+  },
+  "spinPanel": {
+    "rect": {
+      "x": 520,
+      "y": 64,
+      "width": 280,
+      "height": 300
+    },
+    "cancel": {
+      "x": 728,
+      "y": 72,
+      "width": 64,
+      "height": 44
+    },
+    "reset": {
+      "x": 536,
+      "y": 308,
+      "width": 104,
+      "height": 44
+    },
+    "done": {
+      "x": 652,
+      "y": 308,
+      "width": 132,
+      "height": 44
+    },
+    "draftOnly": true,
+    "face": {
+      "center": [
+        660,
+        194
+      ],
+      "diameter": 112,
+      "selectionRadius": 39,
+      "touchSurface": {
+        "x": 584,
+        "y": 118,
+        "width": 152,
+        "height": 152
+      },
+      "exampleDraft": {
+        "rightFraction": 0.4,
+        "lowFraction": 0.3
+      },
+      "outsideSelection": "clamp to selection circle; completion still explicit"
+    }
+  },
+  "fineOverlay": {
+    "rect": {
+      "x": 212,
+      "y": 312,
+      "width": 300,
+      "height": 48
+    },
+    "minus": {
+      "x": 214,
+      "y": 314,
+      "width": 44,
+      "height": 44
+    },
+    "plus": {
+      "x": 466,
+      "y": 314,
+      "width": 44,
+      "height": 44
+    },
+    "sliderTouch": {
+      "x": 260,
+      "y": 312,
+      "width": 204,
+      "height": 48
+    },
+    "rangeDegrees": [
+      -5,
+      5
+    ],
+    "tapStepDegrees": 0.1
+  },
+  "touch": {
+    "minimum": 44,
+    "icons": 20,
+    "iconStroke": 1.5,
+    "shotOrder": [
+      "fine",
+      "shoot",
+      "spin"
+    ],
+    "tipButtonRightOfShoot": true
+  },
+  "protectedMargins": {
+    "pocket": 12,
+    "cueTipContact": 20,
+    "units": "logical px, design target"
+  },
+  "minimalRetains": [
+    "turnActor",
+    "groupOrAiLevel",
+    "power",
+    "pause",
+    "view",
+    "threeActions"
+  ],
+  "palette": {
+    "background": "#0E1C19",
+    "surface": "#1C3028",
+    "felt": "#286556",
+    "rail": "#163E34",
+    "wood": "#614630",
+    "gold": "#D9BD83",
+    "ink": "#F4F0E6",
+    "muted": "#ABBAB0",
+    "disabled": "#738579",
+    "pressed": "#314A3D",
+    "cueTrajectory": "#F5F1E6",
+    "targetTrajectory": "#E5BD74",
+    "loss": "#D99588",
+    "foul": "#E0AE73"
+  },
+  "type": {
+    "heading": [
+      18,
+      24
+    ],
+    "action": [
+      12,
+      14
+    ],
+    "body": 14,
+    "secondary": [
+      11,
+      12
+    ],
+    "power": 16,
+    "identityName": 12,
+    "identityMeta": 11,
+    "navigation": 11,
+    "turn": 12,
+    "draftReadout": 12,
+    "trajectoryLegend": 10,
+    "secondaryLink": 12
+  },
+  "shot": {
+    "contactMs": 220,
+    "durationMs": 820,
+    "segments": [
+      [
+        0,
+        140,
+        "backswing"
+      ],
+      [
+        140,
+        220,
+        "forward"
+      ],
+      [
+        220,
+        480,
+        "feedback and ball exit"
+      ],
+      [
+        480,
+        640,
+        "cue only"
+      ],
+      [
+        640,
+        820,
+        "reset"
+      ]
+    ],
+    "uniqueContactSubmission": true
+  },
+  "portraitReturn": "preserve stage, drafts and match; explicit resume; no automatic confirmation or extra stroke",
+  "responsiveFrames": [
+    [
+      667,
+      375
+    ],
+    [
+      852,
+      393
+    ],
+    [
+      932,
+      430
+    ]
+  ],
+  "ai": "existing natural direct-priority policy, adjustable difficulty; human observation never grants control",
+  "notInScope": [
+    "runtime game changes",
+    "platform export/configuration",
+    "real-device certification",
+    "online matches",
+    "new physical rules"
+  ],
+  "reviewItems": [
+    "first-ready default perspective",
+    "minimal default",
+    "control dimensions",
+    "left-hand layout release priority"
+  ],
+  "figures": [
+    {
+      "id": "L01",
+      "title": "第一人称正常瞄准",
+      "source": "landscape/L01-first-person.svg",
+      "render": "landscape/L01-first-person.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L02",
+      "title": "第一人称简洁显示",
+      "source": "landscape/L02-minimal.svg",
+      "render": "landscape/L02-minimal.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L03",
+      "title": "俯视完整台面",
+      "source": "landscape/L03-overhead.svg",
+      "render": "landscape/L03-overhead.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L04",
+      "title": "线后摆球",
+      "source": "landscape/L04-placement.svg",
+      "render": "landscape/L04-placement.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L05",
+      "title": "母球打点草稿",
+      "source": "landscape/L05-spin.svg",
+      "render": "landscape/L05-spin.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L06",
+      "title": "微调展开",
+      "source": "landscape/L06-fine.svg",
+      "render": "landscape/L06-fine.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L07",
+      "title": "局中选择玩法",
+      "source": "landscape/L07-start.svg",
+      "render": "landscape/L07-start.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L08",
+      "title": "竖屏中断提示",
+      "source": "landscape/L08-portrait-pause.svg",
+      "render": "landscape/L08-portrait-pause.png",
+      "frame": [
+        393,
+        852
+      ]
+    },
+    {
+      "id": "L09",
+      "title": "紧凑横屏构图",
+      "source": "landscape/L09-compact.svg",
+      "render": "landscape/L09-compact.png",
+      "frame": [
+        667,
+        375
+      ]
+    },
+    {
+      "id": "L10",
+      "title": "宽横屏构图",
+      "source": "landscape/L10-wide.svg",
+      "render": "landscape/L10-wide.png",
+      "frame": [
+        932,
+        430
+      ]
+    }
+  ],
+  "overheadLayout": {
+    "tableOuter": {
+      "x": 100.0519480519481,
+      "y": 25,
+      "width": 651.8961038961038,
+      "height": 356.0
+    },
+    "tableAreaFraction": 0.6931005417189697,
+    "strategy": "centered full-height table, floating split player chips and controls; no reserved header or side column",
+    "interactiveBounds": {
+      "pause": {
+        "x": 44,
+        "y": 8,
+        "width": 44,
+        "height": 44
+      },
+      "view": {
+        "x": 44,
+        "y": 64,
+        "width": 44,
+        "height": 44
+      },
+      "immersive": {
+        "x": 44,
+        "y": 120,
+        "width": 44,
+        "height": 44
+      },
+      "reposition": {
+        "x": 44,
+        "y": 176,
+        "width": 44,
+        "height": 44
+      },
+      "player1": {
+        "x": 181.6,
+        "y": 8,
+        "width": 148,
+        "height": 44
+      },
+      "player2": {
+        "x": 505.36,
+        "y": 8,
+        "width": 148,
+        "height": 44
+      },
+      "fine": {
+        "x": 218.0,
+        "y": 300,
+        "width": 48,
+        "height": 56
+      },
+      "shot": {
+        "x": 274.0,
+        "y": 292,
+        "width": 64,
+        "height": 64
+      },
+      "spin": {
+        "x": 346.0,
+        "y": 300,
+        "width": 48,
+        "height": 56
+      },
+      "power": {
+        "x": 756,
+        "y": 132,
+        "width": 44,
+        "height": 144
+      }
+    },
+    "sixPocketsUnobstructed": true,
+    "pocketClearance": 12,
+    "hostClearance": 8,
+    "illustratedControlSlot": "left to avoid the right-bottom target trajectory",
+    "rightSlot": {
+      "fine": {
+        "x": 474.0,
+        "y": 300,
+        "width": 48,
+        "height": 56
+      },
+      "shot": {
+        "x": 530.0,
+        "y": 292,
+        "width": 64,
+        "height": 64
+      },
+      "spin": {
+        "x": 602.0,
+        "y": 300,
+        "width": 48,
+        "height": 56
+      }
+    },
+    "placementConfirmation": {
+      "x": 474,
+      "y": 304,
+      "width": 176,
+      "height": 52
+    },
+    "occlusionPolicy": "protect cue, first contact and target pocket on scene projection; choose alternate slot before press; manual collapse/reposition available; never move under a held finger"
+  },
+  "actionButtons": {
+    "layout": "icon above label; aligned bottom edges",
+    "labelSize": 12,
+    "iconSize": 20,
+    "stroke": 1.5,
+    "gap": 8,
+    "secondaryRadius": 12,
+    "primaryRadius": 16,
+    "secondarySize": [
+      48,
+      56
+    ],
+    "primarySize": [
+      64,
+      64
+    ],
+    "secondaryFill": "#1C3028",
+    "primaryFill": "#D9BD83",
+    "contactMs": 220
+  }
+}

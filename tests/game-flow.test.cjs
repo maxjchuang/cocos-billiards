@@ -3,9 +3,12 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const Module=require('node:module');
 const load=Module._load;
+const environment={PREVIEW:false,EDITOR:false};
+const windowSize={width:852,height:393};
+const platform={isMobile:false};
 class Vec3 { constructor(x=0,y=0,z=0){this.x=x;this.y=y;this.z=z;} }
-Module._load=function(id,...args){return id==='cc'?{_decorator:{ccclass:()=>target=>target},Component:class{},
-    Vec3,screen:{windowSize:{width:393,height:852}},Input:{EventType:{}}}:load.call(this,id,...args);};
+Module._load=function(id,...args){return id==='cc/env'?environment:id==='cc'?{_decorator:{ccclass:()=>target=>target},Component:class{},
+    Vec3,Rect:class{},Camera:{ProjectionType:{PERSPECTIVE:0,ORTHO:1}},EventMouse:{BUTTON_RIGHT:2,BUTTON_LEFT:0},sys:platform,screen:{windowSize},Input:{EventType:{}}}:load.call(this,id,...args);};
 const {BilliardsGame}=require(process.env.BILLIARDS_GAME_MODULE);
 Module._load=load;
 const {createRack}=require(process.env.BILLIARDS_TEST_MODULE);
@@ -103,4 +106,184 @@ test('AI handles the opponent opening foul and confirms its own free ball throug
 });
 test('backgrounding the initial mode chooser preserves the required choice and never starts AI work',()=>{
  const g=game();g.modalAction('new-game');g.draftDifficulty='hard';const before=g.gameId;g.hideGame();assert.equal(g.panelMode,'new-game');assert.equal(g.backgrounded,true);assert.equal(g.paused,true);g.showGame();assert.equal(g.panelMode,'new-game');assert.equal(g.draftDifficulty,'hard');assert.equal(g.paused,true);assert.equal(g.gameId,before);assert.equal(g.aiTurn.planner,null);
+});
+
+test('two scene fingers observe without editing aim and wait for all fingers up',()=>{
+ const g=game();g.referee.phase='ready';g.referee.isBreak=true;
+ g.inScene=()=>true;g.hitUi=()=>false;g.powerControl={};g.hudPixelRatio=1;
+ g.begin=()=>{g.dragging=true;};g.move=()=>{throw Error('single-finger input leaked after pair');};
+ const observations=[];g.cameraRig={observe(...args){observations.push(args);}};
+ const touch=(id,x,y)=>({getID:()=>id,getLocation:()=>({x,y})});
+ const direction={...g.direction};g.touchStart(touch(1,200,200));g.touchStart(touch(2,300,200));
+ g.touchMove(touch(2,340,220));assert.equal(observations.length,1);assert.deepEqual(g.direction,direction);
+ g.touchEnd(touch(2,340,220));g.touchMove(touch(1,220,210));assert.equal(g.observationBlocked,true);
+ g.touchEnd(touch(1,220,210));assert.equal(g.observationBlocked,false);assert.equal(g.observationTouches.size,0);assert.equal(g.shotSequence.active,false);
+});
+
+test('free camera observation and returning preserve shot input and use locked origin',()=>{
+ const previous=Module._load;Module._load=function(id,...args){return id==='cc/env'?environment:id==='cc'?{Vec3,Rect:class{},Camera:{ProjectionType:{PERSPECTIVE:0,ORTHO:1}}}:previous.call(this,id,...args);};
+ const {CameraRig}=require(require('node:path').join(require('node:path').dirname(process.env.BILLIARDS_GAME_MODULE),'BilliardsCameraRig.js'));Module._load=previous;
+ const rig=new CameraRig({});const direction={x:0,z:-1},cue={x:0,z:.65};
+ rig.returnToShot(cue,direction,.2,true);const origin=JSON.stringify(rig.freePose);
+ rig.lock(rig.freePose);rig.observe(25,20,.8);assert.notEqual(JSON.stringify(rig.freePose),origin);
+ rig.returnToShot({x:.5,z:-1},{x:1,z:0},.2,true);assert.equal(JSON.stringify(rig.freePose),origin);
+ assert.deepEqual(direction,{x:0,z:-1});assert.deepEqual(cue,{x:0,z:.65});
+});
+
+test('parallel two-finger movement samples the complete engine event before intent lock',()=>{
+ const g=game();g.inScene=()=>true;g.hitUi=()=>false;g.powerControl={};g.hudPixelRatio=1;g.begin=()=>{};
+ const observations=[];g.cameraRig={observe(...args){observations.push(args);}};
+ const t=(id,x,y)=>({getID:()=>id,getLocation:()=>({x,y})});
+ g.touchStart(t(1,200,200));g.touchStart(t(2,300,200));
+ g.touchMove({...t(1,220,210),getAllTouches:()=>[t(1,220,210),t(2,320,210)]});
+ assert.equal(g.observationIntent,'orbit');assert.deepEqual(observations,[[20,10,1]]);
+});
+
+test('exported game ignores desktop camera gestures when PREVIEW is false',()=>{
+ const g=game();const calls=[];g.cameraRig={observe(...args){calls.push(args);}};
+ const event={getButton:()=>2,getLocation:()=>({x:200,y:200}),getScrollY:()=>120};
+ g.previewMouseDown(event);g.previewMouseMove(event);g.previewMouseWheel(event);
+ assert.equal(g.previewPointer,null);assert.deepEqual(calls,[]);
+});
+
+test('preview adapter uses right drag and wheel without changing shot inputs',()=>{
+ const g=game();g.hudPixelRatio=2;g.previewObservationAllowed=()=>true;g.desktopPreview=()=>true;
+ const calls=[];g.cameraRig={observe(...args){calls.push(args);}};
+ const event=(button,x,y,scroll=0)=>({getButton:()=>button,getLocation:()=>({x,y}),getScrollY:()=>scroll});
+ const before=JSON.stringify([g.direction,g.power,g.tip.value,g.balls]);
+ g.begin=()=>{};g.previewMouseDown(event(0,100,100));assert.equal(g.previewPointer,null);
+ g.previewMouseDown(event(2,100,100));g.previewMouseMove(event(2,140,120));
+ assert.deepEqual(calls[0],[20,10,1]);g.previewMouseUp(event(2,140,120));assert.equal(g.previewPointer,null);
+ g.previewMouseWheel(event(0,140,120,120));assert.ok(calls[1][2]<1);
+ assert.equal(JSON.stringify([g.direction,g.power,g.tip.value,g.balls]),before);
+});
+
+test('Creator in-editor preview enables observation with EDITOR true and PREVIEW false',()=>{
+ const g=game();g.inScene=()=>true;g.hitUi=()=>false;
+ g.powerControl={};g.resetLabel={node:{}};g.viewButton={node:{parent:{}}};g.dock={};g.spinPanel={panel:{}};
+ const calls=[];g.cameraRig={observe(...args){calls.push(args);}};g.hudPixelRatio=1;
+ const e=(x,y)=>({getButton:()=>2,getLocation:()=>({x,y}),getScrollY:()=>120});
+ environment.EDITOR=true;
+ try{g.previewMouseDown(e(100,100));g.previewMouseMove(e(120,110));g.previewMouseUp(e(120,110));g.previewMouseWheel(e(120,110));}
+ finally{environment.EDITOR=false;}
+ assert.deepEqual(calls[0],[20,10,1]);assert.ok(calls[1][2]<1);assert.equal(g.previewPointer,null);
+});
+
+test('portrait-shaped viewport does not pause or block an active match',()=>{
+ const g=game();windowSize.width=393;windowSize.height=852;
+ try{g.update(.016);assert.equal(g.paused,false);assert.equal(g.referee.phase,'ready');assert.equal(g.rotationBlocked,undefined);}
+ finally{windowSize.width=852;windowSize.height=393;}
+});
+
+test('initial viewport and resize remain playable without an orientation pause',()=>{
+ const g=game();delete g.hudLayout;
+ assert.doesNotThrow(()=>g.endGestureOnResize(852,393));
+ g.hudLayout={width:852,height:393};g.activeTouch=1;g.dragging=true;g.observationTouches.set(1,{x:10,y:10});
+ const before=JSON.stringify([g.direction,g.power,g.balls]);g.endGestureOnResize(393,852);
+ assert.equal(g.paused,false);assert.equal(g.dragging,false);assert.equal(g.activeTouch,null);assert.equal(g.observationTouches.size,0);
+ assert.equal(JSON.stringify([g.direction,g.power,g.balls]),before);
+});
+
+test('editor mouse-to-touch simulation cannot place or aim before right-drag observation',()=>{
+ const g=game();g.hudPixelRatio=1;g.previewObservationAllowed=()=>true;
+ const calls=[];g.cameraRig={observe(...args){calls.push(args);}};
+ g.begin=()=>{throw Error('right mouse leaked into gameplay');};
+ const event=(button,x,y)=>({getButton:()=>button,getID:()=>0,getLocation:()=>({x,y})});
+ const before=JSON.stringify([g.direction,g.balls]);environment.EDITOR=true;
+ try{
+  g.touchStart(event(2,200,200));g.previewMouseDown(event(2,200,200));
+  g.touchMove(event(2,230,210));g.previewMouseMove(event(2,230,210));
+  g.touchEnd(event(0,230,210));g.previewMouseUp(event(0,230,210));
+ }finally{environment.EDITOR=false;}
+ assert.deepEqual(calls,[[30,10,1]]);assert.equal(g.previewPointer,null);
+ assert.equal(JSON.stringify([g.direction,g.balls]),before);
+});
+
+test('preview releases camera capture on hover when the editor omits mouseup',()=>{
+ const g=game();g.desktopPreview=()=>true;g.previewObservationAllowed=()=>true;g.previewPointer={x:200,y:200};
+ g.cameraRig={observe(){throw Error('hover must not rotate camera');}};
+ g.previewMouseMove({getButton:()=>-1,getLocation:()=>({x:220,y:200})});assert.equal(g.previewPointer,null);
+});
+
+for(const phase of ['ready','placing','choice','over'])test('return releases the previous shot origin in '+phase,()=>{
+ const g=game();g.referee.phase=phase;g.viewState.lock();let unlocked=false,returned=false;
+ g.balls[0].x=.25;g.balls[0].z=-.4;g.direction={x:1,z:0};g.power=3.7;
+ g.tip.open();g.tip.select(.2,.3);g.tip.confirm();
+ g.cameraRig={unlock(){unlocked=true;},returnToShot(cue,direction,height,reduced,tip,power){
+  assert.equal(unlocked,true);assert.deepEqual({x:cue.x,z:cue.z},{x:.25,z:-.4});
+  assert.deepEqual(direction,{x:1,z:0});assert.deepEqual(tip,{x:.2,y:.3});assert.equal(power,3.7);returned=true;
+ }};
+ g.switchView();assert.equal(returned,true);assert.equal(g.viewState.shotLocked,false);
+});
+
+test('reserved and moving shots keep their origin until settlement or cancellation',()=>{
+ const g=game();let unlocked=0;g.cameraRig={unlock(){unlocked++;}};
+ g.shotSequence.begin({gameId:g.gameId,player:g.referee.current,direction:g.direction,power:g.power,tipOffset:{x:0,y:0},selectedGroup:g.referee.selected});
+ g.viewState.lock();g.syncShotCamera();assert.equal(unlocked,0);
+ g.shotSequence.cancelBeforeContact();g.syncShotCamera();assert.equal(unlocked,1);assert.equal(g.viewState.shotLocked,false);
+ g.referee.phase='shooting';g.viewState.lock();g.syncShotCamera();assert.equal(unlocked,1);
+ g.referee.phase='ready';g.syncShotCamera();assert.equal(unlocked,2);
+});
+
+test('animated return finishes at the complete current-shot pose including direction and tip',()=>{
+ const directory=require('node:path').dirname(process.env.BILLIARDS_GAME_MODULE);
+ const {CameraRig}=require(require('node:path').join(directory,'BilliardsCameraRig.js'));
+ const {solveCamera}=require(require('node:path').join(directory,'BilliardsCameraMath.js'));
+ const rig=new CameraRig({node:{setPosition(){},lookAt(){}}});
+ const cue={x:.2,z:.6},direction={x:1,z:0},tip={x:.2,y:.3};
+ rig.returnToShot(cue,direction,.2,false,tip,3.7);
+ const layout={width:852,height:393,playArea:{x:0,y:0,width:852,height:393}};
+ for(let i=0;i<3;i++)rig.apply('first-person',layout,cue,direction,.2,tip,3.7,.1);
+ assert.deepEqual(rig.freePose,solveCamera(cue,direction,.2,tip,3.7));
+});
+
+test('settlement releases the origin even while the button feedback animation is active',()=>{
+ const g=game();let unlocked=false;g.cameraRig={unlock(){unlocked=true;}};
+ g.shotSequence.begin({gameId:g.gameId,player:g.referee.current,direction:g.direction,power:g.power,tipOffset:{x:0,y:0},selectedGroup:g.referee.selected});
+ g.shotSequence.advance(.22,()=>true);g.referee.phase='ready';g.viewState.lock();
+ assert.equal(g.shotSequence.active,true);assert.equal(g.shotSequence.committed,true);
+ g.syncShotCamera();assert.equal(unlocked,true);assert.equal(g.viewState.shotLocked,false);
+});
+
+test('mobile Creator preview anchors the landscape frame outside flex centering',()=>{
+ const previous=global.document,style={};global.document={getElementById:()=>({style,parentElement:{classList:{contains:c=>c==='contentWrap'}}})};
+ environment.PREVIEW=true;platform.isMobile=true;
+ try{game().prepareBrowserPreview();assert.deepEqual(style,{position:'fixed',left:'0',top:'0'});}
+ finally{environment.PREVIEW=false;platform.isMobile=false;if(previous===undefined)delete global.document;else global.document=previous;}
+});
+
+test('preview frame adjustment leaves exports and ordinary page containers alone',()=>{
+ const previous=global.document,style={};let creatorWrapper=true;
+ global.document={getElementById:()=>({style,parentElement:{classList:{contains:()=>creatorWrapper}}})};platform.isMobile=true;
+ try{
+  game().prepareBrowserPreview();assert.deepEqual(style,{});
+  environment.PREVIEW=true;creatorWrapper=false;game().prepareBrowserPreview();assert.deepEqual(style,{});
+ }finally{environment.PREVIEW=false;platform.isMobile=false;if(previous===undefined)delete global.document;else global.document=previous;}
+});
+
+test('last pocket waits for visible fall before settlement, pause freezes it and reset clears it', () => {
+    const { POCKETS } = require(require('node:path').join(require('node:path').dirname(process.env.BILLIARDS_TEST_MODULE), 'BilliardsTableGeometry.js'));
+    const g = game();
+    g.referee.isBreak = false;
+    g.referee.groups = ['solid', 'stripe'];
+    g.shoot();
+    g.update(.22);
+    g.balls.forEach(ball => Object.assign(ball, { vx: 0, vz: 0, wx: 0, wy: 0, wz: 0 }));
+    Object.assign(g.balls[1], { x: POCKETS[0].x, z: POCKETS[0].z });
+    g.update(1 / 240);
+    assert.equal(g.balls[1].pocketed, true);
+    assert.equal(g.referee.phase, 'shooting');
+    assert.equal(g.pocketAnimation.position(1).y, .028575);
+    g.pauseGame();
+    const frozen = g.pocketAnimation.position(1);
+    g.update(1);
+    assert.deepEqual(g.pocketAnimation.position(1), frozen);
+    g.paused = false;
+    for (let i = 0; i < 4; i++) g.update(.1);
+    assert.equal(g.pocketAnimation.active, false);
+    assert.notEqual(g.referee.phase, 'shooting');
+    g.pocketAnimation.start(g.balls[1], 0);
+    g.reset();
+    assert.equal(g.pocketAnimation.active, false);
+    assert.equal(!!g.balls[1].pocketed, false);
 });

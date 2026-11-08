@@ -1,3 +1,4 @@
+import { PREVIEW, EDITOR } from 'cc/env';
 import { TrajectoryView } from './BilliardsTrajectoryView';
 import { clamp,solveCamera,cueDisplayPitch } from './BilliardsCameraMath';
 import { ViewState,ViewContext,ViewPreferenceStore } from './BilliardsViewState';
@@ -5,6 +6,7 @@ import { CameraRig } from './BilliardsCameraRig';
 import { AimGesture } from './BilliardsAimGesture';
 import { TableView } from './BilliardsTableView';
 import { BallView } from './BilliardsBallView';
+import { PocketAnimation } from './BilliardsPocketAnimation';
 import { surfacePixels,Surface,visibleFractions } from './BilliardsAppearance';
 import { RackConfig, RackSession, restoreRackConfig } from './BilliardsRack';
 import { SettingsStore,MatchHistory,SettingKey } from './BilliardsSettings';
@@ -13,8 +15,8 @@ import { Feedback } from './BilliardsFeedback';
 import { MagnifierView } from './BilliardsMagnifier';
 import { POCKETS, CUSHION_PATHS, TablePoint } from './BilliardsTableGeometry';
 import {
-    _decorator, Camera, Canvas, Color, Component, game, Game,
-    EventTouch, geometry, Graphics, input, Input, Label, Layers, Material, EffectAsset, resources, profiler, Rect,
+    _decorator, Camera, Canvas, Color, Component, game, Game, macro,
+    EventTouch, EventMouse, geometry, Graphics, input, Input, Label, Layers, Material, EffectAsset, resources, profiler, Rect,
     Mesh, MeshRenderer, Node, primitives, Quat, ResolutionPolicy, screen, sys, view, Texture2D, UITransform, utils, Vec3,
 } from 'cc';
 import { BallState, createRack, FIXED_STEP, isMoving, step, TABLE, HEAD_LINE } from './BilliardsPhysics';
@@ -53,6 +55,14 @@ export class BilliardsGame extends Component {
     private powerHalfWidth = 280;
     private decision!: Label;
     private placing = false;
+    private previewLeft=false;
+    private previewPointer:{x:number;y:number}|null=null;
+    private observationTouches=new Map<number|null,{x:number;y:number}>();
+    private observationBlocked=false;
+    private observationIntent:'orbit'|'zoom'|null=null;
+    private dockRight=false;
+    private lastCameraPhase='';
+    private observationPair:{x:number;y:number;distance:number}|null=null;
     private activeTouch: number | null = null;
     private pendingAction: Action | null = null;
     private shotSequence = new ShotSequence();
@@ -66,6 +76,7 @@ export class BilliardsGame extends Component {
     private tip = new TipSelection();
     private adjustingSpin = false;
     private visualSpinDeltas = Array.from({length:16},()=>({x:0,y:0,z:0}));
+    private pocketAnimation = new PocketAnimation();
     private fineControl!: Node;
     private fineLabel!: Label;
     private fineMinus!: Label;
@@ -122,8 +133,6 @@ export class BilliardsGame extends Component {
     private identitySeat=0;
     private identityReturn:PanelMode|null=null;
     private resultShown=false;
-    private rotationBlocked=false;
-    private rotationSetup:PanelMode|null=null;
     private lastPointer:{x:number;y:number}|null=null;
     private placementInvalid:{x:number;z:number;until:number;message?:string}|null=null;
     private placementGraphics!:Graphics;
@@ -142,8 +151,20 @@ export class BilliardsGame extends Component {
     private aiAimStart={angle:0,power:2.4};private aiDisplayedDifficulty:AIDifficulty='standard';
     private aiDebugLog:unknown[]=[];
     private groupSelectedAt=-1000;
+    private prepareBrowserPreview():void {
+        if(!PREVIEW||!sys.isMobile||typeof document==='undefined')return;
+        const frame=document.getElementById('GameDiv');
+        if(!frame?.parentElement?.classList.contains('contentWrap'))return;
+        // Creator centers this wrapper with flex. Its unrotated bounds must instead
+        // start at the viewport origin before the engine rotates it into landscape.
+        frame.style.position='fixed';
+        frame.style.left='0';
+        frame.style.top='0';
+    }
     async start(): Promise<void> {
         this.booting=true;
+        this.prepareBrowserPreview();
+        view.setOrientation(macro.ORIENTATION_LANDSCAPE);
         const lit=await new Promise<Material>((resolve,reject)=>resources.load('materials/first-person',Material,(error,asset)=>error?reject(error):resolve(asset)));
         if(!this.isValid||!this.enabledInHierarchy)return;this.standardEffect=lit.effectAsset!;
         this.rackSession=new RackSession(sys.localStorage);
@@ -162,6 +183,12 @@ export class BilliardsGame extends Component {
         input.on(Input.EventType.TOUCH_MOVE, this.touchMove, this);
         input.on(Input.EventType.TOUCH_END, this.touchEnd, this);
         input.on(Input.EventType.TOUCH_CANCEL, this.touchCancel, this);
+        if(PREVIEW||EDITOR){
+            input.on(Input.EventType.MOUSE_DOWN,this.previewMouseDown,this);
+            input.on(Input.EventType.MOUSE_MOVE,this.previewMouseMove,this);
+            input.on(Input.EventType.MOUSE_UP,this.previewMouseUp,this);
+            input.on(Input.EventType.MOUSE_WHEEL,this.previewMouseWheel,this);
+        }
         game.on(Game.EVENT_HIDE, this.hideGame, this);
         game.on(Game.EVENT_SHOW, this.showGame, this);
         this.openMatchChooser();this.booting=false;
@@ -275,19 +302,29 @@ export class BilliardsGame extends Component {
         this.tableView=new TableView(this.node,{wood:lit(original('Table base')),felt:lit(original('Cloth')),rail:lit(original('Cushion left 0')),pocket:original('Pocket 1')});
         this.ballView=new BallView(this.node,this.ballNodes,this.standardEffect);this.trajectoryView=new TrajectoryView(this.node);
     }
-    private viewContext():ViewContext {return {phase:this.referee.phase,human:!this.isAiTurn(),canAim:mayShoot(this.balls,this.referee),paused:this.paused,blocked:this.backgrounded||this.rotationBlocked,tipOpen:this.tip.active,shotActive:this.shotSequence.active,committed:this.shotSequence.committed||this.referee.phase==='shooting'};}
+    private viewContext():ViewContext {return {phase:this.referee.phase,human:!this.isAiTurn(),canAim:mayShoot(this.balls,this.referee),paused:this.paused,blocked:this.backgrounded,tipOpen:this.tip.active,shotActive:this.shotSequence.active,committed:this.shotSequence.committed||this.referee.phase==='shooting'};}
+    private syncShotCamera():void {
+        // Only the reserved or moving shot owns a saved camera origin.
+        const preparing=this.shotSequence.active&&!this.shotSequence.committed;
+        if(!preparing&&this.referee.phase!=='shooting'){
+            this.viewState.shotLocked=false;
+            this.cameraRig?.unlock();
+        }
+    }
     private syncView():void {
         if(!this.cameraRig)return;
-        const before=this.viewState.mode;this.viewState.update(this.viewContext(),this.viewFrameDt,this.settings.value.reducedMotion);this.viewFrameDt=0;
-        if(!this.viewState.shotLocked)this.cameraRig.unlock();
-        this.cameraRig.apply(this.viewState.mode,this.hudLayout,this.balls[0],this.direction,this.eyeHeight,this.tip.value,this.power);
+        if(this.referee.phase==='placing'&&this.lastCameraPhase!=='placing'){this.cameraRig.overview();this.viewState.shotLocked=false;}this.lastCameraPhase=this.referee.phase;
+        const before=this.viewState.mode;this.viewState.mode=this.viewState.target='first-person';this.viewState.transitionMs=0;
+        this.syncShotCamera();
+        this.cameraRig.apply(this.viewState.mode,this.hudLayout,this.balls[0],this.direction,this.eyeHeight,this.tip.value,this.power,this.viewFrameDt);
+        this.viewFrameDt=0;
         const fp=this.viewState.mode==='first-person';
         this.node.children.filter(n=>n.name==='Table base'||n.name==='Cloth'||n.name.startsWith('Cushion ')||n.name.startsWith('Pocket ')).forEach(n=>n.active=!fp);
         this.tableView.node.active=fp;this.tableView.setCueClearance(this.cameraRig.locked?.target?{x:this.cameraRig.locked.target.x-(this.cameraRig.locked.direction?.x??0)*.38,z:this.cameraRig.locked.target.z-(this.cameraRig.locked.direction?.z??0)*.38}:this.balls[0],fp);this.ballView.setActive(fp);this.ballView.sync(this.balls);
         if(!fp)this.trajectoryView?.hide();if(fp&&before!=='first-person'&&this.viewMessage.startsWith('此位置'))this.viewMessageUntil=0;
-        if(fp&&before!==this.viewState.mode&&!this.viewState.preference.seen){this.viewState.preference.markSeen();this.viewMessage=this.viewState.preference.persistent?'左右滑动瞄准 · 上下调整视角':'视角设置本局有效 · 本机存储暂不可用';this.viewMessageUntil=this.uiTime+2.5;}
-        this.viewCanSwitch=this.viewState.maySwitch(this.viewContext());
-        if(this.viewButton){this.viewButton.node.parent!.active=this.viewState.enabled;this.viewButton.node.parent!.name=this.viewCanSwitch?(fp?'切换到俯视':'切换到第一人称'):'视角切换暂不可用';this.viewButton.string=fp?'第一人称':'俯视';this.viewButton.node.parent!.setSiblingIndex(this.viewButton.node.parent!.parent!.children.length-1);this.viewButton.color=new Color().fromHEX(this.viewCanSwitch?CLUB.gold:CLUB.disabled);}
+        if(fp&&before!==this.viewState.mode&&!this.viewState.preference.seen){this.viewState.preference.markSeen();this.viewMessage=this.viewState.preference.persistent?'单指瞄准 · 双指观察 · 捏合缩放':'视角设置本局有效 · 本机存储暂不可用';this.viewMessageUntil=this.uiTime+2.5;}
+        this.viewCanSwitch=true;
+        if(this.viewButton){this.viewButton.node.parent!.active=this.viewState.enabled&&(!this.panelMode||this.panelMode==='view');this.viewButton.node.parent!.name=this.viewCanSwitch?(fp?'切换到俯视':'切换到第一人称'):'视角切换暂不可用';this.viewButton.string='回到出杆位';this.viewButton.node.parent!.setSiblingIndex(this.viewButton.node.parent!.parent!.children.length-1);this.viewButton.color=new Color().fromHEX(this.viewCanSwitch?CLUB.gold:CLUB.disabled);}
         if(this.viewFade){const g=this.viewFade,a=this.hudLayout.playArea;g.clear();if(this.viewState.fade>0){g.fillColor=new Color(14,28,25,Math.round(this.viewState.fade*255));g.rect(a.x-this.hudLayout.width/2,this.hudLayout.height/2-a.y-a.height,a.width,a.height);g.fill();}}
     }
 
@@ -445,8 +482,9 @@ export class BilliardsGame extends Component {
         this.aiTurn.cancel();this.aiPhaseStamp='';this.aiAimAt=0;
         this.groupSelectedAt=-1000;this.history.reset();this.panelMode=null;this.resultShown=false;this.victoryApplause=false;this.panelPage=0;this.placementInvalid=null;this.feedback?.stop();
         this.aimPrediction=null;this.aimPredictionKey='';
-        this.gameId++;this.viewState.reset();this.cameraRig?.unlock();this.aimGesture.cancel();this.eyeHeight=.2;this.unsafeCameraKey='';this.viewMessageUntil=0;this.viewMessage='';this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
+        this.gameId++;this.viewState.reset();this.cameraRig?.unlock();this.cameraRig?.overview();this.aimGesture.cancel();this.eyeHeight=.2;this.unsafeCameraKey='';this.viewMessageUntil=0;this.viewMessage='';this.shotSequence.cancel();this.fineAim.close();this.tip.reset();
         this.visualSpinDeltas.forEach(v=>{v.x=v.y=v.z=0;});
+        this.pocketAnimation.clear();
         this.paused=false;this.confirmingRestart=false;this.layoutStamp='';
         this.balls = this.nextRack(replay);
         const profile=this.rackConfig!;
@@ -527,7 +565,6 @@ export class BilliardsGame extends Component {
         this.feedback?.unlock();
         this.lastPointer={x:x/this.hudPixelRatio,y:(screen.windowSize.height-y)/this.hudPixelRatio};
         if(this.viewCanSwitch&&this.hitUi(this.actionNode('view'),x,y)){this.pendingAction='view';return;}
-        if(this.rotationBlocked)return;
         if(this.panelMode&&this.panels){
             const modalTargets:Action[]=this.panels.actionIds.map((_,i)=>`modal-${i}` as Action);if(this.panelMode==='result')modalTargets.push('winner-identity');
             this.pendingAction=modalTargets.find(action=>this.hitUi(this.actionNode(action),x,y))??null;return;
@@ -555,7 +592,7 @@ export class BilliardsGame extends Component {
         }
     }
     private move(x: number, y: number): void {
-        if(this.panelMode||this.rotationBlocked||this.isAiTurn())return;
+        if(this.panelMode||this.isAiTurn())return;
         this.lastPointer={x:x/this.hudPixelRatio,y:(screen.windowSize.height-y)/this.hudPixelRatio};
         if (this.pendingAction!==null||this.paused||this.shotSequence.active) return;
         if(this.adjustingSpin){this.setSpinAt(x,y);return;}
@@ -565,7 +602,7 @@ export class BilliardsGame extends Component {
         else if (this.adjustingFine) this.setFineAt(x,y);
         else if(this.dragging&&this.viewState.mode==='first-person'){
             if(!this.inScene(x,y)){this.aimGesture.cancel();this.dragging=false;return;}const p=this.hudPoint(x,y),d=this.aimGesture.move(p.x,p.y,this.hudLayout.playArea.width,this.hudLayout.playArea.height);
-            if(d.yaw){const a=Math.atan2(this.direction.x,this.direction.z)+d.yaw;this.direction={x:Math.sin(a),z:Math.cos(a)};}if(d.lift){const next=clamp(this.eyeHeight+d.lift,.15,.25);if(next===this.eyeHeight){this.viewMessage='已到视角边界';this.viewMessageUntil=this.uiTime+1.2;}this.eyeHeight=next;}
+            if(d.yaw){const a=Math.atan2(this.direction.x,this.direction.z)+d.yaw;this.direction={x:Math.sin(a),z:Math.cos(a)};}
         }else if (this.dragging) this.pointAt(x,y);
     }
     private release(x: number, y: number): void {
@@ -598,7 +635,7 @@ export class BilliardsGame extends Component {
     }
     private hudPoint(x:number,y:number):{x:number;y:number}{return {x:x/this.hudPixelRatio,y:this.hudLayout.height-y/this.hudPixelRatio};}
     private inScene(x:number,y:number):boolean{const p=this.hudPoint(x,y),a=this.hudLayout.playArea;return p.x>=a.x&&p.x<=a.x+a.width&&p.y>=a.y&&p.y<=a.y+a.height;}
-    private switchView():void{if(this.viewState.request(this.viewContext(),this.settings.value.reducedMotion)){this.unsafeCameraKey='';if(!this.viewState.preference.persistent&&this.referee.phase==='ready'){this.viewMessage='视角设置本局有效 · 本机存储暂不可用';this.viewMessageUntil=this.uiTime+2.5;}this.fineAim.close();this.cancelDrag();this.layoutStamp='';}}
+    private switchView():void {this.syncShotCamera();this.cameraRig?.returnToShot(this.balls[0],this.direction,this.eyeHeight,this.settings.value.reducedMotion,this.tip.value,this.power);this.cancelDrag();this.layoutStamp='';}
     private setSpinAt(x:number,y:number):void {
         const p=this.spinPanel.surface.getComponent(UITransform)!.convertToNodeSpaceAR(this.hudCamera.screenToWorld(new Vec3(x,y,0)));
         this.tip.select(p.x/this.spinPanel.selectionRadius,p.y/this.spinPanel.selectionRadius);
@@ -612,7 +649,7 @@ export class BilliardsGame extends Component {
     private setPowerAt(x: number, y: number): void {
         const world = this.hudCamera.screenToWorld(new Vec3(x, y, 0));
         const local = this.powerControl.getComponent(UITransform)!.convertToNodeSpaceAR(world);
-        const fraction = Math.max(0.1, Math.min(1, (local.x + this.powerHalfWidth) / (this.powerHalfWidth * 2)));
+        const fraction = Math.max(0.1, Math.min(1, this.hudLayout.width>this.hudLayout.height?(local.y+60)/120:(local.x + this.powerHalfWidth) / (this.powerHalfWidth * 2)));
         this.power = Math.round(fraction * 40) / 10;
     }
     private hitUi(node: Node, x: number, y: number): boolean {
@@ -639,13 +676,17 @@ export class BilliardsGame extends Component {
     }
     private pauseGame(stopAudio=true):void {
         this.viewState.mode=this.viewState.target;this.viewState.transitionMs=0;
+        this.previewLeft=false;this.previewPointer=null;this.observationTouches.clear();this.observationPair=null;this.observationBlocked=false;
         this.aiTurn.pause();this.aiAimAt=0;this.aiPhaseStamp='';
         this.panelMode='pause';if(stopAudio)this.feedback?.stop();
         this.paused=true;this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.fineAim.close();this.accumulator=0;
     }
     private hideGame():void { const setup=this.panelMode==='new-game'||this.panelMode==='ai-options'?this.panelMode:null;this.backgrounded=true;this.pauseGame();if(setup)this.panelMode=setup; }
     private showGame():void { this.backgrounded=false;this.accumulator=0; }
-    private touchCancel(event:EventTouch):void { if(event.getID()===this.activeTouch)this.cancelDrag(); }
+    private touchCancel(event:EventTouch):void {
+        const owned=this.observationTouches.has(event.getID())||event.getID()===this.activeTouch;
+        if(!owned)return;this.observationTouches.delete(event.getID());this.observationPair=null;this.observationBlocked=this.observationTouches.size>0;this.cancelDrag();
+    }
 
     private isAiTurn():boolean {return this.matchMode==='ai'&&this.referee.current===1&&this.referee.phase!=='over';}
     private openMatchChooser():void {
@@ -685,29 +726,106 @@ export class BilliardsGame extends Component {
         this.direction={...decision.direction};this.power=decision.power;this.tip.open();this.tip.select(decision.tip.x,decision.tip.y);this.tip.confirm();
         if(decision.group)this.referee.select(decision.group);this.shoot(true);
     }
-    onDisable():void { this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.accumulator=0; }
+    onDisable():void { this.previewLeft=false;this.previewPointer=null;this.observationTouches.clear();this.observationPair=null;this.observationBlocked=false;this.tip.cancel();this.shotSequence.cancelBeforeContact();this.cancelDrag();this.accumulator=0; }
+    private previewObservationAllowed(x:number,y:number):boolean {
+        if(!(PREVIEW||EDITOR)||this.backgrounded||this.paused&&this.panelMode!=='view'||this.panelMode&&this.panelMode!=='view')return false;
+        if(!this.inScene(x,y))return false;
+        const controls=[this.powerControl,this.resetLabel.node,this.viewButton.node.parent!,this.dock,
+            ...this.playerCards.map(card=>card.node),this.spinPanel.panel];
+        return !controls.some(node=>this.hitUi(node,x,y));
+    }
+    private desktopPreview():boolean {return (PREVIEW||EDITOR)&&!sys.isMobile;}
+    private previewMouseDown(event:EventMouse):void {
+        if(!this.desktopPreview())return;
+        const point=event.getLocation();
+        if(event.getButton()===EventMouse.BUTTON_RIGHT){
+            if(!this.previewObservationAllowed(point.x,point.y))return;
+            this.cancelDrag();this.previewLeft=false;this.previewPointer={x:point.x,y:point.y};
+        }else if(event.getButton()===EventMouse.BUTTON_LEFT){
+            this.previewLeft=true;this.begin(point.x,point.y);
+        }
+    }
+    private previewMouseMove(event:EventMouse):void {
+        if(!this.desktopPreview())return;
+        const point=event.getLocation(),previous=this.previewPointer;
+        if(previous){
+            if(event.getButton()!==EventMouse.BUTTON_RIGHT){this.previewPointer=null;return;}
+            if(!this.previewObservationAllowed(point.x,point.y)){this.previewPointer=null;return;}
+            this.cameraRig?.observe((point.x-previous.x)/this.hudPixelRatio,(point.y-previous.y)/this.hudPixelRatio,1);
+            this.previewPointer={x:point.x,y:point.y};
+        }else if(this.previewLeft)this.move(point.x,point.y);
+    }
+    private previewMouseUp(event:EventMouse):void {
+        if(!this.desktopPreview())return;
+        // Editor forwarding may omit the original button on mouseup.
+        if(this.previewPointer){this.previewPointer=null;this.previewLeft=false;return;}
+        if(this.previewLeft){const point=event.getLocation();this.previewLeft=false;this.release(point.x,point.y);}
+    }
+    private previewMouseWheel(event:EventMouse):void {
+        const point=event.getLocation();
+        if(!this.desktopPreview()||!this.previewObservationAllowed(point.x,point.y))return;
+        const zoom=Math.exp(clamp(-event.getScrollY()*.0015,-.25,.25));
+        this.cameraRig?.observe(0,0,zoom);
+    }
     private touchStart(event: EventTouch): void {
-        if (this.activeTouch !== null) return;
-        this.activeTouch = event.getID();
-        const p = event.getLocation(); this.begin(p.x, p.y);
+        if(this.desktopPreview())return;
+        const p=event.getLocation();
+        if(this.observationBlocked)return;
+        if(this.observationTouches.size===0){
+            this.activeTouch=event.getID();this.begin(p.x,p.y);
+            const eligible=(this.panelMode==='view'||!this.panelMode&&!this.paused)&&this.inScene(p.x,p.y)&&
+                (this.pendingAction===null||this.pendingAction==='spin-cancel')&&!this.adjustingPower&&!this.adjustingFine&&!this.adjustingSpin&&
+                !this.hitUi(this.powerControl,p.x,p.y)&&(!this.tip.active||!this.hitUi(this.spinPanel.panel,p.x,p.y));
+            if(eligible)this.observationTouches.set(event.getID(),{x:p.x,y:p.y});
+            return;
+        }
+        if(!this.inScene(p.x,p.y)||this.hitUi(this.powerControl,p.x,p.y)||this.tip.active&&this.hitUi(this.spinPanel.panel,p.x,p.y))return;
+        if(this.observationTouches.size===1){
+            this.observationTouches.set(event.getID(),{x:p.x,y:p.y});this.cancelDrag();this.observationPair=this.touchPair();this.observationIntent=null;
+        }
+    }
+    private touchPair():{x:number;y:number;distance:number} {
+        const [a,b]=Array.from(this.observationTouches.values());
+        return {x:(a.x+b.x)/2,y:(a.y+b.y)/2,distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y))};
     }
     private touchMove(event: EventTouch): void {
-        if (event.getID() !== this.activeTouch) return;
-        const p = event.getLocation(); this.move(p.x, p.y);
+        if(this.desktopPreview())return;
+        // Sample both fingers from the same engine event before classifying the gesture.
+        // Sequential per-finger updates can otherwise mistake a parallel drag for a pinch.
+        if(typeof event.getAllTouches==='function')for(const touch of event.getAllTouches()){
+            if(this.observationTouches.has(touch.getID())){const point=touch.getLocation();this.observationTouches.set(touch.getID(),{x:point.x,y:point.y});}
+        }
+        const p=event.getLocation();
+        if(this.observationTouches.has(event.getID()))this.observationTouches.set(event.getID(),{x:p.x,y:p.y});
+        if(this.observationTouches.size===2&&this.observationPair&&(!this.paused||this.panelMode==='view')){
+            const next=this.touchPair(),before=this.observationPair;
+            const dx=(next.x-before.x)/this.hudPixelRatio,dy=(next.y-before.y)/this.hudPixelRatio;
+            if(!this.observationIntent){
+                if(Math.abs(Math.log(next.distance/before.distance))>.035)this.observationIntent='zoom';
+                else if(Math.hypot(dx,dy)>5)this.observationIntent='orbit';
+                else return;
+            }
+            this.cameraRig?.observe(this.observationIntent==='orbit'?dx:0,this.observationIntent==='orbit'?dy:0,this.observationIntent==='zoom'?before.distance/next.distance:1);
+            this.observationPair=next;return;
+        }
+        if(this.observationBlocked||event.getID()!==this.activeTouch)return;
+        this.move(p.x,p.y);
     }
     private touchEnd(event: EventTouch): void {
-        if (event.getID() !== this.activeTouch) return;
-        const p = event.getLocation();
-        this.release(p.x, p.y); this.activeTouch = null;
+        if(this.desktopPreview())return;
+        if(this.observationTouches.has(event.getID())){
+            if(this.observationTouches.size===2){this.observationBlocked=true;this.observationPair=null;this.cancelDrag();}
+            this.observationTouches.delete(event.getID());
+            if(this.observationTouches.size===0&&this.observationBlocked){this.observationBlocked=false;return;}
+        }
+        if(this.observationBlocked||event.getID()!==this.activeTouch)return;
+        const p=event.getLocation();this.release(p.x,p.y);this.activeTouch=null;
     }
 
     update(dt: number): void {
         if(this.booting)return;
         this.viewFrameDt=Math.min(dt,.1);
         this.uiTime+=Math.min(dt,.1);
-        const landscape=screen.windowSize.width>screen.windowSize.height;
-        if(landscape&&!this.rotationBlocked){this.rotationSetup=this.panelMode==='new-game'||this.panelMode==='ai-options'?this.panelMode:null;this.pauseGame();this.rotationBlocked=true;}
-        if(!landscape&&this.rotationBlocked){this.rotationBlocked=false;this.panelMode=this.rotationSetup??'pause';this.rotationSetup=null;}
 
         const contactFrame=!this.paused&&!this.backgrounded&&this.shotSequence.advance(dt,
             snapshot=>{const committed=commitShot(snapshot,this.gameId,this.balls,this.referee);if(committed){this.lastContactShotId=snapshot.shotId;this.feedback?.play('strike',Math.hypot(this.balls[0].vx,this.balls[0].vz));this.feedback?.haptic();}return committed;});
@@ -715,7 +833,12 @@ export class BilliardsGame extends Component {
             // The first moving frame shares the exact visible contact pose, even after a long frame.
             this.accumulator=contactFrame?FIXED_STEP:Math.min(this.accumulator+dt,0.1);
             while(this.accumulator>=FIXED_STEP) {
+                this.pocketAnimation.advance(FIXED_STEP);
                 step(this.balls,FIXED_STEP,{respawnCue:false,onEvent:event=>{this.referee.observe(event,this.balls);
+                    if(event.type==='pocket'){
+                        const ball=this.balls.find(b=>b.id===event.id);
+                        if(ball)this.pocketAnimation.start(ball,event.pocket,event.speed);
+                    }
                     const key=event.type==='contact'?`${Math.min(event.a,event.b)}:${Math.max(event.a,event.b)}`:event.type==='cushion'?`${event.id}:${event.side}`:`${event.id}:${event.pocket}`;
                     this.feedback?.enqueue(event.type==='contact'?'collision':event.type==='cushion'?'cushion':'pocket',event.speed??0,key);
                 }});
@@ -724,7 +847,7 @@ export class BilliardsGame extends Component {
                     v.y+=(ball.wy??0)*FIXED_STEP;v.z+=(ball.wz??0)*FIXED_STEP;
                 });
                 this.referee.trackCue(this.balls);
-                if(this.referee.phase==='shooting'&&!isMoving(this.balls)){
+                if(this.referee.phase==='shooting'&&!isMoving(this.balls)&&!this.pocketAnimation.active){
                     const player=this.referee.shot?.player??this.referee.current;this.referee.finishShot(this.balls);this.tip.reset();this.notificationAt=this.uiTime;
                     this.victoryApplause=this.referee.winner===player;
                     if(player===1){this.aiTurn.cancel();this.aiPhaseStamp='';this.aiAimAt=0;}
@@ -788,11 +911,17 @@ export class BilliardsGame extends Component {
         else if(this.viewButton){const r=this.hudLayout.turn;this.turnLabel.node.setPosition(r.x+(r.width-140)/2-this.hudLayout.width/2,this.hudLayout.height/2-r.y-r.height/2,0);this.turnLabel.node.getComponent(UITransform)!.setContentSize(r.width-140,r.height);}
     }
 
+    private endGestureOnResize(width:number,height:number):void {
+        if(!this.hudLayout||this.hudLayout.width===width&&this.hudLayout.height===height)return;
+        this.cancelDrag();this.previewLeft=false;this.previewPointer=null;this.observationTouches.clear();this.observationPair=null;this.observationBlocked=false;
+    }
+
     private layoutHud(labels: string[]): void {
         const size = screen.windowSize;
         // A scaled embedded preview can be narrower than a mobile frame.
         // Geometry and pointers share the same physical-pixel/HUD-unit ratio.
         const {width,height,pixelRatio}=computeHudViewport(size.width,size.height,screen.devicePixelRatio);
+        this.endGestureOnResize(width,height);
         this.hudPixelRatio=pixelRatio;
         // TTF labels rasterize using view.getScaleX(), independently of the HUD camera.
         // Match the design resolution to HUD units so text uses the actual render scale,
@@ -821,7 +950,7 @@ export class BilliardsGame extends Component {
             ...this.players.flatMap(player => [player.id, player.nickname, player.avatar]), ...this.balls.map(ball => ball.pocketed), ...labels].join('|');
         if (stamp === this.layoutStamp) {this.syncView();return;}
         this.layoutStamp = stamp;
-        const layout = computeHudLayout(width, height, { insets, showPower, actionCount: active.length, showShot:showPower, showFine:showPower&&this.fineAim.active,showDecision:!this.isAiTurn()&&!overlayChoice&&!!this.decision.string&&this.referee.phase!=='shooting' });
+        const layout = computeHudLayout(width, height, { insets, showPower, actionCount: active.length, showShot:showPower, showFine:showPower&&this.fineAim.active,dockRight:this.dockRight,showDecision:!this.isAiTurn()&&!overlayChoice&&!!this.decision.string&&this.referee.phase!=='shooting' });
         this.hudLayout = layout;
         const s = layout.scale;
         const place = (node: Node, rect: HudRect): void => {
@@ -835,12 +964,14 @@ export class BilliardsGame extends Component {
             graphic.clear(); graphic.fillColor = color;
             graphic.roundRect(-rect.width / 2, -rect.height / 2, rect.width, rect.height, 12 * s); graphic.fill();
         };
-        place(this.status.node,{...layout.status,width:72});
-        const vr={x:layout.status.x+80,y:layout.reset.y,width:width<360?56:68,height:44};panel(this.viewButton.node.parent!,vr,new Color().fromHEX(CLUB.surface));this.viewButton.node.setPosition(0,0,0);this.viewButton.node.getComponent(UITransform)!.setContentSize(vr.width-8,32);
+        place(this.status.node,{...layout.status,width:72});this.status.node.active=width<=height;
+        const vr=width>height?{x:insets.left+8,y:insets.top+64,width:68,height:64}:{x:layout.status.x+80,y:layout.reset.y,width:width<360?56:68,height:44};panel(this.viewButton.node.parent!,vr,new Color().fromHEX(CLUB.surface));this.viewButton.node.setPosition(0,0,0);this.viewButton.node.getComponent(UITransform)!.setContentSize(vr.width-8,32);
         this.status.fontSize = 18*s; this.status.lineHeight = 24*s;
+        this.subtitle.node.active=width<=height;
         this.subtitle.node.setPosition(layout.status.x+36-layout.width/2,layout.height/2-(layout.status.y+30),0);
         this.subtitle.node.getComponent(UITransform)!.setContentSize(72,16);this.subtitle.fontSize=11;this.subtitle.lineHeight=16;
         place(this.turnLabel.node,{...layout.turn,width:layout.turn.width-130});
+        this.trajectoryLabel.node.active=width<=height;this.targetLegend.node.active=width<=height;
         const legendWidth=this.viewState.mode==='first-person'?140:130;place(this.trajectoryLabel.node,{...layout.turn,x:layout.turn.x+layout.turn.width-legendWidth,width:legendWidth-60});
         place(this.targetLegend.node,{...layout.turn,x:layout.turn.x+layout.turn.width-60,width:60});
         this.aiWaiting.node.active=aiWait;place(this.aiWaiting.node,{x:layout.power.x,y:layout.power.y,width:layout.power.width,height:107});
@@ -859,7 +990,7 @@ export class BilliardsGame extends Component {
             card.render(this.players[player], player, group, group ? remaining(this.balls, group) : [],
                 player === this.referee.current, rect.width, rect.height, s,this.matchMode==='ai'&&player===1?DIFFICULTY_NAMES[this.aiDisplayedDifficulty]:'');
         });
-        panel(this.dock, layout.dock, new Color().fromHEX(CLUB.background));
+        panel(this.dock, layout.dock, new Color().fromHEX(width>height?CLUB.surface:CLUB.background));
         place(this.decision.node, layout.decision);
         this.decision.node.active=layout.decision.height>0;
         this.decision.color=new Color().fromHEX(this.placementInvalid&&this.placementInvalid.until>this.uiTime?CLUB.loss:/犯规|落袋|不足|非法|越|未碰/.test(this.decision.string)?CLUB.foul:CLUB.muted);
@@ -897,6 +1028,12 @@ export class BilliardsGame extends Component {
         this.groupHint.node.setPosition(0,layout.height/2-(layout.height-insets.bottom-7),0);
         this.powerControl.active = showPower&&!aiWait;
         place(this.powerControl, layout.power);
+        if(width>height){
+            this.powerLabel.string='';this.powerValue.string=Math.round(this.power/4*100)+'%';this.powerValue.fontSize=16;this.powerValue.horizontalAlign=Label.HorizontalAlign.CENTER;
+            this.powerValue.node.setPosition(0,86,0);this.powerValue.node.getComponent(UITransform)!.setContentSize(60,24);
+            const g=this.powerGraphics;g.clear();g.lineWidth=4;g.strokeColor=new Color().fromHEX(CLUB.track);g.moveTo(0,-60);g.lineTo(0,60);g.stroke();
+            g.strokeColor=new Color().fromHEX(CLUB.gold);g.moveTo(0,-60);g.lineTo(0,-60+120*this.power/4);g.stroke();g.fillColor=g.strokeColor;g.circle(0,-60+120*this.power/4,7);g.fill();
+        }else{
         this.powerHalfWidth=(layout.power.width-6)/2;
         this.powerLabel.node.getComponent(UITransform)!.setContentSize(layout.power.width-60,20);
         this.powerLabel.horizontalAlign=Label.HorizontalAlign.LEFT;
@@ -908,12 +1045,13 @@ export class BilliardsGame extends Component {
         fill.clear();fill.fillColor=new Color().fromHEX(CLUB.track);fill.roundRect(-half,y-2,half*2,4,2);fill.fill();
         fill.fillColor=new Color().fromHEX(!this.isAiTurn()&&this.referee.phase==='ready'&&!this.shotSequence.active&&!this.paused?CLUB.gold:CLUB.disabled);
         fill.roundRect(-half,y-2,half*2*this.power/4,4,2);fill.fill();fill.circle(-half+half*2*this.power/4,y,9);fill.fill();
+        }
         const decorate=(label:Label,rect:HudRect,title:string,primary=false):void=>{
             const pressed=this.pendingAction!==null&&this.actionNode(this.pendingAction)===label.node.parent;
-            panel(label.node.parent!,rect,new Color().fromHEX(pressed?primary?'#CCB276':'#314A3D':primary?CLUB.gold:CLUB.surface));
-            if(!primary){const border=label.node.parent!.getComponent(Graphics)!;border.strokeColor=new Color().fromHEX(CLUB.track);border.lineWidth=s;border.stroke();}
+            panel(label.node.parent!,rect,width>height&&!primary&&!pressed?new Color(0,0,0,0):new Color().fromHEX(pressed?primary?'#CCB276':'#314A3D':primary?CLUB.gold:CLUB.surface));
+            if(!primary&&width<=height){const border=label.node.parent!.getComponent(Graphics)!;border.strokeColor=new Color().fromHEX(CLUB.track);border.lineWidth=s;border.stroke();}
             label.string=title;label.color=new Color().fromHEX(primary?CLUB.background:!this.isAiTurn()&&this.referee.phase==='ready'&&!isMoving(this.balls)&&!this.shotSequence.active?CLUB.ink:CLUB.disabled);
-            label.fontSize=14*s;label.lineHeight=20*s;
+            label.fontSize=(width>height?12:14)*s;label.lineHeight=20*s;
             label.node.getComponent(UITransform)!.setContentSize(rect.width-12*s,rect.height-8*s);
         };
         this.shotButton.node.active=showPower&&!aiWait;
@@ -970,6 +1108,7 @@ export class BilliardsGame extends Component {
         else if(action.startsWith('ai-level:')){const value=action.slice(9);if(isDifficulty(value))this.practice.set({difficulty:value});}
         else if(action==='start-match')this.startMatch();
         else if(action==='back-pause'){this.panelMode='pause';this.panelPage=0;}
+        else if(action==='layout-side'){this.dockRight=!this.dockRight;this.layoutStamp='';}
         else if(action==='close-identity'){this.panelMode=this.identityReturn;this.paused=!!this.identityReturn;this.identityReturn=null;this.accumulator=0;}
         else if(action==='select-group'&&!this.isAiTurn()&&this.referee.phase==='ready'){this.referee.selected=null;this.panelMode=null;this.paused=false;}
         else if(action.startsWith('break:')){this.panelMode=null;this.paused=false;this.ruleAction(Number(action.slice(6)));}
@@ -986,10 +1125,10 @@ export class BilliardsGame extends Component {
     }
     private renderPanels(width:number,height:number,bottom:number):void {
         if(!this.panels)return;
-        const mode=this.rotationBlocked?'rotate':this.panelMode;
+        const mode=this.panelMode;
         const m:PanelModel={mode,title:'',body:'',actions:[],pressed:typeof this.pendingAction==='string'&&this.pendingAction.startsWith('modal-')?Number(this.pendingAction.slice(6)):-1};
         const back={id:'back-pause',title:'完成'};
-        if(mode==='pause'){m.title='暂停一下';m.body=(this.matchMode==='ai'?'人机练习':'同屏对战')+' · 当前球局保留';m.actions=[{id:'resume',title:'继续对局',primary:true},{id:'restart',title:'重新开局'},{id:'settings',title:'设置',value:'声音与辅助 ›'},{id:'rules',title:'本局规则',value:'查看 ›'},{id:'new-game',title:'选择玩法',value:(this.matchMode==='ai'?'人机练习':'双人同屏')+' ›'}];if(this.matchMode==='ai')m.actions.push({id:'ai-options',title:'AI 难度',value:DIFFICULTY_NAMES[this.practice.value.difficulty]+' ›'});}
+        if(mode==='pause'){m.title='暂停一下';m.body=(this.matchMode==='ai'?'人机练习':'同屏对战')+' · 当前球局保留';m.actions=[{id:'resume',title:'继续对局',primary:true},{id:'restart',title:'重新开局'},{id:'settings',title:'设置',value:'声音与辅助 ›'},{id:'rules',title:'本局规则',value:'查看 ›'},{id:'new-game',title:'选择玩法',value:(this.matchMode==='ai'?'人机练习':'双人同屏')+' ›'}];m.actions.push({id:'layout-side',title:'操作条位置',value:this.dockRight?'右侧':'左侧'});if(this.matchMode==='ai')m.actions.push({id:'ai-options',title:'AI 难度',value:DIFFICULTY_NAMES[this.practice.value.difficulty]+' ›'});}
         else if(mode==='new-game'){
             m.title='开始一局';m.body='专注这一杆，慢慢找到手感。';m.caption=this.draftMode==='ai'?'你先开球 · 单局对战':'玩家一先开球 · 双人轮流操作';m.detail=({easy:'优先简单进攻，允许更多出杆误差。适合轻松熟悉台面。',standard:'攻守兼顾，尝试简单走位。\n适合熟悉基础击球后练习。',hard:'尝试一库路线与更细的走位评估。适合主动练习攻守选择。'})[this.draftDifficulty];
             m.actions=[{id:'mode:ai',title:'人机练习',selected:this.draftMode==='ai'},{id:'mode:local',title:'双人同屏',selected:this.draftMode==='local'}];
@@ -1021,7 +1160,6 @@ export class BilliardsGame extends Component {
             const winner=this.referee.winner??0;m.title='本局获胜';m.caption=fitNickname(playerName(this.players[winner],winner),16);m.body=playerMessage(this.referee.message,this.players)+'\n'+(this.matchMode==='ai'?'人机练习 · '+DIFFICULTY_NAMES[this.aiDisplayedDifficulty]+'难度':'双人同屏');
             m.actions=[{id:'new-round',title:'再来一局',primary:true},{id:'view-table',title:'查看台面'}];
         } else if(mode==='view'){m.actions=[{id:'return-result',title:'返回对局结果',primary:true}];}
-        else if(mode==='rotate'){m.title='请竖屏体验';m.body='旋回竖屏后可继续原球局。';}
         this.panels.render(width,height,bottom,m);
     }
     private drawPlacement():void {
@@ -1038,6 +1176,7 @@ export class BilliardsGame extends Component {
 
     private drawAimGuide():void {
         const g=this.aimGraphics;g.clear();if(this.trajectoryLabel)this.trajectoryLabel.string='';if(this.targetLegend)this.targetLegend.string='';this.trajectoryCaption='';this.drawBallLighting();
+        if(this.powerLabel)this.powerLabel.node.active=this.hudLayout.width<=this.hudLayout.height;
         if(this.powerLabel)this.powerLabel.string='击球力度'+(this.tip.value.x||this.tip.value.y?' · '+tipLabel(this.tip.value).replace(/\s*\d+%/g,'').replace(/\s*·\s*/g,''):'');
         const showMagnifier=this.viewState.mode==='overhead'&&!!this.magnifier&&this.settings.value.magnifier&&(this.dragging||this.fineAim.active);
         if(!showMagnifier)this.magnifier?.hide();
@@ -1143,8 +1282,17 @@ export class BilliardsGame extends Component {
         this.balls.forEach((ball, index) => {
             const node = this.ballNodes[index];
             const wasHidden = !node.active;
-            node.active = !ball.pocketed;
-            if (ball.pocketed) return;
+            const falling = this.pocketAnimation.position(ball.id);
+            node.active = !ball.pocketed || !!falling;
+            if (!node.active) return;
+            if(falling){
+                const dx=falling.x-node.position.x,dz=falling.z-node.position.z;
+                const distance=Math.hypot(dx,dz);
+                if(distance>1e-7)node.rotate(Quat.fromAxisAngle(new Quat(),new Vec3(dz/distance,0,-dx/distance),distance/TABLE.radius),Node.NodeSpace.WORLD);
+                node.setPosition(falling.x,falling.y,falling.z);
+                const turn=this.visualSpinDeltas[ball.id];turn.x=turn.y=turn.z=0;
+                return;
+            }
             if (wasHidden) node.setPosition(ball.x, TABLE.radius, ball.z);
             const turn=this.visualSpinDeltas[ball.id],angle=Math.hypot(turn.x,turn.y,turn.z);
             if(angle>1e-7)node.rotate(Quat.fromAxisAngle(new Quat(),new Vec3(turn.x/angle,turn.y/angle,turn.z/angle),angle),Node.NodeSpace.WORLD);
@@ -1178,6 +1326,12 @@ export class BilliardsGame extends Component {
         input.off(Input.EventType.TOUCH_MOVE, this.touchMove, this);
         input.off(Input.EventType.TOUCH_END, this.touchEnd, this);
         input.off(Input.EventType.TOUCH_CANCEL, this.touchCancel, this);
+        if(PREVIEW||EDITOR){
+            input.off(Input.EventType.MOUSE_DOWN,this.previewMouseDown,this);
+            input.off(Input.EventType.MOUSE_MOVE,this.previewMouseMove,this);
+            input.off(Input.EventType.MOUSE_UP,this.previewMouseUp,this);
+            input.off(Input.EventType.MOUSE_WHEEL,this.previewMouseWheel,this);
+        }
         game.off(Game.EVENT_HIDE,this.hideGame,this);game.off(Game.EVENT_SHOW,this.showGame,this);
         this.shotSequence.cancel();
         this.meshes.forEach(mesh => mesh.destroy());

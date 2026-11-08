@@ -1,6 +1,6 @@
 import { advanceContacts, REFERENCE_MATERIAL, ContactBoundary } from './BilliardsContact';
 import { RackConfig, RACK_BODY_ORDER, rackNumbers, ballMasses, rackPositionOffsets } from './BilliardsRack';
-import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement, POCKETS, pocketCoordinates, traceTable } from './BilliardsTableGeometry';
+import { TABLE_GEOMETRY, CUSHION_SEGMENTS, nearestOnSegment, pocketAt, validTablePlacement, traceTable } from './BilliardsTableGeometry';
 export { POCKETS, POCKET_MODEL, CUSHION_SEGMENTS } from './BilliardsTableGeometry';
 export type { CushionSide } from './BilliardsTableGeometry';
 import { CushionSide } from './BilliardsTableGeometry';
@@ -157,7 +157,7 @@ function nextTableBoundary(balls:readonly BallState[],remaining:number,onEvent?:
         const hit=traceTable(ball,ball.vx/speed,ball.vz/speed);if(!hit||hit.distance/speed>remaining)continue;
         const x=ball.x+ball.vx/speed*hit.distance,z=ball.z+ball.vz/speed*hit.distance,time=hit.distance/speed;
         if(hit.kind==='pocket'){
-            const index=POCKETS.findIndex(p=>{const q=pocketCoordinates({x,z},p);return q.v>=p.dropDepth-1e-8&&Math.abs(q.u)<=p.mouth/2-TABLE.radius+1e-8;});
+            const index=pocketAt({x,z});
             if(index>=0)choose({time,apply:()=>pocket(ball,index)});
         }else{
             let segment:typeof CUSHION_SEGMENTS[number]|undefined,error=Infinity;

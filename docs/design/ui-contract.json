@@ -1,411 +1,710 @@
 {
-  "version": "1.15.3",
-  "date": "2026-10-26",
-  "pixelReference": "refinement/aim.png",
+  "orientation": "landscape-default; no orientation gate",
+  "version": "2.4-model-baseline",
+  "date": "2026-11-08",
+  "cameraModel": "single continuous orbit camera",
+  "cameraControls": {
+    "oneFinger": "aim; placement stage edits cue ball",
+    "twoFingerParallel": "orbit and pitch",
+    "pinch": "distance",
+    "returnAction": "回到出杆位",
+    "aimIndependent": true,
+    "fingerCountChange": "rebase when second finger arrives; after dropping to one require all fingers up",
+    "shotOrigin": "return uses saved origin during preparation and motion",
+    "afterPlacement": "preserve camera",
+    "afterSettlement": "preserve camera",
+    "boundsAndSensitivity": "pending interaction calibration"
+  },
   "referenceFrame": [
-    393,
-    852
+    852,
+    393
   ],
-  "referenceSafeArea": {
-    "top": 47,
-    "bottom": 34
-  },
-  "toleranceLogicalPx": {
-    "controls": 1,
-    "tableProjection": 2
-  },
-  "normalAim": {
-    "cards": [
-      {
-        "x": 20,
-        "y": 95,
-        "w": 171,
-        "h": 64
-      },
-      {
-        "x": 202,
-        "y": 95,
-        "w": 171,
-        "h": 64
-      }
-    ],
-    "table": {
-      "x": 59.97517730496452,
-      "y": 193,
-      "w": 273.04964539007096,
-      "h": 500
-    },
-    "buttons": [
-      {
-        "x": 24,
-        "y": 766,
-        "w": 76,
-        "h": 48
-      },
-      {
-        "x": 112,
-        "y": 766,
-        "w": 169,
-        "h": 48
-      },
-      {
-        "x": 293,
-        "y": 766,
-        "w": 76,
-        "h": 48
-      }
-    ],
-    "power": {
-      "x": 24,
-      "y": 707,
-      "w": 345,
-      "h": 44
-    },
-    "track": {
-      "x": 27,
-      "y": 735,
-      "w": 339,
-      "h": 4
-    },
-    "sliderDiameter": 18
-  },
-  "typography": {
-    "title": 18,
-    "subtitle": 11,
-    "body": 14,
-    "auxiliary": 12,
-    "bottomButton": 14,
-    "panelButton": 16,
-    "fontFamily": "PingFang SC, Noto Sans CJK SC, Arial, sans-serif",
-    "numericFontFamily": "Menlo, Consolas, monospace"
-  },
-  "panels": {
-    "pause": {
-      "x": 24,
-      "y": 235,
-      "w": 345,
-      "h": 400
-    },
-    "confirm": {
-      "x": 24,
-      "y": 265,
-      "w": 345,
-      "h": 314
-    },
-    "result": {
-      "x": 24,
-      "y": 223,
-      "w": 345,
-      "h": 398
-    },
-    "settings": {
-      "x": 24,
-      "y": 190,
-      "w": 345,
-      "h": 568
-    },
-    "rules": {
-      "x": 0,
-      "y": 294,
-      "w": 393,
-      "h": 558
-    },
-    "spin": {
-      "x": 0,
-      "y": 356,
-      "w": 393,
-      "h": 496
-    },
-    "break": {
-      "x": 0,
-      "y": 469,
-      "w": 393,
-      "h": 383
-    },
-    "identity": {
-      "x": 24,
-      "y": 182,
-      "w": 345,
-      "h": 480
-    },
-    "newGame": {
-      "x": 24,
-      "y": 182,
-      "w": 345,
-      "h": 480
-    },
-    "aiOptions": {
-      "x": 24,
-      "y": 242,
-      "w": 345,
-      "h": 360
-    }
-  },
-  "adaptation": "Keep 44px touch targets; shorten table when extra actions/fine control consume vertical space. Landscape shows blocking rotation prompt.",
-  "pocketVisual": "Renderer consumes the shared prototype outline. Manufacturer-unverified physical fields remain null; no new measured-depth claims.",
-  "fixtures": "scripts/preview-scenarios.js S01-S15; previewScenarioRestore restores viewport service and match.",
-  "platformWaiver": "User explicitly waived all real-phone and WeChat-specific validation on 2026-10-23.",
-  "localBrowserPerformanceBudget": {
-    "viewport": [
-      393,
-      852,
-      2
-    ],
-    "durationSeconds": 3,
-    "idleAverageFpsMin": 50,
-    "magnifierAverageFpsMin": 45,
-    "p95FrameMsMax": 33.4,
-    "scope": "Local Chromium baseline only, not device certification"
-  },
-  "selectionButtons": [
-    {
-      "x": 24,
-      "y": 738,
-      "w": 166,
-      "h": 60
-    },
-    {
-      "x": 203,
-      "y": 738,
-      "w": 166,
-      "h": 60
-    }
+  "safeInsets": [
+    44,
+    0,
+    44,
+    21
   ],
-  "colors": "Exact theme tokens; screenshot RGB allows one 8-bit quantization level, excluding anti-alias edges.",
-  "minimumCertifiedViewportWidth": 320,
-  "scaledEmbeddedPreview": "Frames narrower than 320 CSS pixels use a proportional mobile presentation with a minimum logical width of 320. Pointer conversion and font sampling use physical pixels per HUD unit; such zoomed frames do not certify physical 44px touch targets.",
-  "magnifierPlacement": {
-    "spec": "magnifier-placement.md",
-    "pocketClearance": 12,
-    "cueAndContactClearance": 18,
-    "fingerClearance": 24,
-    "widths": [
+  "hud": {
+    "pause": [
+      44,
+      12,
+      44,
+      44
+    ],
+    "returnToShot": [
+      44,
+      68,
+      44,
+      88
+    ],
+    "player1": [
+      181.6,
+      8,
+      148,
+      44
+    ],
+    "player2": [
+      505.4,
+      8,
+      148,
+      44
+    ],
+    "power": [
+      756,
       132,
-      112,
-      96
+      44,
+      144
     ],
-    "heightRatio": 0.8787878787878788,
-    "titleSize": 11,
-    "stability": "Keep a safe slot for the interaction; reset on hide or viewport change",
-    "noSafeSlot": "Hide instead of occluding a pocket"
+    "fine": [
+      170,
+      322,
+      72,
+      44
+    ],
+    "shoot": [
+      242,
+      322,
+      72,
+      44
+    ],
+    "spin": [
+      314,
+      322,
+      72,
+      44
+    ]
   },
-  "shotPower": {
-    "spec": "shot-power.md",
-    "displayPercentRange": [
-      10,
-      100
+  "actionDock": [
+    166,
+    320,
+    224,
+    48
+  ],
+  "placementConfirm": [
+    166,
+    320,
+    224,
+    48
+  ],
+  "spinPanel": [
+    96,
+    64,
+    258,
+    304
+  ],
+  "shotContactMs": 220,
+  "states": [
+    [
+      "正常瞄准",
+      "单指调方向，双指观察",
+      "独立出杆，主动回位"
     ],
-    "defaultPercent": 60,
-    "unchangedThroughPercent": 60,
-    "maximumCentreTipSpeedMps": 8,
-    "samples": {
-      "60": 2.4,
-      "80": 4.2,
-      "100": 8
+    [
+      "摆球",
+      "单指放白球，双指观察",
+      "合法确认，保留镜头"
+    ],
+    [
+      "选组/开球处理",
+      "双指观察，完成裁判要求",
+      "选择完成后允许击球"
+    ],
+    [
+      "AI回合",
+      "双指观察，回位，暂停",
+      "人类参数编辑只读"
+    ],
+    [
+      "准备/球运动",
+      "双指观察，回位，暂停",
+      "回位使用该杆起点"
+    ],
+    [
+      "打点草稿",
+      "面板编辑，场景双指观察",
+      "完成应用，取消恢复"
+    ],
+    [
+      "窗口/后台",
+      "窗口适配保持对局，后台暂停",
+      "结束旧手势，后台恢复需继续"
+    ],
+    [
+      "结果",
+      "观察台面，查看判定",
+      "再来一局或返回结果"
+    ]
+  ],
+  "reviewItems": [
+    "default dock side",
+    "camera angle and distance bounds",
+    "gesture thresholds and sensitivity",
+    "return duration"
+  ],
+  "artifactScope": "design review",
+  "runtimeBaseline": "21abab2",
+  "figures": [
+    {
+      "name": "low",
+      "title": "低位瞄准",
+      "source": "free-camera/low.svg",
+      "render": "free-camera/low.png"
     },
-    "commitMs": 220
-  },
-  "rackVariation": {
-    "spec": "rack-variation.md",
-    "version": "hertz-reference-v6",
-    "targetMassVariation": 0.005,
-    "cueRelativeMass": 1,
-    "randomShotError": false,
-    "randomPositionGaps": true,
-    "journalLimit": 32,
-    "scope": "New rack initialization only; fixed ball set across re-racks and reloads",
-    "contactModel": "SI Hertz normal elasticity, restitution damping, dissipative side-spin friction; persistent indentation; swept rail and drop events",
-    "status": "numerical, browser and native Creator checks passed; user accepted current gameplay feel and authorized commit/push on 2026-10-24",
-    "positionToleranceM": 0.00025,
-    "maxPositionToleranceM": 0.0005,
-    "toleranceModel": "seeded row misalignment; bounded centres, tight neighbours, no overlap; fixed apex",
-    "parameterBasis": "published material and software reference profiles, not measured project table"
-  },
-  "trajectoryGuide": {
-    "spec": "trajectory-guide.md",
-    "cue": {
-      "color": "#F5F1E6",
-      "line": "dashed",
-      "restMarker": "circle with cross",
-      "dashLogicalPx": [
-        4,
-        4
-      ]
+    {
+      "name": "high",
+      "title": "高位全局观察",
+      "source": "free-camera/high.svg",
+      "render": "free-camera/high.png"
     },
-    "target": {
-      "color": "#E5BD74",
-      "line": "dashed",
-      "restMarker": "diamond",
-      "selection": "first actual cue-object contact including a prior bank",
-      "dashLogicalPx": [
-        6,
-        4
-      ]
+    {
+      "name": "placement",
+      "title": "统一界面内摆球",
+      "source": "free-camera/placement.svg",
+      "render": "free-camera/placement.png"
     },
-    "lineWidthLogicalPx": 1.35,
-    "pocketOutcome": "arrow at drop plane, no table rest marker",
-    "prediction": "same full-table fixed-step physics on isolated copies; current power and confirmed tip",
-    "incomplete": "partial path only, no terminal rest marker",
-    "caption": "Independent status-row legend; power label always remains visible"
-  },
-  "aiPractice": {
-    "spec": "ai-opponent.md",
-    "modes": [
-      "ai",
-      "local"
-    ],
-    "levels": [
-      "easy",
-      "standard",
-      "hard"
-    ],
-    "defaultLevel": "standard",
-    "storageKey": "eight-club.practice.v1",
-    "aiSeat": 1,
-    "humanBreaksFirst": true,
-    "modePanelMaxHeight": 480,
-    "pausePanelMaxHeight": {
-      "local": 400,
-      "ai": 452
+    {
+      "name": "spin",
+      "title": "打点编辑与自由观察",
+      "source": "free-camera/spin.svg",
+      "render": "free-camera/spin.png"
+    }
+  ],
+  "tableAppearance": {
+    "direction": "墨绿台呢、胡桃木桌体与木脚座、深棕皮口",
+    "specification": "landscape-uiux.md#球桌造型规范-v24",
+    "referenceModel": "JOY Q8 Pro overall proportions; game-specific V8 styling",
+    "dimensionsMm": {
+      "outer": [
+        2820,
+        1540,
+        850
+      ],
+      "playingBed": [
+        2540,
+        1260
+      ],
+      "ballDiameter": 57.15
     },
-    "difficultyChange": "next thinking task; locked and moving shots retain their parameters",
-    "aiInput": "pause and identity only; no human shot controls",
-    "contactMs": 220
-  },
-  "refinement": {
-    "spec": "refinement.md",
-    "approved": true,
-    "cardsHeight": 64,
-    "tableHeight": 500,
-    "materials": "fixed top-left soft shading; pocket outlines unchanged",
-    "aiWaiting": "fixed dock reservation; shot animation remains visible"
-  },
-  "implementationBaseline": "1.14",
-  "firstPerson": {
-    "status": "implemented; local-browser-and-native-validated; user-visual-review-pending",
-    "spec": "first-person.md",
-    "referenceFigures": [
-      "first-person/FP01-overhead.svg",
-      "first-person/FP02-aim.svg",
-      "first-person/FP03-raised.svg",
-      "first-person/FP04-rail.svg",
-      "first-person/FP05-offscreen.svg",
-      "first-person/FP06-contact.svg"
+    "derivedOverallBorderMm": 140,
+    "pocketMouthCandidatesMm": {
+      "corner": 85,
+      "side": 82,
+      "status": "game candidates; manufacturer corner/side measurement definitions unverified"
+    },
+    "unverified": [
+      "manufacturer cushion profile",
+      "manufacturer jaw radii",
+      "manufacturer slate cut-out",
+      "manufacturer pocket throat",
+      "manufacturer slate thickness",
+      "real-table calibration"
     ],
-    "modes": [
-      "overhead",
-      "first-person"
+    "jawContour": "V8 model contours; T03/T08 explain structural relationships",
+    "visualFitting": [
+      "cushion profile",
+      "jaw curvature",
+      "leather thickness",
+      "apron and legs",
+      "vertical levels"
     ],
-    "defaultPreference": "overhead",
-    "preferenceScope": "shared per device; temporary forced overhead does not overwrite it",
-    "switchControl": {
-      "reference": {
-        "x": 148,
-        "y": 47,
-        "w": 68,
-        "h": 44
+    "fallPresentation": {
+      "durationMs": 320,
+      "scale": "constant",
+      "occlusion": "cloth, jaw, pocket wall and dark interior",
+      "settlement": "after final falling ball completes"
+    },
+    "figures": [
+      {
+        "name": "T01",
+        "title": "已确认整桌造型",
+        "page": 12,
+        "source": "table-studies/t01.svg",
+        "render": "table-studies/t01.png"
       },
-      "compact320": {
-        "x": 148,
-        "y": 47,
-        "w": 56,
-        "h": 44
+      {
+        "name": "T02",
+        "title": "库边剖面与包布",
+        "page": 13,
+        "source": "table-studies/t02.svg",
+        "render": "table-studies/t02.png"
       },
-      "titleWidth": 72,
-      "hostCapsuleClearanceMin": 8,
-      "label": "current mode; accessible name describes the target mode"
-    },
-    "sceneViewport": {
-      "x": 20,
-      "y": 193,
-      "w": 353,
-      "h": 500,
-      "note": "perspective scene viewport, not projected table bounds"
-    },
-    "forcedOverhead": [
-      "placement"
+      {
+        "name": "T03",
+        "title": "角袋与中袋的部件关系",
+        "page": 14,
+        "source": "table-studies/t03.svg",
+        "render": "table-studies/t03.png"
+      },
+      {
+        "name": "T04",
+        "title": "进袋下落与空间遮挡",
+        "page": 15,
+        "source": "table-studies/t04.svg",
+        "render": "table-studies/t04.png"
+      },
+      {
+        "name": "T05",
+        "title": "材质、灯光与落地感",
+        "page": 16,
+        "source": "table-studies/t05.svg",
+        "render": "table-studies/t05.png"
+      },
+      {
+        "name": "T06",
+        "title": "参数、来源与待校准项",
+        "page": 17,
+        "source": "table-studies/t06.svg",
+        "render": "table-studies/t06.png"
+      },
+      {
+        "name": "T07",
+        "title": "造型与体验验收",
+        "page": 18,
+        "source": "table-studies/t07.svg",
+        "render": "table-studies/t07.png"
+      },
+      {
+        "name": "T08",
+        "title": "圆润袋角与相切连接",
+        "page": 19,
+        "source": "table-studies/t08.svg",
+        "render": "table-studies/t08.png"
+      },
+      {
+        "name": "T09",
+        "title": "V8低位模型观察",
+        "page": 20,
+        "source": "table-studies/t09.svg",
+        "render": "table-studies/t09.png"
+      },
+      {
+        "name": "T10",
+        "title": "V8角袋与中袋",
+        "page": 21,
+        "source": "table-studies/t10.svg",
+        "render": "table-studies/t10.png"
+      },
+      {
+        "name": "T11",
+        "title": "已确认桌腿造型",
+        "page": 22,
+        "source": "table-studies/t11.svg",
+        "render": "table-studies/t11.png"
+      },
+      {
+        "name": "T12",
+        "title": "模型参数与交付边界",
+        "page": 23,
+        "source": "table-studies/t12.svg",
+        "render": "table-studies/t12.png"
+      }
     ],
-    "shooting": {
-      "preContact": "shot command locked; view switching allowed",
-      "contactMs": 220,
-      "moving": "bidirectional switch; same shot-origin camera",
-      "nextAnchor": "after rest"
+    "sources": {
+      "shapeReference": "https://www.knbb.nl/chinese-pool-komt-naar-nederland/",
+      "brandReference": "https://www.joybilliard.com/billiards-table/golden-leg-billiards-tables.html",
+      "woodAsset": "https://polyhaven.com/a/american_walnut_veneer",
+      "woodLicense": "CC0-1.0",
+      "woodAssetSha256": "278ed3382b3a28a95861a84ccf4f3b591abf96a203698152064d65fcc6425271"
     },
-    "gestures": {
-      "horizontal": "relative aim yaw",
-      "vertical": "view only; never changes shot parameters",
-      "axisLock": "dominant axis per touch gesture",
-      "edge": "lift and continue without a new absolute target",
-      "multiTouch": "single owner; cancellation never shoots"
+    "visualStatus": "V8 user approved 2026-11-08",
+    "common3DModel": {
+      "revision": "sketch-matched-legs-v8",
+      "source": "table-model/chinese-pool-table.blend",
+      "export": "table-model/chinese-pool-table.glb",
+      "parameters": "table-model/model-spec.json",
+      "sha256": {
+        "chinese-pool-table.blend": "c0ae1e32955be284251c2610b8b760c8f4014d3d25bff519a9652b1ab58078d3",
+        "chinese-pool-table.glb": "c0ce7b2cfe2c6c47e7ff54fbc63bb5f68c16eed0b786e89461633ec6f6169e97"
+      }
     },
-    "cameraCandidates": {
-      "status": "prototype-tuning-required",
-      "behindCueM": [
-        0.35,
-        0.55
+    "legDesign": {
+      "profileLevelsHeightDiameterM": [
+        [
+          0.03,
+          0.092
+        ],
+        [
+          0.037,
+          0.09
+        ],
+        [
+          0.045,
+          0.074
+        ],
+        [
+          0.052,
+          0.07
+        ],
+        [
+          0.058,
+          0.082
+        ],
+        [
+          0.064,
+          0.09
+        ],
+        [
+          0.07,
+          0.084
+        ],
+        [
+          0.075,
+          0.06400000000000002
+        ],
+        [
+          0.08125,
+          0.06594068041324529
+        ],
+        [
+          0.0875,
+          0.06788062302146494
+        ],
+        [
+          0.09375,
+          0.06981981381306084
+        ],
+        [
+          0.09999999999999999,
+          0.07175823822815787
+        ],
+        [
+          0.10625,
+          0.07369588112566111
+        ],
+        [
+          0.11249999999999999,
+          0.0756327267476147
+        ],
+        [
+          0.11875,
+          0.07756875868058029
+        ],
+        [
+          0.125,
+          0.07950395981371643
+        ],
+        [
+          0.13124999999999998,
+          0.08143831229319827
+        ],
+        [
+          0.13749999999999998,
+          0.08337179747256948
+        ],
+        [
+          0.14375,
+          0.08530439585856067
+        ],
+        [
+          0.15,
+          0.08723608705184513
+        ],
+        [
+          0.15625,
+          0.08916684968212511
+        ],
+        [
+          0.16249999999999998,
+          0.091096661336853
+        ],
+        [
+          0.16874999999999998,
+          0.09302549848278698
+        ],
+        [
+          0.175,
+          0.09495333637945591
+        ],
+        [
+          0.18125,
+          0.09688014898346196
+        ],
+        [
+          0.1875,
+          0.09880590884237313
+        ],
+        [
+          0.19374999999999998,
+          0.10073058697674923
+        ],
+        [
+          0.19999999999999998,
+          0.10265415274859252
+        ],
+        [
+          0.20625,
+          0.10457657371420932
+        ],
+        [
+          0.21249999999999997,
+          0.10649781545910071
+        ],
+        [
+          0.21875,
+          0.10841784141204747
+        ],
+        [
+          0.22499999999999998,
+          0.11033661263500186
+        ],
+        [
+          0.23125,
+          0.11225408758471213
+        ],
+        [
+          0.2375,
+          0.11417022184115458
+        ],
+        [
+          0.24374999999999997,
+          0.11608496779677842
+        ],
+        [
+          0.25,
+          0.1179982742992203
+        ],
+        [
+          0.25625,
+          0.11991008623842764
+        ],
+        [
+          0.26249999999999996,
+          0.12182034406692452
+        ],
+        [
+          0.26875,
+          0.12372898323909484
+        ],
+        [
+          0.27499999999999997,
+          0.1256359335516137
+        ],
+        [
+          0.28125,
+          0.1275411183622029
+        ],
+        [
+          0.2875,
+          0.1294444536572465
+        ],
+        [
+          0.29374999999999996,
+          0.13134584692979517
+        ],
+        [
+          0.3,
+          0.1332451958170875
+        ],
+        [
+          0.30624999999999997,
+          0.1351423864293862
+        ],
+        [
+          0.3125,
+          0.13703729127728198
+        ],
+        [
+          0.31875,
+          0.13892976666890347
+        ],
+        [
+          0.32499999999999996,
+          0.1408196493956047
+        ],
+        [
+          0.33125,
+          0.14270675244456246
+        ],
+        [
+          0.33749999999999997,
+          0.14459085935191446
+        ],
+        [
+          0.34375,
+          0.14647171660964448
+        ],
+        [
+          0.35,
+          0.14834902320591148
+        ],
+        [
+          0.35625,
+          0.15022241580007986
+        ],
+        [
+          0.3625,
+          0.1520914469799649
+        ],
+        [
+          0.36874999999999997,
+          0.1539555520122038
+        ],
+        [
+          0.375,
+          0.1558139952626992
+        ],
+        [
+          0.38125,
+          0.15766577780917568
+        ],
+        [
+          0.3875,
+          0.15950946289457277
+        ],
+        [
+          0.39375,
+          0.16134279986683556
+        ],
+        [
+          0.39999999999999997,
+          0.16316172502154705
+        ],
+        [
+          0.40625,
+          0.16495632240198604
+        ],
+        [
+          0.4125,
+          0.16592899408284026
+        ],
+        [
+          0.41874999999999996,
+          0.16513017751479292
+        ],
+        [
+          0.425,
+          0.1634437869822485
+        ],
+        [
+          0.43124999999999997,
+          0.16086982248520712
+        ],
+        [
+          0.4375,
+          0.15740828402366863
+        ],
+        [
+          0.44375,
+          0.15305917159763313
+        ],
+        [
+          0.44999999999999996,
+          0.14782248520710062
+        ],
+        [
+          0.45625,
+          0.141698224852071
+        ],
+        [
+          0.46249999999999997,
+          0.1346863905325444
+        ],
+        [
+          0.46875,
+          0.1267869822485207
+        ],
+        [
+          0.475,
+          0.11800000000000001
+        ],
+        [
+          0.479,
+          0.128
+        ],
+        [
+          0.484,
+          0.136
+        ],
+        [
+          0.49,
+          0.132
+        ],
+        [
+          0.495,
+          0.12
+        ],
+        [
+          0.503,
+          0.112
+        ],
+        [
+          0.512,
+          0.132
+        ],
+        [
+          0.52,
+          0.15
+        ]
       ],
-      "heightAboveBedM": [
+      "crossSection": "circle",
+      "radialSegments": 64,
+      "shoulderDiameterM": 0.166,
+      "widestHeightM": 0.41,
+      "mainBodyHeightRangeM": [
+        0.075,
+        0.475
+      ],
+      "mainBodyProfile": "continuous outward-convex, no inward waist",
+      "mountDimensionsM": [
         0.15,
-        0.25
+        0.15,
+        0.16
       ],
-      "verticalFovDeg": [
-        50,
-        60
+      "visibleMountHeightBelowApronM": 0.085,
+      "footDiameterHeightM": [
+        0.092,
+        0.025
       ],
-      "transitionMs": [
-        240,
-        320
+      "footShape": "compact round stepped wooden foot",
+      "outwardSplayM": [
+        0.018,
+        0.012
       ],
-      "gestureThresholdPx": 6,
-      "dominantAxisRatio": 1.3,
-      "yawDegreesPerViewportWidth": 60
+      "material": "satin walnut body, collars and foot with dark contact sole",
+      "status": "fitted to the approved concept sketch; dimensions are design choices",
+      "approvedSketch": "turned-leg-approved.png",
+      "reference": "https://www.joybilliard.com/billiards-table/golden-leg-billiards-tables.html"
     },
-    "collisionFallback": [
-      "camera eye clearance",
-      "display-only cue tail lift up to 8 degrees",
-      "local rail/frame transparency; never deny perspective for cue obstruction"
+    "materials": {
+      "woodRoughness": 0.25,
+      "woodLinearStain": [
+        0.62,
+        0.32,
+        0.18,
+        1
+      ],
+      "woodCoatWeight": 0.28,
+      "woodCoatRoughness": 0.18,
+      "clothRoughness": 0.91,
+      "clothSpecularIORLevel": 0.08,
+      "leatherRoughness": 0.62,
+      "bronzeRoughness": 0.29,
+      "bronzeMetalness": 0.72,
+      "legWoodRoughness": 0.34,
+      "legWoodCoatWeight": 0.18,
+      "legWoodCoatRoughness": 0.23
+    },
+    "pocketSurfaceFix": {
+      "leatherThicknessM": 0.003,
+      "linerTopM": 0.801,
+      "linerInsetRatio": 0.975,
+      "cushionBaseM": 0.796,
+      "rearOffsetRadiusLimit": 0.6,
+      "skirtSeatClearanceM": 0.0006
+    },
+    "renderAssets": [
+      "table-model/overview.png",
+      "table-model/aiming.png",
+      "table-model/corner.png",
+      "table-model/side.png",
+      "table-model/wood.png",
+      "table-model/legs.png",
+      "table-model/skirt.png",
+      "table-model/leg-profile.png"
     ],
-    "magnifier": "temporarily hidden in first-person; setting remains unchanged",
-    "occlusion": "respect depth; no rear-ball labels through foreground surfaces; offscreen results stay in prediction data",
-    "releaseGate": "FP-A01 through FP-A11 in first-person.md",
-    "groundingRevision": {
-      "status": "implemented-local-cocos-validation",
-      "figure": "first-person/FP06-contact.svg",
-      "sphere": "centre height equals cloth height plus radius; projected silhouette",
-      "shadow": "contact core and soft planar footprint; no offset screen circle",
-      "trajectory": "route projected on cloth; same XZ prediction data",
-      "acceptance": "FP-A11"
-    },
-    "runtimeEvidence": "validation/view-access/README.md",
-    "runtimeConfig": {
-      "distanceM": 0.45,
-      "distanceCandidatesM": [
-        0.45,
-        0.4,
-        0.35
-      ],
-      "eyeHeightM": 0.2,
-      "heightRangeM": [
-        0.15,
-        0.25
-      ],
-      "verticalFovDeg": 55,
-      "nearM": 0.01,
-      "farM": 6,
-      "lookAheadM": 0.38,
-      "transitionMs": 280,
-      "thresholdLogicalPx": 6,
-      "axisRatio": 1.3,
-      "yawPerSceneWidthDeg": 60,
-      "verticalPerSceneHeightM": 0.2
-    },
-    "accessRevision": "view-access.md"
-  },
-  "aiNaturalSelection": {
-    "spec": "ai-opponent.md",
-    "priority": "stable direct attack/defense; kicks for no safe direct contact",
-    "hardProactiveKick": "five stress points all legal, first intended target and pot; mean score at least 600 above best direct",
-    "evidence": "validation/ai-natural/README.md",
-    "simulation": "same fixed-step physics and referee; no rack RNG changes"
+    "reviewScope": "approved model geometry and browser review; Cocos integration pending",
+    "runtimeIntegration": "pending; docs/technical/table-model-integration.md",
+    "priorConceptStatus": "historical exploration; V8 is the execution baseline"
   }
 }

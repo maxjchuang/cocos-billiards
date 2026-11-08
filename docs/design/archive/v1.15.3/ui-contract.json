@@ -1,0 +1,411 @@
+{
+  "version": "1.15.3",
+  "date": "2026-10-26",
+  "pixelReference": "refinement/aim.png",
+  "referenceFrame": [
+    393,
+    852
+  ],
+  "referenceSafeArea": {
+    "top": 47,
+    "bottom": 34
+  },
+  "toleranceLogicalPx": {
+    "controls": 1,
+    "tableProjection": 2
+  },
+  "normalAim": {
+    "cards": [
+      {
+        "x": 20,
+        "y": 95,
+        "w": 171,
+        "h": 64
+      },
+      {
+        "x": 202,
+        "y": 95,
+        "w": 171,
+        "h": 64
+      }
+    ],
+    "table": {
+      "x": 59.97517730496452,
+      "y": 193,
+      "w": 273.04964539007096,
+      "h": 500
+    },
+    "buttons": [
+      {
+        "x": 24,
+        "y": 766,
+        "w": 76,
+        "h": 48
+      },
+      {
+        "x": 112,
+        "y": 766,
+        "w": 169,
+        "h": 48
+      },
+      {
+        "x": 293,
+        "y": 766,
+        "w": 76,
+        "h": 48
+      }
+    ],
+    "power": {
+      "x": 24,
+      "y": 707,
+      "w": 345,
+      "h": 44
+    },
+    "track": {
+      "x": 27,
+      "y": 735,
+      "w": 339,
+      "h": 4
+    },
+    "sliderDiameter": 18
+  },
+  "typography": {
+    "title": 18,
+    "subtitle": 11,
+    "body": 14,
+    "auxiliary": 12,
+    "bottomButton": 14,
+    "panelButton": 16,
+    "fontFamily": "PingFang SC, Noto Sans CJK SC, Arial, sans-serif",
+    "numericFontFamily": "Menlo, Consolas, monospace"
+  },
+  "panels": {
+    "pause": {
+      "x": 24,
+      "y": 235,
+      "w": 345,
+      "h": 400
+    },
+    "confirm": {
+      "x": 24,
+      "y": 265,
+      "w": 345,
+      "h": 314
+    },
+    "result": {
+      "x": 24,
+      "y": 223,
+      "w": 345,
+      "h": 398
+    },
+    "settings": {
+      "x": 24,
+      "y": 190,
+      "w": 345,
+      "h": 568
+    },
+    "rules": {
+      "x": 0,
+      "y": 294,
+      "w": 393,
+      "h": 558
+    },
+    "spin": {
+      "x": 0,
+      "y": 356,
+      "w": 393,
+      "h": 496
+    },
+    "break": {
+      "x": 0,
+      "y": 469,
+      "w": 393,
+      "h": 383
+    },
+    "identity": {
+      "x": 24,
+      "y": 182,
+      "w": 345,
+      "h": 480
+    },
+    "newGame": {
+      "x": 24,
+      "y": 182,
+      "w": 345,
+      "h": 480
+    },
+    "aiOptions": {
+      "x": 24,
+      "y": 242,
+      "w": 345,
+      "h": 360
+    }
+  },
+  "adaptation": "Keep 44px touch targets; shorten table when extra actions/fine control consume vertical space. Landscape shows blocking rotation prompt.",
+  "pocketVisual": "Renderer consumes the shared prototype outline. Manufacturer-unverified physical fields remain null; no new measured-depth claims.",
+  "fixtures": "scripts/preview-scenarios.js S01-S15; previewScenarioRestore restores viewport service and match.",
+  "platformWaiver": "User explicitly waived all real-phone and WeChat-specific validation on 2026-10-23.",
+  "localBrowserPerformanceBudget": {
+    "viewport": [
+      393,
+      852,
+      2
+    ],
+    "durationSeconds": 3,
+    "idleAverageFpsMin": 50,
+    "magnifierAverageFpsMin": 45,
+    "p95FrameMsMax": 33.4,
+    "scope": "Local Chromium baseline only, not device certification"
+  },
+  "selectionButtons": [
+    {
+      "x": 24,
+      "y": 738,
+      "w": 166,
+      "h": 60
+    },
+    {
+      "x": 203,
+      "y": 738,
+      "w": 166,
+      "h": 60
+    }
+  ],
+  "colors": "Exact theme tokens; screenshot RGB allows one 8-bit quantization level, excluding anti-alias edges.",
+  "minimumCertifiedViewportWidth": 320,
+  "scaledEmbeddedPreview": "Frames narrower than 320 CSS pixels use a proportional mobile presentation with a minimum logical width of 320. Pointer conversion and font sampling use physical pixels per HUD unit; such zoomed frames do not certify physical 44px touch targets.",
+  "magnifierPlacement": {
+    "spec": "magnifier-placement.md",
+    "pocketClearance": 12,
+    "cueAndContactClearance": 18,
+    "fingerClearance": 24,
+    "widths": [
+      132,
+      112,
+      96
+    ],
+    "heightRatio": 0.8787878787878788,
+    "titleSize": 11,
+    "stability": "Keep a safe slot for the interaction; reset on hide or viewport change",
+    "noSafeSlot": "Hide instead of occluding a pocket"
+  },
+  "shotPower": {
+    "spec": "shot-power.md",
+    "displayPercentRange": [
+      10,
+      100
+    ],
+    "defaultPercent": 60,
+    "unchangedThroughPercent": 60,
+    "maximumCentreTipSpeedMps": 8,
+    "samples": {
+      "60": 2.4,
+      "80": 4.2,
+      "100": 8
+    },
+    "commitMs": 220
+  },
+  "rackVariation": {
+    "spec": "rack-variation.md",
+    "version": "hertz-reference-v6",
+    "targetMassVariation": 0.005,
+    "cueRelativeMass": 1,
+    "randomShotError": false,
+    "randomPositionGaps": true,
+    "journalLimit": 32,
+    "scope": "New rack initialization only; fixed ball set across re-racks and reloads",
+    "contactModel": "SI Hertz normal elasticity, restitution damping, dissipative side-spin friction; persistent indentation; swept rail and drop events",
+    "status": "numerical, browser and native Creator checks passed; user accepted current gameplay feel and authorized commit/push on 2026-10-24",
+    "positionToleranceM": 0.00025,
+    "maxPositionToleranceM": 0.0005,
+    "toleranceModel": "seeded row misalignment; bounded centres, tight neighbours, no overlap; fixed apex",
+    "parameterBasis": "published material and software reference profiles, not measured project table"
+  },
+  "trajectoryGuide": {
+    "spec": "trajectory-guide.md",
+    "cue": {
+      "color": "#F5F1E6",
+      "line": "dashed",
+      "restMarker": "circle with cross",
+      "dashLogicalPx": [
+        4,
+        4
+      ]
+    },
+    "target": {
+      "color": "#E5BD74",
+      "line": "dashed",
+      "restMarker": "diamond",
+      "selection": "first actual cue-object contact including a prior bank",
+      "dashLogicalPx": [
+        6,
+        4
+      ]
+    },
+    "lineWidthLogicalPx": 1.35,
+    "pocketOutcome": "arrow at drop plane, no table rest marker",
+    "prediction": "same full-table fixed-step physics on isolated copies; current power and confirmed tip",
+    "incomplete": "partial path only, no terminal rest marker",
+    "caption": "Independent status-row legend; power label always remains visible"
+  },
+  "aiPractice": {
+    "spec": "ai-opponent.md",
+    "modes": [
+      "ai",
+      "local"
+    ],
+    "levels": [
+      "easy",
+      "standard",
+      "hard"
+    ],
+    "defaultLevel": "standard",
+    "storageKey": "eight-club.practice.v1",
+    "aiSeat": 1,
+    "humanBreaksFirst": true,
+    "modePanelMaxHeight": 480,
+    "pausePanelMaxHeight": {
+      "local": 400,
+      "ai": 452
+    },
+    "difficultyChange": "next thinking task; locked and moving shots retain their parameters",
+    "aiInput": "pause and identity only; no human shot controls",
+    "contactMs": 220
+  },
+  "refinement": {
+    "spec": "refinement.md",
+    "approved": true,
+    "cardsHeight": 64,
+    "tableHeight": 500,
+    "materials": "fixed top-left soft shading; pocket outlines unchanged",
+    "aiWaiting": "fixed dock reservation; shot animation remains visible"
+  },
+  "implementationBaseline": "1.14",
+  "firstPerson": {
+    "status": "implemented; local-browser-and-native-validated; user-visual-review-pending",
+    "spec": "first-person.md",
+    "referenceFigures": [
+      "first-person/FP01-overhead.svg",
+      "first-person/FP02-aim.svg",
+      "first-person/FP03-raised.svg",
+      "first-person/FP04-rail.svg",
+      "first-person/FP05-offscreen.svg",
+      "first-person/FP06-contact.svg"
+    ],
+    "modes": [
+      "overhead",
+      "first-person"
+    ],
+    "defaultPreference": "overhead",
+    "preferenceScope": "shared per device; temporary forced overhead does not overwrite it",
+    "switchControl": {
+      "reference": {
+        "x": 148,
+        "y": 47,
+        "w": 68,
+        "h": 44
+      },
+      "compact320": {
+        "x": 148,
+        "y": 47,
+        "w": 56,
+        "h": 44
+      },
+      "titleWidth": 72,
+      "hostCapsuleClearanceMin": 8,
+      "label": "current mode; accessible name describes the target mode"
+    },
+    "sceneViewport": {
+      "x": 20,
+      "y": 193,
+      "w": 353,
+      "h": 500,
+      "note": "perspective scene viewport, not projected table bounds"
+    },
+    "forcedOverhead": [
+      "placement"
+    ],
+    "shooting": {
+      "preContact": "shot command locked; view switching allowed",
+      "contactMs": 220,
+      "moving": "bidirectional switch; same shot-origin camera",
+      "nextAnchor": "after rest"
+    },
+    "gestures": {
+      "horizontal": "relative aim yaw",
+      "vertical": "view only; never changes shot parameters",
+      "axisLock": "dominant axis per touch gesture",
+      "edge": "lift and continue without a new absolute target",
+      "multiTouch": "single owner; cancellation never shoots"
+    },
+    "cameraCandidates": {
+      "status": "prototype-tuning-required",
+      "behindCueM": [
+        0.35,
+        0.55
+      ],
+      "heightAboveBedM": [
+        0.15,
+        0.25
+      ],
+      "verticalFovDeg": [
+        50,
+        60
+      ],
+      "transitionMs": [
+        240,
+        320
+      ],
+      "gestureThresholdPx": 6,
+      "dominantAxisRatio": 1.3,
+      "yawDegreesPerViewportWidth": 60
+    },
+    "collisionFallback": [
+      "camera eye clearance",
+      "display-only cue tail lift up to 8 degrees",
+      "local rail/frame transparency; never deny perspective for cue obstruction"
+    ],
+    "magnifier": "temporarily hidden in first-person; setting remains unchanged",
+    "occlusion": "respect depth; no rear-ball labels through foreground surfaces; offscreen results stay in prediction data",
+    "releaseGate": "FP-A01 through FP-A11 in first-person.md",
+    "groundingRevision": {
+      "status": "implemented-local-cocos-validation",
+      "figure": "first-person/FP06-contact.svg",
+      "sphere": "centre height equals cloth height plus radius; projected silhouette",
+      "shadow": "contact core and soft planar footprint; no offset screen circle",
+      "trajectory": "route projected on cloth; same XZ prediction data",
+      "acceptance": "FP-A11"
+    },
+    "runtimeEvidence": "validation/view-access/README.md",
+    "runtimeConfig": {
+      "distanceM": 0.45,
+      "distanceCandidatesM": [
+        0.45,
+        0.4,
+        0.35
+      ],
+      "eyeHeightM": 0.2,
+      "heightRangeM": [
+        0.15,
+        0.25
+      ],
+      "verticalFovDeg": 55,
+      "nearM": 0.01,
+      "farM": 6,
+      "lookAheadM": 0.38,
+      "transitionMs": 280,
+      "thresholdLogicalPx": 6,
+      "axisRatio": 1.3,
+      "yawPerSceneWidthDeg": 60,
+      "verticalPerSceneHeightM": 0.2
+    },
+    "accessRevision": "view-access.md"
+  },
+  "aiNaturalSelection": {
+    "spec": "ai-opponent.md",
+    "priority": "stable direct attack/defense; kicks for no safe direct contact",
+    "hardProactiveKick": "five stress points all legal, first intended target and pot; mean score at least 600 above best direct",
+    "evidence": "validation/ai-natural/README.md",
+    "simulation": "same fixed-step physics and referee; no rack RNG changes"
+  }
+}

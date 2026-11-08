@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="data:,">
+<title>中式台球桌 · 三维模型评审</title>
+<style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC",sans-serif;color:#efece1;background:#20271f;color-scheme:dark}*{box-sizing:border-box}body{margin:0}header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 24px 12px}h1{font-size:18px;font-weight:550;margin:0 0 6px}p{font-size:12px;color:#a9b9a5;margin:0}nav{display:flex;gap:6px;flex-wrap:wrap}button,a.download{border:1px solid #4f6149;border-radius:8px;background:transparent;color:#e5e7d8;font:inherit;font-size:13px;padding:10px 15px;min-height:42px;text-decoration:none;cursor:pointer}button[aria-pressed=true]{background:#d0b47e;color:#1e2b20;border-color:#d0b47e}button:focus-visible,a:focus-visible{outline:2px solid #f1d496;outline-offset:3px}main{position:relative;width:100%;height:calc(100dvh - 156px);min-height:370px}canvas{display:block;touch-action:none;width:100%;height:100%}.info{position:absolute;top:12px;left:24px;pointer-events:none;font-size:12px;line-height:1.8;color:#d1d9c9}.info strong{display:block;font-size:13px;font-weight:500}.caption{position:absolute;bottom:10px;left:24px;color:#b1c0aa;font-size:12px}footer{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 24px 16px;flex-wrap:wrap;background:#20271f}.options{display:flex;gap:20px;align-items:center;font-size:13px}label{display:flex;align-items:center;gap:8px;min-height:40px}input{accent-color:#d0b47e}.files{display:flex;gap:8px}#status{font-size:12px;color:#c4d0bc}.note{font-size:11px;color:#99ac93;max-width:460px;line-height:1.6}@media(max-width:750px){header{align-items:flex-start;padding:14px 16px 8px;flex-direction:column;gap:12px}h1{font-size:16px}main{height:calc(100dvh - 228px)}nav{width:100%}button{flex:1;padding:9px 11px}footer{padding:8px 16px;gap:4px}.info{left:16px;top:6px}.caption{left:16px}.files a{font-size:12px;padding:8px}.note{display:none}}@media(max-height:500px) and (min-width:700px){header{padding:8px 18px}h1{font-size:15px;margin-bottom:3px}main{height:calc(100dvh - 118px);min-height:200px}footer{padding:3px 18px}button,a.download{min-height:36px;padding:7px 12px}.note{display:none}}
+</style>
+</head>
+<body>
+<header><div><h1>中式台球桌 · 3D 模型 V8</h1><p>拖动旋转 · 滚轮缩放 · 触屏双指缩放与平移</p></div><nav aria-label="观察位置"><button data-view="overview" aria-pressed="true">整体</button><button data-view="aiming" aria-pressed="false">低位</button><button data-view="corner" aria-pressed="false">角袋</button><button data-view="wood" aria-pressed="false">木边</button><button data-view="legs" aria-pressed="false">桌腿</button><button data-view="side" aria-pressed="false">中袋</button></nav></header>
+<main id="model"><div class="info"><strong>按米建模 · 六袋 / 六腿</strong><span>外廓 2820 × 1540 × 850 mm</span><br><span>台面 2540 × 1260 mm · 球径 57.15 mm</span></div><div class="caption" id="status" aria-live="polite">正在加载模型</div></main>
+<footer><div class="options"><label><input id="wireframe" type="checkbox">线框</label><label><input id="ball" type="checkbox" checked>球径参照</label></div><p class="note">设计评审模型。角袋 85 / 中袋 82 mm 为候选净口，袋角曲率、库边截面与垂直层级属于本轮造型拟合。</p><div class="files"><a class="download" href="chinese-pool-table.glb" download>下载 GLB</a><a class="download" href="chinese-pool-table.blend" download>Blender 源文件</a></div></footer>
+<script src="viewer.js?v=sketch-matched-legs-v8"></script>
+</body></html>

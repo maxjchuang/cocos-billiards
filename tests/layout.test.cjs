@@ -8,6 +8,13 @@ for(const [width,height] of [[320,568],[360,640],[393,852],[430,932],[736,842],[
         // Any consistent UI-space scale should have identical separation guarantees.
         const factor=960/width;
         const ui=computeHudLayout(width*factor,height*factor);
+        if(width>height){
+            assert.deepEqual(ui.playArea,{x:0,y:0,width:ui.width,height:ui.height});
+            const targets=[ui.reset,...ui.players,ui.power,ui.fineButton,ui.shoot,ui.spinButton];
+            for(const r of targets)assert.ok(r.width>=44&&r.height>=44);
+            for(let i=0;i<targets.length;i++)for(let j=i+1;j<targets.length;j++)assert.equal(overlap(targets[i],targets[j]),false);
+            return;
+        }
         const independent=[ui.status,ui.reset,...ui.players,ui.playArea,ui.dock];
         for(const rect of independent) {
             assert.ok(rect.width>0&&rect.height>0);

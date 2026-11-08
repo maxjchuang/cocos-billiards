@@ -1,4 +1,4 @@
-"""Rebuild the V1.15.3 product/UIUX documents from local design references.
+"""Rebuild historical V1.15.3 PDFs into docs/design/archive/v1.15.3.
 Requires reportlab; no remote assets and no game-source edits.
 """
 from pathlib import Path
@@ -10,7 +10,7 @@ from reportlab.pdfgen import canvas
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.lib.colors import HexColor
-ROOT=Path(__file__).resolve().parents[1];D=ROOT/'docs/design'
+ROOT=Path(__file__).resolve().parents[1];D=ROOT/'docs/design';DEST=D/'archive/v1.15.3';DEST.mkdir(parents=True,exist_ok=True)
 font=next(p for p in [Path('/System/Library/Fonts/Supplemental/Arial Unicode.ttf'),Path('/Library/Fonts/Arial Unicode.ttf')] if p.exists())
 pdfmetrics.registerFont(TTFont('Club',str(font)))
 BG='#F7F5EE';INK='#203D30';MUTED='#64786B';GOLD='#D9BD83'
@@ -97,7 +97,7 @@ ui=[
  ('画幅与触摸','393参考控制框误差≤1px、球桌≤2px；320/393/430画幅，无UI重叠，俯视无遮挡袋口，关键触区≥44；第一人称允许自然遮挡，依FP章节处理。长中文、英文、emoji与七球整排要有证据。'),
  ('验收边界','Node类型与回归测试、Creator构建、浏览器、原生Creator分别记录。真机和微信按用户既有授权豁免。联网身份/重连只保留未来规划；不把设计图作为运行通过证明。')])]
 ui.extend(UI_FIRST_PERSON)
-c=canvas.Canvas(str(D/'中式八球UIUX设计方案.pdf'),pagesize=(1200,900));c.setTitle('中式八球 UI/UX V1.15.3');c.setAuthor('Cocos Billiards')
+c=canvas.Canvas(str(DEST/'中式八球UIUX设计方案.pdf'),pagesize=(1200,900));c.setTitle('中式八球 UI/UX V1.15.3');c.setAuthor('Cocos Billiards')
 for i,(title,sub,img,items) in enumerate(ui,1):
  frame(c,title,sub,i)
  if i==1:
@@ -145,7 +145,7 @@ product=[
  ('袋口','沿用明确标注近似的共享代理，材质不能改入口边界。精确袋角、支承区、落袋线、深度未实测；旧18mm浅弧和55mm总深等参数仍作废。'),
  ('验收','布局、真实触摸流程、220ms、防重复、AI暂停恢复、七球/长名、三画幅与多次碰库均检查。Node/Creator/浏览器/真机独立报告，真机和微信已获用户豁免。')])]
 product.extend(PRODUCT_FIRST_PERSON)
-c=canvas.Canvas(str(D/'中式八球产品设计方案.pdf'),pagesize=(595.28,841.89));c.setTitle('中式八球 产品 V1.15.3');c.setAuthor('Cocos Billiards')
+c=canvas.Canvas(str(DEST/'中式八球产品设计方案.pdf'),pagesize=(595.28,841.89));c.setTitle('中式八球 产品 V1.15.3');c.setAuthor('Cocos Billiards')
 for i,(title,items) in enumerate(product,1):
  frame(c,title,'专业球房 / 双人同屏与AI已实现 / 第一人称已实施 / 用户视觉评审待进行',i,True);y=675
  for a,b in items:

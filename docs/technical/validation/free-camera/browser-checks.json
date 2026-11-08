@@ -1,0 +1,194 @@
+{
+  "date": "2026-11-04",
+  "scope": "Creator Web Mobile build; component touch entry points in Chromium",
+  "reports": [
+    {
+      "viewport": [
+        852,
+        393
+      ],
+      "checks": [
+        {
+          "name": "single perspective scene during placement",
+          "pass": true
+        },
+        {
+          "name": "parallel movement selects orbit",
+          "pass": true
+        },
+        {
+          "name": "orbit changes camera only",
+          "pass": true
+        },
+        {
+          "name": "remaining finger cannot edit aim",
+          "pass": true
+        },
+        {
+          "name": "pinch selects zoom",
+          "pass": true
+        },
+        {
+          "name": "placement confirmation keeps camera",
+          "pass": true
+        },
+        {
+          "name": "return moves camera without changing aim",
+          "pass": true
+        },
+        {
+          "name": "click leaves balls stationary before contact",
+          "pass": true
+        },
+        {
+          "name": "contact commits actual shot",
+          "pass": true
+        },
+        {
+          "name": "observation remains available during motion",
+          "pass": true
+        },
+        {
+          "name": "pause clears gesture ownership",
+          "pass": true
+        },
+        {
+          "name": "layout setting changes dock side",
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "total": 12
+    },
+    {
+      "viewport": [
+        667,
+        375
+      ],
+      "checks": [
+        {
+          "name": "single perspective scene during placement",
+          "pass": true
+        },
+        {
+          "name": "parallel movement selects orbit",
+          "pass": true
+        },
+        {
+          "name": "orbit changes camera only",
+          "pass": true
+        },
+        {
+          "name": "remaining finger cannot edit aim",
+          "pass": true
+        },
+        {
+          "name": "pinch selects zoom",
+          "pass": true
+        },
+        {
+          "name": "placement confirmation keeps camera",
+          "pass": true
+        },
+        {
+          "name": "return moves camera without changing aim",
+          "pass": true
+        },
+        {
+          "name": "click leaves balls stationary before contact",
+          "pass": true
+        },
+        {
+          "name": "contact commits actual shot",
+          "pass": true
+        },
+        {
+          "name": "observation remains available during motion",
+          "pass": true
+        },
+        {
+          "name": "pause clears gesture ownership",
+          "pass": true
+        },
+        {
+          "name": "layout setting changes dock side",
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "total": 12
+    },
+    {
+      "viewport": [
+        932,
+        430
+      ],
+      "checks": [
+        {
+          "name": "single perspective scene during placement",
+          "pass": true
+        },
+        {
+          "name": "parallel movement selects orbit",
+          "pass": true
+        },
+        {
+          "name": "orbit changes camera only",
+          "pass": true
+        },
+        {
+          "name": "remaining finger cannot edit aim",
+          "pass": true
+        },
+        {
+          "name": "pinch selects zoom",
+          "pass": true
+        },
+        {
+          "name": "placement confirmation keeps camera",
+          "pass": true
+        },
+        {
+          "name": "return moves camera without changing aim",
+          "pass": true
+        },
+        {
+          "name": "click leaves balls stationary before contact",
+          "pass": true
+        },
+        {
+          "name": "contact commits actual shot",
+          "pass": true
+        },
+        {
+          "name": "observation remains available during motion",
+          "pass": true
+        },
+        {
+          "name": "pause clears gesture ownership",
+          "pass": true
+        },
+        {
+          "name": "layout setting changes dock side",
+          "pass": true
+        }
+      ],
+      "passed": 12,
+      "total": 12
+    }
+  ],
+  "rotation": {
+    "portraitPauses": true,
+    "landscapeRequiresResume": true,
+    "ballsRetained": true,
+    "cameraRetained": true
+  },
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "limitations": [
+    "native Creator preview not reviewed in this iteration",
+    "real-device and WeChat checks skipped by prior agreement"
+  ]
+}

@@ -1,0 +1,320 @@
+{
+  "engine": "3.8.8",
+  "checks": [
+    {
+      "name": "0/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "0/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "0/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "0/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "0/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "0/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "0/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "0/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "0/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "0/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "0/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "0/8 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "1/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "1/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "1/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "1/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "1/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "1/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "1/8 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "2/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "2/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "2/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "2/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "2/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "2/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "2/8 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "3/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "3/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "3/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "3/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "3/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "3/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "3/8 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "4/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "4/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "4/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "4/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "4/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "4/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "4/8 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "5/0.1 removes only after fall and settles",
+      "pass": true
+    },
+    {
+      "name": "5/8 capture keeps rendered sphere",
+      "pass": true
+    },
+    {
+      "name": "5/8 settlement waits",
+      "pass": true
+    },
+    {
+      "name": "5/8 visibly sinks at full size",
+      "pass": true
+    },
+    {
+      "name": "5/8 pause freezes fall",
+      "pass": true
+    },
+    {
+      "name": "5/8 occluded before removal",
+      "pass": true
+    },
+    {
+      "name": "5/8 removes only after fall and settles",
+      "pass": true
+    }
+  ],
+  "passed": 72,
+  "total": 72,
+  "scope": "Cocos Web Mobile component-controlled six-pocket slow/fast drops, pause, reduced-motion and settlement",
+  "date": "2026-11-06",
+  "nodeChecks": {
+    "passed": 278,
+    "total": 278
+  },
+  "creatorNative": "Main.scene restarted in Creator 3.8.8; startup screen observed. Detailed fall regression ran in Web Mobile browser, not native editor.",
+  "realDevice": "Skipped under prior user agreement",
+  "model": "Presentation-only downward motion, inward drift and depth occlusion. No vertical rigid-body pocket simulation.",
+  "console": {
+    "errors": 0,
+    "warnings": 0,
+    "scope": "Fresh reload then rerun 72 checks"
+  },
+  "scratch": {
+    "duringFall": {
+      "active": true,
+      "phase": "shooting"
+    },
+    "afterFall": {
+      "active": false,
+      "phase": "placing",
+      "fallActive": false
+    }
+  }
+}

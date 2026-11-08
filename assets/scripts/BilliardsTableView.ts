@@ -1,6 +1,7 @@
-import { Color,Material,Mesh,MeshRenderer,Node,Texture2D,utils } from 'cc';
+import { isValid,Color,Material,Mesh,MeshRenderer,Node,Texture2D,utils } from 'cc';
 import { CUSHION_PATHS,POCKETS,POCKET_MODEL,TABLE_GEOMETRY as G,TablePoint } from './BilliardsTableGeometry';
 import { prism,cleanPolygon,mergeMeshes,subtractOpenings,intersectConvex } from './BilliardsViewGeometry';
+import { POCKET_FALL } from './BilliardsPocketAnimation';
 /** Low-angle faces use the existing proxy outlines. No gameplay geometry is changed. */
 export class TableView {
     readonly node:Node;readonly meshes:Mesh[]=[];readonly renderers:MeshRenderer[]=[];
@@ -23,7 +24,7 @@ export class TableView {
         add('Perspective cloth',[{x:-w+cut,z:-l},{x:w-cut,z:-l},{x:w,z:-l+cut},{x:w,z:l-cut},{x:w-cut,z:l},{x:-w+cut,z:l},{x:-w,z:l-cut},{x:-w,z:-l+cut}],0,undefined,materials.felt,true);
         CUSHION_PATHS.forEach((r,i)=>add('Rail volume '+i,r.polygon,.038,0,materials.rail));
         // Dark receptacle starts behind the unchanged lip. Side walls supply real occlusion.
-        POCKETS.forEach((p,i)=>{add('Pocket interior '+i,p.outline,-.002,-.09,materials.pocket,false,true);});
+        POCKETS.forEach((p,i)=>{add('Pocket interior '+i,p.outline,-.002,POCKET_FALL.floor,materials.pocket,false,true);});
         this.node.active=false;
     }
     setCueClearance(cue:TablePoint,active:boolean):void {
@@ -37,5 +38,10 @@ export class TableView {
             v.renderer.node.active=outside.length>0;if(outside.length)v.renderer.mesh=make(outside);v.fade.node.active=true;v.fade.mesh=make(inside);
         }
     }
-    destroy():void{this.temporary.forEach(m=>m.destroy());this.fadeMaterials.forEach(m=>m.destroy());this.node.destroy();this.meshes.forEach(m=>m.destroy());}
+    destroy():void {
+        // Creator may already have destroyed child nodes when the parent tears down.
+        for(const asset of [...this.temporary,...this.fadeMaterials,this.node,...this.meshes]) {
+            if(asset&&isValid(asset,true))asset.destroy();
+        }
+    }
 }

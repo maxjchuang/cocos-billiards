@@ -1,0 +1,35 @@
+{
+  "date": "2026-11-06",
+  "method": "built-in image_gen",
+  "status": "visual concepts awaiting user review",
+  "commonMetricModel": "pending",
+  "referenceSource": "https://www.knbb.nl/chinese-pool-komt-naar-nederland/",
+  "prompts": [
+    {
+      "file": "master-v1.png",
+      "role": "master table art direction",
+      "prompt": "Use case: product-mockup. Asset type: photorealistic 3D art-direction render for a mobile Chinese eight-ball billiards game. Reference image 1 is a real JOY Chinese-pool corner-pocket photograph, used ONLY for correct rounded cloth-covered pocket jaws, cloth shelf, leather lip and opening construction, not its logo or room. Create a NEW elegant, realistic full-size 9-foot Chinese eight-ball table, full table visible from an elevated three-quarter corner view, moderate 50mm perspective. Playing bed 2540 x 1260 mm, outer envelope 2820 x 1540 mm, overall height about 850 mm; 57.15mm numbered billiard balls must have the correct small scale relative to the bed. Exactly six pockets: four corners and two middles of the long rails. Rounded snooker-like Chinese-pool cushion jaws smoothly curving into the pockets, cloth wrapped around curved cushion noses, green cloth support shelf visible before each dark drop opening; dark tobacco brown stitched leather pocket collars with a subtle warm bronze underside. Clear separate geometry for green cushions and broad polished dark walnut wood handrails with small soft bevels. Walnut apron below the tabletop is shallow, finely layered and gently curved at the corners, about 180mm visual depth, elegant furniture proportions. Six well-proportioned walnut tapered faceted legs, three along each long side, small restrained champagne-bronze foot details, firmly grounded. Rich matte deep forest green baize, subtle realistic woven texture. Premium dark walnut has fine longitudinal grain and restrained satin reflections, no ornamentation, no thick square blocks. Neutral dark desaturated olive-charcoal studio with warm gray floor. Soft broad overhead billiards lighting, physically believable material response, ambient contact shadows, clear pocket depth. Sparse readable numbered solids and stripes on the bed plus a cue ball, no rack. Product visualization quality, realistic and understated, crisp 3D form, refined proportions. No people, no UI, no text, no logos, no watermark. Landscape aspect ratio around 16:9. Establish this as the single master table identity for later low aiming view and pocket detail renders.",
+      "references": [
+        "KNBB Chinese-pool corner photograph"
+      ]
+    },
+    {
+      "file": "aiming-v1.png",
+      "role": "low aiming view",
+      "prompt": "Use case: product-mockup. Asset type: realistic first-person aiming-view art-direction render for the SAME Chinese eight-ball pool table shown in reference image 1. Reference 1 is the master object identity: preserve its dark walnut satin handrail profile, narrow layered walnut apron, deep forest green baize, tobacco-brown stitched leather collars, tiny bronze seams and softly rounded Chinese-pool jaws. Reference 2 is a real corner photograph used for physical pocket construction only. Reposition the camera to a player's low aiming position behind a white cue ball, lens about 18cm above the cloth, looking down the long axis toward the far corner region. Wide landscape gameplay composition, readable focus across the bed, moderate perspective around 45mm, no extreme fisheye. A wooden cue enters from bottom center, its cyan chalked tip BEHIND the cue ball with a small visible gap, aligned toward a red solid 3 ball further up the table, ball centers touch the cloth with subtle contact shadows. Keep correct 57.15mm ball scale relative to a 2540x1260mm playing bed. Show curved cloth-covered noses and rounded jaws at the visible corners and middle pockets; felt shelf transitions into a dark recessed opening edged with the same brown leather as reference 1. The far rail and walnut handrail have low, credible height relative to the balls. Fine textile weave and subtle walnut grain under the SAME broad soft overhead lighting, charcoal-olive studio background. Sparse target balls and stripes, no repeated or garbled numbers. Photorealistic premium 3D product visualization, physically grounded, calm studio environment. No people, hands, UI, captions, logos, watermark or sight lines. Exact same furniture design and materials as master image; change viewing angle and ball layout only. Landscape around 16:9.",
+      "references": [
+        "master-v1.png",
+        "KNBB Chinese-pool corner photograph"
+      ]
+    },
+    {
+      "file": "pockets-v1.png",
+      "role": "corner and middle pocket close-ups",
+      "prompt": "Use case: product-mockup. Asset type: photorealistic two-panel material and pocket construction close-up sheet for the exact SAME dark walnut Chinese eight-ball table in reference image 1. Reference 2 is a real Chinese-pool corner photograph; follow its rounded cloth-covered jaws, small green cloth shelf above the slate opening, curved leather lip and recessed hanging pocket construction. Make a landscape image split into TWO equal side-by-side photographs with a slim quiet vertical gutter. LEFT panel: close three-quarter view of a CORNER pocket with the two rails meeting at 90 degrees, very smooth rounded green cushion jaws turning into the throat, green cloth shelf visible before the dark round drop opening, continuous tobacco-brown stitched leather C-shaped collar and softly bevelled polished walnut handrail. A standard white cue ball sits on the cloth just before the mouth, entirely supported, its 57.15mm diameter is about two thirds of the approximately 85mm throat. RIGHT panel: same camera height and material scale, close view of the MIDDLE pocket between two collinear straight long-rail cushion sections, clearly rounded symmetric cushion jaws joining the straight rail tangentially. It has a dark opening and same tobacco brown stitched leather rim matching the master image; its mouth is approximately 1.45 ball diameters. A single plain white cue ball on the supported cloth in front for scale, not inside the pocket. Same rich forest green woven baize, walnut grain density, satin finish, subtle bronze seam and soft overhead light in both panels. Pocket dark interior has believable depth. Chinese-pool geometry, no wide American angular cut jaws, no straight chamfer replacing the curved nose. Refined realistic product rendering with legible subtle edge detail, no giant holes. No text, UI, captions, arrows, logos, watermarks, people or extra decoration. Match the master design precisely. Large landscape composition.",
+      "references": [
+        "master-v1.png",
+        "KNBB Chinese-pool corner photograph"
+      ]
+    }
+  ]
+}

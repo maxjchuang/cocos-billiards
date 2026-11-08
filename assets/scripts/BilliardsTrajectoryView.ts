@@ -1,4 +1,4 @@
-import { Color,Material,Mesh,MeshRenderer,Node,primitives,utils } from 'cc';
+import { isValid,Color,Material,Mesh,MeshRenderer,Node,primitives,utils } from 'cc';
 import { ShotPrediction } from './BilliardsTrajectory';
 import { AimContact } from './BilliardsAim';
 import { TABLE } from './BilliardsPhysics';
@@ -44,5 +44,10 @@ export class TrajectoryView {
         });
     }
     private replace(i:number,data:MeshData):void{const old=this.meshes[i],mesh=utils.createMesh(data);this.nodes[i].getComponent(MeshRenderer)!.mesh=mesh;this.meshes[i]=mesh;old?.destroy();}
-    destroy():void{this.node.destroy();this.meshes.forEach(m=>m?.destroy());this.ghostMesh.destroy();this.materials.forEach(m=>m.destroy());}
+    destroy():void {
+        // Creator may already have destroyed child nodes when the parent tears down.
+        for(const asset of [this.node,...this.meshes,this.ghostMesh,...this.materials]) {
+            if(asset&&isValid(asset,true))asset.destroy();
+        }
+    }
 }

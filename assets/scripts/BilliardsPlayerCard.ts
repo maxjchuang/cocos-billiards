@@ -62,8 +62,9 @@ export class PlayerCardView {
         text(this.groupLabel, group ? `${groupName(group)} · 剩${ids.length}` : '尚未分组', textX + (width-54*s)/2, y - 30*s, width-54*s, 11);
         this.fallbackLabel.node.active = !!group && ids.length === 0;
         text(this.fallbackLabel, group ? '目标 8 号' : '等待分组', x + width/2, -height/2 + 15*s, width - 20*s, 11);
+        if(height<56){this.fallbackLabel.node.active=false;}
         this.numbers.forEach((label, i) => {
-            label.node.active = i < ids.length;
+            label.node.active = height>=56 && i < ids.length;
             if (i >= ids.length) return;
             const diameter=width<150?16*s:18*s,spacing=Math.min(diameter+3*s,(width-18*s-diameter)/Math.max(1,ids.length-1));
             const id = ids[i], cx = x + 9*s+diameter/2+i*spacing, cy = -height/2 + 13*s, r = diameter/2;

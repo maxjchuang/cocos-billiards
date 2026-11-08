@@ -1,0 +1,66 @@
+{
+  "date": "2026-11-05",
+  "scope": "Creator browser preview 7456; mobile emulation",
+  "cause": "landscape rotation was combined with Creator flex centering, moving the complete canvas outside the viewport",
+  "before": {
+    "viewport": [
+      412,
+      924
+    ],
+    "canvasRect": {
+      "x": -462,
+      "y": 256,
+      "width": 412,
+      "height": 924
+    }
+  },
+  "fix": "anchor Creator mobile preview GameDiv to the viewport with fixed positioning before engine orientation adaptation",
+  "after": [
+    {
+      "viewport": [
+        412,
+        924
+      ],
+      "canvasRect": [
+        0,
+        0,
+        412,
+        924
+      ]
+    },
+    {
+      "viewport": [
+        393,
+        852
+      ],
+      "canvasRect": [
+        0,
+        0,
+        393,
+        852
+      ]
+    },
+    {
+      "viewport": [
+        852,
+        393
+      ],
+      "canvasRect": [
+        0,
+        0,
+        852,
+        393
+      ]
+    }
+  ],
+  "interaction": "DOM touch starts a match in rotated portrait view",
+  "tests": {
+    "passed": 268,
+    "failed": 0
+  },
+  "creatorWebMobileBuild": "passed",
+  "originalUserTab": "reloaded; start screen visibly restored",
+  "isolatedBrowserConsole": "no errors or warnings after fix",
+  "historicalConsole": "original profile captured unhandled Promise rejection with undefined reason; origin not established, not reproduced in clean validation",
+  "screenshot": "portrait-preview-fixed.png"
+}

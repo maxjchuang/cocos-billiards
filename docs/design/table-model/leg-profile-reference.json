@@ -1,0 +1,9 @@
+{
+  "source": "turned-leg-approved.png",
+  "measurement": "Hand-traced enlarged left elevation. Body top y=365, bottom y=850; maximum width approximately 207 pixels. Fractions are visual references, not manufacturer measurements.",
+  "bodyWidthToHeight": 0.4268,
+  "mountWidthToMaximumBodyWidth": 0.918,
+  "footWidthToMaximumBodyWidth": 0.55,
+  "bodyWidthSamplesTopToBottom": [[0,0.710],[0.041,0.826],[0.082,0.923],[0.124,0.990],[0.165,1],[0.206,0.981],[0.278,0.923],[0.381,0.836],[0.484,0.749],[0.588,0.671],[0.691,0.585],[0.794,0.517],[0.897,0.440],[1,0.382]],
+  "allowedNormalizedWidthError": 0.04
+}

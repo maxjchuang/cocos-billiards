@@ -1,0 +1,134 @@
+{
+  "version": "2.0-design-review",
+  "date": "2026-11-03",
+  "direction": "专业球房 · 横屏沉浸式",
+  "status": "direction confirmed; details under review; not implemented",
+  "runtimeBaseline": "21abab2 / V1.15.3",
+  "referenceFrame": [
+    852,
+    393
+  ],
+  "productPdf": "中式八球产品设计方案.pdf",
+  "uiuxPdf": "中式八球UIUX设计方案.pdf",
+  "productSource": "landscape-product.md",
+  "uiuxSource": "landscape-uiux.md",
+  "contract": "ui-contract.json",
+  "productPages": 10,
+  "uiuxPages": 16,
+  "figures": [
+    {
+      "id": "L01",
+      "title": "第一人称正常瞄准",
+      "source": "landscape/L01-first-person.svg",
+      "render": "landscape/L01-first-person.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L02",
+      "title": "第一人称简洁显示",
+      "source": "landscape/L02-minimal.svg",
+      "render": "landscape/L02-minimal.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L03",
+      "title": "俯视完整台面",
+      "source": "landscape/L03-overhead.svg",
+      "render": "landscape/L03-overhead.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L04",
+      "title": "线后摆球",
+      "source": "landscape/L04-placement.svg",
+      "render": "landscape/L04-placement.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L05",
+      "title": "母球打点草稿",
+      "source": "landscape/L05-spin.svg",
+      "render": "landscape/L05-spin.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L06",
+      "title": "微调展开",
+      "source": "landscape/L06-fine.svg",
+      "render": "landscape/L06-fine.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L07",
+      "title": "局中选择玩法",
+      "source": "landscape/L07-start.svg",
+      "render": "landscape/L07-start.png",
+      "frame": [
+        852,
+        393
+      ]
+    },
+    {
+      "id": "L08",
+      "title": "竖屏中断提示",
+      "source": "landscape/L08-portrait-pause.svg",
+      "render": "landscape/L08-portrait-pause.png",
+      "frame": [
+        393,
+        852
+      ]
+    },
+    {
+      "id": "L09",
+      "title": "紧凑横屏构图",
+      "source": "landscape/L09-compact.svg",
+      "render": "landscape/L09-compact.png",
+      "frame": [
+        667,
+        375
+      ]
+    },
+    {
+      "id": "L10",
+      "title": "宽横屏构图",
+      "source": "landscape/L10-wide.svg",
+      "render": "landscape/L10-wide.png",
+      "frame": [
+        932,
+        430
+      ]
+    }
+  ],
+  "historicalArchive": "archive/v1.15.3",
+  "confirmed": [
+    "landscape replaces portrait gameplay",
+    "maximize first-person display",
+    "touch only",
+    "preserve 220ms contact synchronization"
+  ],
+  "pendingReview": [
+    "first-ready default perspective",
+    "minimal default",
+    "control dimensions",
+    "left-hand layout release priority"
+  ],
+  "evidenceStatus": "document/figure QA only, no Creator or device acceptance"
+}

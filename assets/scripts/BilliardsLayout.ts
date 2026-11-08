@@ -6,7 +6,7 @@ export interface HudLayout {
     status: HudRect; reset: HudRect; players: [HudRect, HudRect]; turn: HudRect;
     playArea: HudRect; dock: HudRect; decision: HudRect; actions: HudRect; power: HudRect; shoot: HudRect; fineButton: HudRect; fine: HudRect; spinButton: HudRect;
 }
-export interface HudOptions { insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; showDecision?:boolean; }
+export interface HudOptions { dockRight?:boolean; insets?: Partial<SafeInsets>; showPower?: boolean; actionCount?: number; showShot?: boolean; showFine?: boolean; showDecision?:boolean; }
 
 /** A shrunken embedded preview still lays out a complete mobile frame.
  * Physical pixels per HUD unit may differ from device DPR when the preview is zoomed.
@@ -20,6 +20,17 @@ export function computeHudViewport(pixelWidth:number,pixelHeight:number,deviceDp
 
 /** Frozen reference layout. Short screens compress the table, never the touch targets. */
 export function computeHudLayout(width:number,height:number,options:HudOptions={}):HudLayout {
+    if(width>height){
+        const i=options.insets??{},left=i.left??0,right=i.right??0,top=i.top??0,bottom=i.bottom??0;
+        const margin=Math.max(80,(width-left-right)*.195);
+        const x=options.dockRight?width-right-margin-224:left+margin,y=height-bottom-64;
+        const players:[HudRect,HudRect]=[{x:left+110,y:top+8,width:148,height:44},{x:width-right-290,y:top+8,width:148,height:44}];
+        return {width,height,scale:1,status:{x:left+8,y:top+8,width:44,height:24},reset:{x:left+8,y:top+8,width:44,height:44},players,
+            turn:{x:left+110,y:top+54,width:320,height:22},playArea:{x:0,y:0,width,height},
+            dock:{x,y,width:224,height:48},decision:{x,y:y-48,width:224,height:options.showDecision===false?0:40},
+            actions:{x,y,width:224,height:48},fineButton:{x,y,width:72,height:44},shoot:{x:x+76,y,width:72,height:44},spinButton:{x:x+152,y,width:72,height:44},
+            power:{x:width-right-52,y:top+120,width:44,height:144},fine:{x,y:y-56,width:224,height:44}};
+    }
     const compact=height<700;const s=1,scale=1,inset=options.insets??{},left=Math.max(0,inset.left??0),right=Math.max(0,inset.right??0);
     const top=Math.max(0,inset.top??0),bottom=Math.max(0,inset.bottom??0),innerWidth=width-left-right-40;
     const reset={x:left+14,y:top,width:44,height:44};

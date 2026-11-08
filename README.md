@@ -1,5 +1,27 @@
 # Cocos 中式八球
 
+## 2026-11-08 已确认V8球桌与文档同步
+
+用户已确认V8三维模型。产品V2.2、UI/UX V2.4采用同一母版渲染及参数，入口见[设计文档](docs/design/README.md)。游戏接入步骤与逐项完成标准见[模型接入方案](docs/technical/table-model-integration.md)，当前处于文档及独立模型已确认、游戏接入待实施阶段。
+
+## 2026-11-04 默认横屏与 Creator 输入修正
+
+游戏入口由引擎默认横屏启动，取消方向检测与方向暂停提示。Creator内置预览识别EDITOR环境，桌面输入隔离鼠标模拟触摸，右键拖动观察、滚轮缩放。窗口变化保持球局。259项测试通过，原生输入与移动端浏览器模拟结果见 docs/technical/free-camera-plan.md。
+
+## 2026-11-04 自由镜头本地实现
+
+横屏统一UI、单指瞄准、双指环绕与缩放、回到出杆位、摆球自由观察及横屏面板已落地。技术方案与验收记录见 docs/technical/free-camera-plan.md。252项回归通过，Creator Web Mobile构建成功，三个横屏尺寸各12项浏览器组件检查通过。真机和微信专项沿用跳过约定，编辑器原生预览本轮未复核。
+
+## 2026-11-04 设计更新 V2.1
+
+产品与UI/UX统一为一套横屏界面和连续自由镜头。单指瞄准、双指环绕与缩放，入口为“回到出杆位”。摆球允许调整镜头，确认后保留观察位置。当前设计入口见 docs/design/README.md，生成入口为 scripts/build-free-camera-design.py。运行与技术实施进度按下方记录区分。
+
+## 2026-11-03：横屏沉浸式设计 V2.0（未实施）
+
+用户要求横屏替代当前竖屏游戏布局，并尽可能扩大第一人称展示；随后明确先讨论设计，不进入代码开发。两份产品/UIUX主PDF、[可编辑产品正文](docs/design/landscape-product.md)、[UI/UX正文](docs/design/landscape-uiux.md)、L01-L10 SVG/PNG和设计契约已更新为V2.0评审稿。旧V1.15.3主PDF及契约存档于docs/design/archive/v1.15.3。
+
+当前游戏仍为21abab2 / V1.15.3；本轮没有改assets、场景、项目设置或游戏行为。新用户默认第一人称、简洁显示默认值和左手布局优先级等细节待本轮评审；图稿不是Creator截图，也不是运行或真机验收。未自动提交推送。
+
 ## 2026-10-26：AI 自然选杆修订 V1.15.3
 
 AI优先稳定的直接进攻与直接防守；识别被挡中路之外的薄碰通路，并检查该难度角度误差能否仍接触目标。没有安全直接接触时保留解球。挑战难度的主动一库进攻必须通过名义命令与四个角度/力度误差角点的5点检查，并明显优于直接路线，不能靠一次精确仿真的偶然高分绕库。
@@ -52,7 +74,7 @@ Cocos Creator **3.8.7** + TypeScript。目标仅为移动端小程序/小游戏�
 
 ## 设计文档
 
-[产品与 UI / UX 设计方案 V1.15.1](docs/design/README.md)包含最新 PDF、S01–S17 SVG 图稿与线框图标。本轮实施与逐项验收见[执行清单](docs/technical/execution-plan.md)，下方历史验证记录保留其原有时间与范围。
+[产品与 UI / UX 设计方案](docs/design/README.md)包含最新 PDF、S01–S17 SVG 图稿与线框图标。本轮实施与逐项验收见[执行清单](docs/technical/execution-plan.md)，下方历史验证记录保留其原有时间与范围。
 
 整体架构、功能差距、确认参数和实施阶段见[技术实现方案](docs/technical/implementation-plan.md)。
 
@@ -231,3 +253,7 @@ previewSmoke().then(console.log).catch(console.error)
 类型检查及89项Node测试通过，Creator 3.8.7 Web Mobile构建成功（退出码36）。Chromium 393×852完成输入/对局/打点/六袋/分辨率/触球时序及受控完整球局；320×568与430×932完成对应输入、六袋、分辨率及时序检查。页面错误与控制台警告为0；新截图见[浏览器画面](validation/pocket-geometry-browser.png)，报告见`validation/pocket-geometry-check.json`。本轮未新做原生编辑器界面操作、手机或微信开发工具验证；此前手机反馈属于旧版本。构建后仍出现编辑器window.json恢复缓存错误，未据此声称原生编辑器验证通过。
 
 在手机触摸模拟下加载`scripts/preview-pockets.js`，执行`previewPockets()`可复验受控初速度的六袋引擎帧循环。该工具会重置球局，使用当前构建的模块地址，不参与正式游戏加载。
+
+### Creator 开发预览的视角操作
+
+进入对局后，在台面区域按住鼠标右键拖动可环绕并调整俯角，滚轮拉近或拉远。“回到出杆位”恢复母球后方观察。此输入适配通过 Creator 的 EDITOR 或 PREVIEW 标志启用，手机触摸操作仍为单指瞄准、双指观察和捏合缩放。

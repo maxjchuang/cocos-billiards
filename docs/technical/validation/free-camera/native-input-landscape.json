@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-04",
+  "tests": 259,
+  "creatorEnvironment": {
+    "EDITOR": true,
+    "PREVIEW": false
+  },
+  "nativeOSInput": {
+    "rightDownReceived": true,
+    "wheelChangesCamera": true
+  },
+  "nativeEngineDispatchedSequence": {
+    "rightDragChangesCamera": true,
+    "releaseClearsCapture": true,
+    "cuePositionHeld": true,
+    "aimHeld": true
+  },
+  "mobileBrowserSimulation": {
+    "portraitViewport": [
+      393,
+      852
+    ],
+    "engineWindow": [
+      1704,
+      786
+    ],
+    "landscapeHud": [
+      852,
+      393
+    ],
+    "domTouchStartsGame": true,
+    "resizeKeepsMatchActive": true
+  },
+  "supersedes": "orientation pause checks in browser-checks.json",
+  "scope": "desktop editor plus browser mobile emulation; real device skipped"
+}

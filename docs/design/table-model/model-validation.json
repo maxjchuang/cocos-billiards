@@ -1,0 +1,49 @@
+{
+  "date": "2026-11-08",
+  "blenderVersion": "4.5.9 LTS",
+  "actualDimensionsBlenderXYZ": [
+    1.5399999618530273,
+    2.819999933242798,
+    0.8500000238418579
+  ],
+  "minimum": [
+    -0.7699999809265137,
+    -1.409999966621399,
+    0.0
+  ],
+  "maximum": [
+    0.7699999809265137,
+    1.409999966621399,
+    0.8500000238418579
+  ],
+  "closedStructuralMeshes": true,
+  "finiteVertices": true,
+  "meshCount": 58,
+  "pocketLiners": 6,
+  "legs": 6,
+  "texturesPacked": true,
+  "modelFile": "chinese-pool-table.blend",
+  "exportFile": "chinese-pool-table.glb",
+  "deviceValidation": "browser review only",
+  "revision": "sketch-matched-legs-v8",
+  "browser": {
+    "url": "http://127.0.0.1:8877/",
+    "meshes": 173,
+    "triangles": 193940,
+    "errors": 0,
+    "warnings": 0,
+    "reviewedViews": [
+      "legs"
+    ]
+  },
+  "nodeChecksPassed": 278,
+  "surfaceAudit": "pocket-validation.json",
+  "roundLegAudit": "round-leg-validation.json",
+  "sketchProfileReference": "leg-profile-reference.json",
+  "renderedViews": 8,
+  "orthographicProfile": "leg-profile.png",
+  "sha256": {
+    "chinese-pool-table.blend": "c0ae1e32955be284251c2610b8b760c8f4014d3d25bff519a9652b1ab58078d3",
+    "chinese-pool-table.glb": "c0ce7b2cfe2c6c47e7ff54fbc63bb5f68c16eed0b786e89461633ec6f6169e97"
+  }
+}

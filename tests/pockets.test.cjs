@@ -3,6 +3,7 @@ const assert=require('node:assert/strict');
 const path=require('node:path');
 const geom=require(path.join(path.dirname(process.env.BILLIARDS_TEST_MODULE),'BilliardsTableGeometry.js'));
 const {TABLE,POCKETS,step,FIXED_STEP}=require(process.env.BILLIARDS_TEST_MODULE);
+const {onCloth}=require(path.join(path.dirname(process.env.BILLIARDS_TEST_MODULE),'BilliardsCameraMath.js'));
 const {pocketCoordinates,pocketAt,traceTable,validTablePlacement,CUSHION_PATHS,POCKET_MODEL}=geom;
 const make=(p,distance,speed,offset=0)=>({id:1,x:p.lip.x-p.normal.x*distance+p.tangent.x*offset,
  z:p.lip.z-p.normal.z*distance+p.tangent.z*offset,vx:p.normal.x*speed,vz:p.normal.z*speed});
@@ -26,8 +27,8 @@ test('six pockets accept centred approaches at slow and maximum speed, once and 
   assert.equal(events.filter(e=>e.type==='pocket').length,1);
  }
 });
-test('a ball on the middle mouth or just in front of the drop plane is not captured',()=>{
- for(const p of POCKETS){const ball=make(p,0,0);step([ball],FIXED_STEP,{respawnCue:false});assert.ok(!ball.pocketed);
+test('an unsupported ball at the mouth drops, while the supported approach remains outside',()=>{
+ for(const p of POCKETS){const ball=make(p,0,0);step([ball],FIXED_STEP,{respawnCue:false});assert.ok(ball.pocketed);
   const front={x:p.lip.x+p.normal.x*(p.dropDepth-.001),z:p.lip.z+p.normal.z*(p.dropDepth-.001)};
   assert.equal(pocketAt(front),-1);
  }
@@ -56,7 +57,7 @@ test('aim enters open mouths and predicts the same first boundary as actual jaw 
 });
 
 test('insufficient speed stops before the pocket instead of attracting the ball',()=>{
- for(const p of POCKETS){const ball=make(p,.09,.2);
+ for(const p of POCKETS){const ball=make(p,.15,.2);
   for(let i=0;i<240*3;i++)step([ball],FIXED_STEP,{respawnCue:false});
   assert.ok(!ball.pocketed);assert.ok(pocketCoordinates(ball,p).v<p.dropDepth);
   assert.equal(ball.vx,0);assert.equal(ball.vz,0);
@@ -68,4 +69,27 @@ test('an exactly overlapping cushion centre resolves inward without a zero-dista
  step([ball],FIXED_STEP,{respawnCue:false});
  assert.ok(ball.x<=TABLE.halfWidth-TABLE.radius+1e-9);
  assert.ok(Number.isFinite(ball.x)&&Number.isFinite(ball.z));
+});
+
+test('slow centred and jaw-grazing balls fall once they lose table support in all six pockets',()=>{
+ for(const p of POCKETS){
+  const corner=p.kind==='corner',speed=corner?.4:.1,offset=corner?.012:0,angle=corner?.4:0;
+  const ball=make(p,.04,speed,offset),events=[];
+  ball.vx=speed*(p.normal.x*Math.cos(angle)+p.tangent.x*Math.sin(angle));
+  ball.vz=speed*(p.normal.z*Math.cos(angle)+p.tangent.z*Math.sin(angle));
+  for(let i=0;i<960&&!ball.pocketed;i++)step([ball],FIXED_STEP,{respawnCue:false,onEvent:e=>events.push(e)});
+  assert.equal(ball.pocketed,true,`previously suspended at ${p.kind} ${p.x},${p.z}`);
+  for(let i=0;i<10;i++)step([ball],FIXED_STEP,{respawnCue:false,onEvent:e=>events.push(e)});
+  assert.equal(events.filter(e=>e.type==='pocket').length,1);
+ }
+});
+
+test('a resting centre above the actual opening drops while a supported hanging ball stays',()=>{
+ for(const p of POCKETS){
+  const hanging=make(p,-p.dropDepth+.001,0),unsupported=make(p,-p.dropDepth-.002,0);
+  assert.equal(onCloth(hanging),true);assert.equal(onCloth(unsupported),false);
+  step([hanging],FIXED_STEP,{respawnCue:false});assert.ok(!hanging.pocketed);
+  step([unsupported],FIXED_STEP,{respawnCue:false});assert.ok(unsupported.pocketed);
+  const blocked=make(p,0,0,p.mouth/2);assert.equal(pocketAt(blocked),-1);
+ }
 });

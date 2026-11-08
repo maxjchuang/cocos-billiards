@@ -1,0 +1,22 @@
+{
+  "scope": "design-file QA; no runtime acceptance",
+  "referenceTouchBounds": "all >=44 and inside reference safe region",
+  "overlapPairs": [],
+  "productPages": 10,
+  "uiuxPages": 16,
+  "screens": 10,
+  "pending": [],
+  "gameCodeChanged": false,
+  "revision": "centered near-full-height overhead table; no reserved header or right column; split identity chips and relocatable action group",
+  "responsiveOverheadCheck": "667x375,852x393,932x430: nonoverlapping targets >=44 in safe region; complete pockets; >=12px control clearance and >=8px host clearance",
+  "pdfVisualReview": "changed UIUX pages5-6 and product page3 rendered and inspected; other pages unchanged from prior 26-page review",
+  "baselineCheck": "unchanged runtime; prior 249-pass baseline not rerun for this design-only revision",
+  "privacyScan": "PDF text passed",
+  "publication": "not committed or pushed",
+  "artifactHashes": {
+    "docs/design/中式八球产品设计方案.pdf": "183af99e09d9fc8c16b831ee101e4307e4ff4ae9b853ae48c9722326afded54e",
+    "docs/design/中式八球UIUX设计方案.pdf": "6040e8c9fe4c46e8554153e834ce732d413c497b065bc552d58062b0b97c4075",
+    "docs/design/ui-contract.json": "98af6fb75dc9c083bb595ff5aca015461710250a881f7e5e38cc9c523945445c",
+    "docs/design/design-manifest.json": "2f3aafedb9bab4870eb302eca83cc2a3bdd5b4bbf64b77cb9490259a50d320ff"
+  }
+}

@@ -10,7 +10,7 @@ export const TABLE_GEOMETRY = {
 export const POCKET_MODEL = {
     cornerMouth: 0.085, sideMouth: 0.082,
     // Dimensionless gameplay tuning, not measured jaw/shelf dimensions.
-    jawRadiusInBallRadii: 0.5, dropDepthInBallRadii: 1,
+    jawRadiusInBallRadii: 0.5, backDepthInBallRadii: 1,
     railDepth: 0.07, arcSegments: 16,
 };
 const G = TABLE_GEOMETRY, J = G.radius * POCKET_MODEL.jawRadiusInBallRadii;
@@ -27,7 +27,8 @@ export const POCKETS: PocketGeometry[] = [-1, 1].flatMap(sx => [-1, 0, 1].map(sz
     const shift = (cornerCut-J)/2;
     const lip = corner ? { x:sx*(G.halfWidth-shift), z:sz*(G.halfLength-shift) }
         : { x:sx*(G.halfWidth+J), z:0 };
-    const dropDepth = G.radius * POCKET_MODEL.dropDepthInBallRadii;
+    const backDepth = G.radius * POCKET_MODEL.backDepthInBallRadii;
+    const dropDepth = corner ? -J/Math.sqrt(2) : -J;
     const toWorld = (u:number,v:number):TablePoint => ({ x:lip.x+tangent.x*u+normal.x*v, z:lip.z+tangent.z*u+normal.z*v });
     const jaw:TablePoint[]=[];
     for(let i=0;i<=POCKET_MODEL.arcSegments;i++) {
@@ -39,10 +40,10 @@ export const POCKETS: PocketGeometry[] = [-1, 1].flatMap(sx => [-1, 0, 1].map(sz
     // Visual round back only. It does NOT participate in collision or capture tests.
     const back=Array.from({length:33},(_,i)=>{
         const a=-Math.PI/2+i*Math.PI/32;
-        return {x:mouth/2*Math.sin(a),z:dropDepth+mouth/2*Math.cos(a)};
+        return {x:mouth/2*Math.sin(a),z:backDepth+mouth/2*Math.cos(a)};
     });
     const outline=[...jaw,...back,...jaw.slice().reverse().map(p=>({x:-p.x,z:p.z}))].map(p=>toWorld(p.x,p.z));
-    const centre=toWorld(0,dropDepth+0.0001);
+    const centre=toWorld(0,backDepth+0.0001);
     return {...centre,kind:corner?'corner' as const:'side' as const,mouth,lip,normal,tangent,dropDepth,outline};
 }));
 export interface CushionPath { side:CushionSide; nose:TablePoint[]; polygon:TablePoint[]; }
@@ -94,12 +95,26 @@ export function pocketCoordinates(p:TablePoint,pocket:PocketGeometry):{u:number;
     const x=p.x-pocket.lip.x,z=p.z-pocket.lip.z;
     return {u:x*pocket.tangent.x+z*pocket.tangent.z,v:x*pocket.normal.x+z*pocket.normal.z};
 }
-/** Capture is behind the jaws; the visible round back is never an attraction/capture circle. */
-export function pocketAt(p:TablePoint):number {
+/** The hole used to cut the cloth is also the boundary of table support. */
+export function pocketOpeningAt(p:TablePoint):number {
+    if(Math.abs(p.x)<G.halfWidth-.12&&Math.abs(p.z)<G.halfLength-.12)return -1;
     return POCKETS.findIndex(pocket=>{
-        const {u,v}=pocketCoordinates(p,pocket);
-        return v>=pocket.dropDepth-1e-9 && Math.abs(u)<=pocket.mouth/2-G.radius+1e-9;
+        const q=pocketCoordinates(p,pocket);
+        if(q.v<pocket.dropDepth-1e-9||q.v>G.radius*POCKET_MODEL.backDepthInBallRadii+pocket.mouth/2+1e-9||Math.abs(q.u)>pocket.mouth/2+J)return false;
+        let inside=false;
+        const points=pocket.outline;
+        for(let i=0,j=points.length-1;i<points.length;j=i++){
+            const a=points[j],b=points[i],q=nearestOnSegment(p,a,b);
+            if(Math.hypot(p.x-q.x,p.z-q.z)<=1e-9)return true;
+            if((a.z>p.z)!==(b.z>p.z)&&p.x<(b.x-a.x)*(p.z-a.z)/(b.z-a.z)+a.x)inside=!inside;
+        }
+        return inside;
     });
+}
+/** A centre over the open cloth cut-out falls only after it clears the physical jaws. */
+export function pocketAt(p:TablePoint):number {
+    const index=pocketOpeningAt(p);
+    return index>=0&&clearOfCushions(p)?index:-1;
 }
 export function clearOfCushions(p:TablePoint, radius=G.radius):boolean {
     return CUSHION_SEGMENTS.every(segment=>{
@@ -139,8 +154,7 @@ export function traceTable(p:TablePoint,dx:number,dz:number):{distance:number;ki
         const q=pocketCoordinates(p,pocket),dv=dx*pocket.normal.x+dz*pocket.normal.z;
         if(dv<=1e-10)continue;
         const t=(pocket.dropDepth-q.v)/dv;
-        const u=q.u+t*(dx*pocket.tangent.x+dz*pocket.tangent.z);
-        if(t>=0&&t<distance&&Math.abs(u)<=pocket.mouth/2-G.radius){distance=t;kind='pocket';}
+        if(t>=0&&t<distance&&pocketAt({x:p.x+dx*t,z:p.z+dz*t})===POCKETS.indexOf(pocket)){distance=t;kind='pocket';}
     }
     return Number.isFinite(distance)?{distance,kind}:null;
 }

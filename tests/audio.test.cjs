@@ -31,8 +31,17 @@ test('all A assets are packed PCM clips with preserved original metadata UUIDs a
  for(const file of manifest.files){const b=fs.readFileSync('assets/resources/audio/'+file.file);assert.equal(b.toString('ascii',0,4),'RIFF');assert.ok(file.peak<=.781);assert.ok(file.duration>0&&file.duration<=1.8);assert.ok(fs.existsSync('assets/resources/audio/'+file.file+'.meta'));}
  assert.equal(JSON.parse(fs.readFileSync('assets/resources/audio/collision.wav.meta','utf8')).uuid,'7d7732c5-94e4-48cb-974b-a0155ee7319f');
 });
-test('audio telemetry does not alter the accepted default-break ball trajectories',()=>{
- const p=require(process.env.BILLIARDS_TEST_MODULE),r=require(path.join(dir,'BilliardsRack.js')),{sample}=require('../scripts/measure-break-balance.cjs');const baseline=JSON.parse(fs.readFileSync('validation/calibration/breaks.json','utf8')).cases[0];const actual=sample(p,r,baseline.config.rackSeed,baseline.offset,baseline.config.ballSetSeed,baseline.config.positionToleranceM,baseline.speed);assert.deepEqual(actual.balls,baseline.balls);assert.ok(actual.events.filter(e=>['contact','cushion','pocket'].includes(e.event.type)).every(e=>Number.isFinite(e.event.speed)&&e.event.speed>=0));
+test('audio telemetry does not alter default-break ball trajectories',()=>{
+ const physics=require(process.env.BILLIARDS_TEST_MODULE);
+ const rack=require(path.join(dir,'BilliardsRack.js'));
+ const {sample}=require('../scripts/measure-break-balance.cjs');
+ const fixture=JSON.parse(fs.readFileSync('validation/calibration/breaks.json','utf8')).cases[0];
+ const inputs=[fixture.config.rackSeed,fixture.offset,fixture.config.ballSetSeed,fixture.config.positionToleranceM,fixture.speed];
+ const actual=sample(physics,rack,...inputs);
+ const quietPhysics={...physics,step:(balls,dt,options)=>physics.step(balls,dt,{...options,onEvent:undefined})};
+ const withoutTelemetry=sample(quietPhysics,rack,...inputs);
+ assert.deepEqual(actual.balls,withoutTelemetry.balls);
+ assert.ok(actual.events.filter(e=>['contact','cushion','pocket'].includes(e.event.type)).every(e=>Number.isFinite(e.event.speed)&&e.event.speed>=0));
 });
 test('voice reservations remain bounded when the backend reports playing only asynchronously',()=>{
  const {f,sources}=feedback();for(const s of sources)s.play=function(){this.plays++;};

@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-08",
+  "version": "2.4-model-baseline",
+  "scope": "product/UIUX/technical documentation based on accepted V8 model",
+  "pages": {
+    "product": 11,
+    "uiux": 23
+  },
+  "visualReview": "T01-T12 rendered and inspected; product model-scope page inspected; interaction diagrams retain their previous layout",
+  "semanticReview": "V8 styling approved; Cocos integration pending; public dimensions and game-specific fitting distinguished",
+  "figures": "four interaction diagrams and twelve table specification plates",
+  "privacyScan": "active PDF text and new technical prose passed",
+  "runtimeFilesChangedInThisRevision": false,
+  "interactionCalibration": "previous interaction review scope retained",
+  "tableCalibration": "manufacturer fine geometry and real-table calibration remain unverified",
+  "productPdfPreserved": false,
+  "artifactHashes": {
+    "docs/design/中式八球产品设计方案.pdf": "f2186bd713fa75d734a6c0b204a392d7288c6570253126e3c5a0c359dbd8c0fe",
+    "docs/design/中式八球UIUX设计方案.pdf": "c8a59211351213eccd3d17f873990213d4517bf1ea5a6a317efd369015bfc97d",
+    "docs/design/ui-contract.json": "bad49f80cc34f799c859bd1445ddb3bf0d917079adec287252ffa6bace870b22",
+    "docs/design/design-manifest.json": "740bea4cfb5a13b01d5e08708e04f9273354199b47608342164b90749e9c76c8"
+  },
+  "nodeChecks": {
+    "passed": 278,
+    "total": 278
+  },
+  "visualModelStatus": "sketch-matched-legs-v8 approved by user",
+  "runtimeIntegration": "pending; M01 documentation complete, M02-M07 pending",
+  "performanceTargets": "proposed for first implementation measurement, not measured device results"
+}

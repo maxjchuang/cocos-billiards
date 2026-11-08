@@ -1,4 +1,4 @@
-import { Color,DirectionalLight,EffectAsset,Material,Mesh,MeshRenderer,Node,Texture2D,utils,Vec3,Vec4 } from 'cc';
+import { isValid,Color,DirectionalLight,EffectAsset,Material,Mesh,MeshRenderer,Node,Texture2D,utils,Vec3,Vec4 } from 'cc';
 import { TABLE_GEOMETRY as G } from './BilliardsTableGeometry';
 import { numberedBallPixels } from './BilliardsBallTexture';
 import { onCloth } from './BilliardsCameraMath';
@@ -50,5 +50,10 @@ export class BallView {
             if(!m.indices.length){n.active=false;this.supported[i]=false;return;}this.supported[i]=true;const old=this.shadowMeshes[i],mesh=utils.createMesh(m);n.getComponent(MeshRenderer)!.mesh=mesh;this.shadowMeshes[i]=mesh;old.destroy();
         });
     }
-    destroy():void{this.light.node.destroy();this.shadows.forEach(n=>n.destroy());this.shadowMeshes.forEach(m=>m.destroy());this.materials.forEach(m=>m.destroy());this.cueMaterials.forEach(m=>m.destroy());this.shadowMaterial.destroy();this.textures.forEach(t=>t.destroy());}
+    destroy():void {
+        // Creator may already have destroyed child nodes when the parent tears down.
+        for(const asset of [this.light.node,...this.shadows,...this.shadowMeshes,...this.materials,...this.cueMaterials,this.shadowMaterial,...this.textures]) {
+            if(asset&&isValid(asset,true))asset.destroy();
+        }
+    }
 }

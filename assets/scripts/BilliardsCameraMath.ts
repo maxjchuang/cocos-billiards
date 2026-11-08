@@ -1,5 +1,5 @@
 import { SPIN,TipOffset } from './BilliardsSpin';
-import { TABLE_GEOMETRY as G,CUSHION_PATHS,POCKETS,TablePoint } from './BilliardsTableGeometry';
+import { TABLE_GEOMETRY as G,CUSHION_PATHS,pocketOpeningAt,TablePoint } from './BilliardsTableGeometry';
 export interface Point3 {x:number;y:number;z:number;}
 export interface CameraPose {position:Point3;target:Point3;distance:number;height:number;safe:boolean;reason:string;tip?:Point3;direction?:TablePoint;}
 export const CAMERA_CONFIG={distance:.45,minDistance:.35,maxDistance:.55,minHeight:.15,maxHeight:.25,fov:55,near:.01,far:6} as const;
@@ -8,7 +8,7 @@ export function insidePolygon(p:TablePoint,points:readonly TablePoint[]):boolean
     let yes=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const a=points[i],b=points[j];if((a.z>p.z)!==(b.z>p.z)&&p.x<(b.x-a.x)*(p.z-a.z)/(b.z-a.z)+a.x)yes=!yes;}return yes;
 }
 /** Render-only cloth support. Never used for pocket capture or ball placement. */
-export function onCloth(p:TablePoint):boolean{return Math.abs(p.x)<=G.halfWidth&&Math.abs(p.z)<=G.halfLength&&!POCKETS.some(h=>insidePolygon(p,h.outline));}
+export function onCloth(p:TablePoint):boolean{return Math.abs(p.x)<=G.halfWidth&&Math.abs(p.z)<=G.halfLength&&pocketOpeningAt(p)<0;}
 const obstacle=(p:Point3):boolean=>{
     if(p.y>.065||p.y<-.18)return false;
     if(Math.abs(p.x)>G.outerHalfWidth||Math.abs(p.z)>G.outerHalfLength)return false;

@@ -31,7 +31,7 @@ export class PanelsView {
         const color=(s:string):Color=>new Color().fromHEX(s),overlay=this.node.getComponent(Graphics)!;
         overlay.clear();overlay.fillColor=model.mode==='rotate'?new Color(0,0,0,255):new Color(4,16,12,model.mode==='view'?0:184);
         overlay.rect(-width/2,-height/2,width,height);overlay.fill();this.node.getComponent(UITransform)!.setContentSize(width,height);
-        const view=model.mode==='view',rotation=model.mode==='rotate',w=model.mode==='rules'||model.mode==='break'?width:Math.min(345,width-48),available=height-bottom-32;
+        const view=model.mode==='view',rotation=model.mode==='rotate',w=model.mode==='rules'||model.mode==='break'?width:Math.min(width>height?680:345,width-48),available=height-bottom-32;
         const h=Math.min(available,model.mode==='new-game'?(model.actions.some(a=>a.id.startsWith('draft-level:'))?480:330):model.mode==='ai-options'?360:model.mode==='pause'?(model.actions.some(a=>a.id==='ai-options')?452:400):model.mode==='result'?398:model.mode==='confirm'?314:model.mode==='settings'?568:model.mode==='rules'?558:model.mode==='break'?383:model.mode==='identity'?480:Math.max(420,Math.min(660,available)));
         this.card.active=true;let cardY=view?height/2-72:model.mode==='pause'?-9:4;
         if(model.mode==='rules'||model.mode==='break')cardY=-height/2+h/2;
@@ -128,6 +128,24 @@ export class PanelsView {
             }
 
         });
+        if(width>height&&!view){
+            this.baseY=0;this.card.setPosition(0,0,0);
+            this.title.node.setPosition(0,h/2-28,0);this.title.fontSize=20;
+            this.section.node.active=this.subSection.node.active=this.detail.node.active=this.footer.node.active=this.badge.node.active=this.identityTarget.active=false;
+            const reading=model.mode==='rules'||model.mode==='identity';
+            this.body.node.setPosition(0,reading?10:h/2-65,0);this.body.node.getComponent(UITransform)!.setContentSize(w-48,reading?h-136:42);this.body.fontSize=13;
+            const columns=count>=6?3:2,bw=(w-48-(columns-1)*8)/columns;
+            this.buttons.forEach((label,i)=>{
+                const action=model.actions[i];if(!action)return;
+                const node=label.node.parent!,x=-w/2+24+bw/2+(i%columns)*(bw+8);
+                const y=reading?-h/2+30:h/2-120-Math.floor(i/columns)*60;
+                node.setPosition(x,y,0);node.getComponent(UITransform)!.setContentSize(bw,52);
+                const g=node.getComponent(Graphics)!;g.clear();g.fillColor=color(action.primary?CLUB.gold:action.selected?'#3A4C3B':CLUB.surface);g.roundRect(-bw/2,-26,bw,52,9);g.fill();
+                label.string=action.title+(action.checked===undefined?'':action.checked?' · 开':' · 关')+(action.value?' · '+action.value:'');
+                label.fontSize=13;label.node.setPosition(0,0,0);label.node.getComponent(UITransform)!.setContentSize(bw-16,44);label.horizontalAlign=Label.HorizontalAlign.CENTER;
+                this.descriptions[i].node.active=false;
+            });
+        }
     }
     advance(dt:number,reduced=false):void {
         if(!this.node.active)return;this.motion=reduced?1:Math.min(1,this.motion+Math.max(0,dt)/.18);

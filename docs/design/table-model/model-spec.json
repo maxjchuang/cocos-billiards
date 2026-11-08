@@ -1,0 +1,518 @@
+{
+  "units": "metres",
+  "outerDimensionsM": [
+    1.54,
+    2.82,
+    0.85
+  ],
+  "playingBedM": [
+    1.26,
+    2.54
+  ],
+  "clothHeightM": 0.8,
+  "ballDiameterM": 0.05715,
+  "cornerMouthCandidateM": 0.085,
+  "sideMouthCandidateM": 0.082,
+  "legs": 6,
+  "pockets": 6,
+  "views": {
+    "overview": {
+      "position": [
+        3.6,
+        4.1,
+        2.9
+      ],
+      "target": [
+        0,
+        0,
+        0.45
+      ],
+      "lens": 52
+    },
+    "aiming": {
+      "position": [
+        0,
+        1.17,
+        0.99
+      ],
+      "target": [
+        0,
+        -0.55,
+        0.81
+      ],
+      "lens": 30
+    },
+    "corner": {
+      "position": [
+        0.38,
+        1.02,
+        1.05
+      ],
+      "target": [
+        0.65,
+        1.3,
+        0.815
+      ],
+      "lens": 36
+    },
+    "side": {
+      "position": [
+        0.35,
+        0,
+        0.99
+      ],
+      "target": [
+        0.68,
+        0,
+        0.8
+      ],
+      "lens": 40
+    },
+    "wood": {
+      "position": [
+        1.05,
+        0.82,
+        1.19
+      ],
+      "target": [
+        0.715,
+        0.44,
+        0.835
+      ],
+      "lens": 52
+    },
+    "legs": {
+      "position": [
+        1.48,
+        2.02,
+        0.82
+      ],
+      "target": [
+        0.58,
+        1.11,
+        0.35
+      ],
+      "lens": 45
+    },
+    "skirt": {
+      "position": [
+        1.07,
+        1.54,
+        0.79
+      ],
+      "target": [
+        0.73,
+        1.33,
+        0.73
+      ],
+      "lens": 55
+    }
+  },
+  "status": "metric design review model; unmeasured details are visual calibration",
+  "revision": "sketch-matched-legs-v8",
+  "woodCaps": 6,
+  "woodFaceWidthM": 0.095,
+  "grainTextureResolution": [
+    2048,
+    4096
+  ],
+  "grainSource": "Poly Haven American Walnut Veneer, Jenelle van Heerden, CC0",
+  "grainMetricSizeM": [
+    1.6,
+    2.0
+  ],
+  "timberJoint": "six separate caps fitted to pocket plates",
+  "objectCount": 173,
+  "designChoices": {
+    "clothHeightM": 0.8,
+    "noseHeightAboveClothM": 0.034,
+    "railBackHeightM": 0.045,
+    "pocketDropM": 0.185,
+    "pocketPlate": "variable-width cover fitted to table-edge corner or side",
+    "cornerCurveControls": "parametric cubic; not manufacturer measured",
+    "verticalLevels": "design fitting",
+    "railBackWidthM": 0.045
+  },
+  "materials": {
+    "woodRoughness": 0.25,
+    "woodLinearStain": [
+      0.62,
+      0.32,
+      0.18,
+      1
+    ],
+    "woodCoatWeight": 0.28,
+    "woodCoatRoughness": 0.18,
+    "clothRoughness": 0.91,
+    "clothSpecularIORLevel": 0.08,
+    "leatherRoughness": 0.62,
+    "bronzeRoughness": 0.29,
+    "bronzeMetalness": 0.72,
+    "legWoodRoughness": 0.34,
+    "legWoodCoatWeight": 0.18,
+    "legWoodCoatRoughness": 0.23
+  },
+  "pocketSurfaceFix": {
+    "leatherThicknessM": 0.003,
+    "linerTopM": 0.801,
+    "linerInsetRatio": 0.975,
+    "cushionBaseM": 0.796,
+    "rearOffsetRadiusLimit": 0.6,
+    "skirtSeatClearanceM": 0.0006
+  },
+  "legDesign": {
+    "profileLevelsHeightDiameterM": [
+      [
+        0.03,
+        0.092
+      ],
+      [
+        0.037,
+        0.09
+      ],
+      [
+        0.045,
+        0.074
+      ],
+      [
+        0.052,
+        0.07
+      ],
+      [
+        0.058,
+        0.082
+      ],
+      [
+        0.064,
+        0.09
+      ],
+      [
+        0.07,
+        0.084
+      ],
+      [
+        0.075,
+        0.06400000000000002
+      ],
+      [
+        0.08125,
+        0.06594068041324529
+      ],
+      [
+        0.0875,
+        0.06788062302146494
+      ],
+      [
+        0.09375,
+        0.06981981381306084
+      ],
+      [
+        0.09999999999999999,
+        0.07175823822815787
+      ],
+      [
+        0.10625,
+        0.07369588112566111
+      ],
+      [
+        0.11249999999999999,
+        0.0756327267476147
+      ],
+      [
+        0.11875,
+        0.07756875868058029
+      ],
+      [
+        0.125,
+        0.07950395981371643
+      ],
+      [
+        0.13124999999999998,
+        0.08143831229319827
+      ],
+      [
+        0.13749999999999998,
+        0.08337179747256948
+      ],
+      [
+        0.14375,
+        0.08530439585856067
+      ],
+      [
+        0.15,
+        0.08723608705184513
+      ],
+      [
+        0.15625,
+        0.08916684968212511
+      ],
+      [
+        0.16249999999999998,
+        0.091096661336853
+      ],
+      [
+        0.16874999999999998,
+        0.09302549848278698
+      ],
+      [
+        0.175,
+        0.09495333637945591
+      ],
+      [
+        0.18125,
+        0.09688014898346196
+      ],
+      [
+        0.1875,
+        0.09880590884237313
+      ],
+      [
+        0.19374999999999998,
+        0.10073058697674923
+      ],
+      [
+        0.19999999999999998,
+        0.10265415274859252
+      ],
+      [
+        0.20625,
+        0.10457657371420932
+      ],
+      [
+        0.21249999999999997,
+        0.10649781545910071
+      ],
+      [
+        0.21875,
+        0.10841784141204747
+      ],
+      [
+        0.22499999999999998,
+        0.11033661263500186
+      ],
+      [
+        0.23125,
+        0.11225408758471213
+      ],
+      [
+        0.2375,
+        0.11417022184115458
+      ],
+      [
+        0.24374999999999997,
+        0.11608496779677842
+      ],
+      [
+        0.25,
+        0.1179982742992203
+      ],
+      [
+        0.25625,
+        0.11991008623842764
+      ],
+      [
+        0.26249999999999996,
+        0.12182034406692452
+      ],
+      [
+        0.26875,
+        0.12372898323909484
+      ],
+      [
+        0.27499999999999997,
+        0.1256359335516137
+      ],
+      [
+        0.28125,
+        0.1275411183622029
+      ],
+      [
+        0.2875,
+        0.1294444536572465
+      ],
+      [
+        0.29374999999999996,
+        0.13134584692979517
+      ],
+      [
+        0.3,
+        0.1332451958170875
+      ],
+      [
+        0.30624999999999997,
+        0.1351423864293862
+      ],
+      [
+        0.3125,
+        0.13703729127728198
+      ],
+      [
+        0.31875,
+        0.13892976666890347
+      ],
+      [
+        0.32499999999999996,
+        0.1408196493956047
+      ],
+      [
+        0.33125,
+        0.14270675244456246
+      ],
+      [
+        0.33749999999999997,
+        0.14459085935191446
+      ],
+      [
+        0.34375,
+        0.14647171660964448
+      ],
+      [
+        0.35,
+        0.14834902320591148
+      ],
+      [
+        0.35625,
+        0.15022241580007986
+      ],
+      [
+        0.3625,
+        0.1520914469799649
+      ],
+      [
+        0.36874999999999997,
+        0.1539555520122038
+      ],
+      [
+        0.375,
+        0.1558139952626992
+      ],
+      [
+        0.38125,
+        0.15766577780917568
+      ],
+      [
+        0.3875,
+        0.15950946289457277
+      ],
+      [
+        0.39375,
+        0.16134279986683556
+      ],
+      [
+        0.39999999999999997,
+        0.16316172502154705
+      ],
+      [
+        0.40625,
+        0.16495632240198604
+      ],
+      [
+        0.4125,
+        0.16592899408284026
+      ],
+      [
+        0.41874999999999996,
+        0.16513017751479292
+      ],
+      [
+        0.425,
+        0.1634437869822485
+      ],
+      [
+        0.43124999999999997,
+        0.16086982248520712
+      ],
+      [
+        0.4375,
+        0.15740828402366863
+      ],
+      [
+        0.44375,
+        0.15305917159763313
+      ],
+      [
+        0.44999999999999996,
+        0.14782248520710062
+      ],
+      [
+        0.45625,
+        0.141698224852071
+      ],
+      [
+        0.46249999999999997,
+        0.1346863905325444
+      ],
+      [
+        0.46875,
+        0.1267869822485207
+      ],
+      [
+        0.475,
+        0.11800000000000001
+      ],
+      [
+        0.479,
+        0.128
+      ],
+      [
+        0.484,
+        0.136
+      ],
+      [
+        0.49,
+        0.132
+      ],
+      [
+        0.495,
+        0.12
+      ],
+      [
+        0.503,
+        0.112
+      ],
+      [
+        0.512,
+        0.132
+      ],
+      [
+        0.52,
+        0.15
+      ]
+    ],
+    "crossSection": "circle",
+    "radialSegments": 64,
+    "shoulderDiameterM": 0.166,
+    "widestHeightM": 0.41,
+    "mainBodyHeightRangeM": [
+      0.075,
+      0.475
+    ],
+    "mainBodyProfile": "continuous outward-convex, no inward waist",
+    "mountDimensionsM": [
+      0.15,
+      0.15,
+      0.16
+    ],
+    "visibleMountHeightBelowApronM": 0.085,
+    "footDiameterHeightM": [
+      0.092,
+      0.025
+    ],
+    "footShape": "compact round stepped wooden foot",
+    "outwardSplayM": [
+      0.018,
+      0.012
+    ],
+    "material": "satin walnut body, collars and foot with dark contact sole",
+    "status": "fitted to the approved concept sketch; dimensions are design choices",
+    "approvedSketch": "turned-leg-approved.png",
+    "reference": "https://www.joybilliard.com/billiards-table/golden-leg-billiards-tables.html"
+  },
+  "sources": {
+    "shapeReference": "https://www.knbb.nl/chinese-pool-komt-naar-nederland/",
+    "brandReference": "https://www.joybilliard.com/billiards-table/golden-leg-billiards-tables.html",
+    "woodAsset": "https://polyhaven.com/a/american_walnut_veneer",
+    "woodLicense": "CC0-1.0",
+    "woodAssetSha256": "278ed3382b3a28a95861a84ccf4f3b591abf96a203698152064d65fcc6425271"
+  }
+}

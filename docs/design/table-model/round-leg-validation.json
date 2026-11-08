@@ -1,0 +1,73 @@
+{
+  "revision": "sketch-matched-legs-v8",
+  "circularLegs": 6,
+  "closedLegFootMountSoleMeshes": 24,
+  "parts": [
+    {
+      "name": "12 Sculpted walnut leg 0 0",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 1.249632991529026e-07,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.16592898394632752,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.031066459167700677,
+      "visibleMountHeightM": 0.085
+    },
+    {
+      "name": "12 Sculpted walnut leg 0 1",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 1.249632991529026e-07,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.1659289839463276,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.031066459167700455,
+      "visibleMountHeightM": 0.085
+    },
+    {
+      "name": "12 Sculpted walnut leg 1 0",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 6.147486408814018e-08,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.16592899569741615,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.03106638503969983,
+      "visibleMountHeightM": 0.085
+    },
+    {
+      "name": "12 Sculpted walnut leg 1 1",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 6.147486408814018e-08,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.16592899569741618,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.031066385039699718,
+      "visibleMountHeightM": 0.085
+    },
+    {
+      "name": "12 Sculpted walnut leg 2 0",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 1.249632991529026e-07,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.1659289839463275,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.0310664591677009,
+      "visibleMountHeightM": 0.085
+    },
+    {
+      "name": "12 Sculpted walnut leg 2 1",
+      "radialSegments": 64,
+      "profileLevels": 79,
+      "maxRadiusVariationM": 1.249632991529026e-07,
+      "widestHeightM": 0.4125,
+      "maximumDiameterM": 0.1659289839463276,
+      "outwardConvexMainBody": true,
+      "maximumSketchWidthError": 0.031066459167700455,
+      "visibleMountHeightM": 0.085
+    }
+  ]
+}

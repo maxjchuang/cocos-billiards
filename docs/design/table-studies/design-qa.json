@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-08",
+  "source": "../free-camera/design-qa.json",
+  "pages": [
+    12,
+    23
+  ],
+  "figureCount": 12,
+  "visualReview": "T01-T12 rendered and inspected; product model-scope page inspected; interaction diagrams retain their previous layout",
+  "knownDimensions": "T06/T12 and model-spec.json",
+  "uiuxSha256": "c8a59211351213eccd3d17f873990213d4517bf1ea5a6a317efd369015bfc97d",
+  "visualModelStatus": "sketch-matched-legs-v8 approved by user",
+  "runtimeIntegration": "pending; M01 documentation complete, M02-M07 pending"
+}

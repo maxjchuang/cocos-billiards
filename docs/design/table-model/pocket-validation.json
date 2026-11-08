@@ -1,0 +1,160 @@
+{
+  "mode": "fixed",
+  "parts": [
+    {
+      "part": "06 Long cushion -1 -1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "06 Long cushion -1 1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "06 Long cushion 1 -1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "06 Long cushion 1 1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "07 End cushion -1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "07 End cushion 1",
+      "openEdges": 0,
+      "selfCrossings": 0
+    },
+    {
+      "part": "08 Solid pocket cup 0",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 0",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 0",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0006000400829232616
+    },
+    {
+      "part": "08 Solid pocket cup 1",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 1",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 1",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0005999884605407263
+    },
+    {
+      "part": "08 Solid pocket cup 2",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 2",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 2",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0006000400829232616
+    },
+    {
+      "part": "08 Solid pocket cup 3",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 3",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 3",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0006000400829232616
+    },
+    {
+      "part": "08 Solid pocket cup 4",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 4",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 4",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0005999884605407263
+    },
+    {
+      "part": "08 Solid pocket cup 5",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "linerTopM": 0.8009999990463257,
+      "clothCoplanarOverlaps": 0,
+      "slateCoplanarOverlaps": 0
+    },
+    {
+      "part": "09 Solid fitted leather plate 5",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0
+    },
+    {
+      "part": "17 Seated leather apron skirt 5",
+      "openEdges": 0,
+      "selfCrossings": 0,
+      "maximumSkirtGapM": 0.0006000400829232616
+    }
+  ],
+  "selfCrossings": 0,
+  "openEdges": 0,
+  "coplanarLinerOverlaps": 0,
+  "maximumSkirtGapM": 0.0006000400829232616,
+  "minimumLinerTopM": 0.8009999990463257
+}

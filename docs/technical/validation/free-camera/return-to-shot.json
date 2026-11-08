@@ -1,0 +1,26 @@
+{
+  "date": "2026-11-04",
+  "issue": "previous-shot origin remained locked after settlement",
+  "tests": {
+    "passed": 266,
+    "failed": 0
+  },
+  "creatorWebMobileBuild": "passed",
+  "browserComponentButtonChecks": {
+    "reservedUsesSavedOrigin": true,
+    "cancelledShotReleasesOrigin": true,
+    "returnsToCurrentCue": true,
+    "aimHeld": true
+  },
+  "regressionCoverage": [
+    "ready",
+    "placing",
+    "choice",
+    "over",
+    "cancel before contact",
+    "shooting origin retained",
+    "settled while feedback active",
+    "animated pose metadata"
+  ],
+  "nativePreview": "Creator preview restarted successfully; updated editor chunk contains syncShotCamera and current shot parameter forwarding; start screen visible"
+}
