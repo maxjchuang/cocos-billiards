@@ -69,3 +69,45 @@ export function intersectConvex(input:TablePoint[],clip:TablePoint[]):TablePoint
     for(let i=0;i<clip.length&&out.length>=3;i++)out=halfPlane(out,clip[i],clip[(i+1)%clip.length],Math.sign(area),true);
     return out.length>=3?out:[];
 }
+
+/** Partition every 3D triangle at an XZ rectangle, retaining normals and UVs.
+ * Vertical faces remain valid even when their XZ projected area is zero.
+ */
+export function clipMeshRectangle(source:MeshData,box:{minX:number;maxX:number;minZ:number;maxZ:number}):{inside:MeshData;outside:MeshData} {
+    const inside=emptyMesh(),outside=emptyMesh();
+    const planes=[{axis:0,bound:box.minX,sign:1},{axis:0,bound:box.maxX,sign:-1},
+        {axis:2,bound:box.minZ,sign:1},{axis:2,bound:box.maxZ,sign:-1}];
+    const append=(mesh:MeshData,polygon:number[][]):void=>{
+        if(polygon.length<3)return;
+        const base=mesh.positions.length/3;
+        for(const vertex of polygon){
+            mesh.positions.push(...vertex.slice(0,3));
+            const length=Math.hypot(...vertex.slice(3,6))||1;
+            mesh.normals.push(vertex[3]/length,vertex[4]/length,vertex[5]/length);
+            mesh.uvs.push(vertex[6],vertex[7]);
+        }
+        for(let i=1;i<polygon.length-1;i++)mesh.indices.push(base,base+i,base+i+1);
+    };
+    for(let index=0;index<source.indices.length;index+=3){
+        let polygon=source.indices.slice(index,index+3).map(i=>[
+            ...source.positions.slice(i*3,i*3+3),...source.normals.slice(i*3,i*3+3),...source.uvs.slice(i*2,i*2+2),
+        ]);
+        for(const plane of planes){
+            if(!polygon.length)break;
+            const kept:number[][]=[],removed:number[][]=[];
+            for(let i=0;i<polygon.length;i++){
+                const a=polygon[i],b=polygon[(i+1)%polygon.length];
+                const da=(a[plane.axis]-plane.bound)*plane.sign,db=(b[plane.axis]-plane.bound)*plane.sign;
+                const aInside=da>=0,bInside=db>=0;
+                (aInside?kept:removed).push(a);
+                if(aInside!==bInside){
+                    const t=da/(da-db),intersection=a.map((value,j)=>value+(b[j]-value)*t);
+                    kept.push(intersection);removed.push(intersection);
+                }
+            }
+            append(outside,removed);polygon=kept;
+        }
+        append(inside,polygon);
+    }
+    return {inside,outside};
+}

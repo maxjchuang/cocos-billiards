@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-09",
+  "status": "software acceptance passed",
+  "nodeTests": 292,
+  "creatorVersion": "3.8.8",
+  "creatorBuildExit": 36,
+  "viewportChecks": {
+    "landscape-667": {
+      "passed": 52,
+      "total": 52,
+      "viewport": [
+        667,
+        375,
+        2
+      ],
+      "driver": "synthetic DOM TouchEvent"
+    },
+    "landscape-852": {
+      "passed": 52,
+      "total": 52,
+      "viewport": [
+        852,
+        393,
+        2
+      ],
+      "driver": "synthetic DOM TouchEvent"
+    },
+    "landscape-932": {
+      "passed": 52,
+      "total": 52,
+      "viewport": [
+        932,
+        430,
+        3
+      ],
+      "driver": "synthetic DOM TouchEvent"
+    },
+    "editor-preview": {
+      "passed": 52,
+      "total": 52,
+      "viewport": [
+        852,
+        393,
+        2
+      ],
+      "driver": "synthetic DOM TouchEvent"
+    }
+  },
+  "contactFrames": {
+    "passed": 3,
+    "contactMs": [
+      106,
+      130,
+      160
+    ]
+  },
+  "nativeWindow": {
+    "MainStartupObserved": true,
+    "errors": 0,
+    "warnings": 0,
+    "systemInput": "mouse release not reliably delivered; not certified"
+  },
+  "hardwareAndWeChat": "skipped by user agreement",
+  "sourceSha256": {
+    "BilliardsGame.ts": "b19c10ea34ac802e5171e67d58004689c6930a1788f638d3e76cd16dff2f49c7",
+    "BilliardsAimGesture.ts": "735a8e114759f58f24c0e29d558e4e33c3fdd9783c15ce3c1bd2bbeb9745643a",
+    "BilliardsCameraRig.ts": "17be7628fbff5c9d2357bf561fe402ff2b99a7985f89c80653631a30d06dabf0",
+    "BilliardsShot.ts": "77a2d7a5d645bbee6326da967edc5ae7fab37c7fc50d8daaf3d22f24f642dc69",
+    "BilliardsAim.ts": "321a895295f4e3999f6b5d1ae1d1d088abcf865c508cb9284e3f9a41f068cbcf",
+    "BilliardsBallView.ts": "1f446186daa99f7d55dfc56787ec7e906148ec1ef2d56a8e6d72dc33c8308de9"
+  },
+  "completedDate": "2026-11-09",
+  "preview": "http://192.168.31.45:8766/?v=free-tap-v1",
+  "screenshots": {
+    "top.png": "5a1510da39a9d8dbb1baa787059ef8e18264aaf5a4a72ccea8a830222370fa0b",
+    "aim.png": "a947dd7c2ac98e9e0d50251794160068327743bcf6ab907cb1a7a4cf96595723",
+    "pull.png": "83fe795a478082ce84554bc11a24e6ca84cc075dff91991a609c72229c501dcd",
+    "free.png": "4b81fcc817a532b970d94517768f86b6f670138e0a4d78facafc714cdef310df"
+  },
+  "revision": "free-observation-tap"
+}

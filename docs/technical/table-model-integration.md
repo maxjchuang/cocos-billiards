@@ -1,6 +1,6 @@
 # V8球桌模型接入方案
 
-2026-11-08。造型基准已由用户确认，本轮更新设计与开发文档。游戏接入工作待实施。
+2026-11-08。造型基准已由用户确认，V8派生资源已接入游戏，软件范围内的实施与验证完成。模型造型确认、运行证据和真实设备范围分别记录。
 
 ## 1. 权威资源与完成状态
 
@@ -11,7 +11,7 @@
 | 参数及材质 | [model-spec.json](../design/table-model/model-spec.json) | sketch-matched-legs-v8 |
 | 文件指纹与审查 | [model-validation.json](../design/table-model/model-validation.json) | 几何、模型浏览器与278项Node记录 |
 | 正交腿型 | [轮廓图](../design/table-model/leg-profile.png)、[草图采样](../design/table-model/leg-profile-reference.json) | 主体14处相对宽度误差约3.1% |
-| Cocos资产导入及可玩接入 | 后续派生资源 | 待实施 |
+| Cocos资产导入及可玩接入 | assets/resources/models/table-v8/table.glb | 已接入，软件验证通过 |
 | 真实手机、微信小游戏 | 沿用用户豁免范围 | 跳过，不计作通过 |
 
 执行前核对指纹。V1至V7、旧AI概念图及结构简图作为历史记录。新增派生资源记录母版版本、导出设置和简化方式。Main场景、已有脚本与资产的.meta UUID保留。
@@ -33,7 +33,7 @@ Blender母版采用Z向上。现有GLB已变换为Y向上，模型中心沿长�
 
 优先将GLB通过Creator资产导入流程转为引擎资源，再组织成独立桌体Prefab。Creator 3.8官方文档支持FBX和glTF模型导入，具体GLB、法线、UV与材质兼容性须在本工程验证。[官方模型资源说明](https://docs.cocos.com/creator/3.8/manual/zh/asset/model/mesh.html)
 
-建议资源目录为 `assets/models/table-v8/`，资产和材质使用稳定.meta。若导入器不能完整迁移材质，在Blender母版导出受控的glTF/FBX派生文件，并在Creator重建材质。发布包使用Creator导入后的本地资产。
+实际资源目录为 `assets/resources/models/table-v8/`，资产和材质使用稳定.meta。若导入器不能完整迁移材质，在Blender母版导出受控的glTF/FBX派生文件，并在Creator重建材质。发布包使用Creator导入后的本地资产。
 
 | 现有模块 | 接入职责 |
 | --- | --- |
@@ -75,13 +75,13 @@ Blender母版采用Z向上。现有GLB已变换为Y向上，模型中心沿长�
 
 | 项目 | 工作 | 可验证的完成标准 | 当前状态 |
 | --- | --- | --- | --- |
-| M01 基准冻结 | 指纹、参数、资源、许可证登记 | Blender/GLB指纹与当前model-validation.json一致；文档显示V8已确认 | 文档完成 |
-| M02 Creator导入 | 导入、单位、坐标与材质迁移 | 原生Main及Web Mobile均可见完整六袋六腿；尺寸误差≤1mm；无丢材质、反法线或重复参照球 | 待实施 |
-| M03 表现替换 | 台呢、木帮、桌裙、腿、皮口和袋壁 | 固定高位、低位、角袋、中袋、木帮、腿、外裙七机位可与母版对照；原桌体无重复渲染 | 待实施 |
-| M04 轮廓与接缝 | 模型与共享运行几何对齐 | 六袋开口/鼻口位置误差≤1mm；无破面/闪烁/透底；外片间隙≤1mm；腿型14处宽度误差≤最大宽度4% | 待实施 |
-| M05 交互和下落 | 自由镜头、贴库、触摸、捕获后表现 | 摆球/瞄准/AI/出杆/运动/暂停/结果均可观察；六袋连续帧下落与结算通过；220ms触球仅提交一次 | 待实施 |
-| M06 性能和生命周期 | 派生资源、批次、纹理与释放 | 输出统计并与本节目标对比；20次重开/进出场无实例累积；固定画幅同状态截图无轮廓退化 | 待实施 |
-| M07 回归与证据 | 检查、构建、引擎与浏览器 | npm run check通过，Creator构建、原生预览和Web Mobile分别保存版本/日志/截图；真机/微信标记跳过 | 待实施 |
+| M01 基准冻结 | 指纹、参数、资源、许可证登记 | Blender/GLB指纹与当前model-validation.json一致；文档显示V8已确认 | 已提交bb179da |
+| M02 Creator导入 | 导入、单位、坐标与材质迁移 | 原生Main及Web Mobile均可见完整六袋六腿；尺寸误差≤1mm；无丢材质、反法线或重复参照球 | 软件验证通过 |
+| M03 表现替换 | 台呢、木帮、桌裙、腿、皮口和袋壁 | 固定高位、低位、角袋、中袋、木帮、腿、外裙七机位可与母版对照；原桌体无重复渲染 | 软件验证通过 |
+| M04 轮廓与接缝 | 模型与共享运行几何对齐 | 六袋开口/鼻口位置误差≤1mm；无破面/闪烁/透底；外片间隙≤1mm；腿型14处宽度误差≤最大宽度4% | 软件验证通过 |
+| M05 交互和下落 | 自由镜头、贴库、触摸、捕获后表现 | 摆球/瞄准/AI/出杆/运动/暂停/结果均可观察；六袋连续帧下落与结算通过；220ms触球仅提交一次 | 软件验证通过 |
+| M06 性能和生命周期 | 派生资源、批次、纹理与释放 | 输出统计并与本节目标对比；20次重开/进出场无实例累积；固定画幅同状态截图无轮廓退化 | 软件验证通过 |
+| M07 回归与证据 | 检查、构建、引擎与浏览器 | npm run check通过，Creator构建、原生预览和Web Mobile分别保存版本/日志/截图；真机/微信标记跳过 | 软件验证通过 |
 
 ## 8. 复核命令
 
@@ -93,3 +93,36 @@ npm run check
 ```
 
 设计母版已确认；真实三维弹袋、袋内多球碰撞、皮网形变、实物手感标定与赛事流程仍按既有未实现边界记录。
+
+## 9. 2026-11-08实施记录
+
+实现位于BilliardsTableView、BilliardsGame及BilliardsViewGeometry。通过Creator导入本地派生GLB，沿用资源子Prefab路径 `models/table-v8/table/table`，根节点Y偏移-0.80m。初始化失败时显示加载失败提示。评审参照球由派生导出移除。
+
+`build-game-table.py`从确认母版生成游戏资源。`export-table-geometry.cjs`读取同一纯TS运行几何，台呢、石板和袋壁按共享开口生成，胶边接触线对齐运行轮廓。简化时保留接触线顶点，导出后复核桌腿14处宽度。木帮、胶边、皮口分别按材质合为可局部裁分的网格组，下部固定构件另行合批。
+
+贴库时在桌体根坐标中裁分真实模型三角形，插值UV和法线，仅对20cm局部使用半透明材质实例。父节点变换在裁分前抵消，回到普通位置释放临时网格和节点。当前程序化旧桌体节点在游戏帧保持禁用。
+
+Creator 3.8.8不支持母版的KHR_materials_clearcoat与KHR_materials_specular扩展。派生文件移除这两项扩展，木面漆层用标准PBR近似，台呢显式设置specularIntensity=0.08。确认母版保留原材质，资源兼容策略记录在table-model-asset.json。
+
+| 实测项 | 结果 |
+| --- | --- |
+| 引擎桌体三角形 / 网格 | 55414 / 12 |
+| Blender派生三角形 | 55415，导入后差1个三角形 |
+| 桌体、地面与阴影通道绘制 | 隔离测量24次，排除球和HUD |
+| 桌体纹理GPU分配 | 13981008字节，约13.3MiB |
+| 简化后腿型相对宽度误差 | 约3.07%，限值4% |
+| 胶边接触线偏差 | 最大约0.00012mm，限值1mm |
+| 序列化GLB外片/桌裙间隙 | 最大约0.934mm，限值1mm |
+| 完整桌体创建/销毁 | 2次预热后20次，GPU缓冲占用稳定 |
+
+证据入口为[验收记录](validation/table-v8/README.md)和[汇总](validation/table-v8/summary.json)。三种横屏Web Mobile、桌面开发预览及Creator工程预览分别通过180项专项。手势与220ms触球检查分别记录。原生窗口从Main启动编辑器内预览并观察启动画面，交互专项采用工程预览手机模拟与组件入口。真实手机及微信专项沿用用户豁免。
+
+复建游戏资源与接缝审查使用以下命令。
+
+```sh
+node scripts/export-table-geometry.cjs
+blender --background docs/design/table-model/chinese-pool-table.blend --python scripts/build-game-table.py
+blender --background --factory-startup --python scripts/check-game-table.py
+```
+
+拉远验收补充。渲染远裁剪面调整为8m，地面覆盖宽度24m。180项专项包含4.5m环绕距离下的桌体八角深度检查，确保远端桌框和桌腿完整显示。

@@ -1,4 +1,4 @@
-import { isValid,Color,DirectionalLight,EffectAsset,Material,Mesh,MeshRenderer,Node,Texture2D,utils,Vec3,Vec4 } from 'cc';
+import { isValid,gfx,Color,DirectionalLight,EffectAsset,Material,Mesh,MeshRenderer,Node,Texture2D,utils,Vec3,Vec4 } from 'cc';
 import { TABLE_GEOMETRY as G } from './BilliardsTableGeometry';
 import { numberedBallPixels } from './BilliardsBallTexture';
 import { onCloth } from './BilliardsCameraMath';
@@ -8,6 +8,7 @@ import { BallState } from './BilliardsPhysics';
 export class BallView {
     readonly materials:Material[]=[];readonly textures:Texture2D[]=[];readonly light:DirectionalLight;
     private original:Material[]=[];private shadows:Node[]=[];private shadowMeshes:Mesh[]=[];private shadowMaterial:Material;
+    private cueOpacity=1;
     private active=false;private cueRenderers:MeshRenderer[]=[];private cueOriginal:Material[]=[];private cueMaterials:Material[]=[];
     constructor(private parent:Node,private balls:Node[],effect:EffectAsset){
         const lamp=new Node('Fixed billiards key light');parent.addChild(lamp);lamp.setPosition(-1,3,-1);lamp.lookAt(new Vec3(0,0,0));
@@ -32,6 +33,20 @@ export class BallView {
         this.balls.forEach((n,i)=>{const r=n.getComponent(MeshRenderer)!;r.setMaterial(active?this.materials[i]:this.original[i],0);r.shadowCastingMode=active?1:0;r.receiveShadow=active?1:0;});
         this.cueRenderers.forEach((r,i)=>{r.setMaterial(active?this.cueMaterials[i]:this.cueOriginal[i],0);r.shadowCastingMode=active?1:0;r.receiveShadow=active?1:0;});
         if(!active)this.shadows.forEach(n=>n.active=false);
+    }
+    setCueOpacity(opacity:number):void {
+        opacity=Math.max(0,Math.min(1,opacity));
+        if(opacity===this.cueOpacity)return;
+        const blending=opacity<1,wasBlending=this.cueOpacity<1;
+        this.cueOpacity=opacity;
+        this.cueMaterials.forEach((material,index)=>{
+            const color=this.cueOriginal[index].getProperty('mainColor') as Color;
+            material.setProperty('mainColor',new Color(color.r,color.g,color.b,Math.round(255*opacity)));
+            if(blending!==wasBlending)material.overridePipelineStates({blendState:{targets:[{blend:blending,
+                blendSrc:gfx.BlendFactor.SRC_ALPHA,blendDst:gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,
+                blendSrcAlpha:gfx.BlendFactor.ONE,blendDstAlpha:gfx.BlendFactor.ONE_MINUS_SRC_ALPHA}]},
+                depthStencilState:{depthWrite:!blending}});
+        });
     }
     private stamp:string[]=[];private supported:boolean[]=[];
     sync(balls:readonly BallState[]):void {

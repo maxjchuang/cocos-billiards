@@ -32,5 +32,10 @@ export class FineAim {
         return { x:Math.sin(angle), z:Math.cos(angle) };
     }
     nudge(sign: number): { x: number; z: number } { return this.set(Math.round((this.degrees+sign*0.1)*10)/10); }
+    drag(degrees:number): {x:number;z:number} {
+        this.degrees+=degrees;
+        const angle=this.base+this.degrees*Math.PI/180;
+        return {x:Math.sin(angle),z:Math.cos(angle)};
+    }
     close(): void { this.active=false; }
 }

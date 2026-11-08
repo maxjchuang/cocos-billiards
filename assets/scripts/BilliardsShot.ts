@@ -30,15 +30,17 @@ export class ShotSequence {
     elapsedMs = 0;
     committed = false;
     private serial = 0;
+    contactMs: number = SHOT_TIMING.contact;
     get active(): boolean { return this.snapshot !== null; }
 
-    begin(request: ShotRequest): boolean {
+    begin(request: ShotRequest, contactMs: number = SHOT_TIMING.contact): boolean {
         const d = request.direction, tip = request.tipOffset;
-        if (this.active || ![d.x, d.z, tip.x, tip.y, request.power, request.gameId].every(Number.isFinite) ||
+        if (!Number.isFinite(contactMs) || contactMs < 100 || contactMs > 220 || this.active || ![d.x, d.z, tip.x, tip.y, request.power, request.gameId].every(Number.isFinite) ||
             Math.hypot(d.x, d.z) < 1e-6 || request.power <= 0 || request.power > 4 ||
             Math.hypot(tip.x, tip.y) > 1+1e-9) return false;
         this.snapshot = Object.freeze({ ...request, shotId: ++this.serial,
             direction: Object.freeze({ ...d }), tipOffset: Object.freeze({ ...tip }) });
+        this.contactMs=contactMs;
         this.elapsedMs = 0; this.committed = false;
         return true;
     }
@@ -46,16 +48,16 @@ export class ShotSequence {
     advance(seconds: number, commit: (snapshot: Readonly<ShotSnapshot>) => boolean): boolean {
         if (!this.snapshot || !Number.isFinite(seconds) || seconds < 0) return false;
         const next = this.elapsedMs + seconds * 1000;
-        if (!this.committed && next + 1e-7 >= SHOT_TIMING.contact) {
-            this.elapsedMs = SHOT_TIMING.contact;
+        if (!this.committed && next + 1e-7 >= this.contactMs) {
+            this.elapsedMs = this.contactMs;
             // Mark before invoking the callback, including if it is re-entered.
             this.committed = true;
             const snapshot = this.snapshot;
             if (!commit(snapshot)) { this.cancel(); return false; }
             return true;
         }
-        this.elapsedMs = Math.min(next, SHOT_TIMING.end);
-        if (this.elapsedMs >= SHOT_TIMING.end) this.snapshot = null;
+        this.elapsedMs = Math.min(next, this.contactMs + SHOT_TIMING.end - SHOT_TIMING.contact);
+        if (this.elapsedMs >= this.contactMs + SHOT_TIMING.end - SHOT_TIMING.contact) this.snapshot = null;
         return false;
     }
 

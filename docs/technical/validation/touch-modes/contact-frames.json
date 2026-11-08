@@ -1,0 +1,780 @@
+{
+  "driver": "component touch logic and actual after-draw frames",
+  "passed": 3,
+  "total": 3,
+  "results": [
+    {
+      "fraction": 0.1,
+      "contactMs": 106.00000000000001,
+      "contact": {
+        "ms": 106.00000000000001,
+        "contact": 106.00000000000001,
+        "tipError": 3.367778697655222e-17,
+        "visible": true,
+        "opacity": 1,
+        "speed": 0.3918250000000009
+      },
+      "passed": true,
+      "samples": [
+        {
+          "ms": 16,
+          "contact": 106.00000000000001,
+          "tipError": 0.03786931493783463,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 32.599999994039536,
+          "contact": 106.00000000000001,
+          "tipError": 0.03689460167850156,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 49.5,
+          "contact": 106.00000000000001,
+          "tipError": 0.034130261684141905,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 65.90000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.028868917961680785,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 82.79999999701977,
+          "contact": 106.00000000000001,
+          "tipError": 0.019888391949670958,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 99.40000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.00666532792278729,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 106.00000000000001,
+          "contact": 106.00000000000001,
+          "tipError": 3.367778697655222e-17,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0.3918250000000009
+        },
+        {
+          "ms": 123.50000000000001,
+          "contact": 106.00000000000001,
+          "tipError": 0.003937499999999927,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0.35912500000000097
+        },
+        {
+          "ms": 140.20000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.007695000000670582,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0.326425000000001
+        },
+        {
+          "ms": 157.70000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.01163250000067051,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0.29372500000000107
+        },
+        {
+          "ms": 173.5,
+          "contact": 106.00000000000001,
+          "tipError": 0.01518750000000002,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0.28448803571428644
+        },
+        {
+          "ms": 190.20000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.9474999999627473,
+          "speed": 0.2828530357142864
+        },
+        {
+          "ms": 206.80000001192093,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.7399999998509885,
+          "speed": 0.28121803571428633
+        },
+        {
+          "ms": 223.6000000089407,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.5299999998882414,
+          "speed": 0.2795830357142863
+        },
+        {
+          "ms": 240.20000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.32249999996274714,
+          "speed": 0.2779480357142862
+        },
+        {
+          "ms": 256.80000001192093,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.11499999985098841,
+          "speed": 0.27631303571428617
+        },
+        {
+          "ms": 273.6000000089407,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2746780357142861
+        },
+        {
+          "ms": 289.20000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2734517857142861
+        },
+        {
+          "ms": 306.90000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.271408035714286
+        },
+        {
+          "ms": 323.6000000089407,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.26977303571428596
+        },
+        {
+          "ms": 340.20000000298023,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2681380357142859
+        },
+        {
+          "ms": 356.90000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.26650303571428585
+        },
+        {
+          "ms": 373.5,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2648680357142858
+        },
+        {
+          "ms": 390.40000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.26323303571428575
+        },
+        {
+          "ms": 406.90000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2615980357142857
+        },
+        {
+          "ms": 423.40000000596046,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.25996303571428564
+        },
+        {
+          "ms": 439.5,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2583280357142856
+        },
+        {
+          "ms": 456.80000001192093,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.25669303571428553
+        },
+        {
+          "ms": 473.5,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2550580357142855
+        },
+        {
+          "ms": 490.30000001192093,
+          "contact": 106.00000000000001,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.2534230357142854
+        }
+      ]
+    },
+    {
+      "fraction": 0.5,
+      "contactMs": 130,
+      "contact": {
+        "ms": 130,
+        "contact": 130,
+        "tipError": 3.367778697655222e-17,
+        "visible": true,
+        "opacity": 1,
+        "speed": 1.9918249999999997
+      },
+      "passed": true,
+      "samples": [
+        {
+          "ms": 16.799999997019768,
+          "contact": 130,
+          "tipError": 0.10976259466557914,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 33.29999999701977,
+          "contact": 130,
+          "tipError": 0.10815117702826149,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 50,
+          "contact": 130,
+          "tipError": 0.10374146563495668,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 66.70000000298023,
+          "contact": 130,
+          "tipError": 0.09514269188239632,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 83.29999999701977,
+          "contact": 130,
+          "tipError": 0.08106005959800844,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 99.90000000596046,
+          "contact": 130,
+          "tipError": 0.060081779740723595,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 116.70000000298023,
+          "contact": 130,
+          "tipError": 0.030425265842788374,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 130,
+          "contact": 130,
+          "tipError": 3.367778697655222e-17,
+          "visible": true,
+          "opacity": 1,
+          "speed": 1.9918249999999997
+        },
+        {
+          "ms": 146.70000000298023,
+          "contact": 130,
+          "tipError": 0.003757500000670544,
+          "visible": true,
+          "opacity": 1,
+          "speed": 1.9591249999999996
+        },
+        {
+          "ms": 163.40000000596046,
+          "contact": 130,
+          "tipError": 0.007515000001341088,
+          "visible": true,
+          "opacity": 1,
+          "speed": 1.9264249999999994
+        },
+        {
+          "ms": 180,
+          "contact": 130,
+          "tipError": 0.011249999999999982,
+          "visible": true,
+          "opacity": 1,
+          "speed": 1.8937249999999992
+        },
+        {
+          "ms": 196.70000000298023,
+          "contact": 130,
+          "tipError": 0.015007500000670526,
+          "visible": true,
+          "opacity": 1,
+          "speed": 1.861024999999999
+        },
+        {
+          "ms": 213.40000000596046,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.9574999999254942,
+          "speed": 1.8283249999999989
+        },
+        {
+          "ms": 231,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.7375,
+          "speed": 1.7956249999999987
+        },
+        {
+          "ms": 246.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.5412499999627471,
+          "speed": 1.7629249999999985
+        },
+        {
+          "ms": 263.40000000596046,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.33249999992549417,
+          "speed": 1.7302249999999983
+        },
+        {
+          "ms": 280,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.125,
+          "speed": 1.6975249999999982
+        },
+        {
+          "ms": 296.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.664824999999998
+        },
+        {
+          "ms": 313.30000001192093,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.6402999999999979
+        },
+        {
+          "ms": 330.1000000089407,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.5994249999999977
+        },
+        {
+          "ms": 346.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.5667249999999975
+        },
+        {
+          "ms": 363.30000001192093,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.5421999999999974
+        },
+        {
+          "ms": 379.90000000596046,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.5094999999999972
+        },
+        {
+          "ms": 396.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.468624999999997
+        },
+        {
+          "ms": 413.40000000596046,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4359249999999968
+        },
+        {
+          "ms": 430,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4273451785714264
+        },
+        {
+          "ms": 446.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4257101785714261
+        },
+        {
+          "ms": 463.40000000596046,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4240751785714258
+        },
+        {
+          "ms": 480.1000000089407,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4224401785714256
+        },
+        {
+          "ms": 496.70000000298023,
+          "contact": 130,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.4208051785714253
+        }
+      ]
+    },
+    {
+      "fraction": 1,
+      "contactMs": 160,
+      "contact": {
+        "ms": 160,
+        "contact": 160,
+        "tipError": 3.367778697655222e-17,
+        "visible": true,
+        "opacity": 1,
+        "speed": 7.991825
+      },
+      "passed": true,
+      "samples": [
+        {
+          "ms": 16.799999997019768,
+          "contact": 160,
+          "tipError": 0.19976847500012307,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 33.5,
+          "contact": 160,
+          "tipError": 0.19816428833007793,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 50.20000000298023,
+          "contact": 160,
+          "tipError": 0.19382294882702478,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 66.70000000298023,
+          "contact": 160,
+          "tipError": 0.18551069516407337,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 83.5,
+          "contact": 160,
+          "tipError": 0.17157310180664054,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 100.09999999403954,
+          "contact": 160,
+          "tipError": 0.1510252441005454,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 116.70000000298023,
+          "contact": 160,
+          "tipError": 0.1223962664491327,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 133.5,
+          "contact": 160,
+          "tipError": 0.08382468872070326,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 150.09999999403954,
+          "contact": 160,
+          "tipError": 0.03487526852553069,
+          "visible": true,
+          "opacity": 1,
+          "speed": 0
+        },
+        {
+          "ms": 160,
+          "contact": 160,
+          "tipError": 3.367778697655222e-17,
+          "visible": true,
+          "opacity": 1,
+          "speed": 7.991825
+        },
+        {
+          "ms": 176.59999999403954,
+          "contact": 160,
+          "tipError": 0.0037349999986588944,
+          "visible": true,
+          "opacity": 1,
+          "speed": 7.967300000000002
+        },
+        {
+          "ms": 193.40000000596046,
+          "contact": 160,
+          "tipError": 0.007515000001341088,
+          "visible": true,
+          "opacity": 1,
+          "speed": 7.926425000000004
+        },
+        {
+          "ms": 210.09999999403954,
+          "contact": 160,
+          "tipError": 0.01127249999865887,
+          "visible": true,
+          "opacity": 1,
+          "speed": 7.893725000000005
+        },
+        {
+          "ms": 226.70000000298023,
+          "contact": 160,
+          "tipError": 0.015007500000670526,
+          "visible": true,
+          "opacity": 1,
+          "speed": 7.861025000000007
+        },
+        {
+          "ms": 243.29999999701977,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.9587500000372529,
+          "speed": 7.836500000000008
+        },
+        {
+          "ms": 260,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.75,
+          "speed": 7.79562500000001
+        },
+        {
+          "ms": 276.59999999403954,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.5425000000745058,
+          "speed": 7.771100000000011
+        },
+        {
+          "ms": 293.40000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.33249999992549417,
+          "speed": 7.730225000000013
+        },
+        {
+          "ms": 310,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": true,
+          "opacity": 0.125,
+          "speed": 7.697525000000015
+        },
+        {
+          "ms": 326.59999999403954,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.0611671840718282
+        },
+        {
+          "ms": 343.40000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 1.0202926597673596
+        },
+        {
+          "ms": 360,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.9875930686748103
+        },
+        {
+          "ms": 376.70000000298023,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.9548935055878766
+        },
+        {
+          "ms": 393.29999999701977,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.9303688534277336
+        },
+        {
+          "ms": 410,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.8894944757853499
+        },
+        {
+          "ms": 426.70000000298023,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.8567950164257666
+        },
+        {
+          "ms": 443.40000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.8240955999709044
+        },
+        {
+          "ms": 459.90000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.799571068952558
+        },
+        {
+          "ms": 476.70000000298023,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.7586969179653726
+        },
+        {
+          "ms": 493.40000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.7259976660083216
+        },
+        {
+          "ms": 509.90000000596046,
+          "contact": 160,
+          "tipError": 0.018000000000000016,
+          "visible": false,
+          "opacity": 0,
+          "speed": 0.7014732728080678
+        }
+      ]
+    }
+  ]
+}

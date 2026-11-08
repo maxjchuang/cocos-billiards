@@ -1,0 +1,19 @@
+{
+  "pdf": [
+    {
+      "file": "中式八球产品设计方案.pdf",
+      "pages": 5,
+      "copyMatches": true,
+      "allPagesHaveText": true
+    },
+    {
+      "file": "中式八球UIUX设计方案.pdf",
+      "pages": 23,
+      "copyMatches": true,
+      "allPagesHaveText": true
+    }
+  ],
+  "svgCount": 5,
+  "visualReview": "product pages 1-5, UI/UX pages 1-11; preserved V8 model chapter",
+  "status": "passed"
+}

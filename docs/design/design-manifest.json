@@ -1,50 +1,56 @@
 {
-  "version": "2.4-model-baseline",
-  "date": "2026-11-08",
+  "version": "3.0-touch-modes",
+  "date": "2026-11-09",
   "productPdf": "中式八球产品设计方案.pdf",
   "uiuxPdf": "中式八球UIUX设计方案.pdf",
-  "productPages": 11,
+  "productPages": 5,
   "uiuxPages": 23,
-  "generator": "scripts/build-free-camera-design.py",
+  "generator": "scripts/build-interaction-design.py",
   "productSource": "landscape-product.md",
   "uiuxSource": "landscape-uiux.md",
   "contract": "ui-contract.json",
   "figures": [
     {
-      "name": "low",
-      "title": "低位瞄准",
-      "source": "free-camera/low.svg",
-      "render": "free-camera/low.png"
+      "name": "free",
+      "title": "自由观察",
+      "source": "interaction/free.svg",
+      "render": "interaction/free.png"
     },
     {
-      "name": "high",
-      "title": "高位全局观察",
-      "source": "free-camera/high.svg",
-      "render": "free-camera/high.png"
+      "name": "top",
+      "title": "俯视观察",
+      "source": "interaction/top.svg",
+      "render": "interaction/top.png"
     },
     {
-      "name": "placement",
-      "title": "统一界面内摆球",
-      "source": "free-camera/placement.svg",
-      "render": "free-camera/placement.png"
+      "name": "aim",
+      "title": "瞄准准备",
+      "source": "interaction/aim.svg",
+      "render": "interaction/aim.png"
     },
     {
-      "name": "spin",
-      "title": "打点编辑与自由观察",
-      "source": "free-camera/spin.svg",
-      "render": "free-camera/spin.png"
+      "name": "pull",
+      "title": "后拉蓄力反馈",
+      "source": "interaction/pull.svg",
+      "render": "interaction/pull.png"
+    },
+    {
+      "name": "cancel",
+      "title": "归零取消反馈",
+      "source": "interaction/cancel.svg",
+      "render": "interaction/cancel.png"
     }
   ],
   "supersedes": "archive/v2.0",
   "confirmed": [
-    "one landscape UI",
-    "single continuous free camera",
-    "observation independent of aim",
-    "placement permits camera adjustment",
-    "V8 metric table model styling"
+    "three touch modes",
+    "top continuous point aiming",
+    "pull and release stroke",
+    "two finger anchor pan",
+    "V8 table model"
   ],
-  "productVersion": "2.2",
-  "uiuxVersion": "2.4",
+  "productVersion": "3.0",
+  "uiuxVersion": "3.0",
   "tableFigures": [
     {
       "name": "T01",
@@ -143,6 +149,6 @@
       "chinese-pool-table.glb": "c0ce7b2cfe2c6c47e7ff54fbc63bb5f68c16eed0b786e89461633ec6f6169e97"
     }
   },
-  "runtimeIntegration": "pending",
+  "runtimeIntegration": "implemented; software acceptance passed; ../technical/touch-modes-plan.md",
   "priorT01ShapeStatus": "superseded by V8 model"
 }

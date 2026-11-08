@@ -55,3 +55,38 @@ test('display cue lift is local to obstructed geometry',()=>{
  assert.ok(M.cueDisplayPitch({x:.65,y:P.TABLE.radius,z:.3},{x:-1,z:0})>0);
  const {intersectConvex}=require(path.join(dir,'BilliardsViewGeometry.js'));const square=[{x:0,z:0},{x:2,z:0},{x:2,z:2},{x:0,z:2}],box=[{x:1,z:1},{x:3,z:1},{x:3,z:3},{x:1,z:3}];const clipped=intersectConvex(square,box);assert.equal(clipped.length,4);assert.ok(clipped.every(p=>p.x>=1&&p.x<=2&&p.z>=1&&p.z<=2));
 });
+
+test('imported table clearance partitions 3D faces while preserving area and UVs',()=>{
+ const {clipMeshRectangle}=require(path.join(dir,'BilliardsViewGeometry.js'));
+ const area=mesh=>{let sum=0;for(let i=0;i<mesh.indices.length;i+=3){const p=mesh.indices.slice(i,i+3).map(k=>mesh.positions.slice(k*3,k*3+3));const a=p[1].map((v,k)=>v-p[0][k]),b=p[2].map((v,k)=>v-p[0][k]);sum+=Math.hypot(a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0])/2;}return sum;};
+ for(const vertical of [false,true]){
+  const positions=vertical?[0,0,0,2,0,0,2,2,0,0,2,0]:[0,0,0,2,0,0,2,0,2,0,0,2];
+  const mesh={positions,normals:Array.from({length:4},()=>vertical?[0,0,1]:[0,1,0]).flat(),uvs:[0,0,1,0,1,1,0,1],indices:[0,1,2,0,2,3]};
+  const snapshot=JSON.stringify(mesh),result=clipMeshRectangle(mesh,{minX:.5,maxX:1.5,minZ:vertical?-1:.5,maxZ:vertical?1:1.5});
+  assert.ok(Math.abs(area(result.inside)+(area(result.outside))-4)<1e-8);
+  assert.ok(Math.abs(area(result.inside)-(vertical?2:1))<1e-8);
+  assert.equal(JSON.stringify(mesh),snapshot);
+  for(let i=0;i<result.inside.positions.length;i+=3){assert.ok(result.inside.positions[i]>=.5-1e-9&&result.inside.positions[i]<=1.5+1e-9);assert.ok(Math.abs(result.inside.uvs[i/3*2]-result.inside.positions[i]/2)<1e-8);}
+ }
+});
+
+test('pull gesture locks intent and has a zero deadzone and precise light-power curve',()=>{
+    const g=new A.PullGesture();g.begin(200,100,393,0);
+    assert.equal(g.move(204,104,852,16),0);assert.equal(g.intent,null);
+    g.move(200,120,852,32);assert.equal(g.intent,'pull');assert.ok(g.power>0&&g.power<.3);
+    g.move(500,196,852,48);assert.equal(g.power,4);assert.equal(g.intent,'pull');
+    g.move(200,104,852,64);assert.equal(g.power,0);
+    g.cancel();assert.equal(g.active,false);
+});
+test('bottom pull origin can be rebased upward before loading',()=>{
+    const g=new A.PullGesture();g.begin(200,350,393,0);
+    g.move(200,380,852,16);assert.equal(g.power,0);assert.equal(g.waitingForSpace,true);
+    g.move(200,200,852,32);assert.equal(g.waitingForSpace,false);
+    g.move(200,296,852,48);assert.equal(g.power,4);
+});
+test('horizontal stroke intent cannot change into a pull and slow input has lower angle gain',()=>{
+    const fast=new A.PullGesture(),slow=new A.PullGesture();fast.begin(0,100,393,0);slow.begin(0,100,393,0);
+    const a=fast.move(20,100,852,10),b=slow.move(20,100,852,200);
+    assert.ok(Math.abs(a)>Math.abs(b));fast.move(20,220,852,220);
+    assert.equal(fast.intent,'angle');assert.equal(fast.power,0);
+});

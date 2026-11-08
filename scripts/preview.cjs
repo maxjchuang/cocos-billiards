@@ -1,6 +1,7 @@
 const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
+const os = require('node:os');
 
 // Serve Creator's exported Web Mobile build; this does not compile Cocos sources.
 const root = path.resolve(__dirname, '../build/web-mobile');
@@ -42,4 +43,14 @@ server.on('error', error => {
     console.error(error.code === 'EADDRINUSE' ? `端口 ${port} 已被占用，请检查现有预览服务。` : error.message);
     process.exitCode = 1;
 });
-server.listen(port, '127.0.0.1', () => console.log(`Cocos Web Mobile 预览：http://127.0.0.1:${port}/`));
+server.listen(port, '0.0.0.0', () => {
+    console.log(`Cocos Web Mobile 本机预览：http://127.0.0.1:${port}/`);
+    for (const addresses of Object.values(os.networkInterfaces())) {
+        for (const address of addresses || []) {
+            if (address.family === 'IPv4' && !address.internal) {
+                console.log(`手机体验地址：http://${address.address}:${port}/`);
+            }
+        }
+    }
+    console.log('手机与电脑需连接同一局域网，电脑需保持唤醒，且防火墙允许此预览服务。');
+});

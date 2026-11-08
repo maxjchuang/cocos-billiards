@@ -2,7 +2,7 @@ import { SPIN,TipOffset } from './BilliardsSpin';
 import { TABLE_GEOMETRY as G,CUSHION_PATHS,pocketOpeningAt,TablePoint } from './BilliardsTableGeometry';
 export interface Point3 {x:number;y:number;z:number;}
 export interface CameraPose {position:Point3;target:Point3;distance:number;height:number;safe:boolean;reason:string;tip?:Point3;direction?:TablePoint;}
-export const CAMERA_CONFIG={distance:.45,minDistance:.35,maxDistance:.55,minHeight:.15,maxHeight:.25,fov:55,near:.01,far:6} as const;
+export const CAMERA_CONFIG={distance:.45,minDistance:.35,maxDistance:.55,minHeight:.15,maxHeight:.25,fov:55,near:.01,far:8} as const;
 export const clamp=(n:number,a:number,b:number):number=>Math.max(a,Math.min(b,n));
 export function insidePolygon(p:TablePoint,points:readonly TablePoint[]):boolean {
     let yes=false;for(let i=0,j=points.length-1;i<points.length;j=i++){const a=points[i],b=points[j];if((a.z>p.z)!==(b.z>p.z)&&p.x<(b.x-a.x)*(p.z-a.z)/(b.z-a.z)+a.x)yes=!yes;}return yes;

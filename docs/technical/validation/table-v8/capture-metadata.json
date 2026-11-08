@@ -1,0 +1,25 @@
+{
+  "gameAssetSha256": "ff507c1af12ac9368aa921e1c71ac1e215cfebb1d997ec82e7897dcc84f19a1f",
+  "sourceSha256": {
+    "BilliardsGame.ts": "ec7296c2a37467b9ba2417c022ffda67c6fe1dff12bbdc69dd071c25517eeaed",
+    "BilliardsTableView.ts": "70c4aa6f8c928430edfdd279af7a010396cadf202d006eb9b43e6e51d4e78b6a",
+    "BilliardsViewGeometry.ts": "6147b504c19bcb9f44d3475bec84e1ed30a84e3c7239a390e96ec5d93dc2b7c6",
+    "BilliardsTableGeometry.ts": "ca61d78b1794bb7812643b3b76864210f8c21d4696a9c20ea0061b576715b408",
+    "BilliardsCameraMath.ts": "95610bc52999b48a7de7230a804f373465031acefd910d3289528cbd4b0ab2cc"
+  },
+  "cameras": {
+    "overview": "normal high observer pose",
+    "aiming": "current cue shot solver",
+    "corner": "V8 inspection pose",
+    "side": "V8 inspection pose",
+    "wood": "V8 inspection pose",
+    "legs": "V8 inspection pose",
+    "skirt": "V8 inspection pose"
+  },
+  "rendering": {
+    "farPlaneM": 8,
+    "floorWidthM": 24,
+    "maxInteractiveOrbitDistanceM": 4.5,
+    "farOrbitDepthBoundsVerified": true
+  }
+}

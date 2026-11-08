@@ -1,0 +1,58 @@
+{
+  "viewport": [
+    852,
+    393
+  ],
+  "checks": [
+    {
+      "name": "single perspective scene during placement",
+      "pass": true
+    },
+    {
+      "name": "parallel movement selects orbit",
+      "pass": true
+    },
+    {
+      "name": "orbit changes camera only",
+      "pass": true
+    },
+    {
+      "name": "remaining finger cannot edit aim",
+      "pass": true
+    },
+    {
+      "name": "pinch selects zoom",
+      "pass": true
+    },
+    {
+      "name": "placement confirmation keeps camera",
+      "pass": true
+    },
+    {
+      "name": "return moves camera without changing aim",
+      "pass": true
+    },
+    {
+      "name": "click leaves balls stationary before contact",
+      "pass": true
+    },
+    {
+      "name": "contact commits actual shot",
+      "pass": true
+    },
+    {
+      "name": "observation remains available during motion",
+      "pass": true
+    },
+    {
+      "name": "pause clears gesture ownership",
+      "pass": true
+    },
+    {
+      "name": "layout setting changes dock side",
+      "pass": true
+    }
+  ],
+  "passed": 12,
+  "total": 12
+}

@@ -1,0 +1,222 @@
+{
+  "engine": "3.8.8",
+  "viewport": [
+    852,
+    393,
+    2
+  ],
+  "driver": "synthetic DOM TouchEvent",
+  "passed": 52,
+  "total": 52,
+  "checks": [
+    {
+      "name": "DOM placement confirmation",
+      "pass": true
+    },
+    {
+      "name": "placement starts top",
+      "pass": true
+    },
+    {
+      "name": "top is orthographic",
+      "pass": true
+    },
+    {
+      "name": "table long edge is horizontal",
+      "pass": true
+    },
+    {
+      "name": "top points on press 0",
+      "pass": true
+    },
+    {
+      "name": "top follows drag 0",
+      "pass": true
+    },
+    {
+      "name": "top retains direction 0",
+      "pass": true
+    },
+    {
+      "name": "top points on press 1",
+      "pass": true
+    },
+    {
+      "name": "top follows drag 1",
+      "pass": true
+    },
+    {
+      "name": "top retains direction 1",
+      "pass": true
+    },
+    {
+      "name": "top points on press 2",
+      "pass": true
+    },
+    {
+      "name": "top follows drag 2",
+      "pass": true
+    },
+    {
+      "name": "top retains direction 2",
+      "pass": true
+    },
+    {
+      "name": "top never shoots",
+      "pass": true
+    },
+    {
+      "name": "second finger restores top direction",
+      "pass": true
+    },
+    {
+      "name": "parallel touch pans anchor",
+      "pass": true
+    },
+    {
+      "name": "pair leaves direction intact",
+      "pass": true
+    },
+    {
+      "name": "center restores top anchor",
+      "pass": true
+    },
+    {
+      "name": "mode free via DOM",
+      "pass": true
+    },
+    {
+      "name": "free press waits for release",
+      "pass": true
+    },
+    {
+      "name": "free tap aims at table point",
+      "pass": true
+    },
+    {
+      "name": "free tap preserves camera and never shoots",
+      "pass": true
+    },
+    {
+      "name": "free cue is visible and points at the target",
+      "pass": true
+    },
+    {
+      "name": "single finger orbits in free",
+      "pass": true
+    },
+    {
+      "name": "free anchor pans",
+      "pass": true
+    },
+    {
+      "name": "pinch changes distance",
+      "pass": true
+    },
+    {
+      "name": "mode aim via DOM",
+      "pass": true
+    },
+    {
+      "name": "aim tap does not turn",
+      "pass": true
+    },
+    {
+      "name": "aim drag turns without firing",
+      "pass": true
+    },
+    {
+      "name": "player shot button hidden",
+      "pass": true
+    },
+    {
+      "name": "pull loads maximum without shooting",
+      "pass": true
+    },
+    {
+      "name": "power feedback visible",
+      "pass": true
+    },
+    {
+      "name": "return zero cancels",
+      "pass": true
+    },
+    {
+      "name": "system cancellation clears pull",
+      "pass": true
+    },
+    {
+      "name": "second finger cancels pull",
+      "pass": true
+    },
+    {
+      "name": "bottom start waits for space",
+      "pass": true
+    },
+    {
+      "name": "bottom rebase reaches full power",
+      "pass": true
+    },
+    {
+      "name": "fine strip opens",
+      "pass": true
+    },
+    {
+      "name": "fine supports repeated relative drags",
+      "pass": true
+    },
+    {
+      "name": "tip panel opens",
+      "pass": true
+    },
+    {
+      "name": "tip confirmation persists",
+      "pass": true
+    },
+    {
+      "name": "release starts forward sequence",
+      "pass": true
+    },
+    {
+      "name": "balls still before contact",
+      "pass": true
+    },
+    {
+      "name": "precontact pause cancels",
+      "pass": true
+    },
+    {
+      "name": "unique real contact",
+      "pass": true
+    },
+    {
+      "name": "physical balls move after contact",
+      "pass": true
+    },
+    {
+      "name": "mode top via DOM",
+      "pass": true
+    },
+    {
+      "name": "motion can be observed top",
+      "pass": true
+    },
+    {
+      "name": "mode free via DOM",
+      "pass": true
+    },
+    {
+      "name": "free camera memory retained",
+      "pass": true
+    },
+    {
+      "name": "background clears touch ownership",
+      "pass": true
+    },
+    {
+      "name": "controls meet 44px touch size",
+      "pass": true
+    }
+  ],
+  "errors": []
+}

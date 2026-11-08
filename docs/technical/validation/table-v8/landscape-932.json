@@ -1,0 +1,859 @@
+{
+  "engine": "3.8.8",
+  "viewport": [
+    932,
+    430,
+    3
+  ],
+  "mode": "controlled component entry points and actual frames; no hardware certification",
+  "checks": [
+    {
+      "name": "Imported V8 table is instantiated",
+      "passed": true
+    },
+    {
+      "name": "Old procedural table is hidden",
+      "passed": true
+    },
+    {
+      "name": "Review reference ball is absent",
+      "passed": true
+    },
+    {
+      "name": "Static table uses at most 30 renderers",
+      "passed": true
+    },
+    {
+      "name": "Imported table dimensions match metres",
+      "passed": true
+    },
+    {
+      "name": "Game table stays below 80000 triangles",
+      "passed": true
+    },
+    {
+      "name": "Table texture allocation stays below 32 MiB",
+      "passed": true
+    },
+    {
+      "name": "Clearance materials blend without opaque depth writes",
+      "passed": true
+    },
+    {
+      "name": "Far orbit keeps the complete table inside the depth range",
+      "passed": true
+    },
+    {
+      "name": "Table with ground and shadow passes stays within 30 draw calls",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 0",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 0",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 0",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 1",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 1",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 1",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 2",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 2",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 2",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 3",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 3",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 3",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 4",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 4",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 4",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 5",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 5",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 5",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 6",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 6",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 6",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 7",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 7",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 7",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 8",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 8",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 8",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 9",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 9",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 9",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 10",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 10",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 10",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 11",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 11",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 11",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 12",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 12",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 12",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 13",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 13",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 13",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 14",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 14",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 14",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 15",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 15",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 15",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 16",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 16",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 16",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 17",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 17",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 17",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 18",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 18",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 18",
+      "passed": true
+    },
+    {
+      "name": "V8 stays active during clearance 19",
+      "passed": true
+    },
+    {
+      "name": "Clearance uses actual model pieces 19",
+      "passed": true
+    },
+    {
+      "name": "Clearance releases temporary resources 19",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during placement",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during placement",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during aim",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during aim",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during break-choice",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during break-choice",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during AI",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during AI",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during motion",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during motion",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during paused-table",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during paused-table",
+      "passed": true
+    },
+    {
+      "name": "V8 supports observation during result-table",
+      "passed": true
+    },
+    {
+      "name": "Observation preserves gameplay during result-table",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 0/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 0/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 0/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 0/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 0/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 0/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 0/8",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 1/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 1/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 1/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 1/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 1/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 1/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 1/8",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 2/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 2/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 2/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 2/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 2/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 2/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 2/8",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 3/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 3/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 3/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 3/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 3/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 3/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 3/8",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 4/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 4/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 4/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 4/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 4/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 4/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 4/8",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 5/0.3",
+      "passed": true
+    },
+    {
+      "name": "Pocket captures 5/8",
+      "passed": true
+    },
+    {
+      "name": "Falling ball remains present 5/8",
+      "passed": true
+    },
+    {
+      "name": "Ball descends after capture 5/8",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes fall 5/8",
+      "passed": true
+    },
+    {
+      "name": "Ball keeps its scale 5/8",
+      "passed": true
+    },
+    {
+      "name": "Ball disappears after descent 5/8",
+      "passed": true
+    },
+    {
+      "name": "Clearance normals are independent of the parent rotation",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 0",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 1",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 2",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 3",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 4",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 5",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 6",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 7",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 8",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 9",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 10",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 11",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 12",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 13",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 14",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 15",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 16",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 17",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 18",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 19",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 20",
+      "passed": true
+    },
+    {
+      "name": "Whole table releases owned resources 21",
+      "passed": true
+    },
+    {
+      "name": "Repeated table instances do not accumulate GPU buffers",
+      "passed": true
+    }
+  ],
+  "measurements": {
+    "dimensions": {
+      "minimum": [
+        -0.770000159740448,
+        -0.800003668116051,
+        -1.409999966621399
+      ],
+      "maximum": [
+        0.770000159740448,
+        0.05007965564727779,
+        1.409999966621399
+      ]
+    },
+    "triangles": 55414,
+    "renderers": 12,
+    "textures": [
+      {
+        "width": 1024,
+        "height": 1024,
+        "gpuBytes": 5592404
+      },
+      {
+        "width": 512,
+        "height": 512,
+        "gpuBytes": 1398100
+      },
+      {
+        "width": 512,
+        "height": 512,
+        "gpuBytes": 1398100
+      },
+      {
+        "width": 1024,
+        "height": 1024,
+        "gpuBytes": 5592404
+      }
+    ],
+    "textureBytes": 13981008,
+    "tableDrawCallsIncludingGroundAndShadows": 24,
+    "clearanceCyclesMs": 606.3000000119209,
+    "pockets": [
+      {
+        "index": 0,
+        "speed": 0.3,
+        "pausedHeight": 0.00977291666666667
+      },
+      {
+        "index": 0,
+        "speed": 8,
+        "pausedHeight": 0.019772916666666668
+      },
+      {
+        "index": 1,
+        "speed": 0.3,
+        "pausedHeight": 0.01836666666666667
+      },
+      {
+        "index": 1,
+        "speed": 8,
+        "pausedHeight": 0.019772916666666668
+      },
+      {
+        "index": 2,
+        "speed": 0.3,
+        "pausedHeight": 0.021075
+      },
+      {
+        "index": 2,
+        "speed": 8,
+        "pausedHeight": 0.021075
+      },
+      {
+        "index": 3,
+        "speed": 0.3,
+        "pausedHeight": 0.021075
+      },
+      {
+        "index": 3,
+        "speed": 8,
+        "pausedHeight": 0.019772916666666668
+      },
+      {
+        "index": 4,
+        "speed": 0.3,
+        "pausedHeight": 0.01836666666666667
+      },
+      {
+        "index": 4,
+        "speed": 8,
+        "pausedHeight": 0.019772916666666668
+      },
+      {
+        "index": 5,
+        "speed": 0.3,
+        "pausedHeight": 0.021075
+      },
+      {
+        "index": 5,
+        "speed": 8,
+        "pausedHeight": 0.021075
+      }
+    ],
+    "lifecycleBufferBytes": [
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184,
+      88691184
+    ]
+  },
+  "passed": 180,
+  "total": 180,
+  "gameAssetSha256": "ff507c1af12ac9368aa921e1c71ac1e215cfebb1d997ec82e7897dcc84f19a1f"
+}

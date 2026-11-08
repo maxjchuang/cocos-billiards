@@ -1,46 +1,125 @@
-import { isValid,Color,Material,Mesh,MeshRenderer,Node,Texture2D,utils } from 'cc';
-import { CUSHION_PATHS,POCKETS,POCKET_MODEL,TABLE_GEOMETRY as G,TablePoint } from './BilliardsTableGeometry';
-import { prism,cleanPolygon,mergeMeshes,subtractOpenings,intersectConvex } from './BilliardsViewGeometry';
-import { POCKET_FALL } from './BilliardsPocketAnimation';
-/** Low-angle faces use the existing proxy outlines. No gameplay geometry is changed. */
+import { Color,gfx,instantiate,isValid,Mat4,Material,Mesh,MeshRenderer,Node,Prefab,utils,Vec3 } from 'cc';
+import { TablePoint } from './BilliardsTableGeometry';
+import { clipMeshRectangle,MeshData,prism } from './BilliardsViewGeometry';
+
+interface ClearancePart {
+    renderer:MeshRenderer;
+    source:Mesh;
+    data:MeshData;
+    faded:MeshRenderer;
+    bounds:{minX:number;maxX:number;minZ:number;maxZ:number};
+}
+
+/** The local Creator-imported V8 derivative. Simulation geometry stays independent. */
 export class TableView {
-    readonly node:Node;readonly meshes:Mesh[]=[];readonly renderers:MeshRenderer[]=[];
-    private volumes:{renderer:MeshRenderer;mesh:Mesh;surfaces:TablePoint[][];top:number;bottom:number;fade:MeshRenderer}[]=[];private temporary:Mesh[]=[];private fadeMaterials:Material[]=[];private clearanceKey='';
-    constructor(parent:Node,materials:{wood:Material;rail:Material;felt:Material;pocket:Material}){
+    readonly node:Node;
+    readonly renderers:MeshRenderer[]=[];
+    readonly meshes:Mesh[]=[];
+    private parts:ClearancePart[]=[];
+    private temporary:Mesh[]=[];
+    private fadeMaterials:Material[]=[];
+    private clearanceKey='';
+    private remainders:Node[]=[];
+
+    constructor(parent:Node,model:Prefab){
         this.node=new Node('First person table');parent.addChild(this.node);
-        const fadeFor=(source:Material):Material=>{const m=new Material();m.initialize({effectName:'builtin-unlit',technique:1,defines:{USE_TEXTURE:true}});m.setProperty('mainTexture',source.getProperty('mainTexture') as Texture2D);m.setProperty('mainColor',new Color(255,255,255,110));this.fadeMaterials.push(m);return m;};
-        const fadedWood=fadeFor(materials.wood),fadedRail=fadeFor(materials.rail);
-        const add=(name:string,points:TablePoint[],top:number,bottom:number|undefined,material:Material,holes=false,hollow=false)=>{
-            const surfaces=holes?subtractOpenings([points],POCKETS.map(p=>p.outline)):[points];
-            const parts=surfaces.map(p=>prism(p,top,bottom));
-            if(hollow&&bottom!==undefined){const side=parts[0],capCount=(cleanPolygon(points).length-2)*3;side.indices.splice(0,capCount);parts.push(prism(points,bottom));}
-            const mesh=utils.createMesh(mergeMeshes(parts));this.meshes.push(mesh);const n=new Node(name);this.node.addChild(n);const r=n.addComponent(MeshRenderer);r.mesh=mesh;r.setMaterial(material,0);r.receiveShadow=1;r.shadowCastingMode=name.startsWith('Rail')||name.startsWith('Frame')?1:0;this.renderers.push(r);
-            if(bottom!==undefined&&(name.startsWith('Frame')||name.startsWith('Rail'))){const ghost=new Node(name+' local clearance');this.node.addChild(ghost);const f=ghost.addComponent(MeshRenderer);f.setMaterial(name.startsWith('Frame')?fadedWood:fadedRail,0);ghost.active=false;this.volumes.push({renderer:r,mesh,surfaces,top,bottom,fade:f});}
-        };
-        // Separate frame strips leave the playing bed and pocket openings unobstructed.
-        for(const sx of [-1,1])add('Frame side '+sx,[{x:sx*.63,z:-1.41},{x:sx*.77,z:-1.41},{x:sx*.77,z:1.41},{x:sx*.63,z:1.41}],-.004,-.16,materials.wood,true);
-        for(const sz of [-1,1])add('Frame end '+sz,[{x:-.63,z:sz*1.27},{x:.63,z:sz*1.27},{x:.63,z:sz*1.41},{x:-.63,z:sz*1.41}],-.004,-.16,materials.wood,true);
-        const cut=POCKET_MODEL.cornerMouth/Math.sqrt(2)+G.radius*.5*(Math.sqrt(2)-1),w=G.halfWidth,l=G.halfLength;
-        add('Perspective cloth',[{x:-w+cut,z:-l},{x:w-cut,z:-l},{x:w,z:-l+cut},{x:w,z:l-cut},{x:w-cut,z:l},{x:-w+cut,z:l},{x:-w,z:l-cut},{x:-w,z:-l+cut}],0,undefined,materials.felt,true);
-        CUSHION_PATHS.forEach((r,i)=>add('Rail volume '+i,r.polygon,.038,0,materials.rail));
-        // Dark receptacle starts behind the unchanged lip. Side walls supply real occlusion.
-        POCKETS.forEach((p,i)=>{add('Pocket interior '+i,p.outline,-.002,POCKET_FALL.floor,materials.pocket,false,true);});
+        const table=instantiate(model);table.name='V8 table';table.setPosition(0,-.80,0);
+        this.node.addChild(table);
+        this.node.updateWorldTransform();
+        const inverseRoot=new Mat4();Mat4.invert(inverseRoot,this.node.worldMatrix);
+        let feltMaterial:Material|undefined;
+        for(const renderer of table.getComponentsInChildren(MeshRenderer)){
+            const shared=renderer.getSharedMaterial(0)!;
+            if(shared.name==='Forest baize'){
+                if(!feltMaterial){
+                    feltMaterial=new Material();feltMaterial.copy(shared);
+                    feltMaterial.setProperty('specularIntensity',.08);this.fadeMaterials.push(feltMaterial);
+                }
+                renderer.setMaterial(feltMaterial,0);
+            }
+            renderer.receiveShadow=1;
+            renderer.shadowCastingMode=renderer.node.name.includes('Forest baize')&&!renderer.node.name.startsWith('06 ')?0:1;
+            this.renderers.push(renderer);
+            if(!renderer.node.name.startsWith('01 ')&&!renderer.node.name.startsWith('06 ')
+                &&!renderer.node.name.startsWith('07 ')&&!renderer.node.name.startsWith('09 '))continue;
+            const source=renderer.mesh!;
+            const positions=source.readAttribute(0,gfx.AttributeName.ATTR_POSITION);
+            const normals=source.readAttribute(0,gfx.AttributeName.ATTR_NORMAL);
+            const uvs=source.readAttribute(0,gfx.AttributeName.ATTR_TEX_COORD);
+            const indices=source.readIndices(0);
+            if(!positions||!normals||!uvs||!indices)throw Error('球桌可视网格缺少位置、法线或UV');
+            renderer.node.updateWorldTransform();
+            const localMatrix=new Mat4();Mat4.multiply(localMatrix,inverseRoot,renderer.node.worldMatrix);
+            const data:MeshData={positions:[],normals:[],uvs:Array.from(uvs),indices:Array.from(indices)};
+            const position=new Vec3(),normal=new Vec3();
+            for(let i=0;i<positions.length;i+=3){
+                Vec3.transformMat4(position,new Vec3(positions[i],positions[i+1],positions[i+2]),localMatrix);
+                // Cancel the parent transform before creating root-space replacement meshes.
+                Vec3.transformMat4Normal(normal,new Vec3(normals[i],normals[i+1],normals[i+2]),localMatrix);
+                normal.normalize();
+                data.positions.push(position.x,position.y,position.z);
+                data.normals.push(normal.x,normal.y,normal.z);
+            }
+            const original=renderer.getSharedMaterial(0)!;
+            const ghost=new Node(renderer.node.name+' local clearance');this.node.addChild(ghost);
+            const faded=ghost.addComponent(MeshRenderer);faded.setMaterial(original,0);faded.receiveShadow=1;
+            const material=faded.getMaterialInstance(0)!;
+            const color=original.getProperty('mainColor') as Color;
+            material.setProperty('mainColor',new Color(color?.r??255,color?.g??255,color?.b??255,95));
+            material.overridePipelineStates({blendState:{targets:[{blend:true,blendSrc:gfx.BlendFactor.SRC_ALPHA,
+                blendDst:gfx.BlendFactor.ONE_MINUS_SRC_ALPHA,blendSrcAlpha:gfx.BlendFactor.ONE,
+                blendDstAlpha:gfx.BlendFactor.ONE_MINUS_SRC_ALPHA}]},depthStencilState:{depthWrite:false}});
+            this.fadeMaterials.push(material);
+            ghost.active=false;
+            const bounds={minX:Infinity,maxX:-Infinity,minZ:Infinity,maxZ:-Infinity};
+            for(let i=0;i<data.positions.length;i+=3){
+                bounds.minX=Math.min(bounds.minX,data.positions[i]);bounds.maxX=Math.max(bounds.maxX,data.positions[i]);
+                bounds.minZ=Math.min(bounds.minZ,data.positions[i+2]);bounds.maxZ=Math.max(bounds.maxZ,data.positions[i+2]);
+            }
+            this.parts.push({renderer,source,data,faded,bounds});
+        }
+        const ground=utils.createMesh(prism([{x:-12,z:-12},{x:12,z:-12},{x:12,z:12},{x:-12,z:12}],-.801));
+        this.meshes.push(ground);
+        const floor=new Node('Table ground');this.node.addChild(floor);
+        const floorRenderer=floor.addComponent(MeshRenderer);floorRenderer.mesh=ground;
+        const floorMaterial=new Material();floorMaterial.initialize({effectAsset:this.renderers[0].getSharedMaterial(0)!.effectAsset!});
+        floorMaterial.setProperty('mainColor',new Color(47,55,45));floorMaterial.setProperty('roughness',.95);
+        this.fadeMaterials.push(floorMaterial);floorRenderer.setMaterial(floorMaterial,0);floorRenderer.receiveShadow=1;
         this.node.active=false;
     }
+
     setCueClearance(cue:TablePoint,active:boolean):void {
-        const near=active&&(Math.abs(cue.x)>.50||Math.abs(cue.z)>1.14),key=near?`${cue.x.toFixed(3)},${cue.z.toFixed(3)}`:'';
-        if(key===this.clearanceKey)return;this.clearanceKey=key;
-        for(const v of this.volumes){v.renderer.mesh=v.mesh;v.renderer.node.active=true;v.fade.node.active=false;}
-        this.temporary.forEach(m=>m.destroy());this.temporary=[];if(!near)return;
-        const box=[{x:cue.x-.10,z:cue.z-.10},{x:cue.x+.10,z:cue.z-.10},{x:cue.x+.10,z:cue.z+.10},{x:cue.x-.10,z:cue.z+.10}];
-        for(const v of this.volumes){const inside=v.surfaces.map(p=>intersectConvex(p,box)).filter(p=>p.length>=3);if(!inside.length)continue;
-            const outside=subtractOpenings(v.surfaces,[box]),make=(pieces:TablePoint[][]):Mesh=>{const mesh=utils.createMesh(mergeMeshes(pieces.map(p=>prism(p,v.top,v.bottom))));this.temporary.push(mesh);return mesh;};
-            v.renderer.node.active=outside.length>0;if(outside.length)v.renderer.mesh=make(outside);v.fade.node.active=true;v.fade.mesh=make(inside);
+        const near=active&&(Math.abs(cue.x)>.50||Math.abs(cue.z)>1.14);
+        const key=near?`${cue.x.toFixed(3)},${cue.z.toFixed(3)}`:'';
+        if(key===this.clearanceKey)return;
+        this.clearanceKey=key;
+        for(const part of this.parts){part.renderer.mesh=part.source;part.renderer.node.active=true;part.faded.node.active=false;}
+        for(const node of this.remainders){node.active=false;node.destroy();}
+        this.remainders=[];
+        for(const mesh of this.temporary)mesh.destroy();
+        this.temporary=[];
+        if(!near)return;
+        const box={minX:cue.x-.10,maxX:cue.x+.10,minZ:cue.z-.10,maxZ:cue.z+.10};
+        for(const part of this.parts){
+            if(part.bounds.maxX<box.minX||part.bounds.minX>box.maxX||part.bounds.maxZ<box.minZ||part.bounds.minZ>box.maxZ)continue;
+            const split=clipMeshRectangle(part.data,box);
+            if(!split.inside.indices.length)continue;
+            // Both clipped meshes use table-root space, so the original renderer
+            // remains untouched and the replacement nodes have identity transforms.
+            part.renderer.node.active=false;
+            if(split.outside.indices.length){
+                const opaque=new Node(part.renderer.node.name+' clearance remainder');this.node.addChild(opaque);
+                const renderer=opaque.addComponent(MeshRenderer);renderer.setMaterial(part.renderer.getSharedMaterial(0)!,0);
+                renderer.receiveShadow=1;renderer.shadowCastingMode=1;
+                const mesh=utils.createMesh(split.outside);renderer.mesh=mesh;
+                this.temporary.push(mesh);this.remainders.push(opaque);
+            }
+            const faded=utils.createMesh(split.inside);part.faded.mesh=faded;part.faded.node.active=true;
+            this.temporary.push(faded);
         }
     }
     destroy():void {
-        // Creator may already have destroyed child nodes when the parent tears down.
-        for(const asset of [...this.temporary,...this.fadeMaterials,this.node,...this.meshes]) {
+        for(const asset of [...this.temporary,...this.meshes,...this.fadeMaterials,this.node]){
             if(asset&&isValid(asset,true))asset.destroy();
         }
     }

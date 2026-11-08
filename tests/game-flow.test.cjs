@@ -130,13 +130,14 @@ test('free camera observation and returning preserve shot input and use locked o
  assert.deepEqual(direction,{x:0,z:-1});assert.deepEqual(cue,{x:0,z:.65});
 });
 
-test('parallel two-finger movement samples the complete engine event before intent lock',()=>{
+test('parallel two-finger movement pans from complete engine samples',()=>{
  const g=game();g.inScene=()=>true;g.hitUi=()=>false;g.powerControl={};g.hudPixelRatio=1;g.begin=()=>{};
- const observations=[];g.cameraRig={observe(...args){observations.push(args);}};
+ const observations=[];g.cameraRig={top:true,topTarget:{x:0,z:0},pan(...args){observations.push(args);}};
  const t=(id,x,y)=>({getID:()=>id,getLocation:()=>({x,y})});
  g.touchStart(t(1,200,200));g.touchStart(t(2,300,200));
  g.touchMove({...t(1,220,210),getAllTouches:()=>[t(1,220,210),t(2,320,210)]});
- assert.equal(g.observationIntent,'orbit');assert.deepEqual(observations,[[20,10,1]]);
+ assert.equal(g.observationIntent,'pan');
+ assert.deepEqual(observations,[[{x:250,y:200,distance:100},{x:270,y:210,distance:100}]]);
 });
 
 test('exported game ignores desktop camera gestures when PREVIEW is false',()=>{
@@ -209,7 +210,7 @@ for(const phase of ['ready','placing','choice','over'])test('return releases the
  const g=game();g.referee.phase=phase;g.viewState.lock();let unlocked=false,returned=false;
  g.balls[0].x=.25;g.balls[0].z=-.4;g.direction={x:1,z:0};g.power=3.7;
  g.tip.open();g.tip.select(.2,.3);g.tip.confirm();
- g.cameraRig={unlock(){unlocked=true;},returnToShot(cue,direction,height,reduced,tip,power){
+ g.cameraRig={setMode(){},unlock(){unlocked=true;},returnToShot(cue,direction,height,reduced,tip,power){
   assert.equal(unlocked,true);assert.deepEqual({x:cue.x,z:cue.z},{x:.25,z:-.4});
   assert.deepEqual(direction,{x:1,z:0});assert.deepEqual(tip,{x:.2,y:.3});assert.equal(power,3.7);returned=true;
  }};
@@ -286,4 +287,111 @@ test('last pocket waits for visible fall before settlement, pause freezes it and
     g.reset();
     assert.equal(g.pocketAnimation.active, false);
     assert.equal(!!g.balls[1].pocketed, false);
+});
+
+function touchGame(mode='top') {
+    const g=game();
+    g.interactionMode=mode;
+    g.viewState.mode=g.viewState.target='first-person';
+    g.hudLayout={width:852,height:393,playArea:{x:0,y:0,width:852,height:393}};
+    g.hudPixelRatio=2;
+    g.hitUi=()=>false;g.actionNode=()=>({});g.markPointer=()=>{};
+    g.tablePoint=(x,y)=>({x:x/1000,z:-y/1000});
+    return g;
+}
+const finger=(g,id,x,y)=>({getID:()=>id,getLocation:()=>({x:x*g.hudPixelRatio,y:(g.hudLayout.height-y)*g.hudPixelRatio})});
+
+test('top aiming points on press, follows every drag, and release retains the last direction',()=>{
+    const g=touchGame(),cue=g.balls[0],before=JSON.stringify(g.balls);
+    g.begin(400,300);
+    const initial={...g.direction};assert.ok(initial.x>0);
+    g.move(600,240);const final={...g.direction};assert.notDeepEqual(final,initial);
+    const dx=.6-cue.x,dz=-.24-cue.z,length=Math.hypot(dx,dz);
+    assert.deepEqual(final,{x:dx/length,z:dz/length});
+    g.release(600,240);assert.deepEqual(g.direction,final);
+    assert.equal(g.shotSequence.active,false);assert.equal(JSON.stringify(g.balls),before);
+});
+
+test('aim tap leaves the direction intact and horizontal adjustment never fires',()=>{
+    const g=touchGame('aim'),before={...g.direction};
+    g.touchStart(finger(g,1,400,140));g.touchEnd(finger(g,1,400,140));
+    assert.deepEqual(g.direction,before);
+    g.touchStart(finger(g,2,400,140));g.touchMove(finger(g,2,430,140));g.touchEnd(finger(g,2,450,140));
+    assert.notDeepEqual(g.direction,before);assert.equal(g.shotSequence.active,false);
+});
+
+test('pull release reserves exactly one shot and commits only at its dynamic contact frame',()=>{
+    const g=touchGame('aim');g.syncVisuals=()=>{};
+    g.touchStart(finger(g,1,420,130));g.touchMove(finger(g,1,420,226));
+    assert.equal(g.power,4);assert.equal(g.shotSequence.active,false);
+    g.touchEnd(finger(g,1,420,226));assert.equal(g.shotSequence.contactMs,160);
+    const shot=g.shotSequence.snapshot;assert.equal(shot.power,4);
+    g.touchEnd(finger(g,1,420,226));assert.equal(g.shotSequence.snapshot,shot);
+    g.shotSequence.advance(.159,()=>{throw Error('early contact');});
+    let committed=0;g.shotSequence.advance(.001,snapshot=>{committed++;return snapshot===shot;});
+    g.shotSequence.advance(.01,()=>{committed++;return true;});assert.equal(committed,1);
+});
+
+test('pull return-to-zero, touch cancel and second finger cannot submit shots',()=>{
+    for(const reason of ['zero','cancel','second']){
+        const g=touchGame('aim');
+        g.touchStart(finger(g,1,420,130));g.touchMove(finger(g,1,420,220));
+        if(reason==='zero')g.touchMove(finger(g,1,420,132));
+        if(reason==='cancel')g.touchCancel(finger(g,1,420,220));
+        if(reason==='second')g.touchStart(finger(g,2,520,220));
+        g.touchEnd(finger(g,1,420,reason==='zero'?132:220));
+        if(reason==='second')g.touchEnd(finger(g,2,520,220));
+        assert.equal(g.shotSequence.active,false,reason);assert.equal(g.power,0,reason);
+    }
+});
+
+test('a second top finger restores the direction before the first finger pressed',()=>{
+    const g=touchGame(),before={...g.direction};
+    g.touchStart(finger(g,1,400,140));assert.notDeepEqual(g.direction,before);
+    g.touchStart(finger(g,2,500,140));assert.deepEqual(g.direction,before);
+    g.touchEnd(finger(g,2,500,140));g.touchEnd(finger(g,1,400,140));
+    assert.equal(g.shotSequence.active,false);
+});
+
+test('AI, movement and ball placement retain their own input permissions',()=>{
+    for(const state of ['ai','moving','placing']){
+        const g=touchGame('aim');
+        if(state==='ai'){g.matchMode='ai';g.referee.current=1;}
+        if(state==='moving')g.balls[1].vx=1;
+        if(state==='placing'){g.referee.phase='placing';g.placeAt=()=>{};}
+        g.begin(400,300);assert.equal(g.pullGesture.active,false,state);
+        g.cancelDrag();g.release(400,300);assert.equal(g.shotSequence.active,false,state);
+    }
+});
+
+test('free single-finger observation operates during AI and keeps the aim intact',()=>{
+    const g=touchGame('free'),before={...g.direction},calls=[];
+    g.matchMode='ai';g.referee.current=1;g.cameraRig={observe(...args){calls.push(args);}};
+    g.begin(400,300);g.move(440,320);g.release(440,320);
+    assert.deepEqual(calls,[[20,-10,1]]);assert.deepEqual(g.direction,before);
+});
+
+test('free tap aims on release while small finger jitter leaves the camera steady',()=>{
+    const g=touchGame('free'),before={...g.direction};
+    g.cameraRig={observe(){throw Error('tap jitter rotated the camera');}};
+    g.begin(400,300);g.move(404,304);assert.deepEqual(g.direction,before);
+    g.release(404,304);assert.notDeepEqual(g.direction,before);assert.equal(g.shotSequence.active,false);
+});
+test('a free orbit returning to its start cannot become tap aiming',()=>{
+    const g=touchGame('free'),before={...g.direction};g.cameraRig={observe(){}};
+    g.begin(400,300);g.move(440,320);g.move(400,300);g.release(400,300);
+    assert.deepEqual(g.direction,before);
+});
+test('free tap cancellation, second finger and movement at release cannot change aim',()=>{
+    for(const reason of ['cancel','second','moving','displaced','outside']){
+        const g=touchGame('free'),before={...g.direction};
+        g.touchStart(finger(g,1,420,140));
+        if(reason==='cancel')g.touchCancel(finger(g,1,420,140));
+        if(reason==='second')g.touchStart(finger(g,2,520,140));
+        if(reason==='moving')g.balls[1].vx=1;
+        if(reason==='outside')g.tablePoint=()=>null;
+        g.touchEnd(finger(g,1,reason==='displaced'?440:420,140));
+        if(reason==='second')g.touchEnd(finger(g,2,520,140));
+        assert.deepEqual(g.direction,before,reason);assert.equal(g.shotSequence.active,false,reason);
+    }
 });

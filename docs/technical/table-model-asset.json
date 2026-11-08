@@ -1,0 +1,24 @@
+{
+  "masterRevision": "sketch-matched-legs-v8",
+  "masterBlendSha256": "c0ae1e32955be284251c2610b8b760c8f4014d3d25bff519a9652b1ab58078d3",
+  "gameGlbSha256": "ff507c1af12ac9368aa921e1c71ac1e215cfebb1d997ec82e7897dcc84f19a1f",
+  "triangles": 55415,
+  "renderers": 12,
+  "maximumLegWidthError": 0.030686706916618456,
+  "maximumNoseErrorM": 1.1920928955078125e-07,
+  "openings": "exported runtime polygons",
+  "textureLimit": [
+    1024,
+    2048
+  ],
+  "contactPreservation": "decimation vertex group",
+  "materialCompatibility": {
+    "clearcoat": "standard PBR approximation",
+    "clothSpecularIntensity": 0.08,
+    "removedUnsupportedExtensions": [
+      "KHR_materials_clearcoat",
+      "KHR_materials_specular"
+    ]
+  },
+  "runtimeGeometrySha256": "ca61d78b1794bb7812643b3b76864210f8c21d4696a9c20ea0061b576715b408"
+}

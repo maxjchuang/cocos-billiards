@@ -1,0 +1,608 @@
+{
+  "ver": "2.3.14",
+  "importer": "gltf",
+  "imported": true,
+  "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df",
+  "files": [],
+  "subMetas": {
+    "94121": {
+      "importer": "gltf-scene",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@94121",
+      "displayName": "",
+      "id": "94121",
+      "name": "table.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "2f734": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@2f734",
+      "displayName": "",
+      "id": "2f734",
+      "name": "01 Walnut handrail.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 1084
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b0ea3": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@b0ea3",
+      "displayName": "",
+      "id": "b0ea3",
+      "name": "04 Layered walnut apron.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 5086
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b6a48": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@b6a48",
+      "displayName": "",
+      "id": "b6a48",
+      "name": "06 Long cushion -1 -1.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 18612
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "88f33": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@88f33",
+      "displayName": "",
+      "id": "88f33",
+      "name": "09 Solid fitted leather plate 0.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 1308
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0fabf": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@0fabf",
+      "displayName": "",
+      "id": "0fabf",
+      "name": "17 Seated leather apron skirt 0.mesh",
+      "userData": {
+        "gltfIndex": 4,
+        "triangleCount": 800
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "41ef4": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@41ef4",
+      "displayName": "",
+      "id": "41ef4",
+      "name": "10 Fine collar seam 0.mesh",
+      "userData": {
+        "gltfIndex": 5,
+        "triangleCount": 1608
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "5f25e": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@5f25e",
+      "displayName": "",
+      "id": "5f25e",
+      "name": "11 Stitch 0 0.mesh",
+      "userData": {
+        "gltfIndex": 6,
+        "triangleCount": 432
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1cc35": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@1cc35",
+      "displayName": "",
+      "id": "1cc35",
+      "name": "12 Sculpted walnut leg 0 0.mesh",
+      "userData": {
+        "gltfIndex": 7,
+        "triangleCount": 19212
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8d200": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@8d200",
+      "displayName": "",
+      "id": "8d200",
+      "name": "16 Foot contact sole 0 0.mesh",
+      "userData": {
+        "gltfIndex": 8,
+        "triangleCount": 1272
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1774a": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@1774a",
+      "displayName": "",
+      "id": "1774a",
+      "name": "03 Baize bed and cloth shelf.001.mesh",
+      "userData": {
+        "gltfIndex": 9,
+        "triangleCount": 1404
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "227c8": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@227c8",
+      "displayName": "",
+      "id": "227c8",
+      "name": "02 Slate support.001.mesh",
+      "userData": {
+        "gltfIndex": 10,
+        "triangleCount": 1404
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "08690": {
+      "importer": "gltf-mesh",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@08690",
+      "displayName": "",
+      "id": "08690",
+      "name": "Runtime pocket cup.mesh",
+      "userData": {
+        "gltfIndex": 11,
+        "triangleCount": 3192
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "661d7": {
+      "importer": "gltf-embeded-image",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@661d7",
+      "displayName": "",
+      "id": "661d7",
+      "name": "american_walnut_veneer_diff_2k.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".jpg",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "dc3af": {
+      "importer": "gltf-embeded-image",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@dc3af",
+      "displayName": "",
+      "id": "dc3af",
+      "name": "cloth.image",
+      "userData": {
+        "gltfIndex": 1,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "5c5c0": {
+      "importer": "gltf-embeded-image",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@5c5c0",
+      "displayName": "",
+      "id": "5c5c0",
+      "name": "leather.image",
+      "userData": {
+        "gltfIndex": 2,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": false,
+        "type": "texture"
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "3effa": {
+      "importer": "texture",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@3effa",
+      "displayName": "",
+      "id": "3effa",
+      "name": "UnnamedTexture-0.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "daea0d76-b92a-489d-b380-d4f150b4c1df@661d7"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "221a5": {
+      "importer": "texture",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@221a5",
+      "displayName": "",
+      "id": "221a5",
+      "name": "UnnamedTexture-1.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "daea0d76-b92a-489d-b380-d4f150b4c1df@dc3af"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0089c": {
+      "importer": "texture",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@0089c",
+      "displayName": "",
+      "id": "0089c",
+      "name": "UnnamedTexture-2.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "daea0d76-b92a-489d-b380-d4f150b4c1df@5c5c0"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "9b633": {
+      "importer": "texture",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@9b633",
+      "displayName": "",
+      "id": "9b633",
+      "name": "UnnamedTexture-3.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "linear",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "daea0d76-b92a-489d-b380-d4f150b4c1df@661d7"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "6ff78": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@6ff78",
+      "displayName": "",
+      "id": "6ff78",
+      "name": "Walnut lacquer V2.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4b8a8": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@4b8a8",
+      "displayName": "",
+      "id": "4b8a8",
+      "name": "Forest baize.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ca5b1": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@ca5b1",
+      "displayName": "",
+      "id": "ca5b1",
+      "name": "Tobacco leather.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7d17c": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@7d17c",
+      "displayName": "",
+      "id": "7d17c",
+      "name": "Muted champagne bronze.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "7a902": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@7a902",
+      "displayName": "",
+      "id": "7a902",
+      "name": "Warm leather stitching.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "fd255": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@fd255",
+      "displayName": "",
+      "id": "fd255",
+      "name": "Leg walnut satin V3.material",
+      "userData": {
+        "gltfIndex": 5
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1c8a3": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@1c8a3",
+      "displayName": "",
+      "id": "1c8a3",
+      "name": "Matte foot sole.material",
+      "userData": {
+        "gltfIndex": 6
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "31fe3": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@31fe3",
+      "displayName": "",
+      "id": "31fe3",
+      "name": "Slate edge.material",
+      "userData": {
+        "gltfIndex": 7
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "d4ffa": {
+      "importer": "gltf-material",
+      "uuid": "daea0d76-b92a-489d-b380-d4f150b4c1df@d4ffa",
+      "displayName": "",
+      "id": "d4ffa",
+      "name": "Dark pocket liner.material",
+      "userData": {
+        "gltfIndex": 8
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "american_walnut_veneer_diff_2k",
+        "uri": "daea0d76-b92a-489d-b380-d4f150b4c1df@661d7"
+      },
+      {
+        "name": "cloth",
+        "uri": "daea0d76-b92a-489d-b380-d4f150b4c1df@dc3af"
+      },
+      {
+        "name": "leather",
+        "uri": "daea0d76-b92a-489d-b380-d4f150b4c1df@5c5c0"
+      }
+    ],
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@2f734",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@b0ea3",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@b6a48",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@88f33",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@0fabf",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@41ef4",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@5f25e",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@1cc35",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@8d200",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@1774a",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@227c8",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@08690"
+      ],
+      "skeletons": [],
+      "textures": [
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@3effa",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@221a5",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@0089c",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@9b633"
+      ],
+      "materials": [
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@6ff78",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@4b8a8",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@ca5b1",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@7d17c",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@7a902",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@fd255",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@1c8a3",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@31fe3",
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@d4ffa"
+      ],
+      "scenes": [
+        "daea0d76-b92a-489d-b380-d4f150b4c1df@94121"
+      ]
+    }
+  }
+}

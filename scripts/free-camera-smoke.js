@@ -48,6 +48,7 @@
     check('pause clears gesture ownership', game.observationTouches.size === 0 && game.activeTouch === null);
     const previousSide=game.dockRight;game.modalAction('layout-side');
     check('layout setting changes dock side', game.dockRight!==previousSide);
+    if(game.dockRight!==previousSide)game.modalAction('layout-side');
     window.freeCameraSmoke = {viewport: [innerWidth, innerHeight], checks, passed: checks.filter(c=>c.pass).length, total: checks.length};
     return window.freeCameraSmoke;
 })

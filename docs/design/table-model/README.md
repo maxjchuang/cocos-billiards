@@ -1,6 +1,6 @@
 # 中式台球桌三维评审模型 V8
 
-2026-11-08。用户已确认V8模型为开发与设计执行基准。模型以米为单位，同一Blender场景导出GLB与七个观察机位，另提供单腿正交轮廓图。游戏接入待实施，步骤和验收见[技术方案](../../technical/table-model-integration.md)。
+2026-11-08。用户已确认V8模型为开发与设计执行基准。模型以米为单位，同一Blender场景导出GLB与七个观察机位，另提供单腿正交轮廓图。游戏已接入派生资源，步骤和验收见[技术方案](../../technical/table-model-integration.md)。
 
 当前参数及材质见model-spec.json，资源指纹见model-validation.json。下方V2至V7章节保留历史演进，当前造型按V8执行。
 
