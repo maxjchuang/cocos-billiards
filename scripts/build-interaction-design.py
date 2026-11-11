@@ -69,11 +69,10 @@ def screen(a, mode):
             if n:a.text(x,y+3,str(n),7,'#10231B','middle')
         a.line(300,200,490,150,'#E4C57F',1.5)
         a.circle(490,150,14,None,'#E4C57F',1)
-    for i,(name,key) in enumerate([('自由观察','free'),('俯视观察','top'),('瞄准','aim')]):
+    for i,(name,key) in enumerate([('自由观察','free'),('俯视观察','top'),('瞄准击球','aim')]):
         y=70+i*52
         a.rect(8,y,64,46,'#314A3D' if key==('aim' if mode in ('pull','cancel') else mode) else '#192D25',8)
-        a.circle(18,y+23,4,None,'#E4C57F',1);a.line(12,y+23,24,y+23,'#E4C57F',1)
-        a.text(45,y+28,name,10,'#E4C57F' if key==('aim' if mode in ('pull','cancel') else mode) else '#EAEBDD','middle')
+        a.text(40,y+28,name,10,'#E4C57F' if key==('aim' if mode in ('pull','cancel') else mode) else '#EAEBDD','middle')
     if mode in ('aim','pull','cancel'):
         for x,label in [(170,'微调'),(250,'打点')]:
             a.rect(x,333,72,44,'#20382C',8);a.circle(x+15,355,6,None,'#EAEBDD',1);a.text(x+46,360,label,11,'#EAEBDD','middle')
@@ -141,6 +140,11 @@ for kind, filename, pages in [('产品','中式八球产品设计方案.pdf',PAG
 contract=json.loads((D/'ui-contract.json').read_text())
 contract.update(version='3.0-touch-modes',date='2026-11-09',cameraModel='free orbit / orthographic top / cue aiming',cameraControls={'modes':['free','top','aim'],'free':{'tap':'point at table position on release; under 8 logical pixels','oneFinger':'orbit','twoFingerParallel':'pan anchor','pinch':'distance'},'top':{'oneFinger':'point at contact continuously','twoFingerParallel':'pan','pinch':'scale'},'aim':{'tap':'retain direction','horizontal':'relative angle','downward':'pull power','release':'shoot when positive','returnToZero':'cancel'},'fingerCountChange':'restore top direction; cancel pull; wait all fingers up'},shotContactMs={'human':'100 + 60 * normalized power','AI':220},gesture={'thresholdPx':8,'axisRatio':1.3,'panThresholdPx':6,'pinchThreshold':.04,'pullDistancePx':96,'zeroDeadzonePx':4,'powerExponent':1.6,'transitionMs':240},figures=figures)
 contract['hud'].pop('shoot',None)
+contract['aiActivity']={'anchor':'turn information row','referenceRect':[110,58,176,28],'fontSize':12,'textWidth':140,'singleLine':True,'difficulty':'AI identity badge'}
+contract['resultIdentity']={'alignment':'center','order':['avatar','nickname','title'],'avatarRadius':22,'compactAvatarRadius':18,'standardTopOffsets':[50,96,136,164],'compactTopOffsets':[36,72,106,130]}
+contract['playerCard']={'compactContent':['avatar','nickname','group','remainingCount'],'targetRowMinimumHeight':64,'hiddenNumbersAlsoHideGraphics':True,'allNumbersInIdentityView':True}
+contract['modeLabels']={'free':'自由观察','top':'俯视观察','aim':'瞄准击球'}
+contract['modeIcons']=False
 contract['hud']={'pause':[8,8,44,44],'modes':[[8,64,72,44],[8,114,72,44],[8,164,72,44]],'center':[8,218,72,44],'player1':[110,8,148,44],'player2':[562,8,148,44],'fine':[166,329,100,44],'spin':[274,329,100,44],'power':'temporary readout beside pull origin'}
 contract['actionDock']=[166,329,208,48]
 contract['runtimeBaseline']='touch-modes 3.0 worktree'

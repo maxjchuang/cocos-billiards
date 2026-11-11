@@ -93,3 +93,42 @@ test('a resting centre above the actual opening drops while a supported hanging 
   const blocked=make(p,0,0,p.mouth/2);assert.equal(pocketAt(blocked),-1);
  }
 });
+
+test('cloth openings have curved front rims instead of a mouth-wide straight chord',()=>{
+ for(const p of POCKETS){
+  const local=p.outline.map(point=>pocketCoordinates(point,p));
+  let longest=0;
+  for(let i=0;i<local.length;i++){
+   const a=local[i],b=local[(i+1)%local.length];
+   if(a.v<=POCKET_MODEL.openingShoulderDepth+1e-9&&b.v<=POCKET_MODEL.openingShoulderDepth+1e-9)
+    longest=Math.max(longest,Math.hypot(b.u-a.u,b.v-a.v));
+  }
+  assert.ok(longest<.006,`${p.kind} front rim segment ${longest}`);
+  assert.ok(Math.abs(Math.min(...local.map(point=>point.v))-p.dropDepth)<1e-9);
+ }
+});
+test('off-centre ray capture follows the curved support boundary on all six pockets',()=>{
+ for(const p of POCKETS)for(const offset of [-.008,.008]){
+  const ball=make(p,.08,1,offset),hit=traceTable(ball,p.normal.x,p.normal.z);
+  assert.equal(hit.kind,'pocket');
+  const edge={x:ball.x+p.normal.x*hit.distance,z:ball.z+p.normal.z*hit.distance};
+  assert.ok(pocketCoordinates(edge,p).v>p.dropDepth+1e-5);
+  assert.equal(pocketAt(edge),POCKETS.indexOf(p));
+  assert.equal(pocketAt({x:edge.x-p.normal.x*.0001,z:edge.z-p.normal.z*.0001}),-1);
+  assert.equal(pocketAt({x:edge.x+p.normal.x*.0001,z:edge.z+p.normal.z*.0001}),POCKETS.indexOf(p));
+ }
+});
+
+test('angled entries across curved front rims agree with simulation without hanging over holes',()=>{
+ for(const p of POCKETS)for(const offset of [-.008,0,.008])for(const angle of [-.3,-.15,0,.15,.3]){
+  const ball=make(p,.055,.5,offset),events=[];
+  const dx=p.normal.x*Math.cos(angle)+p.tangent.x*Math.sin(angle),dz=p.normal.z*Math.cos(angle)+p.tangent.z*Math.sin(angle);
+  ball.vx=dx*.5;ball.vz=dz*.5;
+  const hit=traceTable(ball,dx,dz);
+  if(hit.kind==='pocket'){
+   for(let i=0;i<960&&!ball.pocketed;i++)step([ball],FIXED_STEP,{respawnCue:false,onEvent:event=>events.push(event)});
+   assert.ok(ball.pocketed,`${p.kind} ${offset} ${angle}`);
+   assert.equal(events.filter(event=>event.type==='pocket').length,1);
+  }
+ }
+});

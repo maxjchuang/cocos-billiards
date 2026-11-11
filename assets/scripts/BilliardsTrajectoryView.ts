@@ -19,6 +19,24 @@ export class TrajectoryView {
         const ghostMat=new Material();ghostMat.initialize({effectName:'builtin-unlit',technique:1});ghostMat.setProperty('mainColor',new Color(245,241,230,28));this.materials.push(ghostMat);const r=this.ghost.addComponent(MeshRenderer);r.mesh=this.ghostMesh;r.setMaterial(ghostMat,0);this.node.active=false;
     }
     hide():void{this.node.active=false;this.offscreen=false;this.visibilityStamp='';}
+    /** Geometric direction preview remains available before a pull supplies shot power. */
+    renderContact(cue:{x:number;z:number},hit:AimContact):void {
+        this.node.active=true;this.offscreen=false;this.ghost.active=true;
+        this.ghost.setPosition(hit.x,TABLE.radius,hit.z);this.nodes[1].active=false;
+        const stamp=JSON.stringify([cue.x,cue.z,hit.x,hit.z]);
+        const dx=hit.x-cue.x,dz=hit.z-cue.z,length=Math.hypot(dx,dz);
+        this.nodes[0].active=length>TABLE.radius;
+        if(this.prediction===null&&this.stamp===stamp)return;
+        this.prediction=null;this.stamp=stamp;this.visibilityStamp='';
+        const mesh=emptyMesh();
+        for(let start=TABLE.radius;start<length;start+=.04){
+            const end=Math.min(length,start+.022);
+            ribbon(mesh,{x:cue.x+dx*start/length,z:cue.z+dz*start/length},
+                {x:cue.x+dx*end/length,z:cue.z+dz*end/length},.0025);
+        }
+        this.nodes[0].active=mesh.indices.length>0;
+        if(mesh.indices.length)this.replace(0,mesh);
+    }
     render(prediction:ShotPrediction|null,hit:AimContact|null,pose:CameraPose,aspect:number,time:number):void {
         this.node.active=!!prediction&&prediction.status!=='invalid';if(!this.node.active||!prediction)return;
         this.ghost.active=!!hit;if(hit)this.ghost.setPosition(hit.x,TABLE.radius,hit.z);

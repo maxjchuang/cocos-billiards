@@ -60,12 +60,12 @@ export class PlayerCardView {
         text(this.nameLabel, fitNickname(level?'AI 陪练':playerName(profile, seat), textWidth / (13*s)), textX + textWidth/2, y - 14*s, textWidth, 13);
         this.levelLabel.node.active=!!level;if(level){const lx=x+width-20*s;text(this.levelLabel,level,lx,y-14*s,28*s,11);g.strokeColor=colour('#8D7855');g.lineWidth=.6;g.roundRect(lx-14*s,y-22*s,28*s,16*s,4);g.stroke();}
         text(this.groupLabel, group ? `${groupName(group)} · 剩${ids.length}` : '尚未分组', textX + (width-54*s)/2, y - 30*s, width-54*s, 11);
-        this.fallbackLabel.node.active = !!group && ids.length === 0;
+        const showTargets=height>=64*s;
+        this.fallbackLabel.node.active = showTargets && !!group && ids.length === 0;
         text(this.fallbackLabel, group ? '目标 8 号' : '等待分组', x + width/2, -height/2 + 15*s, width - 20*s, 11);
-        if(height<56){this.fallbackLabel.node.active=false;}
         this.numbers.forEach((label, i) => {
-            label.node.active = height>=56 && i < ids.length;
-            if (i >= ids.length) return;
+            label.node.active = showTargets && i < ids.length;
+            if (!label.node.active) return;
             const diameter=width<150?16*s:18*s,spacing=Math.min(diameter+3*s,(width-18*s-diameter)/Math.max(1,ids.length-1));
             const id = ids[i], cx = x + 9*s+diameter/2+i*spacing, cy = -height/2 + 13*s, r = diameter/2;
             circle(cx, cy, r, id > 8 ? '#F5F2E8' : ballColor(id));

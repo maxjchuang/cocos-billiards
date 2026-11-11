@@ -1,0 +1,426 @@
+{
+  "viewport": [
+    568,
+    320,
+    2
+  ],
+  "driver": "controlled AI render fixtures",
+  "passed": 43,
+  "total": 43,
+  "checks": [
+    {
+      "name": "easy thinking copy",
+      "pass": true
+    },
+    {
+      "name": "easy status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "easy text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "easy bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "standard thinking copy",
+      "pass": true
+    },
+    {
+      "name": "standard status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "standard text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "standard bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "hard thinking copy",
+      "pass": true
+    },
+    {
+      "name": "hard status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "hard text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "hard bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "placing copy",
+      "pass": true
+    },
+    {
+      "name": "placing status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "placing text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "placing bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "break decision copy",
+      "pass": true
+    },
+    {
+      "name": "break choice status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "break choice text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "break choice bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "aiming copy",
+      "pass": true
+    },
+    {
+      "name": "aiming status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "aiming text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "aiming bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "stroke copy",
+      "pass": true
+    },
+    {
+      "name": "stroke status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "stroke text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "stroke bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "moving copy",
+      "pass": true
+    },
+    {
+      "name": "moving status visible in dedicated bar",
+      "pass": true
+    },
+    {
+      "name": "moving text fits without wrapping",
+      "pass": true
+    },
+    {
+      "name": "moving bar stays inside viewport",
+      "pass": true
+    },
+    {
+      "name": "pause hides status",
+      "pass": true
+    },
+    {
+      "name": "human turn clears AI status",
+      "pass": true
+    },
+    {
+      "name": "玩家一 winner name centered",
+      "pass": true
+    },
+    {
+      "name": "玩家一 avatar centered",
+      "pass": true
+    },
+    {
+      "name": "玩家一 result regions separated",
+      "pass": true
+    },
+    {
+      "name": "林间听风 winner name centered",
+      "pass": true
+    },
+    {
+      "name": "林间听风 avatar centered",
+      "pass": true
+    },
+    {
+      "name": "林间听风 result regions separated",
+      "pass": true
+    },
+    {
+      "name": "这是一位昵称很长的玩家用于验证居中布局 winner name centered",
+      "pass": true
+    },
+    {
+      "name": "这是一位昵称很长的玩家用于验证居中布局 avatar centered",
+      "pass": true
+    },
+    {
+      "name": "这是一位昵称很长的玩家用于验证居中布局 result regions separated",
+      "pass": true
+    }
+  ],
+  "states": [
+    {
+      "name": "easy",
+      "text": "AI 正在思考",
+      "textWidth": 62.723968505859375,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "standard",
+      "text": "AI 正在思考",
+      "textWidth": 62.723968505859375,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "hard",
+      "text": "AI 正在思考",
+      "textWidth": 62.723968505859375,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "placing",
+      "text": "AI 正在摆放母球",
+      "textWidth": 86.72396850585938,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "break choice",
+      "text": "AI 正在处理开球结果",
+      "textWidth": 110.72396850585938,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "aiming",
+      "text": "AI 正在瞄准",
+      "textWidth": 62.723968505859375,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "stroke",
+      "text": "AI 正在击球",
+      "textWidth": 62.723968505859375,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    },
+    {
+      "name": "moving",
+      "text": "球运动中",
+      "textWidth": 48,
+      "allocatedWidth": 140,
+      "bar": {
+        "x": -174,
+        "y": 74,
+        "width": 176,
+        "height": 28
+      }
+    }
+  ],
+  "boxes": [
+    [
+      {
+        "name": "Modal title",
+        "rect": {
+          "x": -236,
+          "y": 22,
+          "width": 472,
+          "height": 32
+        }
+      },
+      {
+        "name": "Modal section",
+        "rect": {
+          "x": -236,
+          "y": 58,
+          "width": 472,
+          "height": 28
+        }
+      },
+      {
+        "name": "Modal body",
+        "rect": {
+          "x": -236,
+          "y": -52,
+          "width": 472,
+          "height": 66
+        }
+      },
+      {
+        "name": "Modal action 0",
+        "rect": {
+          "x": -236,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      },
+      {
+        "name": "Modal action 1",
+        "rect": {
+          "x": 6,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      }
+    ],
+    [
+      {
+        "name": "Modal title",
+        "rect": {
+          "x": -236,
+          "y": 22,
+          "width": 472,
+          "height": 32
+        }
+      },
+      {
+        "name": "Modal section",
+        "rect": {
+          "x": -236,
+          "y": 58,
+          "width": 472,
+          "height": 28
+        }
+      },
+      {
+        "name": "Modal body",
+        "rect": {
+          "x": -236,
+          "y": -52,
+          "width": 472,
+          "height": 66
+        }
+      },
+      {
+        "name": "Modal action 0",
+        "rect": {
+          "x": -236,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      },
+      {
+        "name": "Modal action 1",
+        "rect": {
+          "x": 6,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      }
+    ],
+    [
+      {
+        "name": "Modal title",
+        "rect": {
+          "x": -236,
+          "y": 22,
+          "width": 472,
+          "height": 32
+        }
+      },
+      {
+        "name": "Modal section",
+        "rect": {
+          "x": -236,
+          "y": 58,
+          "width": 472,
+          "height": 28
+        }
+      },
+      {
+        "name": "Modal body",
+        "rect": {
+          "x": -236,
+          "y": -52,
+          "width": 472,
+          "height": 66
+        }
+      },
+      {
+        "name": "Modal action 0",
+        "rect": {
+          "x": -236,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      },
+      {
+        "name": "Modal action 1",
+        "rect": {
+          "x": 6,
+          "y": -120,
+          "width": 230,
+          "height": 48
+        }
+      }
+    ]
+  ],
+  "errors": []
+}

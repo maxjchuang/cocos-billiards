@@ -11,7 +11,7 @@ export const POCKET_MODEL = {
     cornerMouth: 0.085, sideMouth: 0.082,
     // Dimensionless gameplay tuning, not measured jaw/shelf dimensions.
     jawRadiusInBallRadii: 0.5, backDepthInBallRadii: 1,
-    railDepth: 0.07, arcSegments: 16,
+    railDepth: 0.07, arcSegments: 16, openingShoulderDepth: 0.018,
 };
 const G = TABLE_GEOMETRY, J = G.radius * POCKET_MODEL.jawRadiusInBallRadii;
 const cornerCut = POCKET_MODEL.cornerMouth / Math.sqrt(2) + J * (Math.sqrt(2) - 1);
@@ -30,19 +30,18 @@ export const POCKETS: PocketGeometry[] = [-1, 1].flatMap(sx => [-1, 0, 1].map(sz
     const backDepth = G.radius * POCKET_MODEL.backDepthInBallRadii;
     const dropDepth = corner ? -J/Math.sqrt(2) : -J;
     const toWorld = (u:number,v:number):TablePoint => ({ x:lip.x+tangent.x*u+normal.x*v, z:lip.z+tangent.z*u+normal.z*v });
-    const jaw:TablePoint[]=[];
-    for(let i=0;i<=POCKET_MODEL.arcSegments;i++) {
-        const a=(corner?Math.PI/4:Math.PI/2)*i/POCKET_MODEL.arcSegments;
-        const u=corner ? -mouth/2+J*(Math.cos(a)+Math.sin(a)-Math.sqrt(2))/Math.sqrt(2) : -mouth/2-J+J*Math.sin(a);
-        const v=corner ? J*(-Math.cos(a)+Math.sin(a))/Math.sqrt(2) : -J*Math.cos(a);
-        jaw.push({x:u,z:v});
-    }
-    // Visual round back only. It does NOT participate in collision or capture tests.
+    // Match the V8 cloth cut-out with a rounded front as well as a rounded back.
+    // The centre retains its existing drop depth; the shoulders follow the master model.
+    const shoulderDepth=POCKET_MODEL.openingShoulderDepth;
     const back=Array.from({length:33},(_,i)=>{
-        const a=-Math.PI/2+i*Math.PI/32;
-        return {x:mouth/2*Math.sin(a),z:backDepth+mouth/2*Math.cos(a)};
+        const angle=-Math.PI/2+i*Math.PI/32;
+        return {x:mouth/2*Math.sin(angle),z:shoulderDepth+mouth/2*Math.cos(angle)};
     });
-    const outline=[...jaw,...back,...jaw.slice().reverse().map(p=>({x:-p.x,z:p.z}))].map(p=>toWorld(p.x,p.z));
+    const front=Array.from({length:31},(_,i)=>{
+        const angle=(i+1)*Math.PI/32;
+        return {x:mouth/2*Math.cos(angle),z:shoulderDepth-(shoulderDepth-dropDepth)*Math.sin(angle)};
+    });
+    const outline=[...back,...front].map(p=>toWorld(p.x,p.z));
     const centre=toWorld(0,backDepth+0.0001);
     return {...centre,kind:corner?'corner' as const:'side' as const,mouth,lip,normal,tangent,dropDepth,outline};
 }));
@@ -127,7 +126,7 @@ export function validTablePlacement(p:TablePoint):boolean {
         Math.abs(p.z)<=G.halfLength-G.radius&&clearOfCushions(p)&&pocketAt(p)<0;
 }
 
-/** First swept-circle contact with actual cushion segments or a clear pocket drop plane. */
+/** First swept-circle contact with actual cushion segments or the curved pocket support boundary. */
 export function traceTable(p:TablePoint,dx:number,dz:number):{distance:number;kind:'cushion'|'pocket'}|null {
     let distance=Infinity,kind:'cushion'|'pocket'='cushion';
     const endpoint=(centre:TablePoint):void=>{
@@ -150,11 +149,20 @@ export function traceTable(p:TablePoint,dx:number,dz:number):{distance:number;ki
             if(u>=0&&u<=1){distance=t;kind='cushion';}
         }
     }
-    for(const pocket of POCKETS) {
-        const q=pocketCoordinates(p,pocket),dv=dx*pocket.normal.x+dz*pocket.normal.z;
-        if(dv<=1e-10)continue;
-        const t=(pocket.dropDepth-q.v)/dv;
-        if(t>=0&&t<distance&&pocketAt({x:p.x+dx*t,z:p.z+dz*t})===POCKETS.indexOf(pocket)){distance=t;kind='pocket';}
+    const current=pocketAt(p);
+    if(current>=0)return {distance:0,kind:'pocket'};
+    for(const [index,pocket] of POCKETS.entries()) {
+        for(let i=0;i<pocket.outline.length;i++){
+            const a=pocket.outline[i],b=pocket.outline[(i+1)%pocket.outline.length];
+            const ex=b.x-a.x,ez=b.z-a.z,denominator=dx*ez-dz*ex;
+            if(Math.abs(denominator)<1e-12)continue;
+            const ox=a.x-p.x,oz=a.z-p.z;
+            const t=(ox*ez-oz*ex)/denominator,u=(ox*dz-oz*dx)/denominator;
+            if(t< -1e-9||t>=distance||u< -1e-9||u>1+1e-9)continue;
+            const travel=Math.max(0,t),hit={x:p.x+dx*travel,z:p.z+dz*travel};
+            const after={x:hit.x+dx*1e-7,z:hit.z+dz*1e-7};
+            if(pocketAt(hit)===index&&pocketOpeningAt(after)===index){distance=travel;kind='pocket';}
+        }
     }
     return Number.isFinite(distance)?{distance,kind}:null;
 }

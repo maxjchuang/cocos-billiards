@@ -86,6 +86,7 @@ export class BilliardsGame extends Component {
     private trajectoryLabel!:Label;
     private targetLegend!:Label;private trajectoryCaption='';
     private aiWaiting!:Label;
+    private aiActivity!:Node;
     private aimPrediction:ShotPrediction|null=null;
     private aimPredictionKey='';private aimPredictionAt=0;
     private pauseLayer!: Node;
@@ -437,7 +438,12 @@ export class BilliardsGame extends Component {
         const fade=new Node('View transition');fade.layer=Layers.Enum.UI_2D;root.addChild(fade);fade.addComponent(UITransform);this.viewFade=fade.addComponent(Graphics);
         this.trajectoryLabel=uiLabel('Trajectory legend',150,22);this.trajectoryLabel.fontSize=11;this.trajectoryLabel.horizontalAlign=Label.HorizontalAlign.RIGHT;this.trajectoryLabel.overflow=Label.Overflow.CLAMP;
         this.targetLegend=uiLabel('Target trajectory legend',60,22);this.targetLegend.fontSize=11;this.targetLegend.horizontalAlign=Label.HorizontalAlign.RIGHT;this.targetLegend.overflow=Label.Overflow.CLAMP;this.targetLegend.color=new Color().fromHEX(CLUB.targetTrajectory);
-        this.aiWaiting=uiLabel('AI waiting',345,96);this.aiWaiting.fontSize=14;this.aiWaiting.lineHeight=25;this.aiWaiting.color=new Color().fromHEX(CLUB.muted);
+        this.aiActivity=new Node('AI activity status');this.aiActivity.layer=Layers.Enum.UI_2D;root.addChild(this.aiActivity);
+        this.aiActivity.addComponent(UITransform);this.aiActivity.addComponent(Graphics);this.aiActivity.active=false;
+        this.aiWaiting=uiLabel('AI waiting',140,20);this.aiWaiting.node.setParent(this.aiActivity);
+        this.aiWaiting.fontSize=12;this.aiWaiting.lineHeight=18;this.aiWaiting.enableWrapText=false;
+        this.aiWaiting.horizontalAlign=Label.HorizontalAlign.LEFT;this.aiWaiting.verticalAlign=Label.VerticalAlign.CENTER;
+        this.aiWaiting.overflow=Label.Overflow.CLAMP;this.aiWaiting.color=new Color().fromHEX(CLUB.ink);
         for (let player = 0; player < 2; player++) this.playerCards.push(new PlayerCardView(root, player));
         this.decision = uiLabel('Referee decision', 920, 120);
         this.decision.horizontalAlign = Label.HorizontalAlign.LEFT;
@@ -461,7 +467,7 @@ export class BilliardsGame extends Component {
             const label=uiLabel(name+' label',200,32);label.node.setParent(node);label.string=title;
             label.overflow=Label.Overflow.SHRINK;return label;
         };
-        this.modeButtons=['自由观察','俯视观察','瞄准'].map((title,i)=>control('Touch mode '+i,title));
+        this.modeButtons=['自由观察','俯视观察','瞄准击球'].map((title,i)=>control('Touch mode '+i,title));
         this.gestureHint=uiLabel('Gesture hint',300,24);this.gestureHint.fontSize=12;this.gestureHint.color=new Color().fromHEX(CLUB.gold);
         const pointer=new Node('Touch position feedback');pointer.layer=Layers.Enum.UI_2D;root.addChild(pointer);pointer.addComponent(UITransform);this.pointerArt=pointer.addComponent(Graphics);
         this.viewButton=control('View mode','居中球桌');this.viewButton.fontSize=12;this.viewButton.lineHeight=18;
@@ -608,9 +614,10 @@ export class BilliardsGame extends Component {
             if(modeAction){this.pendingAction=modeAction;return;}
             if(this.interactionMode!=='aim'&&this.hitUi(this.actionNode('center'),x,y)){this.pendingAction='center';return;}
         }
-        if(this.panelMode&&this.panelMode!=='view'&&this.panels){
+        if(this.panelMode&&this.panels){
             const modalTargets:Action[]=this.panels.actionIds.map((_,i)=>`modal-${i}` as Action);if(this.panelMode==='result')modalTargets.push('winner-identity');
-            this.pendingAction=modalTargets.find(action=>this.hitUi(this.actionNode(action),x,y))??null;return;
+            this.pendingAction=modalTargets.find(action=>this.hitUi(this.actionNode(action),x,y))??null;
+            if(this.pendingAction!==null||this.panelMode!=='view')return;
         }
         const candidates: Action[] = this.paused ? ['resume','restart'] : this.tip.active ? ['spin-cancel','spin-done','spin-center'] : ['pause','identity0','identity1'];
 
@@ -741,7 +748,7 @@ export class BilliardsGame extends Component {
     private drawInteractionFeedback():void {
         if(!this.gestureHint||!this.pointerArt)return;
         this.gestureHint.node.active=!this.panelMode&&!this.paused&&!this.tip.active&&this.referee.phase!=='placing'&&!(this.referee.phase==='ready'&&!this.referee.isBreak&&!this.referee.groups[this.referee.current]&&!this.referee.selected);
-        this.gestureHint.string=this.pullGesture.waitingForSpace?'向上移一点，再后拉':this.pullGesture.intent==='pull'?(this.power>0?'松手击球 · 推回取消':'松手取消'):this.referee.phase==='placing'?'拖动摆球 · 双指观察':this.interactionMode==='free'?'轻点瞄准 · 拖动环绕 · 双指观察':this.interactionMode==='top'?'按住台面确定方向 · 拖动跟随':this.isAiTurn()||this.referee.phase!=='ready'?'观察球局 · 等待停稳':'横拖调角 · 向下后拉';
+        this.gestureHint.string=this.isAiTurn()?'对手回合 · 可切换视角观察':this.pullGesture.waitingForSpace?'向上移一点，再后拉':this.pullGesture.intent==='pull'?(this.power>0?'松手击球 · 推回取消':'松手取消'):this.referee.phase==='placing'?'拖动摆球 · 双指观察':this.interactionMode==='free'?'轻点瞄准 · 拖动环绕 · 双指观察':this.interactionMode==='top'?'按住台面确定方向 · 拖动跟随':this.isAiTurn()||this.referee.phase!=='ready'?'观察球局 · 等待停稳':'横拖调角 · 向下后拉';
         this.gestureHint.node.setPosition(0,-this.hudLayout.height/2+18,0);
         const art=this.pointerArt;art.clear();const marker=this.pointerMarker;
         if(!marker||this.paused||this.panelMode||marker.until<this.uiTime)return;
@@ -992,7 +999,13 @@ export class BilliardsGame extends Component {
         this.decision.string = playerMessage(this.decision.string, this.players);
         if(ref.phase==='placing')this.decision.string=ref.isBreak?'请在开球线后放置白球':playerMessage(ref.message,this.players);
         if(ref.phase==='ready'&&(ref.isBreak||!!ref.groups[ref.current]||!!ref.selected)&&this.uiTime-this.notificationAt>1.8)this.decision.string='';
-        if(this.isAiTurn()&&!this.shotSequence.active){this.turnLabel.string=ref.phase==='shooting'?'球运动中':ref.phase==='placing'?'AI 正在摆放母球':ref.phase==='choice'?'AI 正在处理开球结果':this.aiTurn.locked?'AI 正在瞄准':'AI 正在思考';this.decision.string='';if(this.aiWaiting)this.aiWaiting.string=this.turnLabel.string+'\n'+DIFFICULTY_NAMES[this.aiDisplayedDifficulty]+'难度 · 请等待对手完成操作';this.turnLabel.string='对手回合 · '+DIFFICULTY_NAMES[this.aiDisplayedDifficulty];}
+        if(this.isAiTurn()){
+            const status=ref.phase==='shooting'?'球运动中':this.shotSequence.active?'AI 正在击球':
+                ref.phase==='placing'?'AI 正在摆放母球':ref.phase==='choice'?'AI 正在处理开球结果':
+                this.aiTurn.locked?'AI 正在瞄准':'AI 正在思考';
+            this.decision.string='';if(this.aiWaiting)this.aiWaiting.string=status;
+            this.turnLabel.string='对手回合 · '+DIFFICULTY_NAMES[this.aiDisplayedDifficulty];
+        }
         if(ref.phase==='over'&&!this.shotSequence.active&&!this.resultShown&&this.panels){this.resultShown=true;this.pauseGame(false);this.panelMode='result';if(this.victoryApplause)this.feedback?.celebrate();}
         let labels = ['', '', ''];
         if (ref.phase === 'placing'&&!this.isAiTurn()) labels[1] = '确认摆球';
@@ -1091,8 +1104,7 @@ export class BilliardsGame extends Component {
             label.node.parent!.active=!this.panelMode||this.panelMode==='view';
             const graphic=label.node.parent!.getComponent(Graphics)!;graphic.strokeColor=new Color().fromHEX(selected?CLUB.gold:CLUB.track);graphic.lineWidth=1;graphic.stroke();
             label.fontSize=11;label.color=new Color().fromHEX(selected?CLUB.gold:CLUB.ink);
-            label.node.setPosition(7,0,0);label.node.getComponent(UITransform)!.setContentSize(54,40);
-            graphic.strokeColor=label.color;graphic.circle(-27,0,4);graphic.moveTo(-33,0);graphic.lineTo(-21,0);graphic.stroke();
+            label.node.setPosition(0,0,0);label.node.getComponent(UITransform)!.setContentSize(64,40);
         });
         const vr=width>height?{x:insets.left+8,y:insets.top+218,width:72,height:44}:{x:layout.status.x+80,y:layout.reset.y,width:width<360?56:68,height:44};panel(this.viewButton.node.parent!,vr,new Color().fromHEX(CLUB.surface));this.viewButton.node.setPosition(0,0,0);this.viewButton.node.getComponent(UITransform)!.setContentSize(vr.width-8,32);
         this.status.fontSize = 18*s; this.status.lineHeight = 24*s;
@@ -1103,7 +1115,14 @@ export class BilliardsGame extends Component {
         this.trajectoryLabel.node.active=width<=height;this.targetLegend.node.active=width<=height;
         const legendWidth=this.viewState.mode==='first-person'?140:130;place(this.trajectoryLabel.node,{...layout.turn,x:layout.turn.x+layout.turn.width-legendWidth,width:legendWidth-60});
         place(this.targetLegend.node,{...layout.turn,x:layout.turn.x+layout.turn.width-60,width:60});
-        this.aiWaiting.node.active=aiWait;place(this.aiWaiting.node,{x:layout.power.x,y:layout.power.y,width:layout.power.width,height:107});
+        const showAiActivity=this.isAiTurn()&&!this.paused&&!this.panelMode&&!this.tip.active;
+        this.aiActivity.active=showAiActivity;this.turnLabel.node.active=!showAiActivity;
+        const activityRect=width>height?{x:layout.turn.x,y:layout.turn.y+4,width:176,height:28}:
+            {x:layout.power.x,y:layout.power.y,width:layout.power.width,height:28};
+        panel(this.aiActivity,activityRect,new Color().fromHEX(CLUB.surface));
+        const activityArt=this.aiActivity.getComponent(Graphics)!;
+        activityArt.fillColor=new Color().fromHEX(CLUB.gold);activityArt.circle(-activityRect.width/2+12,0,2.5);activityArt.fill();
+        this.aiWaiting.node.setPosition(8,0,0);this.aiWaiting.node.getComponent(UITransform)!.setContentSize(activityRect.width-36,20);
         this.turnLabel.fontSize = 12*s; this.turnLabel.lineHeight = 18*s;
         place(this.resetLabel.node, layout.reset);
         this.resetLabel.fontSize = 12*s; this.resetLabel.lineHeight = 18*s;
@@ -1287,7 +1306,7 @@ export class BilliardsGame extends Component {
         } else if(mode==='identity'){
             const player=this.players[this.identitySeat];m.targetIds=this.referee.groups[this.identitySeat as 0|1]?remaining(this.balls,this.referee.groups[this.identitySeat as 0|1]!):[];m.title='玩家资料';m.avatar=player.avatar;m.body=`完整昵称：\n${playerName(player,this.identitySeat)}\n\n球组：${groupName(this.referee.groups[this.identitySeat as 0|1])}\n${this.matchMode==='ai'&&this.identitySeat===1?'离线 AI 对手 · 当前'+DIFFICULTY_NAMES[this.aiDisplayedDifficulty]+(this.aiDisplayedDifficulty!==this.practice.value.difficulty?'，下次思考切换'+DIFFICULTY_NAMES[this.practice.value.difficulty]:''):'本地同屏玩家 · 头像采用本地占位图'}`;m.actions=[...(this.referee.phase==='ready'&&!this.isAiTurn()&&!this.referee.isBreak&&!this.referee.groups[this.referee.current]&&this.identitySeat===this.referee.current?[{id:'select-group',title:'更改进攻球组'}]:[]),{id:'close-identity',title:'返回对局',primary:true}];
         } else if(mode==='result'){
-            const winner=this.referee.winner??0;m.title='本局获胜';m.caption=fitNickname(playerName(this.players[winner],winner),16);m.body=playerMessage(this.referee.message,this.players)+'\n'+(this.matchMode==='ai'?'人机练习 · '+DIFFICULTY_NAMES[this.aiDisplayedDifficulty]+'难度':'双人同屏');
+            const winner=this.referee.winner??0;m.avatar=this.players[winner].avatar;m.title='本局获胜';m.caption=fitNickname(playerName(this.players[winner],winner),16);m.body=playerMessage(this.referee.message,this.players)+'\n'+(this.matchMode==='ai'?'人机练习 · '+DIFFICULTY_NAMES[this.aiDisplayedDifficulty]+'难度':'双人同屏');
             m.actions=[{id:'new-round',title:'再来一局',primary:true},{id:'view-table',title:'查看台面'}];
         } else if(mode==='view'){m.actions=[{id:'return-result',title:'返回对局结果',primary:true}];}
         this.panels.render(width,height,bottom,m);
@@ -1312,7 +1331,7 @@ export class BilliardsGame extends Component {
         if(!showMagnifier)this.magnifier?.hide();
         if(this.isAiTurn()||this.paused||this.tip.active||this.viewState.transitioning||this.shotSequence.active||this.referee.phase!=='ready'||!mayShoot(this.balls,this.referee)||isMoving(this.balls)){this.magnifier?.hide();this.trajectoryView?.hide();return;}
         const cue=this.balls[0],hit=predictContact(cue,this.direction.x,this.direction.z,this.balls);
-        if(!hit){this.magnifier?.hide();return;}
+        if(!hit){this.magnifier?.hide();this.trajectoryView?.hide();return;}
         const point=(x:number,z:number):Vec3=>{
             const screenPoint=this.camera.worldToScreen(new Vec3(x,TABLE.radius*2,z));
             return this.hudCamera.screenToWorld(new Vec3(screenPoint.x,screenPoint.y,0));
@@ -1334,6 +1353,10 @@ export class BilliardsGame extends Component {
             this.magnifier?.render(this.hudLayout.width,this.hudLayout.height,this.hudLayout.playArea,this.balls,hit,this.lastPointer,this.settings.value.magnifier&&(this.dragging||this.fineAim.active),protectedRects);
         }
         if(!this.settings.value.aimGuide){this.trajectoryView?.hide();return;}
+        if(this.power<=0){
+            this.aimPrediction=null;this.aimPredictionKey='';
+            this.trajectoryView.renderContact(cue,hit);this.trajectoryLabel.string='方向预览';return;
+        }
         const input={balls:this.balls,dx:this.direction.x,dz:this.direction.z,power:this.power,tip:this.tip.value},key=trajectoryKey(input);
         if(key!==this.aimPredictionKey){
             this.aimPredictionKey=key;this.aimPrediction=null;
@@ -1349,7 +1372,7 @@ export class BilliardsGame extends Component {
             const deadline=performance.now()+2;
             for(let i=0;i<80&&this.aimPrediction.status==='running';i++){this.aimPrediction.advance();if(performance.now()>=deadline)break;}
         }
-        if(this.aimPrediction&&this.aimPrediction.status!=='invalid'){
+        if(this.aimPrediction&&this.aimPrediction.status!=='invalid'&&this.aimPrediction.cue.points.length>1){
             if(this.interactionMode!=='top'&&this.viewState.mode==='first-person'&&this.cameraRig.pose)this.trajectoryView.render(this.aimPrediction,hit,this.cameraRig.pose,this.hudLayout.playArea.width/this.hudLayout.playArea.height,this.uiTime);else this.drawPredictedPaths(this.aimPrediction,point);
             const target=this.aimPrediction.target;
             const state=this.aimPrediction.status==='running'?'预测中 ':this.aimPrediction.status==='incomplete'?'未停稳 ':'';
@@ -1360,7 +1383,7 @@ export class BilliardsGame extends Component {
             return;
         }
         this.trajectoryLabel.string=this.aimPrediction?.status==='invalid'?'暂无法预测':'预测中';
-        if(this.viewState.mode==='first-person'){this.trajectoryView.hide();return;}
+        if(this.viewState.mode==='first-person'){this.trajectoryView.renderContact(cue,hit);return;}
         const a=point(cue.x,cue.z),b=point(hit.x,hit.z),length=Math.hypot(b.x-a.x,b.y-a.y);
         const s=this.hudLayout.scale;g.lineWidth=s;g.strokeColor=new Color().fromHEX(CLUB.line);
         for(let offset=8*s;offset<length;offset+=7*s) {

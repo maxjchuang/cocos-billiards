@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-09",
+  "nodeTests": 296,
+  "creatorVersion": "3.8.8",
+  "creatorBuildExit": 36,
+  "sourceSha256": "1400fd7209467df671f50aaf74246cb8f4b7725d16854be7718e509d8af5751d",
+  "environments": {
+    "landscape-667": {
+      "passed": 388,
+      "total": 388,
+      "viewport": [
+        667,
+        375,
+        2
+      ]
+    },
+    "landscape-852": {
+      "passed": 388,
+      "total": 388,
+      "viewport": [
+        852,
+        393,
+        2
+      ]
+    },
+    "landscape-932": {
+      "passed": 388,
+      "total": 388,
+      "viewport": [
+        932,
+        430,
+        3
+      ]
+    },
+    "editor-preview": {
+      "passed": 388,
+      "total": 388,
+      "viewport": [
+        852,
+        393,
+        2
+      ]
+    }
+  },
+  "hardwareAndWeChat": "waived by user"
+}

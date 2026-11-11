@@ -4,6 +4,7 @@ Run Blender --background --factory-startup --python scripts/check-game-table.py.
 import bpy
 import hashlib
 import json
+import sys
 from pathlib import Path
 from mathutils.bvhtree import BVHTree
 
@@ -30,6 +31,8 @@ assert gaps, 'The exported lower leather skirt must be present'
 report = {'gameGlbSha256': hashlib.sha256(asset.read_bytes()).hexdigest(),
           'maximumSeamGapM': max(gaps), 'measuredLowerSkirtVertices': len(gaps)}
 assert report['maximumSeamGapM'] <= .001, 'Derived leather skirt must follow the decimated apron within 1mm'
-output = root/'docs/technical/validation/table-v8/asset-geometry.json'
+arguments=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
+output = root/(arguments[0] if arguments else 'docs/technical/validation/table-v8/asset-geometry.json')
+output.parent.mkdir(parents=True,exist_ok=True)
 output.write_text(json.dumps(report, indent=2)+'\n')
 print('DERIVED_SEAM', json.dumps(report))

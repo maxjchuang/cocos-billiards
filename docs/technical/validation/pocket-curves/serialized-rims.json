@@ -1,0 +1,49 @@
+{
+  "assetSha256": "5ad7edf3591fde57176779200f647cd799d805872fdb558f837634461524f639",
+  "passed": 6,
+  "total": 6,
+  "checks": [
+    {
+      "pocket": 0,
+      "kind": "corner",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024332413158845156,
+      "frontSagittaM": 0.028102788136202893
+    },
+    {
+      "pocket": 1,
+      "kind": "side",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024317386851180345,
+      "frontSagittaM": 0.032287500000000025
+    },
+    {
+      "pocket": 2,
+      "kind": "corner",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024332413158845156,
+      "frontSagittaM": 0.028102788136202893
+    },
+    {
+      "pocket": 3,
+      "kind": "corner",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024332413158845156,
+      "frontSagittaM": 0.028102788136202893
+    },
+    {
+      "pocket": 4,
+      "kind": "side",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024317386851180345,
+      "frontSagittaM": 0.032287500000000025
+    },
+    {
+      "pocket": 5,
+      "kind": "corner",
+      "frontSamples": 33,
+      "maximumRimErrorM": 0.00024332413158845156,
+      "frontSagittaM": 0.028102788136202893
+    }
+  ]
+}

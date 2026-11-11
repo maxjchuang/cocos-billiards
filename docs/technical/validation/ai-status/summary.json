@@ -1,0 +1,64 @@
+{
+  "date": "2026-11-09",
+  "status": "software validation passed",
+  "nodeTests": 296,
+  "creatorVersion": "3.8.8",
+  "creatorBuildExit": 36,
+  "viewportChecks": {
+    "568": {
+      "viewport": [
+        568,
+        320,
+        2
+      ],
+      "passed": 43,
+      "total": 43
+    },
+    "667": {
+      "viewport": [
+        667,
+        375,
+        2
+      ],
+      "passed": 43,
+      "total": 43
+    },
+    "852": {
+      "viewport": [
+        852,
+        393,
+        2
+      ],
+      "passed": 43,
+      "total": 43
+    },
+    "932": {
+      "viewport": [
+        932,
+        430,
+        3
+      ],
+      "passed": 43,
+      "total": 43
+    }
+  },
+  "projectPreview": {
+    "viewport": [
+      852,
+      393,
+      2
+    ],
+    "passed": 43,
+    "total": 43,
+    "record": "tool-observed result; detailed comparable fixtures in browser reports"
+  },
+  "regressions": {
+    "touch": 52,
+    "resultActionsAndGuide": 21
+  },
+  "sourceSha256": {
+    "BilliardsGame.ts": "c82badee1e44390a4b1f6ccf3e0fa63ff58bba1e83717acc2a4d629d71e133a7",
+    "BilliardsPanels.ts": "21b2ab44ff48fee19afbbb17066554bb2d803c051a16ff10d7690903f794d1f6"
+  },
+  "hardwareAndWeChat": "waived by user"
+}

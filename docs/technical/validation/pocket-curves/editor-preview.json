@@ -1,0 +1,837 @@
+{
+  "engine": "3.8.8",
+  "viewport": [
+    852,
+    393,
+    2
+  ],
+  "triangles": 58086,
+  "renderers": 12,
+  "passed": 115,
+  "total": 115,
+  "checks": [
+    {
+      "name": "new curved-rim asset imported",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 0/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 0/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 0/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 0/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 0/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 0/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 0/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 0/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 0/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 0/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 0/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 0/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 0/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 0/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 0/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 0/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 0",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 0",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 1",
+      "pass": true
+    },
+    {
+      "name": "ball captures 1/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 1/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 1/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 1/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 1/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 1/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 1/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 1/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 1/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 1/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 1/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 1/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 1/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 1/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 1/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 1/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 1",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 1",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 2",
+      "pass": true
+    },
+    {
+      "name": "ball captures 2/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 2/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 2/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 2/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 2/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 2/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 2/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 2/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 2/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 2/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 2/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 2/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 2/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 2/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 2/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 2/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 2",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 2",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 3",
+      "pass": true
+    },
+    {
+      "name": "ball captures 3/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 3/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 3/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 3/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 3/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 3/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 3/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 3/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 3/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 3/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 3/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 3/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 3/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 3/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 3/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 3/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 3",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 3",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 4",
+      "pass": true
+    },
+    {
+      "name": "ball captures 4/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 4/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 4/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 4/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 4/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 4/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 4/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 4/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 4/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 4/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 4/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 4/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 4/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 4/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 4/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 4/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 4",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 4",
+      "pass": true
+    },
+    {
+      "name": "curved front rim 5",
+      "pass": true
+    },
+    {
+      "name": "ball captures 5/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 5/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 5/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 5/0.3/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 5/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 5/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 5/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 5/0.3/0.008",
+      "pass": true
+    },
+    {
+      "name": "ball captures 5/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 5/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 5/4/0",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 5/4/0",
+      "pass": true
+    },
+    {
+      "name": "ball captures 5/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall begins visible at original scale 5/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall descends through opening 5/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "fall finishes hidden 5/4/0.008",
+      "pass": true
+    },
+    {
+      "name": "supported hanging ball stays 5",
+      "pass": true
+    },
+    {
+      "name": "unsupported resting ball falls 5",
+      "pass": true
+    }
+  ],
+  "falls": [
+    {
+      "pocket": 0,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": -0.596988923663369,
+        "y": 0.028575,
+        "z": -1.2369889236633689
+      },
+      "lower": {
+        "x": -0.6038186063387628,
+        "y": 0.00977291666666667,
+        "z": -1.2438186063387626
+      }
+    },
+    {
+      "pocket": 0,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": -0.5916936915637182,
+        "y": 0.028575,
+        "z": -1.243007400062703
+      },
+      "lower": {
+        "x": -0.6002074168922653,
+        "y": 0.0077416666666666675,
+        "z": -1.2485768791904965
+      }
+    },
+    {
+      "pocket": 0,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": -0.5989701999381561,
+        "y": 0.028366666666666665,
+        "z": -1.238970199938156
+      },
+      "lower": {
+        "x": -0.6099143916984178,
+        "y": 0.01352291666666667,
+        "z": -1.2499143916984177
+      }
+    },
+    {
+      "pocket": 0,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": -0.5940575828491073,
+        "y": 0.028366666666666665,
+        "z": -1.2445538022152602
+      },
+      "lower": {
+        "x": -0.6071152668565981,
+        "y": 0.01352291666666667,
+        "z": -1.2530958323760402
+      }
+    },
+    {
+      "pocket": 1,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": -0.63,
+        "y": 0.028575,
+        "z": 0
+      },
+      "lower": {
+        "x": -0.6416759874635011,
+        "y": 0.005606250000000004,
+        "z": 0
+      }
+    },
+    {
+      "pocket": 1,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": -0.6306206510632542,
+        "y": 0.028575,
+        "z": -0.008
+      },
+      "lower": {
+        "x": -0.6416555691802045,
+        "y": 0.0077416666666666675,
+        "z": -0.005915080537283992
+      }
+    },
+    {
+      "pocket": 1,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": -0.6331043204686095,
+        "y": 0.028366666666666665,
+        "z": 0
+      },
+      "lower": {
+        "x": -0.6502519938779721,
+        "y": 0.01352291666666667,
+        "z": 0
+      }
+    },
+    {
+      "pocket": 1,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": -0.6321790674681481,
+        "y": 0.028522916666666665,
+        "z": -0.0077055553417665745
+      },
+      "lower": {
+        "x": -0.650580077666664,
+        "y": 0.01352291666666667,
+        "z": -0.004228898434127978
+      }
+    },
+    {
+      "pocket": 2,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": -0.596988923663369,
+        "y": 0.028575,
+        "z": 1.2369889236633689
+      },
+      "lower": {
+        "x": -0.6028659403407256,
+        "y": 0.015241666666666667,
+        "z": 1.2428659403407254
+      }
+    },
+    {
+      "pocket": 2,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": -0.6036428721643861,
+        "y": 0.028366666666666665,
+        "z": 1.2326650992669423
+      },
+      "lower": {
+        "x": -0.6080923947831125,
+        "y": 0.011699999999999999,
+        "z": 1.2394668149300732
+      }
+    },
+    {
+      "pocket": 2,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": -0.5989701999381561,
+        "y": 0.028366666666666665,
+        "z": 1.238970199938156
+      },
+      "lower": {
+        "x": -0.6123925409274916,
+        "y": 0.0033666666666666706,
+        "z": 1.2523925409274914
+      }
+    },
+    {
+      "pocket": 2,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": -0.6037950969604727,
+        "y": 0.028522916666666665,
+        "z": 1.2328977960905299
+      },
+      "lower": {
+        "x": -0.6130958323760403,
+        "y": 0.01352291666666667,
+        "z": 1.2471152668565981
+      }
+    },
+    {
+      "pocket": 3,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": 0.596988923663369,
+        "y": 0.028575,
+        "z": -1.2369889236633689
+      },
+      "lower": {
+        "x": 0.6038186063387628,
+        "y": 0.00977291666666667,
+        "z": -1.2438186063387626
+      }
+    },
+    {
+      "pocket": 3,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": 0.60395349694943,
+        "y": 0.02810625,
+        "z": -1.2331399325573493
+      },
+      "lower": {
+        "x": 0.6090469779027881,
+        "y": 0.0033666666666666706,
+        "z": -1.2409260283138936
+      }
+    },
+    {
+      "pocket": 3,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": 0.5989701999381561,
+        "y": 0.028366666666666665,
+        "z": -1.238970199938156
+      },
+      "lower": {
+        "x": 0.6099143916984178,
+        "y": 0.01352291666666667,
+        "z": -1.2499143916984177
+      }
+    },
+    {
+      "pocket": 3,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": 0.6037950969604727,
+        "y": 0.028522916666666665,
+        "z": -1.2328977960905299
+      },
+      "lower": {
+        "x": 0.6130958323760403,
+        "y": 0.01352291666666667,
+        "z": -1.2471152668565981
+      }
+    },
+    {
+      "pocket": 4,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": 0.6306439420792683,
+        "y": 0.028522916666666665,
+        "z": 0
+      },
+      "lower": {
+        "x": 0.6397277897739808,
+        "y": 0.01352291666666667,
+        "z": 0
+      }
+    },
+    {
+      "pocket": 4,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": 0.6306206510632542,
+        "y": 0.028575,
+        "z": 0.008
+      },
+      "lower": {
+        "x": 0.6416555691802045,
+        "y": 0.0077416666666666675,
+        "z": 0.005915080537283992
+      }
+    },
+    {
+      "pocket": 4,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": 0.6315812598286692,
+        "y": 0.028522916666666665,
+        "z": 0
+      },
+      "lower": {
+        "x": 0.6502519938779721,
+        "y": 0.01352291666666667,
+        "z": 0
+      }
+    },
+    {
+      "pocket": 4,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": 0.6336801254498264,
+        "y": 0.028366666666666665,
+        "z": 0.007421947890628423
+      },
+      "lower": {
+        "x": 0.6514038757534609,
+        "y": 0.011699999999999999,
+        "z": 0.004073251364860394
+      }
+    },
+    {
+      "pocket": 5,
+      "speed": 0.3,
+      "offset": 0,
+      "start": {
+        "x": 0.5985936310145685,
+        "y": 0.027741666666666668,
+        "z": 1.2385936310145684
+      },
+      "lower": {
+        "x": 0.6050236190427473,
+        "y": 0.0010229166666666685,
+        "z": 1.245023619042747
+      }
+    },
+    {
+      "pocket": 5,
+      "speed": 0.3,
+      "offset": 0.008,
+      "start": {
+        "x": 0.5931399325573492,
+        "y": 0.02810625,
+        "z": 1.24395349694943
+      },
+      "lower": {
+        "x": 0.6012772923863562,
+        "y": 0.0010229166666666685,
+        "z": 1.2492767666080171
+      }
+    },
+    {
+      "pocket": 5,
+      "speed": 4,
+      "offset": 0,
+      "start": {
+        "x": 0.5989701999381561,
+        "y": 0.028366666666666665,
+        "z": 1.238970199938156
+      },
+      "lower": {
+        "x": 0.6104478727472376,
+        "y": 0.011699999999999999,
+        "z": 1.2504478727472375
+      }
+    },
+    {
+      "pocket": 5,
+      "speed": 4,
+      "offset": 0.008,
+      "start": {
+        "x": 0.5928977960905298,
+        "y": 0.028522916666666665,
+        "z": 1.2437950969604725
+      },
+      "lower": {
+        "x": 0.6095241404551371,
+        "y": 0.005606250000000004,
+        "z": 1.2546716609012536
+      }
+    }
+  ],
+  "errors": []
+}

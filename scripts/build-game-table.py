@@ -117,6 +117,12 @@ for prefix, bottom, top in [('03 ', .785, .800), ('02 ', .740, .785)]:
         bpy.context.view_layer.objects.active = slab
         bpy.ops.object.modifier_apply(modifier=modifier.name)
         bpy.data.objects.remove(cutter, do_unlink=True)
+    if prefix=='03 ':
+        bevel=slab.modifiers.new('V8 cloth aperture edge roll','BEVEL')
+        bevel.width=.0008
+        bevel.segments=2
+        bpy.context.view_layer.objects.active=slab
+        bpy.ops.object.modifier_apply(modifier=bevel.name)
 
 # The master cups must also reach the authoritative opening, including its shelf.
 liner_material = next(obj for obj in collection.objects if obj.name.startswith('08 ')).data.materials[0]
@@ -248,7 +254,7 @@ OUT.write_bytes(struct.pack('<4sII', b'glTF', 2, 20+len(encoded)+len(remaining))
 report = {'masterRevision':'sketch-matched-legs-v8', 'masterBlendSha256':source_hash,
           'gameGlbSha256':hashlib.sha256(OUT.read_bytes()).hexdigest(),
           'triangles':triangles, 'renderers':len(collection.objects),
-          'maximumLegWidthError':maximum_leg_error, 'maximumNoseErrorM':maximum_nose_error, 'openings':'exported runtime polygons',
+          'maximumLegWidthError':maximum_leg_error, 'maximumNoseErrorM':maximum_nose_error, 'openings':'V8 rounded front and back; shared curved table-support boundary',
           'textureLimit':[1024,2048], 'contactPreservation':'decimation vertex group',
           'materialCompatibility':{'clearcoat':'standard PBR approximation','clothSpecularIntensity':.08,'removedUnsupportedExtensions':sorted(unsupported)},
           'runtimeGeometrySha256':hashlib.sha256((ROOT/'assets/scripts/BilliardsTableGeometry.ts').read_bytes()).hexdigest()}

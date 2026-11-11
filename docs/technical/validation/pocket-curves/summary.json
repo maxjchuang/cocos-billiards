@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-09",
+  "assetSha256": "5ad7edf3591fde57176779200f647cd799d805872fdb558f837634461524f639",
+  "nodeTests": 296,
+  "creatorVersion": "3.8.8",
+  "creatorBuildExit": 36,
+  "triangles": 58086,
+  "renderers": 12,
+  "serializedRimCheck": {
+    "passed": 6,
+    "total": 6,
+    "maximumRimErrorM": 0.00024332413158845156
+  },
+  "browserPreview": {
+    "viewport": [
+      852,
+      393,
+      2
+    ],
+    "passed": 115,
+    "total": 115,
+    "errors": [],
+    "record": "tool-observed summary; detailed comparable fixtures recorded in editor-preview.json"
+  },
+  "projectPreview": {
+    "passed": 115,
+    "total": 115,
+    "record": "editor-preview.json"
+  },
+  "touchRegression": 52,
+  "validationDriver": "controlled single-ball initial states in real frame loop",
+  "hardwareAndWeChat": "waived by user",
+  "sourceSha256": {
+    "BilliardsTableGeometry.ts": "1ca76ecc4c5859f41f1952001b87469baf5bd65402924d11c7c950a2d4a5a393"
+  }
+}

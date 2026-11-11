@@ -126,3 +126,16 @@ blender --background --factory-startup --python scripts/check-game-table.py
 ```
 
 拉远验收补充。渲染远裁剪面调整为8m，地面覆盖宽度24m。180项专项包含4.5m环绕距离下的桌体八角深度检查，确保远端桌框和桌腿完整显示。
+
+## 2026-11-09 袋口前缘落地修正
+
+直线捕获边界曾直接成为可见切口，现使用V8风格的前后圆弧轮廓共同重建台呢、石板和内衬，前缘64点，台呢0.8mm倒角。首次入袋射线与支撑查询均按曲线计算。当前派生资源Blender 58087三角形，引擎58086三角形、12网格，接触鼻线最大偏差仍约0.00012mm，腿型拟合误差约3.07%。序列化前缘偏差约0.243mm，桌裙间隙约0.934mm。
+
+296项Node、Creator构建、浏览器和工程预览各115项袋口专项、52项触摸回归通过。较早V8资源指标按原日期保留。当前资产指纹在table-model-asset.json，完整验证见[袋口曲线记录](validation/pocket-curves/README.md)。
+
+```sh
+node scripts/export-table-geometry.cjs
+blender --background docs/design/table-model/chinese-pool-table.blend --python scripts/build-game-table.py
+blender --background --factory-startup --python scripts/check-game-pocket-curves.py
+blender --background --factory-startup --python scripts/check-game-table.py -- docs/technical/validation/pocket-curves/asset-seam.json
+```

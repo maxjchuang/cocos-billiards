@@ -1,0 +1,2431 @@
+{
+  "viewport": [
+    852,
+    393,
+    2
+  ],
+  "driver": "actual Cocos card renderer and DOM identity tap",
+  "passed": 388,
+  "total": 388,
+  "checks": [
+    {
+      "name": "Player 1 card compact ball labels hidden",
+      "pass": true
+    },
+    {
+      "name": "Player 2 card compact ball labels hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/44/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "134.5/56/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/64/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "134.5/74/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/44/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "148/56/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/64/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "148/74/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/44/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/solid/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/local/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/1 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/1 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/7 hidden balls leave no drawing",
+      "pass": true
+    },
+    {
+      "name": "171/56/stripe/标准/7 target fallback hidden",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/64/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/solid/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/local/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/1 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/1 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/1 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/1 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/7 number row visibility",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/7 group count retained",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/7 ball row stays below group text",
+      "pass": true
+    },
+    {
+      "name": "171/74/stripe/标准/7 balls stay within card",
+      "pass": true
+    },
+    {
+      "name": "compact card opens identity through DOM touch",
+      "pass": true
+    },
+    {
+      "name": "identity exposes all seven remaining numbers",
+      "pass": true
+    }
+  ],
+  "cases": [
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 134.5,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 134.5,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 148,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 148,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 44,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 6
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 56,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 0,
+      "graphicsPaths": 11
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 171,
+      "height": 64,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 9
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "solid",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 27
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 14
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "solid",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 32
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 10
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "stripe",
+      "level": "",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 34
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 1,
+      "visibleNumbers": 1,
+      "graphicsPaths": 15
+    },
+    {
+      "width": 171,
+      "height": 74,
+      "group": "stripe",
+      "level": "标准",
+      "count": 7,
+      "visibleNumbers": 7,
+      "graphicsPaths": 39
+    }
+  ],
+  "errors": []
+}

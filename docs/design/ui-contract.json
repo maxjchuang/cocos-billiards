@@ -746,5 +746,57 @@
     "zeroDeadzonePx": 4,
     "powerExponent": 1.6,
     "transitionMs": 240
+  },
+  "modeLabels": {
+    "free": "自由观察",
+    "top": "俯视观察",
+    "aim": "瞄准击球"
+  },
+  "modeIcons": false,
+  "aiActivity": {
+    "anchor": "turn information row",
+    "referenceRect": [
+      110,
+      58,
+      176,
+      28
+    ],
+    "fontSize": 12,
+    "textWidth": 140,
+    "singleLine": true,
+    "difficulty": "AI identity badge"
+  },
+  "resultIdentity": {
+    "alignment": "center",
+    "order": [
+      "avatar",
+      "nickname",
+      "title"
+    ],
+    "avatarRadius": 22,
+    "compactAvatarRadius": 18,
+    "standardTopOffsets": [
+      50,
+      96,
+      136,
+      164
+    ],
+    "compactTopOffsets": [
+      36,
+      72,
+      106,
+      130
+    ]
+  },
+  "playerCard": {
+    "compactContent": [
+      "avatar",
+      "nickname",
+      "group",
+      "remainingCount"
+    ],
+    "targetRowMinimumHeight": 64,
+    "hiddenNumbersAlsoHideGraphics": true,
+    "allNumbersInIdentityView": true
   }
 }

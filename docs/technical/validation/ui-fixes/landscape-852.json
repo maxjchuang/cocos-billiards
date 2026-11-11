@@ -1,0 +1,193 @@
+{
+  "viewport": [
+    852,
+    393,
+    2
+  ],
+  "driver": "synthetic DOM touch plus controlled render fixtures",
+  "passed": 21,
+  "total": 21,
+  "checks": [
+    {
+      "name": "mode labels",
+      "pass": true
+    },
+    {
+      "name": "mode text centered with full width",
+      "pass": true
+    },
+    {
+      "name": "mode backgrounds have no icon paths",
+      "pass": true
+    },
+    {
+      "name": "zero power direction guide visible",
+      "pass": true
+    },
+    {
+      "name": "zero power shows contact and hides target prediction",
+      "pass": true
+    },
+    {
+      "name": "stationary guide reuses mesh",
+      "pass": true
+    },
+    {
+      "name": "zero length contact cannot resurrect old line",
+      "pass": true
+    },
+    {
+      "name": "guide setting respected",
+      "pass": true
+    },
+    {
+      "name": "angle drag retains zero power guide",
+      "pass": true
+    },
+    {
+      "name": "positive pull predicts trajectories",
+      "pass": true
+    },
+    {
+      "name": "cancel pull restores direction guide",
+      "pass": true
+    },
+    {
+      "name": "result visual regions do not overlap 0",
+      "pass": true
+    },
+    {
+      "name": "result regions fit card 0",
+      "pass": true
+    },
+    {
+      "name": "winner nickname and identity available 0",
+      "pass": true
+    },
+    {
+      "name": "result visual regions do not overlap 1",
+      "pass": true
+    },
+    {
+      "name": "result regions fit card 1",
+      "pass": true
+    },
+    {
+      "name": "winner nickname and identity available 1",
+      "pass": true
+    },
+    {
+      "name": "winner identity action works",
+      "pass": true
+    },
+    {
+      "name": "view table action works",
+      "pass": true
+    },
+    {
+      "name": "return result action works",
+      "pass": true
+    },
+    {
+      "name": "new round action works",
+      "pass": true
+    }
+  ],
+  "boxes": [
+    [
+      {
+        "name": "Modal title",
+        "rect": {
+          "x": -316,
+          "y": 124.5,
+          "width": 632,
+          "height": 32
+        }
+      },
+      {
+        "name": "Modal section",
+        "rect": {
+          "x": -260,
+          "y": 64.5,
+          "width": 568,
+          "height": 44
+        }
+      },
+      {
+        "name": "Modal body",
+        "rect": {
+          "x": -316,
+          "y": -88.5,
+          "width": 632,
+          "height": 137
+        }
+      },
+      {
+        "name": "Modal action 0",
+        "rect": {
+          "x": -316,
+          "y": -156.5,
+          "width": 310,
+          "height": 48
+        }
+      },
+      {
+        "name": "Modal action 1",
+        "rect": {
+          "x": 6,
+          "y": -156.5,
+          "width": 310,
+          "height": 48
+        }
+      }
+    ],
+    [
+      {
+        "name": "Modal title",
+        "rect": {
+          "x": -316,
+          "y": 124.5,
+          "width": 632,
+          "height": 32
+        }
+      },
+      {
+        "name": "Modal section",
+        "rect": {
+          "x": -260,
+          "y": 64.5,
+          "width": 568,
+          "height": 44
+        }
+      },
+      {
+        "name": "Modal body",
+        "rect": {
+          "x": -316,
+          "y": -88.5,
+          "width": 632,
+          "height": 137
+        }
+      },
+      {
+        "name": "Modal action 0",
+        "rect": {
+          "x": -316,
+          "y": -156.5,
+          "width": 310,
+          "height": 48
+        }
+      },
+      {
+        "name": "Modal action 1",
+        "rect": {
+          "x": 6,
+          "y": -156.5,
+          "width": 310,
+          "height": 48
+        }
+      }
+    ]
+  ],
+  "errors": []
+}

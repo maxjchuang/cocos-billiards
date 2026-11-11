@@ -40,6 +40,48 @@ export class PanelsView {
         this.card.getComponent(UITransform)!.setContentSize(w,view?56:h);
         const bg=this.card.getComponent(Graphics)!;bg.clear();
         if(!view){bg.fillColor=color(CLUB.surface);bg.roundRect(-w/2,-h/2,w,h,22);bg.fill();bg.strokeColor=color('#3A4D3E');bg.lineWidth=.7;bg.stroke();}
+        if(width>height&&model.mode==='result'){
+            this.baseY=0;this.card.setPosition(0,0,0);
+            this.title.node.active=this.body.node.active=true;
+            this.badge.node.active=this.footer.node.active=this.subSection.node.active=this.detail.node.active=false;
+            this.targetLabels.forEach(label=>label.node.active=false);
+            this.title.string=model.title;this.title.fontSize=20;this.title.lineHeight=28;
+            const spacing=h<300?{avatar:36,name:72,title:106,body:130}:{avatar:50,name:96,title:136,body:164};
+            const avatarRadius=h<300?18:22;
+            this.title.horizontalAlign=Label.HorizontalAlign.CENTER;this.title.node.setPosition(0,h/2-spacing.title,0);
+            this.title.node.getComponent(UITransform)!.setContentSize(w-48,32);
+            drawAvatar(bg,0,h/2-spacing.avatar,avatarRadius,model.avatar??'default');
+            this.section.node.active=true;this.section.string=model.caption??'';
+            this.section.fontSize=18;this.section.lineHeight=26;this.section.color=color(CLUB.ink);
+            this.section.horizontalAlign=Label.HorizontalAlign.CENTER;this.section.node.setPosition(0,h/2-spacing.name,0);
+            this.section.node.getComponent(UITransform)!.setContentSize(w-48,28);
+            const identityTop=spacing.avatar-avatarRadius,identityBottom=spacing.name+14;
+            this.identityTarget.active=true;this.identityTarget.setPosition(0,h/2-(identityTop+identityBottom)/2,0);
+            this.identityTarget.getComponent(UITransform)!.setContentSize(w-48,identityBottom-identityTop);
+            const bodyHeight=Math.max(40,h-spacing.body-92);
+            this.body.string=model.body;this.body.fontSize=14;this.body.lineHeight=22;
+            this.body.enableWrapText=true;this.body.horizontalAlign=Label.HorizontalAlign.CENTER;
+            this.body.verticalAlign=Label.VerticalAlign.CENTER;
+            this.body.color=color(/提前|犯规|判负/.test(model.body)?CLUB.loss:CLUB.ink);
+            this.body.node.setPosition(0,h/2-spacing.body-bodyHeight/2,0);
+            this.body.node.getComponent(UITransform)!.setContentSize(w-48,bodyHeight);
+            this.actionIds=model.actions.map(action=>action.id);
+            const buttonWidth=(w-60)/2;
+            this.buttons.forEach((label,index)=>{
+                const action=model.actions[index],node=label.node.parent!;node.active=!!action;
+                this.descriptions[index].node.active=false;if(!action)return;
+                node.setPosition((index-.5)*(buttonWidth+12),-h/2+48,0);
+                node.getComponent(UITransform)!.setContentSize(buttonWidth,48);
+                const graphic=node.getComponent(Graphics)!;graphic.clear();
+                graphic.fillColor=color(model.pressed===index?action.primary?'#CCB276':'#314A3D':action.primary?CLUB.gold:CLUB.background);
+                graphic.roundRect(-buttonWidth/2,-24,buttonWidth,48,10);graphic.fill();
+                label.string=action.title;label.fontSize=16;label.lineHeight=22;
+                label.horizontalAlign=Label.HorizontalAlign.CENTER;label.node.setPosition(0,0,0);
+                label.node.getComponent(UITransform)!.setContentSize(buttonWidth-16,40);
+                label.color=color(action.primary?CLUB.background:CLUB.ink);
+            });
+            return;
+        }
         this.title.node.active=!view;this.body.node.active=!view;
         this.title.string=model.title;this.title.fontSize=22;this.title.lineHeight=28;this.title.isBold=false;this.title.horizontalAlign=model.mode==='result'||model.mode==='confirm'?Label.HorizontalAlign.CENTER:Label.HorizontalAlign.LEFT;
         this.title.node.setPosition(0,h/2-(model.mode==='result'?148:model.mode==='break'?54:42),0);this.title.node.getComponent(UITransform)!.setContentSize(w-48,44);

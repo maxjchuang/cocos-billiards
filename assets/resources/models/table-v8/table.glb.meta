@@ -191,7 +191,7 @@
       "name": "03 Baize bed and cloth shelf.001.mesh",
       "userData": {
         "gltfIndex": 9,
-        "triangleCount": 1404
+        "triangleCount": 4244
       },
       "ver": "1.1.1",
       "imported": true,
@@ -209,7 +209,7 @@
       "name": "02 Slate support.001.mesh",
       "userData": {
         "gltfIndex": 10,
-        "triangleCount": 1404
+        "triangleCount": 1380
       },
       "ver": "1.1.1",
       "imported": true,
@@ -227,7 +227,7 @@
       "name": "Runtime pocket cup.mesh",
       "userData": {
         "gltfIndex": 11,
-        "triangleCount": 3192
+        "triangleCount": 3048
       },
       "ver": "1.1.1",
       "imported": true,

@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-09",
+  "status": "software validation passed",
+  "nodeTests": 293,
+  "creatorBuildExit": 36,
+  "driver": "synthetic DOM touch and controlled result fixtures",
+  "checks": {
+    "landscape-667": {
+      "passed": 21,
+      "total": 21,
+      "viewport": [
+        667,
+        375,
+        2
+      ]
+    },
+    "landscape-852": {
+      "passed": 21,
+      "total": 21,
+      "viewport": [
+        852,
+        393,
+        2
+      ]
+    },
+    "landscape-932": {
+      "passed": 21,
+      "total": 21,
+      "viewport": [
+        932,
+        430,
+        3
+      ]
+    },
+    "editor-preview": {
+      "passed": 21,
+      "total": 21,
+      "viewport": [
+        852,
+        393,
+        2
+      ]
+    }
+  },
+  "coreTouchRegression": 52,
+  "sourceSha256": {
+    "BilliardsGame.ts": "bcdb58b27d0b1499d94746c63778528d3db56c11f5799b0f0aaffab18ac90ce7",
+    "BilliardsPanels.ts": "f962ce94c0e1df9f98fb661790adbc804d97ccd3a8b72088179421e81aaac21f",
+    "BilliardsTrajectoryView.ts": "84d539862835861869870343c04e8ab0f32eb8af7d0be1b1fde8a21724e66be6"
+  },
+  "scope": "browser and project-preview software validation; hardware and WeChat remain waived"
+}

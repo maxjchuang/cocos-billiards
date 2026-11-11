@@ -395,3 +395,14 @@ test('free tap cancellation, second finger and movement at release cannot change
         assert.deepEqual(g.direction,before,reason);assert.equal(g.shotSequence.active,false,reason);
     }
 });
+
+test('result table inspection routes its return button while allowing free observation outside it',()=>{
+    const g=touchGame('free'),target={};g.paused=true;g.panelMode='view';
+    g.panels={actionIds:['return-result']};
+    g.actionNode=action=>action==='modal-0'?target:{};
+    g.hitUi=node=>node===target;
+    g.begin(400,300);assert.equal(g.pendingAction,'modal-0');g.release(400,300);
+    assert.equal(g.panelMode,'result');
+    g.panelMode='view';g.hitUi=()=>false;g.begin(400,300);
+    assert.equal(g.dragging,true);assert.equal(g.pendingAction,null);assert.equal(g.freeTap,null);
+});
