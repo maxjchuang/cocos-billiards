@@ -178,6 +178,7 @@ export class BilliardsGame extends Component {
     }
     async start(): Promise<void> {
         this.booting=true;
+        profiler.hideStats();
         this.prepareBrowserPreview();
         view.setOrientation(macro.ORIENTATION_LANDSCAPE);
         const lit=await new Promise<Material>((resolve,reject)=>resources.load('materials/first-person',Material,(error,asset)=>error?reject(error):resolve(asset)));
@@ -188,13 +189,21 @@ export class BilliardsGame extends Component {
         this.feedback=new Feedback(this.node,()=>this.settings.value);
         this.buildTable();
         this.buildCamera();
+        this.camera.enabled=false;
         this.buildHud();
+        // Async start does not block Cocos rendering. Keep default HUD positions hidden.
+        this.hudCamera.enabled=false;
         let tableModel:Prefab;
         try {
             tableModel=await new Promise<Prefab>((resolve,reject)=>resources.load('models/table-v8/table/table',Prefab,(error,asset)=>error?reject(error):resolve(asset)));
         } catch(error) {
             console.error('球桌资源加载失败',error);
+            if(!this.isValid||!this.enabledInHierarchy)return;
+            this.status.node.parent!.children.forEach(child=>child.active=child===this.status.node||child===this.hudCamera.node);
             this.status.string='球桌资源加载失败，请刷新重试';
+            this.status.horizontalAlign=Label.HorizontalAlign.CENTER;
+            this.status.node.setPosition(0,0,0);
+            this.hudCamera.enabled=true;
             return;
         }
         if(!this.isValid||!this.enabledInHierarchy)return;
@@ -216,6 +225,9 @@ export class BilliardsGame extends Component {
         game.on(Game.EVENT_HIDE, this.hideGame, this);
         game.on(Game.EVENT_SHOW, this.showGame, this);
         this.openMatchChooser();this.booting=false;
+        this.update(0);
+        this.camera.enabled=true;
+        this.hudCamera.enabled=true;
     }
 
     private material(hex: string, texture?: Texture2D): Material {
